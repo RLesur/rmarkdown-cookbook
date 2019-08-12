@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.2 Multi-file documents | R Markdown Cookbook</title>
-  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.2 Multi-file documents | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
 
-<meta name="author" content="Michael Harper, Yihui Xie">
+<meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-08-12" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="customRender.html">
@@ -169,9 +168,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.5</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML Output</a><ul>
-<li class="chapter" data-level="7.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html#using-custom-css"><i class="fa fa-check"></i><b>7.1.1</b> Using Custom CSS</a></li>
-<li class="chapter" data-level="7.1.2" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html#setting-default-style-for-document"><i class="fa fa-check"></i><b>7.1.2</b> Setting Default Style for Document</a></li>
+<li class="chapter" data-level="7.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#using-custom-css"><i class="fa fa-check"></i><b>7.1.1</b> Using Custom CSS</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#setting-default-style-for-document"><i class="fa fa-check"></i><b>7.1.2</b> Setting Default Style for Document</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>7.2</b> Scrollable Code Chunks</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>7.2.1</b> Overwriting the Default CSS</a></li>
@@ -221,6 +220,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>11.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
 <li class="chapter" data-level="11.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>11.3.2</b> Customising the knit button</a></li>
 </ul></li>
+<li class="chapter" data-level="11.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>11.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>11.4.1</b> About the <code>cat</code> engine</a></li>
+<li class="chapter" data-level="11.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>11.4.2</b> Generate a template file from inside the rmarkdown</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>12</b> Managing Big Projects</a><ul>
 <li class="chapter" data-level="12.1" data-path="sourcing-files.html"><a href="sourcing-files.html"><i class="fa fa-check"></i><b>12.1</b> Sourcing Files</a></li>
@@ -263,7 +266,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">11.2</span> Multi-file documents</h2>
 <!--- https://stackoverflow.com/questions/25824795/how-to-combine-two-rmarkdown-rmd-files-into-a-single-output --->
 <p>With larger R Markdown projects, it can be useful to split the document into smaller files which are easier to handle than a single, massive <code>'.Rmd</code> document. Also, we may also have generic components which we wish to use across all of our analyses, and rather than copying and pasting the same code across for each report.</p>
-<p>In this section, we highlight two approaches which can be used when splitting an R Markdown document into separate <code>.Rmd</code> files, using child documents and the <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> package. Most importantly, we will highlight when it is preferred for each to be used within your analysis.</p>
+<p>In this section, we highlight two approaches which can be used when splitting an R Markdown document into separate <code>.Rmd</code> files, using child documents and the <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span> package. Most importantly, we will highlight when it is preferred for each to be used within your analysis.</p>
 <div id="child-documents" class="section level3">
 <h3><span class="header-section-number">11.2.1</span> Child documents</h3>
 <p>We can include other R Markdown documents within a file by using child documents. The contents of the child document is loaded into the parent document, and any R code will be run as normally within <strong>knitr</strong>.</p>
@@ -284,7 +287,7 @@ This analysis was written in the R programming language [@R-base]. The report wa
 </div>
 <div id="using-bookdown" class="section level3">
 <h3><span class="header-section-number">11.2.2</span> Using bookdown</h3>
-<p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
+<p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
 <div class="sourceCode"><pre class="sourceCode md"><code class="sourceCode markdown">directory
   |- index.Rmd
   |- 01-intro.Rmd
@@ -323,11 +326,11 @@ This is chapter 2.</code></pre></div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2018. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
 <div id="ref-xie2016bookdown">
 <p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2019b. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 <div id="ref-xie2018">
 <p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>

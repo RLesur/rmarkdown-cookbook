@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.3 RStudio integration with R Markdown | R Markdown Cookbook</title>
-  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.3 RStudio integration with R Markdown | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
 
-<meta name="author" content="Michael Harper, Yihui Xie">
+<meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-08-12" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="multi-file-documents.html">
-<link rel="next" href="managing-big-projects.html">
+<link rel="next" href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -169,9 +168,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.5</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML Output</a><ul>
-<li class="chapter" data-level="7.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html#using-custom-css"><i class="fa fa-check"></i><b>7.1.1</b> Using Custom CSS</a></li>
-<li class="chapter" data-level="7.1.2" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html#setting-default-style-for-document"><i class="fa fa-check"></i><b>7.1.2</b> Setting Default Style for Document</a></li>
+<li class="chapter" data-level="7.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#using-custom-css"><i class="fa fa-check"></i><b>7.1.1</b> Using Custom CSS</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#setting-default-style-for-document"><i class="fa fa-check"></i><b>7.1.2</b> Setting Default Style for Document</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>7.2</b> Scrollable Code Chunks</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>7.2.1</b> Overwriting the Default CSS</a></li>
@@ -220,6 +219,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>11.3</b> RStudio integration with R Markdown</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>11.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
 <li class="chapter" data-level="11.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>11.3.2</b> Customising the knit button</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>11.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>11.4.1</b> About the <code>cat</code> engine</a></li>
+<li class="chapter" data-level="11.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>11.4.2</b> Generate a template file from inside the rmarkdown</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>12</b> Managing Big Projects</a><ul>
@@ -368,7 +371,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
                                          format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),
                                          <span class="st">&#39;.html&#39;</span>))})
 <span class="ot">---</span></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/04/23, the output file name would be example-20190423.html.</p>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/08/12, the output file name would be example-20190812.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Custom Knit function for RStudio</span>
 <span class="co">#&#39;</span>
@@ -390,7 +393,6 @@ knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(in
 
 </div>
 </div>
-<!-- </div> -->
 <div class="footnotes">
 <hr />
 <ol start="3">
@@ -403,7 +405,7 @@ knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(in
         </div>
       </div>
 <a href="multi-file-documents.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="managing-big-projects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.1 Scrollable code chunks | R Markdown Cookbook</title>
-  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.1 Scrollable code chunks | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
 
-<meta name="author" content="Michael Harper, Yihui Xie">
+<meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-08-12" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="knitr-hooks.html">
@@ -169,9 +168,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.5</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML Output</a><ul>
-<li class="chapter" data-level="7.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html#using-custom-css"><i class="fa fa-check"></i><b>7.1.1</b> Using Custom CSS</a></li>
-<li class="chapter" data-level="7.1.2" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html#setting-default-style-for-document"><i class="fa fa-check"></i><b>7.1.2</b> Setting Default Style for Document</a></li>
+<li class="chapter" data-level="7.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#using-custom-css"><i class="fa fa-check"></i><b>7.1.1</b> Using Custom CSS</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#setting-default-style-for-document"><i class="fa fa-check"></i><b>7.1.2</b> Setting Default Style for Document</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>7.2</b> Scrollable Code Chunks</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>7.2.1</b> Overwriting the Default CSS</a></li>
@@ -220,6 +219,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>11.3</b> RStudio integration with R Markdown</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>11.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
 <li class="chapter" data-level="11.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>11.3.2</b> Customising the knit button</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>11.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>11.4.1</b> About the <code>cat</code> engine</a></li>
+<li class="chapter" data-level="11.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>11.4.2</b> Generate a template file from inside the rmarkdown</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>12</b> Managing Big Projects</a><ul>
