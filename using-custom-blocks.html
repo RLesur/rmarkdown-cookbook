@@ -13,7 +13,7 @@
   
   
   <meta property="og:description" content="Examples, tips, and tricks of using R Markdown." />
-  
+  <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.3 Using Custom Blocks | R Markdown Cookbook" />
@@ -337,8 +337,8 @@ Some text for this block.
 }
 </style>
 <p>For the LaTeX output, we will add our custom block to the <code>preamble.tex</code> file. We will use use the <strong>tcolorbox</strong> LaTeX package, which offers quite a flexible set of options for creating shaded boxes, as detailed within the <a href="hhttp://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf">package documentation</a>. Below, we create a new environment called <code>customBlock</code>, with a similar design of that outlined above:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="bu">\usepackage</span>[many]{<span class="ex">tcolorbox</span>}</a>
-<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}</a>
+<div class="sourceCode" id="cb68"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">tcolorbox</span>}</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">tikz</span>}</a>
 <a class="sourceLine" id="cb68-3" data-line-number="3"><span class="fu">\usetikzlibrary</span>{calc}</a>
 <a class="sourceLine" id="cb68-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb68-5" data-line-number="5"><span class="co">% Define the colours to match the CSS above</span></a>
@@ -478,7 +478,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
