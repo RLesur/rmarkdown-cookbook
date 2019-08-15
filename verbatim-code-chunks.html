@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-14" />
+<meta name="date" content="2019-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.4</span> Verbatim code chunks</h2>
 <p>Typically we write code chunks and inline expressions that we want to be parsed and evaluated by <strong>knitr</strong>. However, if you are trying to write a tutorial on using <strong>knitr</strong>, you may need to generate verbatim code chunk or inline expression that is <em>not</em> parsed by <strong>knitr</strong>, and we want to display the content of the chunk header.</p>
 <p>Unfortunately, we can’t wrap the code chunk in another layer of backticks, but instead we must make the code chunk invalid within the source code by inserting “<code></code> to the chunk header. This will be evaluated as an inline expression to <em>an empty string</em> by <strong>knitr</strong>. For this example, the following”code chunk&quot; in the source document:</p>
-<pre><code>```{r, eval=TRUE}`r &#39;&#39;`
+<pre><code>`r &#39;&#39;````{r, eval=TRUE}
 1 + 1
 ```</code></pre>
 <p>will be rendered as:</p>
@@ -317,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ```</code></pre>
 <p>in the output. The inline expression is gone because it is substituted by an empty string. However, that is only the first step. To show something verbatim in the output, the syntax in Markdown is to wrap it in a code block (indent by four spaces or use backtick fences). This will be the actual source if you want to see the output above:</p>
 <pre><code>````
-```{r, eval=TRUE}`r &#39;&#39;`
+`r &#39;&#39;````{r, eval=TRUE}
 1 + 1
 ```
 ````</code></pre>
@@ -370,7 +370,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/book/master/04-formatting.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/04-formatting.Rmd",
 "text": "Edit"
 },
 "history": {

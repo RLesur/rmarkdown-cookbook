@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-14" />
+<meta name="date" content="2019-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -318,10 +318,73 @@ means it is possible in the yaml header to link to a file that does not exist
 and will be created when rendering the document.</p>
 <p>This complete example shows how to generate <code>my_custom.css</code> from a chunk in the
 document while telling pandoc to use this css with the yaml field <code>css: my_custom.css</code></p>
-<p><code>md---title: &quot;CSS generated in chunk&quot;output:   html_document:    css: my_custom.css---The chunk below will be written to `my_custom.css` that will be used duringpandoc conversion, as specified in the yaml header above.```{cat, engine.opts = list(file = &quot;my_custom.css&quot;)}h2 {  color: blue;}```## And this title will blue.</code></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb99-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2">title: &quot;CSS generated in chunk&quot;</a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">output: </a>
+<a class="sourceLine" id="cb99-4" data-line-number="4">  html_document:</a>
+<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="bn">    css: my_custom.css</span></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6">---</a>
+<a class="sourceLine" id="cb99-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb99-8" data-line-number="8">The chunk below will be written to <span class="bn">`my_custom.css`</span> that will be used during</a>
+<a class="sourceLine" id="cb99-9" data-line-number="9">pandoc conversion, as specified in the yaml header above.</a>
+<a class="sourceLine" id="cb99-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb99-11" data-line-number="11"><span class="bn">```{cat, engine.opts = list(file = &quot;my_custom.css&quot;)}</span></a>
+<a class="sourceLine" id="cb99-12" data-line-number="12"><span class="bn">h2 {</span></a>
+<a class="sourceLine" id="cb99-13" data-line-number="13"><span class="bn">  color: blue;</span></a>
+<a class="sourceLine" id="cb99-14" data-line-number="14"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb99-15" data-line-number="15"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb99-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb99-17" data-line-number="17"><span class="fu">## And this title will blue.</span></a></code></pre></div>
 <p>This could also be used to generate any file that can be given to pandoc, like
 an <code>in_header</code> tex file for a <code>pdf_document</code> output.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-<p><code>md---title: &quot;Generate a header template for latex from a chunk&quot;author: &quot;Jane Doe&quot;output:   pdf_document:    includes:      in_header: header.tex---# how it worksAdding some content to put in header file.```{cat, engine.opts=list(file = 'header.tex')}\usepackage{fancyhdr}\usepackage{lipsum}\pagestyle{fancy}\fancyhead[CO,CE]{This is fancy header}\fancyfoot[CO,CE]{And this is a fancy footer}\fancyfoot[LE,RO]{\thepage}\fancypagestyle{plain}{\pagestyle{fancy}}```However, the aim here is to add the author name from the yaml header into thetex template. Some R code can't be passed into the `cat` engine because it won'tbe executed, but it is possible to append some more to the created file.Here we generate the line to append in a R chunk using `knitr::knit_expand`templating tool. Any other way to build a string will work obviously.```{r, include = FALSE}author_template &lt;- knitr::knit_expand(  text = '\\fancyfoot[CO,CE]{%rmarkdown::metadata$author%}',   delim = c(&quot;%&quot;, &quot;%&quot;))```Then, providing `append = TRUE` and using the `code` chunk option to providecontent to the chunk```{cat, engine.opts=list(file = 'header.tex', append = TRUE), code = author_template}```This will generate a footer with the author name that we got from the yamlheader. Pretty advanced combination !# Some other content to see the footer\lipsum[1-30]</code></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb100-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb100-2" data-line-number="2">title: &quot;Generate a header template for latex from a chunk&quot;</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3">author: &quot;Jane Doe&quot;</a>
+<a class="sourceLine" id="cb100-4" data-line-number="4">output: </a>
+<a class="sourceLine" id="cb100-5" data-line-number="5">  pdf_document:</a>
+<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="bn">    includes:</span></a>
+<a class="sourceLine" id="cb100-7" data-line-number="7"><span class="bn">      in_header: header.tex</span></a>
+<a class="sourceLine" id="cb100-8" data-line-number="8">---</a>
+<a class="sourceLine" id="cb100-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb100-10" data-line-number="10"><span class="fu"># how it works</span></a>
+<a class="sourceLine" id="cb100-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb100-12" data-line-number="12">Adding some content to put in header file.</a>
+<a class="sourceLine" id="cb100-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb100-14" data-line-number="14"><span class="bn">```{cat, engine.opts=list(file = &#39;header.tex&#39;)}</span></a>
+<a class="sourceLine" id="cb100-15" data-line-number="15"><span class="bn">\usepackage{fancyhdr}</span></a>
+<a class="sourceLine" id="cb100-16" data-line-number="16"><span class="bn">\usepackage{lipsum}</span></a>
+<a class="sourceLine" id="cb100-17" data-line-number="17"><span class="bn">\pagestyle{fancy}</span></a>
+<a class="sourceLine" id="cb100-18" data-line-number="18"><span class="bn">\fancyhead[CO,CE]{This is fancy header}</span></a>
+<a class="sourceLine" id="cb100-19" data-line-number="19"><span class="bn">\fancyfoot[CO,CE]{And this is a fancy footer}</span></a>
+<a class="sourceLine" id="cb100-20" data-line-number="20"><span class="bn">\fancyfoot[LE,RO]{\thepage}</span></a>
+<a class="sourceLine" id="cb100-21" data-line-number="21"><span class="bn">\fancypagestyle{plain}{\pagestyle{fancy}}</span></a>
+<a class="sourceLine" id="cb100-22" data-line-number="22"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb100-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb100-24" data-line-number="24">However, the aim here is to add the author name from the yaml header into the</a>
+<a class="sourceLine" id="cb100-25" data-line-number="25">tex template. Some R code can&#39;t be passed into the <span class="bn">`cat`</span> engine because it won&#39;t</a>
+<a class="sourceLine" id="cb100-26" data-line-number="26">be executed, but it is possible to append some more to the created file.</a>
+<a class="sourceLine" id="cb100-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb100-28" data-line-number="28">Here we generate the line to append in a R chunk using <span class="bn">`knitr::knit_expand`</span></a>
+<a class="sourceLine" id="cb100-29" data-line-number="29">templating tool. Any other way to build a string will work obviously.</a>
+<a class="sourceLine" id="cb100-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb100-31" data-line-number="31"><span class="bn">```{r, include = FALSE}</span></a>
+<a class="sourceLine" id="cb100-32" data-line-number="32"><span class="bn">author_template &lt;- knitr::knit_expand(</span></a>
+<a class="sourceLine" id="cb100-33" data-line-number="33"><span class="bn">  text = &#39;\\fancyfoot[CO,CE]{%rmarkdown::metadata$author%}&#39;, </span></a>
+<a class="sourceLine" id="cb100-34" data-line-number="34"><span class="bn">  delim = c(&quot;%&quot;, &quot;%&quot;))</span></a>
+<a class="sourceLine" id="cb100-35" data-line-number="35"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb100-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb100-37" data-line-number="37">Then, providing <span class="bn">`append = TRUE`</span> and using the <span class="bn">`code`</span> chunk option to provide</a>
+<a class="sourceLine" id="cb100-38" data-line-number="38">content to the chunk</a>
+<a class="sourceLine" id="cb100-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb100-40" data-line-number="40"><span class="bn">```{cat, engine.opts=list(file = &#39;header.tex&#39;, append = TRUE), code = author_template}</span></a>
+<a class="sourceLine" id="cb100-41" data-line-number="41"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb100-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb100-43" data-line-number="43">This will generate a footer with the author name that we got from the yaml</a>
+<a class="sourceLine" id="cb100-44" data-line-number="44">header. Pretty advanced combination !</a>
+<a class="sourceLine" id="cb100-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb100-46" data-line-number="46"><span class="fu"># Some other content to see the footer</span></a>
+<a class="sourceLine" id="cb100-47" data-line-number="47"></a>
+<a class="sourceLine" id="cb100-48" data-line-number="48">\lipsum[1-30]</a></code></pre></div>
 
 </div>
 </div>
@@ -369,7 +432,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/book/master/12-workflow.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/12-workflow.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-14" />
+<meta name="date" content="2019-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -413,7 +413,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb87-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
 <a class="sourceLine" id="cb87-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
 <a class="sourceLine" id="cb87-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/08/14, the output file name would be example-20190814.html.</p>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/08/15, the output file name would be example-20190815.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
 <a class="sourceLine" id="cb88-2" data-line-number="2"><span class="co">#&#39;</span></a>
@@ -476,7 +476,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/book/master/12-workflow.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/12-workflow.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-14" />
+<meta name="date" content="2019-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,19 +313,19 @@ Error in parse_block(g[-1], g[1], params.src) : duplicate label &#39;cars&#39;
 Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>However, there are scenarios where we may wish to allow duplicate cases. For example, if we have one master document <code>parent.rmd</code> and several child documents, each with a number of chunks. If I attempt to re-use the same child-chunks, however, this will fail:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb102-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
-<a class="sourceLine" id="cb102-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb102-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb102-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb102-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb102-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="co"># settings</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="co"># run once</span></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
+<a class="sourceLine" id="cb104-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="co"># new settings</span></a>
+<a class="sourceLine" id="cb104-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb104-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb104-10" data-line-number="10"><span class="co"># run again</span></a>
+<a class="sourceLine" id="cb104-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
 <p>In such scenario, we can allow duplicate labels:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
 <p>Note, it is not recommended that this option is set in documents without valid reason. As with most error messages, they are there for a reason, and allowing duplicate chunks can create issues with figures and cross-references. You have been warned!</p>
 </div>
             </section>
@@ -364,7 +364,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/book/master/14-knitr.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/14-knitr.Rmd",
 "text": "Edit"
 },
 "history": {

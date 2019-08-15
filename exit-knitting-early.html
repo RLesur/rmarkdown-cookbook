@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-14" />
+<meta name="date" content="2019-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -308,17 +308,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.2</span> Exit Knitting Early</h2>
 <p>Sometime we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom which is not yet complete. In these situations, we could consider using the <code>knit_exit</code> function, which will end the knitting process at that location.</p>
 <p>Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="bn">library(knitr)</span></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="bn">1 + 1</span></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="bn">knit_exit()</span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb104-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb104-7" data-line-number="7">Okay, you will not see me in the output.</a>
-<a class="sourceLine" id="cb104-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb104-10" data-line-number="10"><span class="bn">Sys.sleep(100)</span></a>
-<a class="sourceLine" id="cb104-11" data-line-number="11"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="bn">library(knitr)</span></a>
+<a class="sourceLine" id="cb106-3" data-line-number="3"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb106-4" data-line-number="4"><span class="bn">knit_exit()</span></a>
+<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb106-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb106-7" data-line-number="7">Okay, you will not see me in the output.</a>
+<a class="sourceLine" id="cb106-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb106-9" data-line-number="9"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb106-10" data-line-number="10"><span class="bn">Sys.sleep(100)</span></a>
+<a class="sourceLine" id="cb106-11" data-line-number="11"><span class="bn">```</span></a></code></pre></div>
 <p>Normally you have to wait for 100 seconds, but since we have called <code>knit_exit()</code>, the rest of the document is actually ignored.</p>
 </div>
             </section>
@@ -357,7 +357,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/book/master/14-knitr.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/14-knitr.Rmd",
 "text": "Edit"
 },
 "history": {
