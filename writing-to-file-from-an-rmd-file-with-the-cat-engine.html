@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="rstudio-integration-with-r-markdown.html">
-<link rel="next" href="section.html">
+<link rel="next" href="diagrams.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -251,24 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
 <li class="chapter" data-level="12.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>12.4.1</b> About the <code>cat</code> engine</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>12.5</b> [1] 6</a></li>
-<li class="chapter" data-level="12.6" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>12.6</b> [1] 6</a></li>
-<li class="chapter" data-level="12.7" data-path="a.html"><a href="a.html"><i class="fa fa-check"></i><b>12.7</b> $a</a></li>
-<li class="chapter" data-level="12.8" data-path="aaa.html"><a href="aaa.html"><i class="fa fa-check"></i><b>12.8</b> <span class="math inline">\(a\)</span>aa</a></li>
-<li class="chapter" data-level="12.9" data-path="something.html"><a href="something.html"><i class="fa fa-check"></i><b>12.9</b> [1] “something”</a></li>
-<li class="chapter" data-level="12.10" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>12.10</b> </a></li>
-<li class="chapter" data-level="12.11" data-path="abb.html"><a href="abb.html"><i class="fa fa-check"></i><b>12.11</b> <span class="math inline">\(a\)</span>bb</a></li>
-<li class="chapter" data-level="12.12" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>12.12</b> [1] 1</a></li>
-<li class="chapter" data-level="12.13" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>12.13</b> </a></li>
-<li class="chapter" data-level="12.14" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i><b>12.14</b> </a></li>
-<li class="chapter" data-level="12.15" data-path="b.html"><a href="b.html"><i class="fa fa-check"></i><b>12.15</b> $b</a></li>
-<li class="chapter" data-level="12.16" data-path="baa.html"><a href="baa.html"><i class="fa fa-check"></i><b>12.16</b> <span class="math inline">\(b\)</span>aa</a></li>
-<li class="chapter" data-level="12.17" data-path="somethingelse.html"><a href="somethingelse.html"><i class="fa fa-check"></i><b>12.17</b> [1] “somethingelse”</a></li>
-<li class="chapter" data-level="12.18" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i><b>12.18</b> </a></li>
-<li class="chapter" data-level="12.19" data-path="bbb.html"><a href="bbb.html"><i class="fa fa-check"></i><b>12.19</b> <span class="math inline">\(b\)</span>bb</a></li>
-<li class="chapter" data-level="12.20" data-path="section-7.html"><a href="section-7.html"><i class="fa fa-check"></i><b>12.20</b> [1] 2</a><ul>
-<li class="chapter" data-level="12.20.1" data-path="section-7.html"><a href="section-7.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.20.1</b> Generate a template file from inside the rmarkdown</a></li>
+<li class="chapter" data-level="12.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.4.2</b> Generate a template file from inside the rmarkdown</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>13</b> Diagrams</a><ul>
@@ -329,7 +312,149 @@ content is written to file.</p>
 <p>As the code above is executed, the function is available in any following r chunk.</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">my_function</span>(<span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb93-2" data-line-number="2"><span class="kw">rm</span>(my_function)</a></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>And the file can be sourced as usual too.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="kw">source</span>(fs<span class="op">::</span><span class="kw">path_temp</span>(<span class="st">&#39;script.R&#39;</span>))</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="kw">my_function</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3"><span class="kw">rm</span>(my_function)</a></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>Writing to an R script is not really a real use case example and the <code>cat</code>
+engine can handled any format.</p>
+<p>Here, we use it to write some yaml to a file. The default behavior for <code>cat</code>
+engine is to show nothing in the output document. However, here we will also
+show the content in the output R Markdown file. The <code>cat</code> engine understand the
+field <code>lang</code> in <code>engine.opts</code> option or directly <code>class.source</code> chunk option for
+html outputs (see Section <a href="chunk-styling.html#chunk-styling">6.1</a>). You can provide any language
+supported by the syntax highlighting. This two chunks are equivalent:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="bn">```{cat, engine.opts = list(file = fs::path_temp(&#39;demo.yml&#39;), lang = &quot;yaml&quot;)}</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="bn">a:</span></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="bn">  aa: something</span></a>
+<a class="sourceLine" id="cb97-4" data-line-number="4"><span class="bn">  bb: 1</span></a>
+<a class="sourceLine" id="cb97-5" data-line-number="5"><span class="bn">b:</span></a>
+<a class="sourceLine" id="cb97-6" data-line-number="6"><span class="bn">  aa: somethingelse</span></a>
+<a class="sourceLine" id="cb97-7" data-line-number="7"><span class="bn">  bb: 2</span></a>
+<a class="sourceLine" id="cb97-8" data-line-number="8"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="bn">```{cat, engine.opts = list(file = fs::path_temp(&#39;demo.yml&#39;)), class.source = &quot;yaml&quot;}</span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="bn">a:</span></a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="bn">  aa: something</span></a>
+<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="bn">  bb: 1</span></a>
+<a class="sourceLine" id="cb98-5" data-line-number="5"><span class="bn">b:</span></a>
+<a class="sourceLine" id="cb98-6" data-line-number="6"><span class="bn">  aa: somethingelse</span></a>
+<a class="sourceLine" id="cb98-7" data-line-number="7"><span class="bn">  bb: 2</span></a>
+<a class="sourceLine" id="cb98-8" data-line-number="8"><span class="bn">```</span></a></code></pre></div>
+<p>They will write to file and print the code with the chosen syntax highlighting, here <code>yaml</code></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="fu">a:</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2">  <span class="fu">aa:</span><span class="at"> something</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">  <span class="fu">bb:</span><span class="at"> 1</span></a>
+<a class="sourceLine" id="cb99-4" data-line-number="4"><span class="fu">b:</span></a>
+<a class="sourceLine" id="cb99-5" data-line-number="5">  <span class="fu">aa:</span><span class="at"> somethingelse</span></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6">  <span class="fu">bb:</span><span class="at"> 2</span></a></code></pre></div>
+<p>As previously, the file can be access later on and read into R</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">yaml<span class="op">::</span><span class="kw">read_yaml</span>(fs<span class="op">::</span><span class="kw">path_temp</span>(<span class="st">&#39;demo.yml&#39;</span>))</a></code></pre></div>
+<pre><code>## $a
+## $a$aa
+## [1] &quot;something&quot;
+## 
+## $a$bb
+## [1] 1
+## 
+## 
+## $b
+## $b$aa
+## [1] &quot;somethingelse&quot;
+## 
+## $b$bb
+## [1] 2</code></pre>
 </div>
+<div id="generate-a-template-file-from-inside-the-rmarkdown" class="section level3">
+<h3><span class="header-section-number">12.4.2</span> Generate a template file from inside the rmarkdown</h3>
+<!-- https://github.com/dr-harper/rmarkdown-cookbook/issues/149 -->
+<p>As detailed in section <a href="chunk-styling.html#chunk-styling">6.1</a>, <code>css</code> chunk can directly be used to
+apply custom style. However, it is also possible to provide a custom css file to
+pandoc directly to be used with the html output and the <code>cat</code> engine can be used
+to write this css file from the Rmarkdown.</p>
+<p>One important key is that all chunks are executed before pandoc conversion. This
+means it is possible in the yaml header to link to a file that does not exist
+and will be created when rendering the document.</p>
+<p>This complete example shows how to generate <code>my_custom.css</code> from a chunk in the
+document while telling pandoc to use this css with the yaml field <code>css: my_custom.css</code></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb102-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb102-2" data-line-number="2">title: &quot;CSS generated in chunk&quot;</a>
+<a class="sourceLine" id="cb102-3" data-line-number="3">output: </a>
+<a class="sourceLine" id="cb102-4" data-line-number="4">  html_document:</a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="bn">    css: my_custom.css</span></a>
+<a class="sourceLine" id="cb102-6" data-line-number="6">---</a>
+<a class="sourceLine" id="cb102-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb102-8" data-line-number="8">The chunk below will be written to <span class="bn">`my_custom.css`</span> that will be used during</a>
+<a class="sourceLine" id="cb102-9" data-line-number="9">pandoc conversion, as specified in the yaml header above.</a>
+<a class="sourceLine" id="cb102-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb102-11" data-line-number="11"><span class="bn">```{cat, engine.opts = list(file = &quot;my_custom.css&quot;)}</span></a>
+<a class="sourceLine" id="cb102-12" data-line-number="12"><span class="bn">h2 {</span></a>
+<a class="sourceLine" id="cb102-13" data-line-number="13"><span class="bn">  color: blue;</span></a>
+<a class="sourceLine" id="cb102-14" data-line-number="14"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb102-15" data-line-number="15"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb102-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb102-17" data-line-number="17"><span class="fu">## And this title will blue.</span></a></code></pre></div>
+<p>This could also be used to generate any file that can be given to pandoc, like
+an <code>in_header</code> tex file for a <code>pdf_document</code> output.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb103-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb103-2" data-line-number="2">title: &quot;Generate a header template for latex from a chunk&quot;</a>
+<a class="sourceLine" id="cb103-3" data-line-number="3">author: &quot;Jane Doe&quot;</a>
+<a class="sourceLine" id="cb103-4" data-line-number="4">output: </a>
+<a class="sourceLine" id="cb103-5" data-line-number="5">  pdf_document:</a>
+<a class="sourceLine" id="cb103-6" data-line-number="6"><span class="bn">    includes:</span></a>
+<a class="sourceLine" id="cb103-7" data-line-number="7"><span class="bn">      in_header: header.tex</span></a>
+<a class="sourceLine" id="cb103-8" data-line-number="8">---</a>
+<a class="sourceLine" id="cb103-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb103-10" data-line-number="10"><span class="fu"># how it works</span></a>
+<a class="sourceLine" id="cb103-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb103-12" data-line-number="12">Adding some content to put in header file.</a>
+<a class="sourceLine" id="cb103-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb103-14" data-line-number="14"><span class="bn">```{cat, engine.opts=list(file = &#39;header.tex&#39;)}</span></a>
+<a class="sourceLine" id="cb103-15" data-line-number="15"><span class="bn">\usepackage{fancyhdr}</span></a>
+<a class="sourceLine" id="cb103-16" data-line-number="16"><span class="bn">\usepackage{lipsum}</span></a>
+<a class="sourceLine" id="cb103-17" data-line-number="17"><span class="bn">\pagestyle{fancy}</span></a>
+<a class="sourceLine" id="cb103-18" data-line-number="18"><span class="bn">\fancyhead[CO,CE]{This is fancy header}</span></a>
+<a class="sourceLine" id="cb103-19" data-line-number="19"><span class="bn">\fancyfoot[CO,CE]{And this is a fancy footer}</span></a>
+<a class="sourceLine" id="cb103-20" data-line-number="20"><span class="bn">\fancyfoot[LE,RO]{\thepage}</span></a>
+<a class="sourceLine" id="cb103-21" data-line-number="21"><span class="bn">\fancypagestyle{plain}{\pagestyle{fancy}}</span></a>
+<a class="sourceLine" id="cb103-22" data-line-number="22"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb103-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb103-24" data-line-number="24">However, the aim here is to add the author name from the yaml header into the</a>
+<a class="sourceLine" id="cb103-25" data-line-number="25">tex template. Some R code can&#39;t be passed into the <span class="bn">`cat`</span> engine because it won&#39;t</a>
+<a class="sourceLine" id="cb103-26" data-line-number="26">be executed, but it is possible to append some more to the created file.</a>
+<a class="sourceLine" id="cb103-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb103-28" data-line-number="28">Here we generate the line to append in a R chunk using <span class="bn">`knitr::knit_expand`</span></a>
+<a class="sourceLine" id="cb103-29" data-line-number="29">templating tool. Any other way to build a string will work obviously.</a>
+<a class="sourceLine" id="cb103-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb103-31" data-line-number="31"><span class="bn">```{r, include = FALSE}</span></a>
+<a class="sourceLine" id="cb103-32" data-line-number="32"><span class="bn">author_template &lt;- knitr::knit_expand(</span></a>
+<a class="sourceLine" id="cb103-33" data-line-number="33"><span class="bn">  text = &#39;\\fancyfoot[CO,CE]{%rmarkdown::metadata$author%}&#39;, </span></a>
+<a class="sourceLine" id="cb103-34" data-line-number="34"><span class="bn">  delim = c(&quot;%&quot;, &quot;%&quot;))</span></a>
+<a class="sourceLine" id="cb103-35" data-line-number="35"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb103-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb103-37" data-line-number="37">Then, providing <span class="bn">`append = TRUE`</span> and using the <span class="bn">`code`</span> chunk option to provide</a>
+<a class="sourceLine" id="cb103-38" data-line-number="38">content to the chunk</a>
+<a class="sourceLine" id="cb103-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb103-40" data-line-number="40"><span class="bn">```{cat, engine.opts=list(file = &#39;header.tex&#39;, append = TRUE), code = author_template}</span></a>
+<a class="sourceLine" id="cb103-41" data-line-number="41"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb103-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb103-43" data-line-number="43">This will generate a footer with the author name that we got from the yaml</a>
+<a class="sourceLine" id="cb103-44" data-line-number="44">header. Pretty advanced combination !</a>
+<a class="sourceLine" id="cb103-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb103-46" data-line-number="46"><span class="fu"># Some other content to see the footer</span></a>
+<a class="sourceLine" id="cb103-47" data-line-number="47"></a>
+<a class="sourceLine" id="cb103-48" data-line-number="48">\lipsum[1-30]</a></code></pre></div>
+
+</div>
+</div>
+<!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Those yaml options for
+pandoc can be found in <em>R Markdown Definitive Guide</em> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#fnref4" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -337,7 +462,7 @@ content is written to file.</p>
         </div>
       </div>
 <a href="rstudio-integration-with-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="diagrams.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -382,19 +507,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

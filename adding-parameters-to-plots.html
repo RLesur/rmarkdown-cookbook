@@ -251,24 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
 <li class="chapter" data-level="12.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>12.4.1</b> About the <code>cat</code> engine</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>12.5</b> [1] 6</a></li>
-<li class="chapter" data-level="12.6" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>12.6</b> [1] 6</a></li>
-<li class="chapter" data-level="12.7" data-path="a.html"><a href="a.html"><i class="fa fa-check"></i><b>12.7</b> $a</a></li>
-<li class="chapter" data-level="12.8" data-path="aaa.html"><a href="aaa.html"><i class="fa fa-check"></i><b>12.8</b> <span class="math inline">\(a\)</span>aa</a></li>
-<li class="chapter" data-level="12.9" data-path="something.html"><a href="something.html"><i class="fa fa-check"></i><b>12.9</b> [1] “something”</a></li>
-<li class="chapter" data-level="12.10" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>12.10</b> </a></li>
-<li class="chapter" data-level="12.11" data-path="abb.html"><a href="abb.html"><i class="fa fa-check"></i><b>12.11</b> <span class="math inline">\(a\)</span>bb</a></li>
-<li class="chapter" data-level="12.12" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>12.12</b> [1] 1</a></li>
-<li class="chapter" data-level="12.13" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>12.13</b> </a></li>
-<li class="chapter" data-level="12.14" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i><b>12.14</b> </a></li>
-<li class="chapter" data-level="12.15" data-path="b.html"><a href="b.html"><i class="fa fa-check"></i><b>12.15</b> $b</a></li>
-<li class="chapter" data-level="12.16" data-path="baa.html"><a href="baa.html"><i class="fa fa-check"></i><b>12.16</b> <span class="math inline">\(b\)</span>aa</a></li>
-<li class="chapter" data-level="12.17" data-path="somethingelse.html"><a href="somethingelse.html"><i class="fa fa-check"></i><b>12.17</b> [1] “somethingelse”</a></li>
-<li class="chapter" data-level="12.18" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i><b>12.18</b> </a></li>
-<li class="chapter" data-level="12.19" data-path="bbb.html"><a href="bbb.html"><i class="fa fa-check"></i><b>12.19</b> <span class="math inline">\(b\)</span>bb</a></li>
-<li class="chapter" data-level="12.20" data-path="section-7.html"><a href="section-7.html"><i class="fa fa-check"></i><b>12.20</b> [1] 2</a><ul>
-<li class="chapter" data-level="12.20.1" data-path="section-7.html"><a href="section-7.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.20.1</b> Generate a template file from inside the rmarkdown</a></li>
+<li class="chapter" data-level="12.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.4.2</b> Generate a template file from inside the rmarkdown</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>13</b> Diagrams</a><ul>
@@ -307,29 +290,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-parameters-to-plots" class="section level2">
 <h2><span class="header-section-number">13.2</span> Adding parameters to plots</h2>
 <p>Graphviz substitution allows for mixing in R expressions into a Graphviz graph specification without sacrificing readability. If you specify a subsitution with <code>@@</code>, you must ensure there is a valid expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object (i.e., not a data frame, list, or matrix). Because there is the possibility to have multiple substitutions, numbering is required. Thus, the @@ notation is immediately followed by a number and that number should correspond to the number of the footnoted R expression. For example, suppose we have a dataset which is being analysed, and we would like to identify how many values are removed at each stage of a process.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="st">digraph graph2 {</span></a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="st">graph [layout = dot, rankdir = LR]</span></a>
-<a class="sourceLine" id="cb102-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="st"># node definitions with substituted label text</span></a>
-<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="st">node [shape = rectangle]</span></a>
-<a class="sourceLine" id="cb102-8" data-line-number="8"><span class="st">a [label = &#39;@@1&#39;]</span></a>
-<a class="sourceLine" id="cb102-9" data-line-number="9"><span class="st">b [label = &#39;@@2&#39;]</span></a>
-<a class="sourceLine" id="cb102-10" data-line-number="10"><span class="st">c [label = &#39;@@3&#39;]</span></a>
-<a class="sourceLine" id="cb102-11" data-line-number="11"><span class="st">d [label = &#39;@@4&#39;]</span></a>
-<a class="sourceLine" id="cb102-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb102-13" data-line-number="13"><span class="st">a -&gt; b -&gt; c -&gt; d</span></a>
-<a class="sourceLine" id="cb102-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb102-15" data-line-number="15"><span class="st">}</span></a>
-<a class="sourceLine" id="cb102-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb102-17" data-line-number="17"><span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span></a>
-<a class="sourceLine" id="cb102-18" data-line-number="18"><span class="st">[2]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb102-19" data-line-number="19"><span class="st">[3]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb102-20" data-line-number="20"><span class="st">[4]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb102-21" data-line-number="21"><span class="st">&quot;</span>)</a></code></pre></div>
-<div id="htmlwidget-7ac06cc10489746a2fde" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7ac06cc10489746a2fde">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="st">digraph graph2 {</span></a>
+<a class="sourceLine" id="cb105-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="st">graph [layout = dot, rankdir = LR]</span></a>
+<a class="sourceLine" id="cb105-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb105-6" data-line-number="6"><span class="st"># node definitions with substituted label text</span></a>
+<a class="sourceLine" id="cb105-7" data-line-number="7"><span class="st">node [shape = rectangle]</span></a>
+<a class="sourceLine" id="cb105-8" data-line-number="8"><span class="st">a [label = &#39;@@1&#39;]</span></a>
+<a class="sourceLine" id="cb105-9" data-line-number="9"><span class="st">b [label = &#39;@@2&#39;]</span></a>
+<a class="sourceLine" id="cb105-10" data-line-number="10"><span class="st">c [label = &#39;@@3&#39;]</span></a>
+<a class="sourceLine" id="cb105-11" data-line-number="11"><span class="st">d [label = &#39;@@4&#39;]</span></a>
+<a class="sourceLine" id="cb105-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb105-13" data-line-number="13"><span class="st">a -&gt; b -&gt; c -&gt; d</span></a>
+<a class="sourceLine" id="cb105-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb105-15" data-line-number="15"><span class="st">}</span></a>
+<a class="sourceLine" id="cb105-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb105-17" data-line-number="17"><span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span></a>
+<a class="sourceLine" id="cb105-18" data-line-number="18"><span class="st">[2]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb105-19" data-line-number="19"><span class="st">[3]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb105-20" data-line-number="20"><span class="st">[4]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb105-21" data-line-number="21"><span class="st">&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-eb97568b4062b0fe9fb1" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eb97568b4062b0fe9fb1">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 <!-- </div> -->
@@ -384,19 +367,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

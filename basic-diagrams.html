@@ -251,24 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
 <li class="chapter" data-level="12.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>12.4.1</b> About the <code>cat</code> engine</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>12.5</b> [1] 6</a></li>
-<li class="chapter" data-level="12.6" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>12.6</b> [1] 6</a></li>
-<li class="chapter" data-level="12.7" data-path="a.html"><a href="a.html"><i class="fa fa-check"></i><b>12.7</b> $a</a></li>
-<li class="chapter" data-level="12.8" data-path="aaa.html"><a href="aaa.html"><i class="fa fa-check"></i><b>12.8</b> <span class="math inline">\(a\)</span>aa</a></li>
-<li class="chapter" data-level="12.9" data-path="something.html"><a href="something.html"><i class="fa fa-check"></i><b>12.9</b> [1] “something”</a></li>
-<li class="chapter" data-level="12.10" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>12.10</b> </a></li>
-<li class="chapter" data-level="12.11" data-path="abb.html"><a href="abb.html"><i class="fa fa-check"></i><b>12.11</b> <span class="math inline">\(a\)</span>bb</a></li>
-<li class="chapter" data-level="12.12" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>12.12</b> [1] 1</a></li>
-<li class="chapter" data-level="12.13" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>12.13</b> </a></li>
-<li class="chapter" data-level="12.14" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i><b>12.14</b> </a></li>
-<li class="chapter" data-level="12.15" data-path="b.html"><a href="b.html"><i class="fa fa-check"></i><b>12.15</b> $b</a></li>
-<li class="chapter" data-level="12.16" data-path="baa.html"><a href="baa.html"><i class="fa fa-check"></i><b>12.16</b> <span class="math inline">\(b\)</span>aa</a></li>
-<li class="chapter" data-level="12.17" data-path="somethingelse.html"><a href="somethingelse.html"><i class="fa fa-check"></i><b>12.17</b> [1] “somethingelse”</a></li>
-<li class="chapter" data-level="12.18" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i><b>12.18</b> </a></li>
-<li class="chapter" data-level="12.19" data-path="bbb.html"><a href="bbb.html"><i class="fa fa-check"></i><b>12.19</b> <span class="math inline">\(b\)</span>bb</a></li>
-<li class="chapter" data-level="12.20" data-path="section-7.html"><a href="section-7.html"><i class="fa fa-check"></i><b>12.20</b> [1] 2</a><ul>
-<li class="chapter" data-level="12.20.1" data-path="section-7.html"><a href="section-7.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.20.1</b> Generate a template file from inside the rmarkdown</a></li>
+<li class="chapter" data-level="12.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.4.2</b> Generate a template file from inside the rmarkdown</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>13</b> Diagrams</a><ul>
@@ -308,23 +291,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.1</span> Basic Diagrams</h2>
 <p><strong>DiagrammeR</strong> provides methods to build graphs for a number of different graphing languages.</p>
 <p>R Studio provides native support for Graphviz (<code>.gv</code>) and mermaid (<code>.mmd</code>) files. Using files of these types in RStudio provides the advantage of syntax coloring and allowing a quick preview of the diagram. For example, we can make a simple flowchart with the following code:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span></a>
-<a class="sourceLine" id="cb101-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb101-3" data-line-number="3"><span class="st">        graph [layout = dot, rankdir = LR]</span></a>
-<a class="sourceLine" id="cb101-4" data-line-number="4"><span class="st">        </span></a>
-<a class="sourceLine" id="cb101-5" data-line-number="5"><span class="st">        node [shape = rectangle]        </span></a>
-<a class="sourceLine" id="cb101-6" data-line-number="6"><span class="st">        rec1 [label = &#39;Step 1&#39;]</span></a>
-<a class="sourceLine" id="cb101-7" data-line-number="7"><span class="st">        rec2 [label = &#39;Step 2&#39;]</span></a>
-<a class="sourceLine" id="cb101-8" data-line-number="8"><span class="st">        rec3 [label =  &#39;Step 3&#39;]</span></a>
-<a class="sourceLine" id="cb101-9" data-line-number="9"><span class="st">        rec4 [label = &#39;Step 4&#39;]</span></a>
-<a class="sourceLine" id="cb101-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb101-11" data-line-number="11"><span class="st">        # edge definitions with the node IDs</span></a>
-<a class="sourceLine" id="cb101-12" data-line-number="12"><span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></a>
-<a class="sourceLine" id="cb101-13" data-line-number="13"><span class="st">        }&quot;</span>,</a>
-<a class="sourceLine" id="cb101-14" data-line-number="14">        <span class="dt">height =</span> <span class="dv">200</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="st">        graph [layout = dot, rankdir = LR]</span></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="st">        </span></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="st">        node [shape = rectangle]        </span></a>
+<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="st">        rec1 [label = &#39;Step 1&#39;]</span></a>
+<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="st">        rec2 [label = &#39;Step 2&#39;]</span></a>
+<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="st">        rec3 [label =  &#39;Step 3&#39;]</span></a>
+<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="st">        rec4 [label = &#39;Step 4&#39;]</span></a>
+<a class="sourceLine" id="cb104-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb104-11" data-line-number="11"><span class="st">        # edge definitions with the node IDs</span></a>
+<a class="sourceLine" id="cb104-12" data-line-number="12"><span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></a>
+<a class="sourceLine" id="cb104-13" data-line-number="13"><span class="st">        }&quot;</span>,</a>
+<a class="sourceLine" id="cb104-14" data-line-number="14">        <span class="dt">height =</span> <span class="dv">200</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:diagrammeR-basic"></span>
-<div id="htmlwidget-70f92bcd810f02c043f2" style="width:100%;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-70f92bcd810f02c043f2">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b7035fbe7a7f53a11a24" style="width:100%;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b7035fbe7a7f53a11a24">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 FIGURE 13.1: A basic graphic using DiagrammeR
 </p>
@@ -382,19 +365,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
