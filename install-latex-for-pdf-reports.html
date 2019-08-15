@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.1 Installing LaTeX with TinyTeX | R Markdown Cookbook</title>
+  <title>1.1 Install LaTeX for PDF reports | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.1 Installing LaTeX with TinyTeX | R Markdown Cookbook" />
+  <meta property="og:title" content="1.1 Install LaTeX for PDF reports | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.1 Installing LaTeX with TinyTeX | R Markdown Cookbook" />
+  <meta name="twitter:title" content="1.1 Install LaTeX for PDF reports | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Authors</a></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a><ul>
-<li class="chapter" data-level="1.1" data-path="installing-latex-with-tinytex.html"><a href="installing-latex-with-tinytex.html"><i class="fa fa-check"></i><b>1.1</b> Installing LaTeX with TinyTeX</a></li>
+<li class="chapter" data-level="1.1" data-path="install-latex-for-pdf-reports.html"><a href="install-latex-for-pdf-reports.html"><i class="fa fa-check"></i><b>1.1</b> Install LaTeX for PDF reports</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
@@ -287,21 +287,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installing-latex-with-tinytex" class="section level2">
-<h2><span class="header-section-number">1.1</span> Installing LaTeX with TinyTeX</h2>
-<p>If you would like to create PDF outputs from R Markdown, you will need to have a LaTeX distribution installed. Although there are several traditional options including MiKTeX, MacTeX, and TeX Live, these can be cumbersome to install if you primarily want to use LaTeX within R Markdown.</p>
-<p>To make this process easier, TinyTeX is a custom LaTeX distribution based on TeX Live that is small in size (150Mb on macOS/Linux and 220Mb on Windows) but functions well in most cases, especially for R users. Installing or running TinyTeX does not require admin privileges, which means you no longer need sudo or your IT.</p>
-<p>If you want to use TinyTeX, we recommend that you first uninstall your existing LaTeX distribution. The <strong>tinytex</strong> R package <span class="citation">(Xie <a href="#ref-R-tinytex">2019</a><a href="#ref-R-tinytex">d</a>)</span> can be used to install TinyTeX:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># to uninstall TinyTeX, run tinytex::uninstall_tinytex() </span></a></code></pre></div>
+<div id="install-latex-for-pdf-reports" class="section level2">
+<h2><span class="header-section-number">1.1</span> Install LaTeX for PDF reports</h2>
+<p>If you would like to create PDF documents from R Markdown, you will need to have a LaTeX distribution installed. Although there are several traditional options including MiKTeX, MacTeX, and TeX Live, we recommend that R Markdown users install <a href="https://yihui.name/tinytex/">TinyTeX</a>.</p>
+<p>TinyTeX is a custom LaTeX distribution based on TeX Live that is small in size (150Mb on macOS/Linux and 220Mb on Windows when installed) but functions well in most cases, especially for R users. Installing or running TinyTeX does not require sysadmin privileges. You can install TinyTeX with the R package <strong>tinytex</strong> <span class="citation">(Xie <a href="#ref-R-tinytex">2019</a><a href="#ref-R-tinytex">e</a>)</span>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># to uninstall TinyTeX, run tinytex::uninstall_tinytex() </span></a></code></pre></div>
+<p>Please note that “<strong>tinytex</strong>” refers to the R package, and “TinyTeX” refers to the LaTeX distribution. There are two advantages of using TinyTeX:</p>
+<ol style="list-style-type: decimal">
+<li><p>TinyTeX is lightweight (compared to other LaTeX distributions), cross-platform, and portable. For example, you can store a copy of TinyTeX on your USB drive or other portable devices, and use it on other computers with the same operating system.</p></li>
+<li><p>When R Markdown is converted to PDF, Pandoc converts Markdown to an intermediate LaTeX document first. The R package <strong>tinytex</strong> has provided helper functions to compile LaTeX documents to PDF (the main function is <code>tinytex::latexmk()</code>). If you use TinyTeX and certain LaTeX packages are required but not installed, <strong>tinytex</strong> will try to automatically install them for you. It will also try to compile the LaTeX file for a sufficient number of times to make sure all cross-references are resolved.</p></li>
+</ol>
+<p>If you are interested in the technical details, you may check out the article <span class="citation">Xie (<a href="#ref-tug-tinytex">2019</a><a href="#ref-tug-tinytex">d</a>)</span> and the FAQ page at <a href="https://yihui.name/tinytex/faq/" class="uri">https://yihui.name/tinytex/faq/</a>.</p>
 
 </div>
 <!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-tug-tinytex">
+<p>Xie, Yihui. 2019d. “TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain Latex Distribution Based on Tex Live.” <em>TUGboat</em> 40 (1): 30–32. <a href="http://tug.org/TUGboat/Contents/contents40-1.html">http://tug.org/TUGboat/Contents/contents40-1.html</a>.</p>
+</div>
 <div id="ref-R-tinytex">
-<p>Xie, Yihui. 2019d. <em>Tinytex: Helper Functions to Install and Maintain Tex Live, and Compile Latex Documents</em>. <a href="https://CRAN.R-project.org/package=tinytex">https://CRAN.R-project.org/package=tinytex</a>.</p>
+<p>Xie, Yihui. 2019e. <em>Tinytex: Helper Functions to Install and Maintain Tex Live, and Compile Latex Documents</em>. <a href="https://CRAN.R-project.org/package=tinytex">https://CRAN.R-project.org/package=tinytex</a>.</p>
 </div>
 </div>
             </section>
