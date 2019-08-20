@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -292,8 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!--- https://stackoverflow.com/questions/25329375/creating-a-footer-for-every-page-using-r-markdown --->
 <!--- https://tex.stackexchange.com/questions/139139/adding-headers-and-footers-using-pandoc --->
 <p>We can use LaTeX package <strong>fancyhdr</strong> to customise the header and footer of PDF outputs. It provides several commands that allow you to customize the header and footer lines of your document. For a more complete guide, please refer to the <a href="http://tug.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf">full documentation</a>. To begin with, we must load the package and change the header style:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="fu">\pagestyle</span>{fancy}</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="fu">\pagestyle</span>{fancy}</a></code></pre></div>
 <p>The package offers three different interfaces, but we will use the commands <code>\fancyhead</code> and <code>\fancyfoot</code>. The syntax for the formatting <code>\fancyhead[selectors]{output text}</code>, whereby the selectors state which part of the header we wish to customize. We can use the following selectors for the page locators:</p>
 <ul>
 <li><strong>E</strong> for even page</li>
@@ -313,51 +317,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Piecing this components together, a complete example is presented below.</p>
 <p>This could be inserted in the document, or another <code>header.tex</code> file :</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="fu">\pagestyle</span>{fancy}</a>
-<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="fu">\fancyhead</span>[CO,CE]{Your Document Header}</a>
-<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="fu">\fancyfoot</span>[CO,CE]{And this is a fancy footer}</a>
-<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="fu">\fancyfoot</span>[LE,RO]{<span class="fu">\thepage</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="fu">\pagestyle</span>{fancy}</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="fu">\fancyhead</span>[CO,CE]{Your Document Header}</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4"><span class="fu">\fancyfoot</span>[CO,CE]{And this is a fancy footer}</a>
+<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="fu">\fancyfoot</span>[LE,RO]{<span class="fu">\thepage</span>}</a></code></pre></div>
 <p>If in an external <code>.tex</code> file, then it could be included in the header of our <code>rmarkdown::pdf_document</code> format:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Document with header and footer&quot;</span></a>
-<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="fu">output:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb43-4" data-line-number="4">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb43-5" data-line-number="5">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb43-6" data-line-number="6">      <span class="fu">in_header:</span><span class="at"> header.tex</span></a>
-<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="ot">---</span></a></code></pre></div>
-<p>The <code>includes</code> feature of <code>pdf_document</code> is presented in <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#includes-1">Advanced customisation</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Document with header and footer&quot;</span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb47-6" data-line-number="6">      <span class="fu">in_header:</span><span class="at"> header.tex</span></a>
+<a class="sourceLine" id="cb47-7" data-line-number="7"><span class="ot">---</span></a></code></pre></div>
+<p>The <code>includes</code> feature of <code>pdf_document</code> is presented in <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#includes-1">Advanced customisation</a> of <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-xie2018">2018</a>)</span>.</p>
 <p>An alternative,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> it could also be included directly in header to a rmarkdown document within the YAML using the pandoc variable <code>header-includes</code>:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="fu">header-includes:</span></a>
-<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="kw">-</span> \usepackage<span class="kw">{</span>fancyhdr<span class="kw">}</span></a>
-<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="kw">-</span> \pagestyle<span class="kw">{</span>fancy<span class="kw">}</span></a>
-<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="kw">-</span> \fancyhead<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>Your Document Header<span class="kw">}</span></a>
-<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>And this is a fancy footer<span class="kw">}</span></a>
-<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>LE<span class="kw">,</span>RO<span class="kw">]{</span>\thepage<span class="kw">}</span></a>
-<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="fu">output:</span><span class="at"> pdf_document</span></a>
-<a class="sourceLine" id="cb44-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="fu">header-includes:</span></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="kw">-</span> \usepackage<span class="kw">{</span>fancyhdr<span class="kw">}</span></a>
+<a class="sourceLine" id="cb48-4" data-line-number="4"><span class="kw">-</span> \pagestyle<span class="kw">{</span>fancy<span class="kw">}</span></a>
+<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="kw">-</span> \fancyhead<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>Your Document Header<span class="kw">}</span></a>
+<a class="sourceLine" id="cb48-6" data-line-number="6"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>And this is a fancy footer<span class="kw">}</span></a>
+<a class="sourceLine" id="cb48-7" data-line-number="7"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>LE<span class="kw">,</span>RO<span class="kw">]{</span>\thepage<span class="kw">}</span></a>
+<a class="sourceLine" id="cb48-8" data-line-number="8"><span class="fu">output:</span><span class="at"> pdf_document</span></a>
+<a class="sourceLine" id="cb48-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
 <div id="force-header-and-footer-for-every-page" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Force Header and footer for every page</h3>
 <!--- https://stackoverflow.com/questions/30922602/creating-a-footer-for-every-page-including-first-using-r-markdown --->
 <p>By default, headers and footers will not be displayed on the first page of your PDF document. If we wish to show our footer on the front page, we must include an additional line <code>\fancypagestyle{plain}{\pagestyle{fancy}}</code>.</p>
 <p>As an example in the YAML frontmatter specification</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="fu">header-includes:</span></a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">-</span> \usepackage<span class="kw">{</span>fancyhdr<span class="kw">}</span></a>
-<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="kw">-</span> \pagestyle<span class="kw">{</span>fancy<span class="kw">}</span></a>
-<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="kw">-</span> \fancyhead<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>YOur Document Header<span class="kw">}</span></a>
-<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>And this is a fancy footer<span class="kw">}</span></a>
-<a class="sourceLine" id="cb45-7" data-line-number="7"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>LE<span class="kw">,</span>RO<span class="kw">]{</span>\thepage<span class="kw">}</span></a>
-<a class="sourceLine" id="cb45-8" data-line-number="8"><span class="kw">-</span> \fancypagestyle<span class="kw">{</span>plain<span class="kw">}{</span>\pagestyle{fancy<span class="kw">}</span>}</a>
-<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="fu">output:</span><span class="at"> pdf_document</span></a>
-<a class="sourceLine" id="cb45-10" data-line-number="10"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="fu">header-includes:</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="kw">-</span> \usepackage<span class="kw">{</span>fancyhdr<span class="kw">}</span></a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="kw">-</span> \pagestyle<span class="kw">{</span>fancy<span class="kw">}</span></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="kw">-</span> \fancyhead<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>YOur Document Header<span class="kw">}</span></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>And this is a fancy footer<span class="kw">}</span></a>
+<a class="sourceLine" id="cb49-7" data-line-number="7"><span class="kw">-</span> \fancyfoot<span class="kw">[</span>LE<span class="kw">,</span>RO<span class="kw">]{</span>\thepage<span class="kw">}</span></a>
+<a class="sourceLine" id="cb49-8" data-line-number="8"><span class="kw">-</span> \fancypagestyle<span class="kw">{</span>plain<span class="kw">}{</span>\pagestyle{fancy<span class="kw">}</span>}</a>
+<a class="sourceLine" id="cb49-9" data-line-number="9"><span class="fu">output:</span><span class="at"> pdf_document</span></a>
+<a class="sourceLine" id="cb49-10" data-line-number="10"><span class="ot">---</span></a></code></pre></div>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
+<p>Xie, Yihui, J.J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman &amp; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
 </div>
 </div>
 <div class="footnotes">

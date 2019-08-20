@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -387,33 +391,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Create a custom function and save it in a package</li>
 </ol>
 <p>The easiest way of creating a function is to store the code directly within the YAML. We must wrap the entire function in brackets, and any linebreaks in the YAML must start with 4 spaces. For example, if we want the output filename to include the date it was rendered, we could use the following YAML code:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span></a>
-<a class="sourceLine" id="cb87-3" data-line-number="3">    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span></a>
-<a class="sourceLine" id="cb87-4" data-line-number="4">    encoding = encoding,</a>
-<a class="sourceLine" id="cb87-5" data-line-number="5">    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span></a>
-<a class="sourceLine" id="cb87-6" data-line-number="6">                                         <span class="st">&#39;-&#39;</span>,</a>
-<a class="sourceLine" id="cb87-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
-<a class="sourceLine" id="cb87-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
-<a class="sourceLine" id="cb87-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/08/15, the output file name would be example-20190815.html.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span></a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span></a>
+<a class="sourceLine" id="cb95-4" data-line-number="4">    encoding = encoding,</a>
+<a class="sourceLine" id="cb95-5" data-line-number="5">    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span></a>
+<a class="sourceLine" id="cb95-6" data-line-number="6">                                         <span class="st">&#39;-&#39;</span>,</a>
+<a class="sourceLine" id="cb95-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
+<a class="sourceLine" id="cb95-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
+<a class="sourceLine" id="cb95-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/08/20, the output file name would be example-20190820.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb88-4" data-line-number="4">knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {</a>
-<a class="sourceLine" id="cb88-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb88-6" data-line-number="6">  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,</a>
-<a class="sourceLine" id="cb88-7" data-line-number="7">                    <span class="dt">encoding =</span> encoding,</a>
-<a class="sourceLine" id="cb88-8" data-line-number="8">                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),</a>
-<a class="sourceLine" id="cb88-9" data-line-number="9">                                         <span class="st">&#39;-&#39;</span>,</a>
-<a class="sourceLine" id="cb88-10" data-line-number="10">                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),</a>
-<a class="sourceLine" id="cb88-11" data-line-number="11">                                         <span class="st">&#39;.html&#39;</span>))</a>
-<a class="sourceLine" id="cb88-12" data-line-number="12">  }</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb96-4" data-line-number="4">knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {</a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6">  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,</a>
+<a class="sourceLine" id="cb96-7" data-line-number="7">                    <span class="dt">encoding =</span> encoding,</a>
+<a class="sourceLine" id="cb96-8" data-line-number="8">                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),</a>
+<a class="sourceLine" id="cb96-9" data-line-number="9">                                         <span class="st">&#39;-&#39;</span>,</a>
+<a class="sourceLine" id="cb96-10" data-line-number="10">                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),</a>
+<a class="sourceLine" id="cb96-11" data-line-number="11">                                         <span class="st">&#39;.html&#39;</span>))</a>
+<a class="sourceLine" id="cb96-12" data-line-number="12">  }</a></code></pre></div>
 <p>If we were to add this to the package <code>myPackage</code>, you will then be able to refer to your custom Knit function using the following YAML argument:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span></a>
-<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
 <p>Readers may wish to refer to Section <a href="customRender.html#customRender">12.1</a> to find out more ideas on how they could customise the control of their render function.</p>
 </div>
 </div>

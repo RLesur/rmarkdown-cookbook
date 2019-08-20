@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -291,15 +295,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.5</span> Automatically Generate Package Citations</h2>
 <!--- TODO: May add a full example into the repository examples --->
 <p>It is important to that an acknowledgements is provided within your work to authors of any literature or software referenced. Within a typical workflow, this can be a frustrating experience if you are required to manually identify the correctly formatted citations, load them into a referencing software and then refer to them within the text. However, R Markdown makes it easy to streamline this process. We can generate a BibTex file for packages used within your analysis using the <code>write_bib</code> function within R Markdown.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># automatically create a bib database for R packages</span></a>
-<a class="sourceLine" id="cb79-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb79-3" data-line-number="3">  <span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;DiagrammeR&#39;</span></a>
-<a class="sourceLine" id="cb79-4" data-line-number="4">), <span class="st">&#39;packages.bib&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># automatically create a bib database for R packages</span></a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb87-3" data-line-number="3">  <span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;DiagrammeR&#39;</span></a>
+<a class="sourceLine" id="cb87-4" data-line-number="4">), <span class="st">&#39;packages.bib&#39;</span>)</a></code></pre></div>
 <p>To refer to the packages in the text, we must add <code>bibliography: packages.bib</code> to the YAML frontmatter, and then references can be made using the format <code>[@R-package]</code> where <code>package</code> is replaced with the package name i.e. <code>[@R-rmarkdown]</code>. This will be replaced with an intext citation and will be added to the bibliography at the end of your document.</p>
 <p>Note, that the <code>write_bib</code> command is designed to overwrite the existing bibliography. If you want to manually add any other items to the bibligraphy in your document, it is recommended that you create a second <code>.bib</code> file which is also referred to within the YAML <code>bibliography</code> field, as shown below:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="fu">bibliography:</span><span class="at"> </span><span class="kw">[</span>packages.bib. references.bib<span class="kw">]</span></a>
-<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="fu">bibliography:</span><span class="at"> </span><span class="kw">[</span>packages.bib. references.bib<span class="kw">]</span></a>
+<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
 
 </div>
 <!-- </div> -->

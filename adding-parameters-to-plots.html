@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -290,29 +294,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-parameters-to-plots" class="section level2">
 <h2><span class="header-section-number">13.2</span> Adding parameters to plots</h2>
 <p>Graphviz substitution allows for mixing in R expressions into a Graphviz graph specification without sacrificing readability. If you specify a subsitution with <code>@@</code>, you must ensure there is a valid expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object (i.e., not a data frame, list, or matrix). Because there is the possibility to have multiple substitutions, numbering is required. Thus, the @@ notation is immediately followed by a number and that number should correspond to the number of the footnoted R expression. For example, suppose we have a dataset which is being analysed, and we would like to identify how many values are removed at each stage of a process.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="st">digraph graph2 {</span></a>
-<a class="sourceLine" id="cb105-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="st">graph [layout = dot, rankdir = LR]</span></a>
-<a class="sourceLine" id="cb105-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb105-6" data-line-number="6"><span class="st"># node definitions with substituted label text</span></a>
-<a class="sourceLine" id="cb105-7" data-line-number="7"><span class="st">node [shape = rectangle]</span></a>
-<a class="sourceLine" id="cb105-8" data-line-number="8"><span class="st">a [label = &#39;@@1&#39;]</span></a>
-<a class="sourceLine" id="cb105-9" data-line-number="9"><span class="st">b [label = &#39;@@2&#39;]</span></a>
-<a class="sourceLine" id="cb105-10" data-line-number="10"><span class="st">c [label = &#39;@@3&#39;]</span></a>
-<a class="sourceLine" id="cb105-11" data-line-number="11"><span class="st">d [label = &#39;@@4&#39;]</span></a>
-<a class="sourceLine" id="cb105-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb105-13" data-line-number="13"><span class="st">a -&gt; b -&gt; c -&gt; d</span></a>
-<a class="sourceLine" id="cb105-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb105-15" data-line-number="15"><span class="st">}</span></a>
-<a class="sourceLine" id="cb105-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb105-17" data-line-number="17"><span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span></a>
-<a class="sourceLine" id="cb105-18" data-line-number="18"><span class="st">[2]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb105-19" data-line-number="19"><span class="st">[3]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb105-20" data-line-number="20"><span class="st">[4]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb105-21" data-line-number="21"><span class="st">&quot;</span>)</a></code></pre></div>
-<div id="htmlwidget-1d58ca350caa00230b93" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1d58ca350caa00230b93">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="st">digraph graph2 {</span></a>
+<a class="sourceLine" id="cb113-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4"><span class="st">graph [layout = dot, rankdir = LR]</span></a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6"><span class="st"># node definitions with substituted label text</span></a>
+<a class="sourceLine" id="cb113-7" data-line-number="7"><span class="st">node [shape = rectangle]</span></a>
+<a class="sourceLine" id="cb113-8" data-line-number="8"><span class="st">a [label = &#39;@@1&#39;]</span></a>
+<a class="sourceLine" id="cb113-9" data-line-number="9"><span class="st">b [label = &#39;@@2&#39;]</span></a>
+<a class="sourceLine" id="cb113-10" data-line-number="10"><span class="st">c [label = &#39;@@3&#39;]</span></a>
+<a class="sourceLine" id="cb113-11" data-line-number="11"><span class="st">d [label = &#39;@@4&#39;]</span></a>
+<a class="sourceLine" id="cb113-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb113-13" data-line-number="13"><span class="st">a -&gt; b -&gt; c -&gt; d</span></a>
+<a class="sourceLine" id="cb113-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb113-15" data-line-number="15"><span class="st">}</span></a>
+<a class="sourceLine" id="cb113-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb113-17" data-line-number="17"><span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span></a>
+<a class="sourceLine" id="cb113-18" data-line-number="18"><span class="st">[2]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb113-19" data-line-number="19"><span class="st">[3]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb113-20" data-line-number="20"><span class="st">[4]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb113-21" data-line-number="21"><span class="st">&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-d5c69710fe048fa4dfae" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d5c69710fe048fa4dfae">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 <!-- </div> -->

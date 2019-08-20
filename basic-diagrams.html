@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -291,23 +295,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.1</span> Basic Diagrams</h2>
 <p><strong>DiagrammeR</strong> provides methods to build graphs for a number of different graphing languages.</p>
 <p>R Studio provides native support for Graphviz (<code>.gv</code>) and mermaid (<code>.mmd</code>) files. Using files of these types in RStudio provides the advantage of syntax coloring and allowing a quick preview of the diagram. For example, we can make a simple flowchart with the following code:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span></a>
-<a class="sourceLine" id="cb104-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="st">        graph [layout = dot, rankdir = LR]</span></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="st">        </span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="st">        node [shape = rectangle]        </span></a>
-<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="st">        rec1 [label = &#39;Step 1&#39;]</span></a>
-<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="st">        rec2 [label = &#39;Step 2&#39;]</span></a>
-<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="st">        rec3 [label =  &#39;Step 3&#39;]</span></a>
-<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="st">        rec4 [label = &#39;Step 4&#39;]</span></a>
-<a class="sourceLine" id="cb104-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb104-11" data-line-number="11"><span class="st">        # edge definitions with the node IDs</span></a>
-<a class="sourceLine" id="cb104-12" data-line-number="12"><span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></a>
-<a class="sourceLine" id="cb104-13" data-line-number="13"><span class="st">        }&quot;</span>,</a>
-<a class="sourceLine" id="cb104-14" data-line-number="14">        <span class="dt">height =</span> <span class="dv">200</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="st">        graph [layout = dot, rankdir = LR]</span></a>
+<a class="sourceLine" id="cb112-4" data-line-number="4"><span class="st">        </span></a>
+<a class="sourceLine" id="cb112-5" data-line-number="5"><span class="st">        node [shape = rectangle]        </span></a>
+<a class="sourceLine" id="cb112-6" data-line-number="6"><span class="st">        rec1 [label = &#39;Step 1&#39;]</span></a>
+<a class="sourceLine" id="cb112-7" data-line-number="7"><span class="st">        rec2 [label = &#39;Step 2&#39;]</span></a>
+<a class="sourceLine" id="cb112-8" data-line-number="8"><span class="st">        rec3 [label =  &#39;Step 3&#39;]</span></a>
+<a class="sourceLine" id="cb112-9" data-line-number="9"><span class="st">        rec4 [label = &#39;Step 4&#39;]</span></a>
+<a class="sourceLine" id="cb112-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb112-11" data-line-number="11"><span class="st">        # edge definitions with the node IDs</span></a>
+<a class="sourceLine" id="cb112-12" data-line-number="12"><span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></a>
+<a class="sourceLine" id="cb112-13" data-line-number="13"><span class="st">        }&quot;</span>,</a>
+<a class="sourceLine" id="cb112-14" data-line-number="14">        <span class="dt">height =</span> <span class="dv">200</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:diagrammeR-basic"></span>
-<div id="htmlwidget-2275db4c9e0696441c6b" style="width:100%;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2275db4c9e0696441c6b">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3c6ec560242ea0282c5f" style="width:100%;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3c6ec560242ea0282c5f">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 FIGURE 13.1: A basic graphic using DiagrammeR
 </p>

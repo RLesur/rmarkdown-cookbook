@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -289,9 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="plotting-multiple-figures-side-by-side" class="section level2">
 <h2><span class="header-section-number">7.4</span> Plotting multiple figures side-by-side</h2>
-<p>As explained in <a href="https://bookdown.org/yihui/rmarkdown/r-code.html#figures" class="uri">https://bookdown.org/yihui/rmarkdown/r-code.html#figures</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span>, we can place multiple figures side-by-side using the <code>fig.hold='hold'</code> along with the <code>out.width</code> option. As an example below, we have set the <code>out.width=&quot;50%&quot;</code>:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
+<p>As explained in <a href="https://bookdown.org/yihui/rmarkdown/r-code.html#figures" class="uri">https://bookdown.org/yihui/rmarkdown/r-code.html#figures</a> of <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-xie2018">2018</a>)</span>, we can place multiple figures side-by-side using the <code>fig.hold='hold'</code> along with the <code>out.width</code> option. As an example below, we have set the <code>out.width=&quot;50%&quot;</code>:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:fig-sub-2"></span>
 <img src="rmarkdown-cookbook_files/figure-html/fig-sub-2-1.png" alt="Side-by-side figures" width="50%" /><img src="rmarkdown-cookbook_files/figure-html/fig-sub-2-2.png" alt="Side-by-side figures" width="50%" />
 <p class="caption">
@@ -305,7 +309,7 @@ FIGURE 7.1: Side-by-side figures
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
+<p>Xie, Yihui, J.J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman &amp; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
 </div>
 </div>
             </section>

@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -292,29 +296,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!--- https://stackoverflow.com/questions/29067541/rmarkdown-how-to-change-the-font-color --->
 <p>The markdown syntax has no built-in method for changing text colours. We can use HTML and LaTeX syntax to change the formatting of words:</p>
 <ul>
-<li><strong>For HTML</strong>: we can wrap the text in the <code>&lt;font color='&quot;,color,&quot;'&gt;&quot;,x,&quot;&lt;/font&gt;</code> command.</li>
-<li><strong>For PDF</strong>: we can use the LaTeX command <code>\textcolor{}{}</code>. This requires the extra LaTeX package <strong>xcolor</strong>.</li>
+<li>For HTML, we can wrap the text in the <code>&lt;font&gt;</code> tag, e.g., <code>&lt;font color=&quot;red&quot;&gt;text&lt;/font&gt;</code>.</li>
+<li>For PDF, we can use the LaTeX command <code>\textcolor{}{}</code>. This requires the extra LaTeX package <strong>xcolor</strong>.</li>
 </ul>
 <p>As an example of changing the colour in PDF text:</p>
-<pre><code>---
+<pre class="text"><code>---
 output:
   pdf_document:
     extra_dependencies: [&quot;xcolor&quot;]
 ---
 
-Roses are \textcolor{red}{red}, violets are \textcolor{blue}{blue}</code></pre>
+Roses are \textcolor{red}{red}, violets are \textcolor{blue}{blue}.</code></pre>
 <div id="multi-output-text-colour" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Multi-output text colour</h3>
-<p>We should attempt to design our R Markdown documents to allow for multiple outputs. If we embed raw HTML or LaTeX code into our documents, this formatting will be ignored in the other output format. We can write a custom function which will insert the correct syntax depending on the output format using the <code>is_latex_output()</code> and <code>is_html_output</code> functions as follows:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">format_with_col =<span class="st"> </span><span class="cf">function</span>(x, color){</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">  <span class="cf">if</span>(knitr<span class="op">::</span><span class="kw">is_latex_output</span>())</a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">    <span class="kw">paste</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{&quot;</span>,color,<span class="st">&quot;}{&quot;</span>,x,<span class="st">&quot;}&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">  <span class="cf">else</span> <span class="cf">if</span>(knitr<span class="op">::</span><span class="kw">is_html_output</span>())</a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">    <span class="kw">paste</span>(<span class="st">&quot;&lt;font color=&#39;&quot;</span>,color,<span class="st">&quot;&#39;&gt;&quot;</span>,x,<span class="st">&quot;&lt;/font&gt;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb24-6" data-line-number="6">  <span class="cf">else</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">    x</a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">}</a></code></pre></div>
-<p>We can then use the code as an inline R expression <code>format_with_col(&quot;red&quot;, &quot;red&quot;)</code> which will create <font color='red'>red</font> text.</p>
+<p>We should attempt to design our R Markdown documents to allow for multiple outputs. If we embed raw HTML or LaTeX code into our documents, this formatting will be ignored in the other output format. We can write a custom function which will insert the correct syntax depending on the output format using the <code>is_latex_output()</code> and <code>is_html_output()</code> functions as follows:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">colorize =<span class="st"> </span><span class="cf">function</span>(x, color){</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">  <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_latex_output</span>()) {</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">    <span class="kw">sprintf</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{%s}(%s)&quot;</span>, color, x)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">  } <span class="cf">else</span> <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_html_output</span>()) {</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">    <span class="kw">sprintf</span>(<span class="st">&quot;&lt;font color=&#39;%s&#39;&gt;%s&lt;/font&gt;&quot;</span>, color, x)</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">  } <span class="cf">else</span> x</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">}</a></code></pre></div>
+<p>We can then use the code as an inline R expression <code>colorize(&quot;red text&quot;, &quot;red&quot;)</code> which will create <font color='red'>red text</font>.</p>
 </div>
 </div>
             </section>

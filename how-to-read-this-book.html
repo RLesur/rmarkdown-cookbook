@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -290,10 +294,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="how-to-read-this-book" class="section level2 unnumbered">
 <h2>How to read this book</h2>
 <p>The book is designed to highlight the many ways in which your R Markdown documents can be customized. Users are encouraged to try using the concepts within their own documents. The code detailed in the book should be sufficient, but the full source code and examples are provided on <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a>.</p>
-<p>It is recommended that readers have a basic understanding of R Markdown. <a href="https://bookdown.org/yihui/rmarkdown/basics.html">Chapter 2</a> of <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span> provides an overview of the basics of R Markdown and is recommended background reading for any new users of R Markdown.</p>
+<p>It is recommended that readers have a basic understanding of R Markdown. <a href="https://bookdown.org/yihui/rmarkdown/basics.html">Chapter 2</a> of <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-xie2018">2018</a>)</span> provides an overview of the basics of R Markdown and is recommended background reading for any new users of R Markdown.</p>
 <p>It should be noted that this guide does not intend to provide a full technical reference for R Markdown, and there is already extensive literature available on these topics. This book aims to supplement, not replace, this existing literature, and it is therefore recommended that readers explore the following books if they seek further information:</p>
 <ul>
-<li><em>R Markdown: The Definitive guide</em> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>: provides an overview of the R Markdown package and the wide range of ways it can be used.</li>
+<li><em>R Markdown: The Definitive guide</em> <span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-xie2018">2018</a>)</span>: provides an overview of the R Markdown package and the wide range of ways it can be used.</li>
 <li><em>Dynamic documents and knitr</em>: provides more detailed technical guidance on the inner workings of <strong>rmarkdown</strong> and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-R-knitr">2019</a><a href="#ref-R-knitr">c</a>)</span>.</li>
 <li><em>Authoring books with bookdown</em> <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span>: a short book which provides details on the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span>, which is designed to simplify the creation of long-format documents in R Markdown.</li>
 <li><em>blogdown: Creating Websites with R Markdown</em> <span class="citation">(Xie, Hill, and Thomas <a href="#ref-xie2017blogdown">2017</a>)</span>: provides details of the <strong>blogdown</strong> package <span class="citation">(Xie <a href="#ref-R-blogdown">2019</a><a href="#ref-R-blogdown">a</a>)</span> package.</li>
@@ -303,10 +307,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
 </div>
 <div id="ref-xie2017blogdown">
-<p>Xie, Y., A.P. Hill, and A. Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=riBBDwAAQBAJ">https://books.google.co.uk/books?id=riBBDwAAQBAJ</a>.</p>
+<p>Xie, Y., A.P. Hill, and A. Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/blogdown/">https://bookdown.org/yihui/blogdown/</a>.</p>
 </div>
 <div id="ref-R-blogdown">
 <p>Xie, Yihui. 2019a. <em>Blogdown: Create Blogs and Websites with R Markdown</em>. <a href="https://CRAN.R-project.org/package=blogdown">https://CRAN.R-project.org/package=blogdown</a>.</p>
@@ -318,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Xie, Yihui. 2019c. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr">https://CRAN.R-project.org/package=knitr</a>.</p>
 </div>
 <div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
+<p>Xie, Yihui, J.J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman &amp; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
 </div>
 </div>
             </section>

@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -291,17 +295,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.2</span> Exit Knitting Early</h2>
 <p>Sometime we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom which is not yet complete. In these situations, we could consider using the <code>knit_exit</code> function, which will end the knitting process at that location.</p>
 <p>Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="bn">library(knitr)</span></a>
-<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="bn">1 + 1</span></a>
-<a class="sourceLine" id="cb109-4" data-line-number="4"><span class="bn">knit_exit()</span></a>
-<a class="sourceLine" id="cb109-5" data-line-number="5"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb109-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb109-7" data-line-number="7">Okay, you will not see me in the output.</a>
-<a class="sourceLine" id="cb109-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb109-9" data-line-number="9"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb109-10" data-line-number="10"><span class="bn">Sys.sleep(100)</span></a>
-<a class="sourceLine" id="cb109-11" data-line-number="11"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="bn">library(knitr)</span></a>
+<a class="sourceLine" id="cb117-3" data-line-number="3"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb117-4" data-line-number="4"><span class="bn">knit_exit()</span></a>
+<a class="sourceLine" id="cb117-5" data-line-number="5"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb117-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb117-7" data-line-number="7">Okay, you will not see me in the output.</a>
+<a class="sourceLine" id="cb117-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb117-9" data-line-number="9"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb117-10" data-line-number="10"><span class="bn">Sys.sleep(100)</span></a>
+<a class="sourceLine" id="cb117-11" data-line-number="11"><span class="bn">```</span></a></code></pre></div>
 <p>Normally you have to wait for 100 seconds, but since we have called <code>knit_exit()</code>, the rest of the document is actually ignored.</p>
 </div>
             </section>

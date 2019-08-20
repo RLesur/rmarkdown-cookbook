@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,6 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="automatically-update-document-date.html"><a href="automatically-update-document-date.html"><i class="fa fa-check"></i><b>3.3</b> Automatically update document date</a></li>
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
+<li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
+<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -196,6 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
+<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
 <li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
@@ -296,15 +300,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">bibliography:</span><span class="at"> references.bib  </span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="ot">---</span></a></code></pre></div>
 <p>where the A BibTeX database is a plain-text file that consists of bibliography entries like this:</p>
-<pre><code>@Manual{R-base,
-  title = {R: A Language and Environment for Statistical
-    Computing},
-  author = {{R Core Team}},
-  organization = {R Foundation for Statistical Computing},
-  address = {Vienna, Austria},
-  year = {2016},
-  url = {https://www.R-project.org/},
-}</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">base</span>,</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  <span class="dt">title</span> = {R: A Language and Environment for Statistical Computing},</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">  <span class="dt">author</span> = {{R Core Team}},</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  <span class="dt">organization</span> = {R Foundation for Statistical Computing},</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">  <span class="dt">address</span> = {Vienna, Austria},</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">  <span class="dt">year</span> = {2019},</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">  <span class="dt">url</span> = {https://www.R-project.org},</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">}</a></code></pre></div>
 <p>Items can be cited directly within the documentation using the first line <code>@R-base</code>.</p>
 <div id="changing-citation-style" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Changing citation style</h3>
@@ -360,7 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
 </div>
 </div>
             </section>

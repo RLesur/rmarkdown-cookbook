@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>About the Authors | R Markdown Cookbook</title>
+  <title>3.6 Combine words into a comma-separated phrase | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="About the Authors | R Markdown Cookbook" />
+  <meta property="og:title" content="3.6 Combine words into a comma-separated phrase | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="About the Authors | R Markdown Cookbook" />
+  <meta name="twitter:title" content="3.6 Combine words into a comma-separated phrase | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="acknowledgements.html">
-<link rel="next" href="installation.html">
+<link rel="prev" href="adding-numbered-figure-captions.html">
+<link rel="next" href="preserve-a-large-number-of-linebreaks.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -291,18 +291,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="author" class="section level1 unnumbered">
-<h1>About the Authors</h1>
-
-
+<div id="combine-words-into-a-comma-separated-phrase" class="section level2">
+<h2><span class="header-section-number">3.6</span> Combine words into a comma-separated phrase</h2>
+<p>When you want to output a character vector for humans to read (e.g., <code>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;)</code>), you probably do not want something like <code>[1] &quot;apple&quot; &quot;banana&quot; &quot;cherry&quot;</code>, which is the normal way to print a vector in R. Instead, you may want a character string “<code>apple, banana, and cherry</code>”. There is a base R function <code>paste()</code> that you can use to concatenate a character vector into a single string, e.g., <code>paste(x, collapse = ', ')</code>, and the output will be <code>&quot;apple, banana, cherry&quot;</code>. The problems are (1) the conjunction “and” is missing, and (2) when the vector only contains two elements, we should not use commas (e.g., the output should be <code>&quot;apple and banana&quot;</code> instead of <code>&quot;apple, banana&quot;</code>).</p>
+<p>The function <code>knitr::combine_words()</code> can be used to concatenate words into a phrase regardless of the length of the character vector. Basically, for a single word, it will just return this word; for two words A and B, it return <code>&quot;A and B&quot;</code>; for three or more words, it returns <code>&quot;A, B, C, ..., Y, and Z&quot;</code>. The function also has a few arguments that can customize the output. For example, if you want to output the words in pairs of backticks, you may use <code>knitr::combine_words(x, before = '`')</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">v =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">combine_words</span>(v)</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">## [1] &quot;apple, banana, and cherry&quot;</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">before =</span> <span class="st">&#39;`&#39;</span>, <span class="dt">after =</span> <span class="st">&quot;&#39;&quot;</span>)</a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="co">## [1] &quot;`apple&#39;, `banana&#39;, and `cherry&#39;&quot;</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">and =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="co">## [1] &quot;apple, banana, cherry&quot;</span></a>
+<a class="sourceLine" id="cb23-8" data-line-number="8">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">sep =</span> <span class="st">&quot; / &quot;</span>, <span class="dt">and =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="co">## [1] &quot;apple / banana / cherry&quot;</span></a>
+<a class="sourceLine" id="cb23-10" data-line-number="10">knitr<span class="op">::</span><span class="kw">combine_words</span>(v[<span class="dv">1</span>])  <span class="co"># a single word</span></a>
+<a class="sourceLine" id="cb23-11" data-line-number="11"><span class="co">## [1] &quot;apple&quot;</span></a>
+<a class="sourceLine" id="cb23-12" data-line-number="12">knitr<span class="op">::</span><span class="kw">combine_words</span>(v[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])  <span class="co"># two words</span></a>
+<a class="sourceLine" id="cb23-13" data-line-number="13"><span class="co">## [1] &quot;apple and banana&quot;</span></a>
+<a class="sourceLine" id="cb23-14" data-line-number="14">knitr<span class="op">::</span><span class="kw">combine_words</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb23-15" data-line-number="15"><span class="co">## [1] &quot;A, B, C, D, and E&quot;</span></a></code></pre></div>
+<p>This function can be particularly handy when it is used in an inline R expression, e.g.,</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb24-1" data-line-number="1">This morning we had <span class="bn">`r knitr::combine_words(v)`</span> for breakfast.</a></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="acknowledgements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="installation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="adding-numbered-figure-captions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preserve-a-large-number-of-linebreaks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -332,7 +349,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/00-authors.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/03-content.Rmd",
 "text": "Edit"
 },
 "history": {
