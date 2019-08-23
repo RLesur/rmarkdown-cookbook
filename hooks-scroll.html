@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.1 Scrollable code chunks | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.1 Scrollable code chunks | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="knitr-hooks.html">
-<link rel="next" href="output-figures-in-html5-format.html">
+<link rel="prev" href="knitr-hooks.html"/>
+<link rel="next" href="output-figures-in-html5-format.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -295,19 +296,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> Scrollable code chunks</h2>
 <p>It was shown in Section <a href="html-scroll.html#html-scroll">6.2</a> how we can use custom CSS to add a scroll bar to the output code chunks. To highlight the use of code chunks, we extend the example here to allow for user-specified maximum heights to be provided to chunks.</p>
 <p>Firstly, we define the custom hook. In this chunk, we need to insert the formatting required to style the scroll bar. The variable <code>max_height</code> is used to control the maximum height of the code chunk:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options){</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>max_height)){</a>
-<a class="sourceLine" id="cb75-3" data-line-number="3">    <span class="kw">paste</span>(<span class="st">&#39;&lt;pre style = &quot;max-height:&#39;</span>,</a>
-<a class="sourceLine" id="cb75-4" data-line-number="4">          options<span class="op">$</span>max_height, </a>
-<a class="sourceLine" id="cb75-5" data-line-number="5">          <span class="st">&#39;;float: left; width: 910px; overflow-y: auto;&quot;&gt;&#39;</span>,</a>
-<a class="sourceLine" id="cb75-6" data-line-number="6">          x,</a>
-<a class="sourceLine" id="cb75-7" data-line-number="7">          <span class="st">&quot;&lt;/pre&gt;&quot;</span>,</a>
-<a class="sourceLine" id="cb75-8" data-line-number="8">          <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb75-9" data-line-number="9">  }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb75-10" data-line-number="10">    x</a>
-<a class="sourceLine" id="cb75-11" data-line-number="11">  }</a>
-<a class="sourceLine" id="cb75-12" data-line-number="12">  </a>
-<a class="sourceLine" id="cb75-13" data-line-number="13">})</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options){</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>max_height)){</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3">    <span class="kw">paste</span>(<span class="st">&#39;&lt;pre style = &quot;max-height:&#39;</span>,</a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">          options<span class="op">$</span>max_height, </a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">          <span class="st">&#39;;float: left; width: 910px; overflow-y: auto;&quot;&gt;&#39;</span>,</a>
+<a class="sourceLine" id="cb80-6" data-line-number="6">          x,</a>
+<a class="sourceLine" id="cb80-7" data-line-number="7">          <span class="st">&quot;&lt;/pre&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb80-8" data-line-number="8">          <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb80-9" data-line-number="9">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb80-10" data-line-number="10">    x</a>
+<a class="sourceLine" id="cb80-11" data-line-number="11">  }</a>
+<a class="sourceLine" id="cb80-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb80-13" data-line-number="13">})</a></code></pre></div>
 <p>To use this option, we can specify the option within the code chunk header.</p>
 <pre><code>```{r max_height = &quot;200px&quot;}
 print(cars)

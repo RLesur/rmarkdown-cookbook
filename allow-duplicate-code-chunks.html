@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.1 Allow duplicate code chunks | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.1 Allow duplicate code chunks | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="knitr.html">
-<link rel="next" href="exit-knitting-early.html">
+<link rel="prev" href="knitr.html"/>
+<link rel="next" href="exit-knitting-early.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -300,19 +301,19 @@ Error in parse_block(g[-1], g[1], params.src) : duplicate label &#39;cars&#39;
 Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>However, there are scenarios where we may wish to allow duplicate cases. For example, if we have one master document <code>parent.rmd</code> and several child documents, each with a number of chunks. If I attempt to re-use the same child-chunks, however, this will fail:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb115-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb115-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb115-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb115-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
-<a class="sourceLine" id="cb115-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb115-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb115-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb115-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb115-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb115-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="co"># settings</span></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb120-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb120-4" data-line-number="4"><span class="co"># run once</span></a>
+<a class="sourceLine" id="cb120-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
+<a class="sourceLine" id="cb120-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb120-7" data-line-number="7"><span class="co"># new settings</span></a>
+<a class="sourceLine" id="cb120-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb120-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb120-10" data-line-number="10"><span class="co"># run again</span></a>
+<a class="sourceLine" id="cb120-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
 <p>In such scenario, we can allow duplicate labels:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
 <p>Note, it is not recommended that this option is set in documents without valid reason. As with most error messages, they are there for a reason, and allowing duplicate chunks can create issues with figures and cross-references. You have been warned!</p>
 </div>
             </section>

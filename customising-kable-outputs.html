@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.1 Customising kable outputs | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.1 Customising kable outputs | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tables.html">
-<link rel="next" href="kableextra.html">
+<link rel="prev" href="tables.html"/>
+<link rel="next" href="kableextra.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -489,8 +490,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">10.1.1</span> Changing column names</h3>
 <!--- https://stackoverflow.com/questions/51432502/replace-column-names-in-kable-r-markdown/51444998#51444998 --->
 <p>The names of columns in a dataframe will often not be the same as what we want to display in our output format. It can be particularly annoying to have spaces in the name of a variable. We can use the the <code>col.names</code> argument to replace the names with a vector of names:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris),</a>
-<a class="sourceLine" id="cb81-2" data-line-number="2">      <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal Length&quot;</span>, <span class="st">&quot;Sepal Width&quot;</span>, <span class="st">&quot;Petal Length&quot;</span>, <span class="st">&quot;Petal Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris),</a>
+<a class="sourceLine" id="cb86-2" data-line-number="2">      <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal Length&quot;</span>, <span class="st">&quot;Sepal Width&quot;</span>, <span class="st">&quot;Petal Length&quot;</span>, <span class="st">&quot;Petal Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -550,7 +551,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="changing-column-alignment" class="section level3">
 <h3><span class="header-section-number">10.1.2</span> Changing column alignment</h3>
 <p>If we wish to change the alignment of a knitr table, we can use either a vector of values or a single multi-character string for alignment, so <code>kable(..., align=c('c','l'))</code> can be shortened to <code>kable(..., align='cl')</code>.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="st">&quot;llrrcc&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="st">&quot;llrrcc&quot;</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -656,7 +657,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>The shortest form can’t be used with <em>latex</em> format. You must use longer form using a vector</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="kw">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="kw">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
 </div>
 <div id="customising-latex-options" class="section level3">
 <h3><span class="header-section-number">10.1.3</span> Customising LaTeX options</h3>

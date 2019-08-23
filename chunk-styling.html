@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.1 Change Chunk Styling | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.1 Change Chunk Styling | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="html-output.html">
-<link rel="next" href="html-scroll.html">
+<link rel="prev" href="html-output.html"/>
+<link rel="next" href="html-scroll.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -335,7 +336,7 @@ FIGURE 6.2: Custom Background styling as defined by CSS
 <div id="setting-default-style-for-document" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Setting Default Style for Document</h3>
 <p>If we wish for all code chunks in the document to use our newly created style, we can add the <code>class.source</code> to the global knitr options.:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">class.source=</span><span class="st">&#39;chunk-style&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">class.source=</span><span class="st">&#39;chunk-style&#39;</span>)</a></code></pre></div>
 </div>
 </div>
             </section>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.1 Output-specific functions | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.1 Output-specific functions | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="multi-format-projects.html">
-<link rel="next" href="designing-output.html">
+<link rel="prev" href="multi-format-projects.html"/>
+<link rel="next" href="designing-output.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -294,11 +295,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-specific-functions" class="section level2">
 <h2><span class="header-section-number">7.1</span> Output-specific functions</h2>
 <p>HTML documents have the capacity to contain. The webshot package is available to take screenshots of HTML elements for non-interactive output formats (ebooks, PDF).</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="kw">library</span>(plotly)</a>
-<a class="sourceLine" id="cb64-3" data-line-number="3">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="st">            </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="kw">ggplotly</span>(p)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="kw">library</span>(plotly)</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb69-4" data-line-number="4"><span class="st">            </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</a>
+<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="kw">ggplotly</span>(p)</a></code></pre></div>
 </div>
             </section>
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.4 Plotting multiple figures side-by-side | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.4 Plotting multiple figures side-by-side | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-custom-blocks.html">
-<link rel="next" href="word.html">
+<link rel="prev" href="using-custom-blocks.html"/>
+<link rel="next" href="word.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -294,8 +295,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-multiple-figures-side-by-side" class="section level2">
 <h2><span class="header-section-number">7.4</span> Plotting multiple figures side-by-side</h2>
 <p>As explained in <a href="https://bookdown.org/yihui/rmarkdown/r-code.html#figures" class="uri">https://bookdown.org/yihui/rmarkdown/r-code.html#figures</a> of <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-xie2018">2018</a>)</span>, we can place multiple figures side-by-side using the <code>fig.hold='hold'</code> along with the <code>out.width</code> option. As an example below, we have set the <code>out.width=&quot;50%&quot;</code>:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:fig-sub-2"></span>
 <img src="rmarkdown-cookbook_files/figure-html/fig-sub-2-1.png" alt="Side-by-side figures" width="50%" /><img src="rmarkdown-cookbook_files/figure-html/fig-sub-2-2.png" alt="Side-by-side figures" width="50%" />
 <p class="caption">

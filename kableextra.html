@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.2 kableExtra | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.2 kableExtra | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="customising-kable-outputs.html">
-<link rel="next" href="tableExtensions.html">
+<link rel="prev" href="customising-kable-outputs.html"/>
+<link rel="next" href="tableExtensions.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -303,11 +304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="setup" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Setup</h3>
 <p><strong>kableExtra</strong> is available to download through CRAN:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># Install from CRAN</span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb84-4" data-line-number="4"><span class="co"># install the development version</span></a>
-<a class="sourceLine" id="cb84-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># Install from CRAN</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</a>
+<a class="sourceLine" id="cb89-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb89-4" data-line-number="4"><span class="co"># install the development version</span></a>
+<a class="sourceLine" id="cb89-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</a></code></pre></div>
 </div>
 <div id="customising-html" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> Customising HTML</h3>
@@ -327,9 +328,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Landscape page</li>
 </ul>
 <p>You can scale the width of the table using the function <code>kable_styling(latex_options = &quot;scale_down&quot;)</code>. This will force the table to the width of the page.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"> <span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
-<a class="sourceLine" id="cb85-2" data-line-number="2">          <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="st">          </span><span class="kw">kable_styling</span>(<span class="dt">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"> <span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">          <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="st">          </span><span class="kw">kable_styling</span>(<span class="dt">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</a></code></pre></div>
 </div>
 </div>
             </section>

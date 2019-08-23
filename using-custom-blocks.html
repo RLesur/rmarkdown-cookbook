@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.3 Using Custom Blocks | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.3 Using Custom Blocks | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="designing-output.html">
-<link rel="next" href="plotting-multiple-figures-side-by-side.html">
+<link rel="prev" href="designing-output.html"/>
+<link rel="next" href="plotting-multiple-figures-side-by-side.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -308,44 +309,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Some text for this block.
 ```</code></pre>
 <p>It is up to the user to define their own <code>&lt;div&gt;</code> in CSS for the HTML output, or <code>\newenvironment</code> in LaTeX for PDF outputs. These customisations will normally be contained in their own files such as <code>style.css</code> or <code>preamble.tex</code>, and then included within the YAML options:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb67-3" data-line-number="3">  <span class="fu">bookdown:</span><span class="at">:html_book:</span></a>
-<a class="sourceLine" id="cb67-4" data-line-number="4">    <span class="fu">css:</span><span class="at"> style.css</span></a>
-<a class="sourceLine" id="cb67-5" data-line-number="5">  <span class="fu">bookdown:</span><span class="at">:pdf_book:</span></a>
-<a class="sourceLine" id="cb67-6" data-line-number="6">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb67-7" data-line-number="7">      <span class="fu">in_header:</span><span class="at"> preamble.tex</span></a>
-<a class="sourceLine" id="cb67-8" data-line-number="8"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3">  <span class="fu">bookdown:</span><span class="at">:html_book:</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4">    <span class="fu">css:</span><span class="at"> style.css</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5">  <span class="fu">bookdown:</span><span class="at">:pdf_book:</span></a>
+<a class="sourceLine" id="cb72-6" data-line-number="6">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb72-7" data-line-number="7">      <span class="fu">in_header:</span><span class="at"> preamble.tex</span></a>
+<a class="sourceLine" id="cb72-8" data-line-number="8"><span class="ot">---</span></a></code></pre></div>
 <p>With this basic setup, we will demonstrate several custom blocks that we can be used to create custom blocks for your work.</p>
 </div>
 <div id="adding-a-shaded-box" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Adding a Shaded Box</h3>
 <p>First we will highlight how we can add a shaded box for our content. Both HTML and PDF outputs allow for quite a lot of customisation of our custom blocks, and it should allow you to sufficient choice in customising the styles to match if you would like consistency across your outputs.</p>
 <p>For the HTML output, we will specify our custom class in the <code>style.css</code> file. If you are unfamiliar with CSS, you may want to search for options <a href="https://www.w3schools.com/cssref/default.asp">using this link</a> to see what we can easily control. For example, we create a greyed out box with a red border, adding curved corners to the box:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode css css"><code class="sourceCode css"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="fu">.customBlock</span> {</a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span>;</a>
-<a class="sourceLine" id="cb68-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb68-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#F8F9F9</span>;</a>
-<a class="sourceLine" id="cb68-5" data-line-number="5">  <span class="kw">border-color</span>: <span class="dv">#A93226</span>;</a>
-<a class="sourceLine" id="cb68-6" data-line-number="6">  <span class="kw">border-style</span>: <span class="dv">solid</span>;</a>
-<a class="sourceLine" id="cb68-7" data-line-number="7">  <span class="kw">border-radius</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb68-8" data-line-number="8">  <span class="kw">border-width</span>: <span class="dv">thin</span>;</a>
-<a class="sourceLine" id="cb68-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode css css"><code class="sourceCode css"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="fu">.customBlock</span> {</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span>;</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb73-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#F8F9F9</span>;</a>
+<a class="sourceLine" id="cb73-5" data-line-number="5">  <span class="kw">border-color</span>: <span class="dv">#A93226</span>;</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6">  <span class="kw">border-style</span>: <span class="dv">solid</span>;</a>
+<a class="sourceLine" id="cb73-7" data-line-number="7">  <span class="kw">border-radius</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8">  <span class="kw">border-width</span>: <span class="dv">thin</span>;</a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">}</a></code></pre></div>
 <p>For the LaTeX output, we will add our custom block to the <code>preamble.tex</code> file. We will use use the <strong>tcolorbox</strong> LaTeX package, which offers quite a flexible set of options for creating shaded boxes, as detailed within the <a href="hhttp://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf">package documentation</a>. Below, we create a new environment called <code>customBlock</code>, with a similar design of that outlined above:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">tcolorbox</span>}</a>
-<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">tikz</span>}</a>
-<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="fu">\usetikzlibrary</span>{calc}</a>
-<a class="sourceLine" id="cb69-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="co">% Define the colours to match the CSS above</span></a>
-<a class="sourceLine" id="cb69-6" data-line-number="6"><span class="fu">\definecolor</span>{background}{HTML}{F8F9F9}</a>
-<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="fu">\definecolor</span>{border}{HTML}{A93226}</a>
-<a class="sourceLine" id="cb69-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb69-9" data-line-number="9"><span class="co">% Create our custom box</span></a>
-<a class="sourceLine" id="cb69-10" data-line-number="10"><span class="fu">\newtcolorbox</span>{customBlock}{</a>
-<a class="sourceLine" id="cb69-11" data-line-number="11">  colback = background,</a>
-<a class="sourceLine" id="cb69-12" data-line-number="12">  colframe = border,</a>
-<a class="sourceLine" id="cb69-13" data-line-number="13">  boxsep=5pt,</a>
-<a class="sourceLine" id="cb69-14" data-line-number="14">  arc=4pt}</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">tcolorbox</span>}</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">tikz</span>}</a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="fu">\usetikzlibrary</span>{calc}</a>
+<a class="sourceLine" id="cb74-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="co">% Define the colours to match the CSS above</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6"><span class="fu">\definecolor</span>{background}{HTML}{F8F9F9}</a>
+<a class="sourceLine" id="cb74-7" data-line-number="7"><span class="fu">\definecolor</span>{border}{HTML}{A93226}</a>
+<a class="sourceLine" id="cb74-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb74-9" data-line-number="9"><span class="co">% Create our custom box</span></a>
+<a class="sourceLine" id="cb74-10" data-line-number="10"><span class="fu">\newtcolorbox</span>{customBlock}{</a>
+<a class="sourceLine" id="cb74-11" data-line-number="11">  colback = background,</a>
+<a class="sourceLine" id="cb74-12" data-line-number="12">  colframe = border,</a>
+<a class="sourceLine" id="cb74-13" data-line-number="13">  boxsep=5pt,</a>
+<a class="sourceLine" id="cb74-14" data-line-number="14">  arc=4pt}</a></code></pre></div>
 <p>By using the chunk header <code>{block2, type = &quot;customBlock&quot;}</code>, we can now use our custom block design in both PDF and HTML output formats. This is shown as follows:</p>
 
 <div class="customBlock">
@@ -366,55 +367,55 @@ Look at our custom block!
                 ├── note.png
                 └── caution.png</code></pre>
 <p>For the HTML output, we can add an image to the box by adding <code>background-image</code>. The image is inserted into the background, and the padding is offset on the right-hand side to avoid the text overlapping this image. If you are using local images, the file path to the images is provided relative to the CSS file. For example:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="fu">.rmdcaution</span>{</a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
-<a class="sourceLine" id="cb71-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb71-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
-<a class="sourceLine" id="cb71-5" data-line-number="5">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
-<a class="sourceLine" id="cb71-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="fu">.rmdcaution</span>{</a>
+<a class="sourceLine" id="cb76-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
+<a class="sourceLine" id="cb76-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb76-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
+<a class="sourceLine" id="cb76-5" data-line-number="5">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
+<a class="sourceLine" id="cb76-6" data-line-number="6">}</a></code></pre></div>
 <p>If you want to have a consistent styled box but have different icons, we can globally assign the CSS style to several custom blocks and then add the image for each block seperately. This approach is used within the <a href="https://github.com/dr-harper/rmarkdown-cookbook/blob/master/style.css#L1-L20">source code of this book</a>, as we can define multiple styles without repeating the same basic formatting, as follows:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="fu">.rmdcaution</span>, <span class="fu">.rmdimportant</span>, <span class="fu">.rmdnote</span>, <span class="fu">.rmdtip</span>, <span class="fu">.rmdwarning</span> {</a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
-<a class="sourceLine" id="cb72-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb72-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
-<a class="sourceLine" id="cb72-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb72-6" data-line-number="6"><span class="fu">.rmdcaution</span> {</a>
-<a class="sourceLine" id="cb72-7" data-line-number="7">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
-<a class="sourceLine" id="cb72-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb72-9" data-line-number="9"><span class="fu">.rmdimportant</span> {</a>
-<a class="sourceLine" id="cb72-10" data-line-number="10">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/important.png&quot;</span>);</a>
-<a class="sourceLine" id="cb72-11" data-line-number="11">}</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="fu">.rmdcaution</span>, <span class="fu">.rmdimportant</span>, <span class="fu">.rmdnote</span>, <span class="fu">.rmdtip</span>, <span class="fu">.rmdwarning</span> {</a>
+<a class="sourceLine" id="cb77-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
+<a class="sourceLine" id="cb77-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb77-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
+<a class="sourceLine" id="cb77-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb77-6" data-line-number="6"><span class="fu">.rmdcaution</span> {</a>
+<a class="sourceLine" id="cb77-7" data-line-number="7">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
+<a class="sourceLine" id="cb77-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb77-9" data-line-number="9"><span class="fu">.rmdimportant</span> {</a>
+<a class="sourceLine" id="cb77-10" data-line-number="10">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/important.png&quot;</span>);</a>
+<a class="sourceLine" id="cb77-11" data-line-number="11">}</a></code></pre></div>
 <p>For the PDF output, we can adapt the <strong>tcolorbox</strong> code shown above to add the image to the left side of the box, whereby some slight adjustments are made to offset the text from the left and to insert the image into the box. As for the HTML, if we want to create multiple custom blocks of a similar style, it is generally more useful to make a more general function which can be used to create each block. Below, we demonstrate the use of this, where a new environment <code>customBlockImage</code> is created which is then used to build our final environments that we wish to use in our report (<code>rmdnote</code>, <code>rmdimportant</code>):</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co">% Create our general design</span></a>
-<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="fu">\newtcolorbox</span>{customBlockImage}[2][]{</a>
-<a class="sourceLine" id="cb73-3" data-line-number="3">  enhanced,</a>
-<a class="sourceLine" id="cb73-4" data-line-number="4">  top=10pt,</a>
-<a class="sourceLine" id="cb73-5" data-line-number="5">  bottom=10pt,</a>
-<a class="sourceLine" id="cb73-6" data-line-number="6">  colframe = white,</a>
-<a class="sourceLine" id="cb73-7" data-line-number="7">  width=<span class="fu">\textwidth</span>,</a>
-<a class="sourceLine" id="cb73-8" data-line-number="8">  boxsep=5pt,</a>
-<a class="sourceLine" id="cb73-9" data-line-number="9">  arc=4pt,</a>
-<a class="sourceLine" id="cb73-10" data-line-number="10">  outer arc=4pt,</a>
-<a class="sourceLine" id="cb73-11" data-line-number="11">  leftupper=1.5cm,</a>
-<a class="sourceLine" id="cb73-12" data-line-number="12">overlay={</a>
-<a class="sourceLine" id="cb73-13" data-line-number="13">    <span class="fu">\node</span>[anchor=west] </a>
-<a class="sourceLine" id="cb73-14" data-line-number="14">      at ([xshift=10pt] <span class="ss">$ (interior.north west)!0.5!(interior.south west) $</span> )</a>
-<a class="sourceLine" id="cb73-15" data-line-number="15">       {{<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}<span class="bu">\includegraphics</span>{<span class="ex">#2</span>}}};},</a>
-<a class="sourceLine" id="cb73-16" data-line-number="16">#1}</a>
-<a class="sourceLine" id="cb73-17" data-line-number="17">    </a>
-<a class="sourceLine" id="cb73-18" data-line-number="18"> <span class="co">% Create the new environments for R Markdown</span></a>
-<a class="sourceLine" id="cb73-19" data-line-number="19"><span class="fu">\newenvironment</span>{rmdnote}</a>
-<a class="sourceLine" id="cb73-20" data-line-number="20">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/note}}</a>
-<a class="sourceLine" id="cb73-21" data-line-number="21">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
-<a class="sourceLine" id="cb73-22" data-line-number="22">  </a>
-<a class="sourceLine" id="cb73-23" data-line-number="23"><span class="fu">\newenvironment</span>{rmdimportant}</a>
-<a class="sourceLine" id="cb73-24" data-line-number="24">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/important}}</a>
-<a class="sourceLine" id="cb73-25" data-line-number="25">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
-<a class="sourceLine" id="cb73-26" data-line-number="26">         </a>
-<a class="sourceLine" id="cb73-27" data-line-number="27"><span class="co">% We can also change the colour of the box</span></a>
-<a class="sourceLine" id="cb73-28" data-line-number="28"><span class="fu">\newenvironment</span>{rmdwarning}</a>
-<a class="sourceLine" id="cb73-29" data-line-number="29">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}[colback=red]{images/important}}</a>
-<a class="sourceLine" id="cb73-30" data-line-number="30">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co">% Create our general design</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="fu">\newtcolorbox</span>{customBlockImage}[2][]{</a>
+<a class="sourceLine" id="cb78-3" data-line-number="3">  enhanced,</a>
+<a class="sourceLine" id="cb78-4" data-line-number="4">  top=10pt,</a>
+<a class="sourceLine" id="cb78-5" data-line-number="5">  bottom=10pt,</a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">  colframe = white,</a>
+<a class="sourceLine" id="cb78-7" data-line-number="7">  width=<span class="fu">\textwidth</span>,</a>
+<a class="sourceLine" id="cb78-8" data-line-number="8">  boxsep=5pt,</a>
+<a class="sourceLine" id="cb78-9" data-line-number="9">  arc=4pt,</a>
+<a class="sourceLine" id="cb78-10" data-line-number="10">  outer arc=4pt,</a>
+<a class="sourceLine" id="cb78-11" data-line-number="11">  leftupper=1.5cm,</a>
+<a class="sourceLine" id="cb78-12" data-line-number="12">overlay={</a>
+<a class="sourceLine" id="cb78-13" data-line-number="13">    <span class="fu">\node</span>[anchor=west] </a>
+<a class="sourceLine" id="cb78-14" data-line-number="14">      at ([xshift=10pt] <span class="ss">$ (interior.north west)!0.5!(interior.south west) $</span> )</a>
+<a class="sourceLine" id="cb78-15" data-line-number="15">       {{<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}<span class="bu">\includegraphics</span>{<span class="ex">#2</span>}}};},</a>
+<a class="sourceLine" id="cb78-16" data-line-number="16">#1}</a>
+<a class="sourceLine" id="cb78-17" data-line-number="17">    </a>
+<a class="sourceLine" id="cb78-18" data-line-number="18"> <span class="co">% Create the new environments for R Markdown</span></a>
+<a class="sourceLine" id="cb78-19" data-line-number="19"><span class="fu">\newenvironment</span>{rmdnote}</a>
+<a class="sourceLine" id="cb78-20" data-line-number="20">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/note}}</a>
+<a class="sourceLine" id="cb78-21" data-line-number="21">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
+<a class="sourceLine" id="cb78-22" data-line-number="22">  </a>
+<a class="sourceLine" id="cb78-23" data-line-number="23"><span class="fu">\newenvironment</span>{rmdimportant}</a>
+<a class="sourceLine" id="cb78-24" data-line-number="24">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/important}}</a>
+<a class="sourceLine" id="cb78-25" data-line-number="25">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
+<a class="sourceLine" id="cb78-26" data-line-number="26">         </a>
+<a class="sourceLine" id="cb78-27" data-line-number="27"><span class="co">% We can also change the colour of the box</span></a>
+<a class="sourceLine" id="cb78-28" data-line-number="28"><span class="fu">\newenvironment</span>{rmdwarning}</a>
+<a class="sourceLine" id="cb78-29" data-line-number="29">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}[colback=red]{images/important}}</a>
+<a class="sourceLine" id="cb78-30" data-line-number="30">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a></code></pre></div>
 <p>Again, we have designed an output which should be consistent across HTML and PDF outputs. Below we show the output of the <code>rmdnote</code> custom block:</p>
 
 <div class="rmdnote">

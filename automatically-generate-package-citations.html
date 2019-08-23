@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.5 Automatically Generate Package Citations | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.5 Automatically Generate Package Citations | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="altering-citation-style.html">
-<link rel="next" href="workflow.html">
+<link rel="prev" href="altering-citation-style.html"/>
+<link rel="next" href="workflow.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
+<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
 <li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
@@ -295,15 +296,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.5</span> Automatically Generate Package Citations</h2>
 <!--- TODO: May add a full example into the repository examples --->
 <p>It is important to that an acknowledgements is provided within your work to authors of any literature or software referenced. Within a typical workflow, this can be a frustrating experience if you are required to manually identify the correctly formatted citations, load them into a referencing software and then refer to them within the text. However, R Markdown makes it easy to streamline this process. We can generate a BibTex file for packages used within your analysis using the <code>write_bib</code> function within R Markdown.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># automatically create a bib database for R packages</span></a>
-<a class="sourceLine" id="cb87-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb87-3" data-line-number="3">  <span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;DiagrammeR&#39;</span></a>
-<a class="sourceLine" id="cb87-4" data-line-number="4">), <span class="st">&#39;packages.bib&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="co"># automatically create a bib database for R packages</span></a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb92-3" data-line-number="3">  <span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;DiagrammeR&#39;</span></a>
+<a class="sourceLine" id="cb92-4" data-line-number="4">), <span class="st">&#39;packages.bib&#39;</span>)</a></code></pre></div>
 <p>To refer to the packages in the text, we must add <code>bibliography: packages.bib</code> to the YAML frontmatter, and then references can be made using the format <code>[@R-package]</code> where <code>package</code> is replaced with the package name i.e. <code>[@R-rmarkdown]</code>. This will be replaced with an intext citation and will be added to the bibliography at the end of your document.</p>
 <p>Note, that the <code>write_bib</code> command is designed to overwrite the existing bibliography. If you want to manually add any other items to the bibligraphy in your document, it is recommended that you create a second <code>.bib</code> file which is also referred to within the YAML <code>bibliography</code> field, as shown below:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="fu">bibliography:</span><span class="at"> </span><span class="kw">[</span>packages.bib. references.bib<span class="kw">]</span></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="fu">bibliography:</span><span class="at"> </span><span class="kw">[</span>packages.bib. references.bib<span class="kw">]</span></a>
+<a class="sourceLine" id="cb93-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
 
 </div>
 <!-- </div> -->
