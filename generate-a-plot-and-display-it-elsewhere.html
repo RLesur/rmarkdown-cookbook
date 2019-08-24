@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.2 kableExtra | R Markdown Cookbook</title>
+  <title>14.3 Generate a plot and display it elsewhere | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.2 kableExtra | R Markdown Cookbook" />
+  <meta property="og:title" content="14.3 Generate a plot and display it elsewhere | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.2 kableExtra | R Markdown Cookbook" />
+  <meta name="twitter:title" content="14.3 Generate a plot and display it elsewhere | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="customising-kable-outputs.html"/>
-<link rel="next" href="tableExtensions.html"/>
+<link rel="prev" href="exit-knitting-early.html"/>
+<link rel="next" href="allow-duplicate-labels-in-code-chunks.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -293,54 +293,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="kableextra" class="section level2">
-<h2><span class="header-section-number">10.2</span> kableExtra</h2>
-<p>The <strong>kableExtra</strong> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-kableExtra"><strong>???</strong></span>)</span> is designed to extend the basic functionality of tables produced using <code>kable</code>. As explained by the package author, the intention with using <strong>kableExtra</strong> is that you can:</p>
-<ul>
-<li>Use default base <code>kable()</code> for all simple tables</li>
-<li>Use <code>kable()</code> with <strong>kableExtra</strong> to generate 90 % of complex/advanced/self-customized/beautiful tables in either HTML or LaTeX</li>
-<li>Only have to mess with raw HTML/LaTeX in the last 10% cases where kableExtra cannot solve the problem</li>
-</ul>
-<p>This section aims to provide a quick overview of some of the main principles of <strong>kableExtra</strong>, and provides some examples of how you may wish to integrate it into your document. For extensive documentation, readers are recommended to check the <a href="https://haozhu233.github.io/kableExtra/">documentation online</a>, which provides full details on how the outputs can be customised for both <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_html.html">HTML</a> and <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">LaTeX</a> outputs.</p>
-<div id="setup" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> Setup</h3>
-<p><strong>kableExtra</strong> is available to download through CRAN:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># Install from CRAN</span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</a>
-<a class="sourceLine" id="cb89-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb89-4" data-line-number="4"><span class="co"># install the development version</span></a>
-<a class="sourceLine" id="cb89-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</a></code></pre></div>
-</div>
-<div id="customising-html" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> Customising HTML</h3>
-<ul>
-<li>Width and position</li>
-<li>column and row spec</li>
-<li>bootstrap styling</li>
-<li>Scroll box</li>
-</ul>
-</div>
-<div id="customising-pdf" class="section level3">
-<h3><span class="header-section-number">10.2.3</span> Customising PDF</h3>
-<ul>
-<li>Width and position</li>
-<li>column and row spec</li>
-<li>Styling</li>
-<li>Landscape page</li>
-</ul>
-<p>You can scale the width of the table using the function <code>kable_styling(latex_options = &quot;scale_down&quot;)</code>. This will force the table to the width of the page.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"> <span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">          <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="st">          </span><span class="kw">kable_styling</span>(<span class="dt">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</a></code></pre></div>
-</div>
+<div id="generate-a-plot-and-display-it-elsewhere" class="section level2">
+<h2><span class="header-section-number">14.3</span> Generate a plot and display it elsewhere</h2>
+<p>Normally plots generated in a code chunk are displayed beneath the code chunk, but you can choose to show them elsewhere and (optionally) hide them in the code chunk. Below is an example:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb123-1" data-line-number="1">We generate a plot in this code chunk but do not show it:</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="bn">```{r cars-plot, dev=&#39;png&#39;, fig.show=&#39;hide&#39;}</span></a>
+<a class="sourceLine" id="cb123-4" data-line-number="4"><span class="bn">plot(cars)</span></a>
+<a class="sourceLine" id="cb123-5" data-line-number="5"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb123-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb123-7" data-line-number="7">After another paragraph, we introduce the plot:</a>
+<a class="sourceLine" id="cb123-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb123-9" data-line-number="9">![A nice plot.](<span class="bn">`r knitr::fig_chunk(&#39;cars-plot&#39;, &#39;png&#39;)`</span>)</a></code></pre></div>
+<p>In the code chunk, we used the chunk option <code>fig.show='hide'</code> to hide the plot temporarily. Then in another paragraph, we called the function <code>knitr::fig_chunk()</code> to retrieve the path of the plot file, which is usually like <code>test_files/figure-html/cars-plot-1.png</code>. You need to pass the chunk label and the graphical device name to <code>fig_chunk()</code> for it to calculate the plot file path. You may see <a href="https://stackoverflow.com/a/46305297/559676" class="uri">https://stackoverflow.com/a/46305297/559676</a> for an application of <code>fig_chunk()</code> to <strong>blogdown</strong> websites.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="customising-kable-outputs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tableExtensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exit-knitting-early.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="allow-duplicate-labels-in-code-chunks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -370,7 +343,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/10-tables.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/14-knitr.Rmd",
 "text": "Edit"
 },
 "history": {
