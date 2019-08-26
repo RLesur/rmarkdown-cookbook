@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-24" />
+<meta name="date" content="2019-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
 <li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
+<li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -296,21 +297,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="embed-file" class="section level2">
 <h2><span class="header-section-number">6.5</span> Embed arbitrary files in the HTML output file</h2>
 <p>As mentioned in Section <a href="embed-rmd.html#embed-rmd">6.4</a>, we can embed a copy of the Rmd source document in the HTML output file. Sometimes the Rmd source file alone may not be enough to reproduce the report. For example, the report may need an external data file. There is a series of functions in the <strong>xfun</strong> package that enable you to embed arbitrary files in the HTML output file. To use these functions, make sure you have the following R packages available:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">xfun<span class="op">::</span><span class="kw">pkg_load2</span>(<span class="kw">c</span>(<span class="st">&#39;base64enc&#39;</span>, <span class="st">&#39;htmltools&#39;</span>, <span class="st">&#39;mime&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">xfun<span class="op">::</span><span class="kw">pkg_load2</span>(<span class="kw">c</span>(<span class="st">&#39;base64enc&#39;</span>, <span class="st">&#39;htmltools&#39;</span>, <span class="st">&#39;mime&#39;</span>))</a></code></pre></div>
 <p>Then you can use one of the functions <code>xfun::embed_file()</code>, <code>xfun::embed_dir()</code>, or <code>xfun::embed_files()</code> in an R code chunk to embed one or multiple files or an entire directory in the HTML output, e.g.,</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="bn">```{r echo=FALSE}</span></a>
-<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="bn"># a single file</span></a>
-<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="bn">xfun::embed_file(&#39;source.Rmd&#39;)</span></a>
-<a class="sourceLine" id="cb67-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="bn"># multiple files</span></a>
-<a class="sourceLine" id="cb67-6" data-line-number="6"><span class="bn">xfun::embed_files(c(&#39;source.Rmd&#39;, &#39;data.csv&#39;))</span></a>
-<a class="sourceLine" id="cb67-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb67-8" data-line-number="8"><span class="bn"># a directory</span></a>
-<a class="sourceLine" id="cb67-9" data-line-number="9"><span class="bn">xfun::embed_dir(&#39;data/&#39;, text = &#39;Download full data&#39;)</span></a>
-<a class="sourceLine" id="cb67-10" data-line-number="10"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="bn">```{r echo=FALSE}</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="bn"># a single file</span></a>
+<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="bn">xfun::embed_file(&#39;source.Rmd&#39;)</span></a>
+<a class="sourceLine" id="cb71-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb71-5" data-line-number="5"><span class="bn"># multiple files</span></a>
+<a class="sourceLine" id="cb71-6" data-line-number="6"><span class="bn">xfun::embed_files(c(&#39;source.Rmd&#39;, &#39;data.csv&#39;))</span></a>
+<a class="sourceLine" id="cb71-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="bn"># a directory</span></a>
+<a class="sourceLine" id="cb71-9" data-line-number="9"><span class="bn">xfun::embed_dir(&#39;data/&#39;, text = &#39;Download full data&#39;)</span></a>
+<a class="sourceLine" id="cb71-10" data-line-number="10"><span class="bn">```</span></a></code></pre></div>
 <p>You can also provide the list of files programmatically, e.g.,</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co"># embed all Rmd and csv files</span></a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">xfun<span class="op">::</span><span class="kw">embed_files</span>(<span class="kw">list.files</span>(<span class="st">&#39;.&#39;</span>, <span class="st">&#39;[.](Rmd|csv)$&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># embed all Rmd and csv files</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2">xfun<span class="op">::</span><span class="kw">embed_files</span>(<span class="kw">list.files</span>(<span class="st">&#39;.&#39;</span>, <span class="st">&#39;[.](Rmd|csv)$&#39;</span>))</a></code></pre></div>
 <p>For multiple files, they are first compressed to a zip file, and the zip file will be embedded. These functions return a link, which a reader can click on the HTML page to download the embedded file.</p>
 <p>You can learn more technical details behind these functions from the help page <code>?xfun::embed_file</code> or the blog post at <a href="https://yihui.name/en/2018/07/embed-file/" class="uri">https://yihui.name/en/2018/07/embed-file/</a>.</p>
 

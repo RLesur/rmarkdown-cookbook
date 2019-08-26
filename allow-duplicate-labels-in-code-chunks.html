@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-24" />
+<meta name="date" content="2019-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
 <li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
+<li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,19 +305,19 @@ Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
   FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one master document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb125-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb125-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb125-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb125-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb125-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb125-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb125-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb125-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="co"># settings</span></a>
+<a class="sourceLine" id="cb129-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb129-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="co"># run once</span></a>
+<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
+<a class="sourceLine" id="cb129-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb129-7" data-line-number="7"><span class="co"># new settings</span></a>
+<a class="sourceLine" id="cb129-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb129-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb129-10" data-line-number="10"><span class="co"># run again</span></a>
+<a class="sourceLine" id="cb129-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
 <p>In this scenario, we can allow duplicate labels by setting this global option in R before the child document is knitted:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
 <p>You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross-references. For example, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without an error or warning message), because the filenames of plots are determined by the chunk labels.</p>
 
 

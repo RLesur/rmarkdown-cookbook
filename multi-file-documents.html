@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-24" />
+<meta name="date" content="2019-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
 <li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
+<li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -302,12 +303,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">12.2.1</span> Child documents</h3>
 <p>We can include other R Markdown documents within a file by using child documents. The contents of the child document is loaded into the parent document, and any R code will be run as normally within <strong>knitr</strong>.</p>
 <p>To include a child document, we can add a code chunk with the option <code>child</code>, providing the file path to the <code>.Rmd</code> file to be included. The chunk should contain no code but we can specify additional chunk options if we wish to suppress the code output i.e. <code>echo=FALSE</code>. For example:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="bn">```{r, child = &quot;about.Rmd&quot;}</span></a>
-<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="bn">```{r, child = &quot;about.Rmd&quot;}</span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="bn">```</span></a></code></pre></div>
 <p>Whereby the content of <code>about.Rmd</code> provides a short description of the packages used for the analysis:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="fu"># About</span></a>
-<a class="sourceLine" id="cb95-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb95-3" data-line-number="3">This analysis was written in the R programming language [@R-base]. The report was generated using **rmarkdown** [@R-markdown] and **knitr** [@R-knitr].</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="fu"># About</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">This analysis was written in the R programming language [@R-base]. The report was generated using **rmarkdown** [@R-markdown] and **knitr** [@R-knitr].</a></code></pre></div>
 <p>Child documents are useful where we have a standard piece of text that we wish to include across multiple documents. Rather than copying and pasting the text to each file, we can refer to a single source file. If any changes are made to our generic description at a later date, we can update a single source file and all the reports will be up to date.</p>
 <p>Further examples where child documents could be useful include:</p>
 <ul>
@@ -319,33 +320,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-bookdown" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Using bookdown</h3>
 <p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb96-1" data-line-number="1">directory</a>
-<a class="sourceLine" id="cb96-2" data-line-number="2">  |- index.Rmd</a>
-<a class="sourceLine" id="cb96-3" data-line-number="3">  |- 01-intro.Rmd</a>
-<a class="sourceLine" id="cb96-4" data-line-number="4">  |- 02-analysis.Rmd</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb100-1" data-line-number="1">directory</a>
+<a class="sourceLine" id="cb100-2" data-line-number="2">  |- index.Rmd</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3">  |- 01-intro.Rmd</a>
+<a class="sourceLine" id="cb100-4" data-line-number="4">  |- 02-analysis.Rmd</a></code></pre></div>
 <ul>
 <li><strong>index.Rmd</strong>:</li>
 </ul>
 <p>The main detail is that the main file has to be called <code>index.Rmd</code> , and must include the additional YAML line site: <code>bookdown::bookdown_site</code>. We must also use a <strong>bookdown</strong> output format such as <code>html_document2</code>, <code>pdf_document2</code>, <code>word_document2</code>:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb97-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb97-2" data-line-number="2">title: &quot;A Minimal bookdown document&quot;</a>
-<a class="sourceLine" id="cb97-3" data-line-number="3">site: bookdown::bookdown_site</a>
-<a class="sourceLine" id="cb97-4" data-line-number="4">output: bookdown::pdf_document2</a>
-<a class="sourceLine" id="cb97-5" data-line-number="5">---</a>
-<a class="sourceLine" id="cb97-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb97-7" data-line-number="7">Some content</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb101-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">title: &quot;A Minimal bookdown document&quot;</a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">site: bookdown::bookdown_site</a>
+<a class="sourceLine" id="cb101-4" data-line-number="4">output: bookdown::pdf_document2</a>
+<a class="sourceLine" id="cb101-5" data-line-number="5">---</a>
+<a class="sourceLine" id="cb101-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb101-7" data-line-number="7">Some content</a></code></pre></div>
 <ul>
 <li><strong>01-intro.Rmd:</strong></li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="fu"># Chapter 1</span></a>
-<a class="sourceLine" id="cb98-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb98-3" data-line-number="3">This is chapter 1.</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="fu"># Chapter 1</span></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb102-3" data-line-number="3">This is chapter 1.</a></code></pre></div>
 <ul>
 <li><strong>02-analysis.Rmd</strong>:</li>
 </ul>
-<div class="sourceCode" id="cb99"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="fu"># Chapter 2</span></a>
-<a class="sourceLine" id="cb99-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb99-3" data-line-number="3">This is chapter 2.</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="fu"># Chapter 2</span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb103-3" data-line-number="3">This is chapter 2.</a></code></pre></div>
 <p>When the file is built, <strong>bookdown</strong> merges the results of the separate files into a single output document. This will automatically be done in alphabetical order, so it makes sense to precede your file name with a numeric index as above.</p>
 <p>For a comprehensive overview of the package, readers may refer to the <a href=""><em>Bookdown Book</em></a> <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span> or <a href="https://bookdown.org/yihui/rmarkdown/">Chapter 18</a> of the <em>R Markdown Definitive Guide</em> <span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-xie2018">2018</a>)</span>.</p>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-24" />
+<meta name="date" content="2019-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
 <li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
+<li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -297,11 +298,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.5</span> LaTeX subfigures</h2>
 <p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
 <p>Subfigures require the LaTeX package <code>subfig</code>. We can load this via the <code>extra_dependencies</code> YAML option within the <code>pdf_document</code> output. For example:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb55-3" data-line-number="3">  <span class="fu">pBdf_document:</span></a>
-<a class="sourceLine" id="cb55-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> subfig</span></a>
-<a class="sourceLine" id="cb55-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3">  <span class="fu">pBdf_document:</span></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> subfig</span></a>
+<a class="sourceLine" id="cb59-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
 <p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
 <ul>
 <li><code>fig.subcap</code> is a list of the captions for subfigures</li>
@@ -309,11 +310,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>out.width</code>: the output width of the figures. You will normally set this 100% divided by the number of sub columns.</li>
 </ul>
 <p>An example is demonstrated below:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb56-3" data-line-number="3">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb56-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> subfig</span></a>
-<a class="sourceLine" id="cb56-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> subfig</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
 <pre><code>```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
 plot(1:10)
 plot(rnorm(10), pch=19)
