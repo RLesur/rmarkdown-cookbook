@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -492,8 +493,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">10.1.1</span> Changing column names</h3>
 <!--- https://stackoverflow.com/questions/51432502/replace-column-names-in-kable-r-markdown/51444998#51444998 --->
 <p>The names of columns in a dataframe will often not be the same as what we want to display in our output format. It can be particularly annoying to have spaces in the name of a variable. We can use the the <code>col.names</code> argument to replace the names with a vector of names:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris),</a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">      <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal Length&quot;</span>, <span class="st">&quot;Sepal Width&quot;</span>, <span class="st">&quot;Petal Length&quot;</span>, <span class="st">&quot;Petal Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris),</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">      <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal Length&quot;</span>, <span class="st">&quot;Sepal Width&quot;</span>, <span class="st">&quot;Petal Length&quot;</span>, <span class="st">&quot;Petal Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -553,7 +554,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="changing-column-alignment" class="section level3">
 <h3><span class="header-section-number">10.1.2</span> Changing column alignment</h3>
 <p>If we wish to change the alignment of a knitr table, we can use either a vector of values or a single multi-character string for alignment, so <code>kable(..., align=c('c','l'))</code> can be shortened to <code>kable(..., align='cl')</code>.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="st">&quot;llrrcc&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="st">&quot;llrrcc&quot;</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -659,7 +660,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>The shortest form can’t be used with <em>latex</em> format. You must use longer form using a vector</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="kw">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars), <span class="dt">align =</span> <span class="kw">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
 </div>
 <div id="customising-latex-options" class="section level3">
 <h3><span class="header-section-number">10.1.3</span> Customising LaTeX options</h3>

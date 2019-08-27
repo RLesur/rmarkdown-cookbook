@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -313,13 +314,13 @@ Roses are \textcolor{red}{red}, violets are \textcolor{blue}{blue}.</code></pre>
 <div id="multi-output-text-colour" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Multi-output text colour</h3>
 <p>We should attempt to design our R Markdown documents to allow for multiple outputs. If we embed raw HTML or LaTeX code into our documents, this formatting will be ignored in the other output format. We can write a custom function which will insert the correct syntax depending on the output format using the <code>is_latex_output()</code> and <code>is_html_output()</code> functions as follows:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">colorize =<span class="st"> </span><span class="cf">function</span>(x, color){</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_latex_output</span>()) {</a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">    <span class="kw">sprintf</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{%s}(%s)&quot;</span>, color, x)</a>
-<a class="sourceLine" id="cb32-4" data-line-number="4">  } <span class="cf">else</span> <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_html_output</span>()) {</a>
-<a class="sourceLine" id="cb32-5" data-line-number="5">    <span class="kw">sprintf</span>(<span class="st">&quot;&lt;font color=&#39;%s&#39;&gt;%s&lt;/font&gt;&quot;</span>, color, x)</a>
-<a class="sourceLine" id="cb32-6" data-line-number="6">  } <span class="cf">else</span> x</a>
-<a class="sourceLine" id="cb32-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">colorize =<span class="st"> </span><span class="cf">function</span>(x, color){</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">  <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_latex_output</span>()) {</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">    <span class="kw">sprintf</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{%s}(%s)&quot;</span>, color, x)</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">  } <span class="cf">else</span> <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_html_output</span>()) {</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">    <span class="kw">sprintf</span>(<span class="st">&quot;&lt;font color=&#39;%s&#39;&gt;%s&lt;/font&gt;&quot;</span>, color, x)</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">  } <span class="cf">else</span> x</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">}</a></code></pre></div>
 <p>We can then use the code as an inline R expression <code>colorize(&quot;red text&quot;, &quot;red&quot;)</code> which will create <font color='red'>red text</font>.</p>
 </div>
 </div>

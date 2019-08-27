@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -306,11 +307,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="setup" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Setup</h3>
 <p><strong>kableExtra</strong> is available to download through CRAN:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co"># Install from CRAN</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</a>
-<a class="sourceLine" id="cb93-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="co"># install the development version</span></a>
-<a class="sourceLine" id="cb93-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="co"># Install from CRAN</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb95-4" data-line-number="4"><span class="co"># install the development version</span></a>
+<a class="sourceLine" id="cb95-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</a></code></pre></div>
 </div>
 <div id="customising-html" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> Customising HTML</h3>
@@ -330,9 +331,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Landscape page</li>
 </ul>
 <p>You can scale the width of the table using the function <code>kable_styling(latex_options = &quot;scale_down&quot;)</code>. This will force the table to the width of the page.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"> <span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
-<a class="sourceLine" id="cb94-2" data-line-number="2">          <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="st">          </span><span class="kw">kable_styling</span>(<span class="dt">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"> <span class="kw">kable</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2">          <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">          </span><span class="kw">kable_styling</span>(<span class="dt">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</a></code></pre></div>
 </div>
 </div>
             </section>

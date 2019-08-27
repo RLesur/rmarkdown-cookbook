@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -297,15 +298,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="generate-a-plot-and-display-it-elsewhere" class="section level2">
 <h2><span class="header-section-number">14.3</span> Generate a plot and display it elsewhere</h2>
 <p>Normally plots generated in a code chunk are displayed beneath the code chunk, but you can choose to show them elsewhere and (optionally) hide them in the code chunk. Below is an example:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb127-1" data-line-number="1">We generate a plot in this code chunk but do not show it:</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb127-3" data-line-number="3"><span class="bn">```{r cars-plot, dev=&#39;png&#39;, fig.show=&#39;hide&#39;}</span></a>
-<a class="sourceLine" id="cb127-4" data-line-number="4"><span class="bn">plot(cars)</span></a>
-<a class="sourceLine" id="cb127-5" data-line-number="5"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb127-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb127-7" data-line-number="7">After another paragraph, we introduce the plot:</a>
-<a class="sourceLine" id="cb127-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb127-9" data-line-number="9">![A nice plot.](<span class="bn">`r knitr::fig_chunk(&#39;cars-plot&#39;, &#39;png&#39;)`</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb129-1" data-line-number="1">We generate a plot in this code chunk but do not show it:</a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb129-3" data-line-number="3"><span class="bn">```{r cars-plot, dev=&#39;png&#39;, fig.show=&#39;hide&#39;}</span></a>
+<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="bn">plot(cars)</span></a>
+<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb129-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb129-7" data-line-number="7">After another paragraph, we introduce the plot:</a>
+<a class="sourceLine" id="cb129-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb129-9" data-line-number="9">![A nice plot.](<span class="bn">`r knitr::fig_chunk(&#39;cars-plot&#39;, &#39;png&#39;)`</span>)</a></code></pre></div>
 <p>In the code chunk, we used the chunk option <code>fig.show='hide'</code> to hide the plot temporarily. Then in another paragraph, we called the function <code>knitr::fig_chunk()</code> to retrieve the path of the plot file, which is usually like <code>test_files/figure-html/cars-plot-1.png</code>. You need to pass the chunk label and the graphical device name to <code>fig_chunk()</code> for it to calculate the plot file path. You may see <a href="https://stackoverflow.com/a/46305297/559676" class="uri">https://stackoverflow.com/a/46305297/559676</a> for an application of <code>fig_chunk()</code> to <strong>blogdown</strong> websites.</p>
 </div>
             </section>

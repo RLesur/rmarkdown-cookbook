@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 Using Custom Blocks | R Markdown Cookbook</title>
+  <title>2.2 Render an R script to a report | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 Using Custom Blocks | R Markdown Cookbook" />
+  <meta property="og:title" content="2.2 Render an R script to a report | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 Using Custom Blocks | R Markdown Cookbook" />
+  <meta name="twitter:title" content="2.2 Render an R script to a report | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="designing-output.html"/>
-<link rel="next" href="plotting-multiple-figures-side-by-side.html"/>
+<link rel="prev" href="r-markdown-components.html"/>
+<link rel="next" href="document-elements.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -295,151 +295,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-custom-blocks" class="section level2">
-<h2><span class="header-section-number">7.3</span> Using Custom Blocks</h2>
-<!--- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown --->
-<p>Section <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html">2.7</a> of <span class="citation">Xie (<a href="#ref-xie2016bookdown">2016</a>)</span> highlighted how we can use custom blocks in R Markdown to customise the appearance of sections of text. They can be a useful way to make some text stand out from your reports or books, and are a great way to make sure that your readers take away the key points from your work. As some examples of how these could be used:</p>
+<div id="spin" class="section level2">
+<h2><span class="header-section-number">2.2</span> Render an R script to a report</h2>
+<p>Even if you are a long-time R Markdown user, you may have missed another possibility. Dean Attali called it <a href="https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/">“<strong>knitr</strong>’s best hidden gem”</a>. That is, you can render a pure R script to a report directly. If you use the RStudio IDE, the keyboard shortcut to render R scripts is the same as when you knit Rmd documents (<code>Ctrl / Cmd + Shift + K</code>).</p>
+<p>When rendering an R script to a report, the function <code>knitr::spin()</code> is called to convert the R script to an Rmd file first. This function is what Dean Attali called <strong>knitr</strong>’s best hidden gem. You will see all text and graphical output in the report.</p>
+<p>If you want granular control over the elements in the report, below are a few syntax rules to help you:</p>
 <ul>
-<li>Add a warning to let users know to make sure users are using up-to-date packages before running your analysis:</li>
-<li>Add a link at the start of your document to your GitHub repository containing code:</li>
-<li>To highlight key results and findings from your analysis:</li>
+<li><p>Roxygen comments will be treated as normal text. A roxygen comment is an R comment that starts with <code>#'</code>. This can help you write narratives in your report. You can use any Markdown syntax in the comments.</p></li>
+<li><p>A comment starting with <code>#+</code> is treated as the <strong>knitr</strong> chunk header. For example, <code>knitr::spin()</code> will translate the comment <code>#+ label, fig.width=5</code> to the chunk header <code>```{r label, fig.width=5}</code> in R Markdown.</p></li>
+<li><p>R code of the form <code>{{ code }}</code> is translated to an inline R expression in R Markdown. Please note that <code>{{ code }}</code> must be on its own line.</p></li>
+<li><p>The YAML frontmatter can be written in the beginning of the R script in roxygen comments, too.</p></li>
+<li><p>Any text between <code>/*</code> and <code>*/</code> will be ignored (i.e., they are treated as true comments).</p></li>
 </ul>
-<p>In this section, we will explain how to create your own custom blocks for both PDF and HTML outputs. They can both use the same formatting within the R Markdown document, but require slight different configurations in your project for this to work. You may wish to explore the <a href="https://github.com/dr-harper/customBlocks">customBlocks</a> repository on GitHub which provides a minimal example of the code highlighted in this section.</p>
-<div id="basic-structure" class="section level3">
-<h3><span class="header-section-number">7.3.1</span> Basic Structure</h3>
-<p>We can generate a custom block using either the <code>block2</code> engine in <strong>knitr</strong>. We must also specify the chunk option <code>type</code>, which specifies the class of the <code>&lt;div&gt;</code> and the name of the LaTeX environment. For example:</p>
-<pre><code>```{block, type=&#39;FOO&#39;}
-Some text for this block.
-```</code></pre>
-<p>It is up to the user to define their own <code>&lt;div&gt;</code> in CSS for the HTML output, or <code>\newenvironment</code> in LaTeX for PDF outputs. These customisations will normally be contained in their own files such as <code>style.css</code> or <code>preamble.tex</code>, and then included within the YAML options:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb78-3" data-line-number="3">  <span class="fu">bookdown:</span><span class="at">:html_book:</span></a>
-<a class="sourceLine" id="cb78-4" data-line-number="4">    <span class="fu">css:</span><span class="at"> style.css</span></a>
-<a class="sourceLine" id="cb78-5" data-line-number="5">  <span class="fu">bookdown:</span><span class="at">:pdf_book:</span></a>
-<a class="sourceLine" id="cb78-6" data-line-number="6">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb78-7" data-line-number="7">      <span class="fu">in_header:</span><span class="at"> preamble.tex</span></a>
-<a class="sourceLine" id="cb78-8" data-line-number="8"><span class="ot">---</span></a></code></pre></div>
-<p>With this basic setup, we will demonstrate several custom blocks that we can be used to create custom blocks for your work.</p>
-</div>
-<div id="adding-a-shaded-box" class="section level3">
-<h3><span class="header-section-number">7.3.2</span> Adding a Shaded Box</h3>
-<p>First we will highlight how we can add a shaded box for our content. Both HTML and PDF outputs allow for quite a lot of customisation of our custom blocks, and it should allow you to sufficient choice in customising the styles to match if you would like consistency across your outputs.</p>
-<p>For the HTML output, we will specify our custom class in the <code>style.css</code> file. If you are unfamiliar with CSS, you may want to search for options <a href="https://www.w3schools.com/cssref/default.asp">using this link</a> to see what we can easily control. For example, we create a greyed out box with a red border, adding curved corners to the box:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode css css"><code class="sourceCode css"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="fu">.customBlock</span> {</a>
-<a class="sourceLine" id="cb79-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span>;</a>
-<a class="sourceLine" id="cb79-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb79-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#F8F9F9</span>;</a>
-<a class="sourceLine" id="cb79-5" data-line-number="5">  <span class="kw">border-color</span>: <span class="dv">#A93226</span>;</a>
-<a class="sourceLine" id="cb79-6" data-line-number="6">  <span class="kw">border-style</span>: <span class="dv">solid</span>;</a>
-<a class="sourceLine" id="cb79-7" data-line-number="7">  <span class="kw">border-radius</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb79-8" data-line-number="8">  <span class="kw">border-width</span>: <span class="dv">thin</span>;</a>
-<a class="sourceLine" id="cb79-9" data-line-number="9">}</a></code></pre></div>
-<p>For the LaTeX output, we will add our custom block to the <code>preamble.tex</code> file. We will use use the <strong>tcolorbox</strong> LaTeX package, which offers quite a flexible set of options for creating shaded boxes, as detailed within the <a href="hhttp://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf">package documentation</a>. Below, we create a new environment called <code>customBlock</code>, with a similar design of that outlined above:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">tcolorbox</span>}</a>
-<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">tikz</span>}</a>
-<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="fu">\usetikzlibrary</span>{calc}</a>
-<a class="sourceLine" id="cb80-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb80-5" data-line-number="5"><span class="co">% Define the colours to match the CSS above</span></a>
-<a class="sourceLine" id="cb80-6" data-line-number="6"><span class="fu">\definecolor</span>{background}{HTML}{F8F9F9}</a>
-<a class="sourceLine" id="cb80-7" data-line-number="7"><span class="fu">\definecolor</span>{border}{HTML}{A93226}</a>
-<a class="sourceLine" id="cb80-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb80-9" data-line-number="9"><span class="co">% Create our custom box</span></a>
-<a class="sourceLine" id="cb80-10" data-line-number="10"><span class="fu">\newtcolorbox</span>{customBlock}{</a>
-<a class="sourceLine" id="cb80-11" data-line-number="11">  colback = background,</a>
-<a class="sourceLine" id="cb80-12" data-line-number="12">  colframe = border,</a>
-<a class="sourceLine" id="cb80-13" data-line-number="13">  boxsep=5pt,</a>
-<a class="sourceLine" id="cb80-14" data-line-number="14">  arc=4pt}</a></code></pre></div>
-<p>By using the chunk header <code>{block2, type = &quot;customBlock&quot;}</code>, we can now use our custom block design in both PDF and HTML output formats. This is shown as follows:</p>
-
-<div class="customBlock">
-Look at our custom block!
-</div>
-
-</div>
-<div id="including-images" class="section level3">
-<h3><span class="header-section-number">7.3.3</span> Including Images</h3>
-<p>We can make custom blocks even more visually appealing by including images in them, and it can be an effective way to convey the content of the block. For the following examples, we will assume we are working within a directory below which is a simplified version what is used to build the book:</p>
-<pre><code>directory/
-├── yourReport.Rmd
-├── style.css
-├── preamble.tex
-└── images/ 
-      └── icons/
-            └── ├── important.png
-                ├── note.png
-                └── caution.png</code></pre>
-<p>For the HTML output, we can add an image to the box by adding <code>background-image</code>. The image is inserted into the background, and the padding is offset on the right-hand side to avoid the text overlapping this image. If you are using local images, the file path to the images is provided relative to the CSS file. For example:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="fu">.rmdcaution</span>{</a>
-<a class="sourceLine" id="cb82-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
-<a class="sourceLine" id="cb82-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb82-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
-<a class="sourceLine" id="cb82-5" data-line-number="5">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
-<a class="sourceLine" id="cb82-6" data-line-number="6">}</a></code></pre></div>
-<p>If you want to have a consistent styled box but have different icons, we can globally assign the CSS style to several custom blocks and then add the image for each block seperately. This approach is used within the <a href="https://github.com/dr-harper/rmarkdown-cookbook/blob/master/style.css#L1-L20">source code of this book</a>, as we can define multiple styles without repeating the same basic formatting, as follows:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="fu">.rmdcaution</span>, <span class="fu">.rmdimportant</span>, <span class="fu">.rmdnote</span>, <span class="fu">.rmdtip</span>, <span class="fu">.rmdwarning</span> {</a>
-<a class="sourceLine" id="cb83-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
-<a class="sourceLine" id="cb83-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb83-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
-<a class="sourceLine" id="cb83-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb83-6" data-line-number="6"><span class="fu">.rmdcaution</span> {</a>
-<a class="sourceLine" id="cb83-7" data-line-number="7">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
-<a class="sourceLine" id="cb83-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb83-9" data-line-number="9"><span class="fu">.rmdimportant</span> {</a>
-<a class="sourceLine" id="cb83-10" data-line-number="10">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/important.png&quot;</span>);</a>
-<a class="sourceLine" id="cb83-11" data-line-number="11">}</a></code></pre></div>
-<p>For the PDF output, we can adapt the <strong>tcolorbox</strong> code shown above to add the image to the left side of the box, whereby some slight adjustments are made to offset the text from the left and to insert the image into the box. As for the HTML, if we want to create multiple custom blocks of a similar style, it is generally more useful to make a more general function which can be used to create each block. Below, we demonstrate the use of this, where a new environment <code>customBlockImage</code> is created which is then used to build our final environments that we wish to use in our report (<code>rmdnote</code>, <code>rmdimportant</code>):</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co">% Create our general design</span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="fu">\newtcolorbox</span>{customBlockImage}[2][]{</a>
-<a class="sourceLine" id="cb84-3" data-line-number="3">  enhanced,</a>
-<a class="sourceLine" id="cb84-4" data-line-number="4">  top=10pt,</a>
-<a class="sourceLine" id="cb84-5" data-line-number="5">  bottom=10pt,</a>
-<a class="sourceLine" id="cb84-6" data-line-number="6">  colframe = white,</a>
-<a class="sourceLine" id="cb84-7" data-line-number="7">  width=<span class="fu">\textwidth</span>,</a>
-<a class="sourceLine" id="cb84-8" data-line-number="8">  boxsep=5pt,</a>
-<a class="sourceLine" id="cb84-9" data-line-number="9">  arc=4pt,</a>
-<a class="sourceLine" id="cb84-10" data-line-number="10">  outer arc=4pt,</a>
-<a class="sourceLine" id="cb84-11" data-line-number="11">  leftupper=1.5cm,</a>
-<a class="sourceLine" id="cb84-12" data-line-number="12">overlay={</a>
-<a class="sourceLine" id="cb84-13" data-line-number="13">    <span class="fu">\node</span>[anchor=west] </a>
-<a class="sourceLine" id="cb84-14" data-line-number="14">      at ([xshift=10pt] <span class="ss">$ (interior.north west)!0.5!(interior.south west) $</span> )</a>
-<a class="sourceLine" id="cb84-15" data-line-number="15">       {{<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}<span class="bu">\includegraphics</span>{<span class="ex">#2</span>}}};},</a>
-<a class="sourceLine" id="cb84-16" data-line-number="16">#1}</a>
-<a class="sourceLine" id="cb84-17" data-line-number="17">    </a>
-<a class="sourceLine" id="cb84-18" data-line-number="18"> <span class="co">% Create the new environments for R Markdown</span></a>
-<a class="sourceLine" id="cb84-19" data-line-number="19"><span class="fu">\newenvironment</span>{rmdnote}</a>
-<a class="sourceLine" id="cb84-20" data-line-number="20">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/note}}</a>
-<a class="sourceLine" id="cb84-21" data-line-number="21">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
-<a class="sourceLine" id="cb84-22" data-line-number="22">  </a>
-<a class="sourceLine" id="cb84-23" data-line-number="23"><span class="fu">\newenvironment</span>{rmdimportant}</a>
-<a class="sourceLine" id="cb84-24" data-line-number="24">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/important}}</a>
-<a class="sourceLine" id="cb84-25" data-line-number="25">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
-<a class="sourceLine" id="cb84-26" data-line-number="26">         </a>
-<a class="sourceLine" id="cb84-27" data-line-number="27"><span class="co">% We can also change the colour of the box</span></a>
-<a class="sourceLine" id="cb84-28" data-line-number="28"><span class="fu">\newenvironment</span>{rmdwarning}</a>
-<a class="sourceLine" id="cb84-29" data-line-number="29">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}[colback=red]{images/important}}</a>
-<a class="sourceLine" id="cb84-30" data-line-number="30">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a></code></pre></div>
-<p>Again, we have designed an output which should be consistent across HTML and PDF outputs. Below we show the output of the <code>rmdnote</code> custom block:</p>
-
-<div class="rmdnote">
-This is the rmdnote custom block
-</div>
+<p>Below is a full example illustrating the above rules:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#&#39; ---</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&#39; title: &quot;A report generted from a pure R script&quot;</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&#39; output:</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&#39;   pdf_document:</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&#39;     keep_tex: true</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&#39; ---</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&#39; This is a report generated by `knitr::spin()`.</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&#39; Let&#39;s try some **knitr** options:</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#+ echo=FALSE, fig.width=7</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#  This is a normal R comment.</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw">plot</span>(cars)</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&#39; Now write an inline value. We know the value of $\pi$ is</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">{{ pi }}</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&#39; .</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&#39; Finally please note that all roxygen comments are</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&#39; optional. You do not need chunk options, either,</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&#39; unless you want more control over the output</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&#39; elements such as the size of plots.</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co"># /* Write comments between /* and */ like C comments:</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="kw">Sys.sleep</span>(<span class="dv">60</span>)</a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co"># */</span></a></code></pre></div>
+<p>When this script is rendered to a report, <code>knitr::spin()</code> will convert it to R Markdown:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">title: &quot;A report generted from a pure R script&quot;</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">output:</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  pdf_document:</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="bn">    keep_tex: true</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">---</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">This is a report generated by <span class="bn">`knitr::spin()`</span>.</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">Let&#39;s try some **knitr** options:</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="bn">```{r echo=FALSE, fig.width=7}</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="bn">#  This is a normal R comment.</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="bn">plot(cars)</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">Now write an inline value. We know the value of $\pi$ is</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">`<span class="bn">`r  pi  `</span>`</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">.</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">Finally please note that all roxygen comments are</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22">optional. You do not need chunk options, either,</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23">unless you want more control over the output</a>
+<a class="sourceLine" id="cb6-24" data-line-number="24">elements such as the size of plots.</a></code></pre></div>
+<p>This method of generating reports can be particularly useful when you primarily work with R scripts and do not need a lot of narratives. If the portion of text is substantial in your report, R Markdown may be a better choice, because you do not need to put all text in roxygen comments. When you need an R script from an R Markdown document, you can call the function <code>knitr::purl()</code> to extract code in the Rmd file to an R script.</p>
 
 </div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="designing-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="plotting-multiple-figures-side-by-side.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-markdown-components.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="document-elements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -469,7 +400,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/07-multiformat.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/02-basics.Rmd",
 "text": "Edit"
 },
 "history": {

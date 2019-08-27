@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -298,16 +299,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.2</span> Exit knitting early</h2>
 <p>Sometimes we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom that is not yet complete. In these situations, we could consider using the <code>knit_exit()</code> function, which will end the knitting process at that location.</p>
 <p>Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb126-2" data-line-number="2"><span class="bn">1 + 1</span></a>
-<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="bn">knitr::knit_exit()</span></a>
-<a class="sourceLine" id="cb126-4" data-line-number="4"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb126-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb126-6" data-line-number="6">Okay, you will not see me in the output.</a>
-<a class="sourceLine" id="cb126-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb126-8" data-line-number="8"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb126-9" data-line-number="9"><span class="bn">Sys.sleep(100)</span></a>
-<a class="sourceLine" id="cb126-10" data-line-number="10"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb128-2" data-line-number="2"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb128-3" data-line-number="3"><span class="bn">knitr::knit_exit()</span></a>
+<a class="sourceLine" id="cb128-4" data-line-number="4"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb128-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb128-6" data-line-number="6">Okay, you will not see me in the output.</a>
+<a class="sourceLine" id="cb128-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb128-8" data-line-number="8"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb128-9" data-line-number="9"><span class="bn">Sys.sleep(100)</span></a>
+<a class="sourceLine" id="cb128-10" data-line-number="10"><span class="bn">```</span></a></code></pre></div>
 <p>Normally you have to wait for 100 seconds, but since we have called <code>knit_exit()</code>, the rest of the document will be ignored.</p>
 </div>
             </section>

@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -305,20 +306,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>A named code chunk</strong>: this provides our identifier for referencing the chunk from within the text.</li>
 </ul>
 <p>Having met these conditions, we can make cross-references within the text using the format <code>\@ref(type:label)</code>, where <code>label</code> is the chunk label and <code>type</code> is the environment being referenced (e.g. <code>tab</code>, <code>fig</code>, <code>eqn</code>). An example is provided below:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="fu">output:</span><span class="at"> bookdown::html_document2</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb13-1" data-line-number="1">See Figure \@ref(fig:cars-plot)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="bn">```{r cars-plot, fig.cap=&quot;A plot caption&quot;}</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="bn">plot(cars)  # a scatterplot</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">See Table \@ref(tab:mtcars)</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="bn">```{r mtcars}</span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="bn">knitr::kable(mtcars[1:5, 1:5], caption = &quot;A caption&quot;)</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="fu">output:</span><span class="at"> bookdown::html_document2</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb15-1" data-line-number="1">See Figure \@ref(fig:cars-plot)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="bn">```{r cars-plot, fig.cap=&quot;A plot caption&quot;}</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="bn">plot(cars)  # a scatterplot</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">See Table \@ref(tab:mtcars)</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="bn">```{r mtcars}</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="bn">knitr::kable(mtcars[1:5, 1:5], caption = &quot;A caption&quot;)</span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="bn">```</span></a></code></pre></div>
 <p>The output of this document is shown in Figure <a href="crossRef.html#fig:crossReferencing">3.1</a>.</p>
 <div class="figure"><span id="fig:crossReferencing"></span>
 <img src="images/crossReferencing.png" alt="Example of cross-referencing within an R Markdown document"  />

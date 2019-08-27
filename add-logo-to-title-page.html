@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -298,9 +299,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Add logo to title page</h2>
 <!--- https://stackoverflow.com/questions/29389149/add-image-in-title-page-of-rmarkdown-pdf --->
 <p>We can use the <strong>titling</strong> LaTeX package to alter our title block to include an image. We can include the following lines of text in our YAML, where we change the <code>my-image</code> with your local image file:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">-</span> \usepackage<span class="kw">{</span>titling<span class="kw">}</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">-</span> \pretitle<span class="kw">{</span>\begin{center<span class="kw">}</span>\LARGE\includegraphics<span class="kw">[</span>width=6cm<span class="kw">]{</span>my-image<span class="kw">}</span>\\<span class="kw">[</span>\bigskipamount<span class="kw">]</span>}</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">-</span> \posttitle<span class="kw">{</span>\end{center<span class="kw">}</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">-</span> \usepackage<span class="kw">{</span>titling<span class="kw">}</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="kw">-</span> \pretitle<span class="kw">{</span>\begin{center<span class="kw">}</span>\LARGE\includegraphics<span class="kw">[</span>width=6cm<span class="kw">]{</span>my-image<span class="kw">}</span>\\<span class="kw">[</span>\bigskipamount<span class="kw">]</span>}</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="kw">-</span> \posttitle<span class="kw">{</span>\end{center<span class="kw">}</span>}</a></code></pre></div>
 <p>An example output is shown in Figure <a href="add-logo-to-title-page.html#fig:latexLogo">5.1</a>.</p>
 <div class="figure"><span id="fig:latexLogo"></span>
 <img src="images/latexLogo.png" alt="Example LaTeX title with logo"  />

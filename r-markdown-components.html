@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="basics.html"/>
-<link rel="next" href="document-elements.html"/>
+<link rel="next" href="spin.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -297,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="r-markdown-components" class="section level2">
 <h2><span class="header-section-number">2.1</span> R Markdown components</h2>
 <p>R Markdown combines several different processes together to create documents, and one of the main sources of confusion from R Markdown is how all the components work together. Fortunately, as a user, it is not essential to understand all the inner workings of these processes to be able to create documents. However, as a user who may be seeking to alter the behavior of a document, it is important to understand which component is responsible for what. This makes it a lot easier to seek help as you can target your searches on the correct area.</p>
-<p>The basic workflow structure for an R Markdown document is shown in Figure <a href="r-markdown-components.html#fig:rmdworkflow">2.1</a>, highlighting the processes (arrows) and the intermediate files that are created before producing the output. Each stage is explained in further detail below.</p>
+<p>The basic workflow structure for an R Markdown document is shown in Figure <a href="r-markdown-components.html#fig:rmdworkflow">2.1</a>, highlighting the steps (arrows) and the intermediate files that are created before producing the output. The whole process is implemented via the function <code>rmarkdown::render()</code>. Each stage is explained in further detail below.</p>
 <div class="figure"><span id="fig:rmdworkflow"></span>
 <img src="images/workflow.png" alt="A diagram illustrating how an R Markdown document is converted to the final output document." width="100%" />
 <p class="caption">
@@ -305,13 +306,12 @@ FIGURE 2.1: A diagram illustrating how an R Markdown document is converted to th
 </p>
 </div>
 <p>The <code>.Rmd</code> document is the original format of the document. It contains a combination of YAML (metadata), text (narratives), and code chunks.</p>
-<p>First, the <strong>knitr</strong> package is used to execute all code embedded within the <code>.Rmd</code> file, and prepare the code output to be displayed within the output document. All these results are converted into the correct markup language to be contained within the temporary <code>.md</code> file.</p>
+<p>First, the <code>knit()</code> function in <strong>knitr</strong> is used to execute all code embedded within the <code>.Rmd</code> file, and prepare the code output to be displayed within the output document. All these results are converted into the correct markup language to be contained within the temporary <code>.md</code> file.</p>
 <p>Then the <code>.md</code> file is processed by <a href="https://pandoc.org">Pandoc</a>, a multipurpose tool designed to convert files from one markup language to another. It takes any parameters specified within the YAML frontmatter of the document (e.g., <code>title</code>, <code>author</code>, and <code>date</code>) to convert the document to the output format specified in the <code>output</code> parameter (such as <code>html_document</code> for HTML output).</p>
 <p>If the output format is PDF, there is an additional layer of processing, as Pandoc will convert the intermediate <code>.md</code> file into an intermediate <code>.tex</code> file. This file is then processed by <a href="https://www.latex-project.org">LaTeX</a> to form the final PDF document. As we mentioned in Section <a href="install-latex.html#install-latex">1.1</a>, the <strong>rmarkdown</strong> package calls the <code>latexmk()</code> function in the <strong>tinytex</strong> package <span class="citation">(Xie <a href="#ref-R-tinytex">2019</a><a href="#ref-R-tinytex">e</a>)</span>, which in turn calls LaTeX to compile <code>.tex</code> to <code>.pdf</code>.</p>
+<p>In short, <code>rmarkdown::render()</code> = <code>knitr::knit()</code> + Pandoc (+ LaTeX for PDF output only).</p>
 <p>Robin Linacre has written a nice summary of the relationship between R Markdown, <strong>knitr</strong>, and Pandoc at <a href="https://stackoverflow.com/q/40563479/559676" class="uri">https://stackoverflow.com/q/40563479/559676</a>, which contains more technical details than the above overview.</p>
-
 </div>
-<!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-R-tinytex">
@@ -324,7 +324,7 @@ FIGURE 2.1: A diagram illustrating how an R Markdown document is converted to th
         </div>
       </div>
 <a href="basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="document-elements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="spin.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

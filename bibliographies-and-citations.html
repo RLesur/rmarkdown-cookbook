@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -298,46 +299,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Bibliographies and citations</h2>
 <!--- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations --->
 <p>R Markdown makes it easy include citations within your document by using pandoc. For a comprehensive overview, we recommend <a href="https://bookdown.org/yihui/bookdown/citations.html">Section 2.8</a> of <span class="citation">Xie (<a href="#ref-xie2016bookdown">2016</a>)</span>. However, the basic usage requires us to specify a bibliography file using the <code>bibliography</code> metadata field in the YAML. For example:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="fu">output:</span><span class="at"> html_document</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">bibliography:</span><span class="at"> references.bib  </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="fu">output:</span><span class="at"> html_document</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="fu">bibliography:</span><span class="at"> references.bib  </span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="ot">---</span></a></code></pre></div>
 <p>where the A BibTeX database is a plain-text file that consists of bibliography entries like this:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">base</span>,</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">  <span class="dt">title</span> = {R: A Language and Environment for Statistical Computing},</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">  <span class="dt">author</span> = {{R Core Team}},</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">  <span class="dt">organization</span> = {R Foundation for Statistical Computing},</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">  <span class="dt">address</span> = {Vienna, Austria},</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">  <span class="dt">year</span> = {2019},</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">  <span class="dt">url</span> = {https://www.R-project.org},</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">base</span>,</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">  <span class="dt">title</span> = {R: A Language and Environment for Statistical Computing},</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="dt">author</span> = {{R Core Team}},</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">  <span class="dt">organization</span> = {R Foundation for Statistical Computing},</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  <span class="dt">address</span> = {Vienna, Austria},</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="dt">year</span> = {2019},</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dt">url</span> = {https://www.R-project.org},</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">}</a></code></pre></div>
 <p>Items can be cited directly within the documentation using the first line <code>@R-base</code>.</p>
 <div id="changing-citation-style" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Changing citation style</h3>
 <p>By default, pandoc will use a Chicago author-date format for citations and references. To use another style, you will need to specify a CSL 1.0 style file in the <code>csl</code> metadata field:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="fu">output:</span><span class="at"> html_document</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="fu">bibliography:</span><span class="at"> references.bib</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="fu">csl:</span><span class="at"> biomed-central.csl</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="fu">output:</span><span class="at"> html_document</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="fu">bibliography:</span><span class="at"> references.bib</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="fu">csl:</span><span class="at"> biomed-central.csl</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
 <p>To find your required formats, we recommend using the Zotero <a href="https://www.zotero.org/styles">website</a>, which makes it search for and download your required style.</p>
 <p>Although beyond the scope of the book, it is worth highlighting that the behaviour of CSL files can be tweaked to customise the behaviour as required. For example, we can change the number of authors required before “et.al” is used to abbreviate them. This can be simplified through the use of visual editors such as the one found <a href="http://editor.citationstyles.org/visualEditor/">here</a>.</p>
 </div>
 <div id="add-item-to-bibliography-without-using-it" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Add item to bibliography without using it</h3>
 <p>By default, the bibliography will only display items which are directly referenced in the document. If you want to include items in the bibliography without actually citing them in the body text, you can define a dummy <code>nocite</code> metadata field and put the citations there. This can be included anywhere in the document but it is normally best to place it at the end of the document:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="fu"># References</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">---</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">nocite: |</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"> @item1, @item2</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">...</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="fu"># References</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">---</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">nocite: |</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"> @item1, @item2</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">...</a></code></pre></div>
 </div>
 <div id="add-all-items-to-bibliography" class="section level3">
 <h3><span class="header-section-number">3.1.3</span> Add all items to bibliography</h3>
 <p>If we do not wish to explicitly state all of the items within the bibliography but would still like to show them in our references, we can use the following syntax:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb9-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">nocite: &#39;@*&#39;</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">...</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb11-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">nocite: &#39;@*&#39;</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">...</a></code></pre></div>
 <p>This will force all items to be displayed in the bibliography.</p>
 </div>
 <div id="include-appendix-after-bibliography" class="section level3">
@@ -345,21 +346,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!--- https://stackoverflow.com/questions/41532707/include-rmd-appendix-after-references/42258998#42258998 --->
 <!--- https://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography?noredirect=1&lq=1 --->
 <p>By default, the bibliography appears at the very end of the document. However, there can be cases where we want to place additional text after the references, most typically if we wish to include appendices within the document. We can force the position of the references by using <code>&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</code>, as shown below:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="fu"># References</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="fu"># Appendices </span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="fu"># References</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="fu"># Appendices </span></a></code></pre></div>
 <p>We can improve this further by using the <strong>bookdown</strong> package, which offers a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers">special header</a> for the Appendix as shown with the syntax below:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="fu"># References</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="fu"># (APPENDIX) Appendix {-} </span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="fu"># Appendix A</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="fu"># Appendix B</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="fu"># References</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="fu"># (APPENDIX) Appendix {-} </span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="fu"># Appendix A</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="fu"># Appendix B</span></a></code></pre></div>
 <p>The numbering style of appendices will be automatically changed in LaTeX/PDF and HTML output (usually in the form A, A.1, A.2, B, B.1, …).</p>
 </div>
 </div>

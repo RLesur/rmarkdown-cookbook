@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -315,8 +316,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="show-a-verbatim-inline-expression" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Show a verbatim inline expression</h3>
 <p>There are multiple ways to show a verbatim inline expression. I mentioned this trick for R Markdown documents in the FAQ:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb38-1" data-line-number="1">This will show a verbatim inline R expression `<span class="bn">` `</span>r</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2">1+1<span class="bn">` `</span>` in the output.</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb40-1" data-line-number="1">This will show a verbatim inline R expression `<span class="bn">` `</span>r</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">1+1<span class="bn">` `</span>` in the output.</a></code></pre></div>
 <p>The trick works due to two reasons (1) a single line break is often the same as a space to Markdown parsers (by comparison, two consecutive line breaks means starting a new paragraph); (2) <strong>knitr</strong> requires a space after <code>`r</code> to parse it; if the space is missing, it will not be treated as an inline expression. In the output document, you should see:</p>
 <pre><code>This will show a verbatim inline R expression 2 in the output.</code></pre>
 <p>You can read more about this behaviour <a href="https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/">here</a>.</p>

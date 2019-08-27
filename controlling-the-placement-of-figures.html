@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -315,20 +316,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="preventing-figures-floating" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Preventing figures floating</h3>
 <p>Many users will initially want to prevent figures from floating in their document, replicating the behaviour of a traditional word processor. To do this, we must firstly load the LaTeX package <code>float</code>. This can be done by including the following line in the YAML:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></a></code></pre></div>
 <p>We can use the <code>fig.pos</code> to control the float behaviour, and the use of <code>!H</code> will prevent any floating within the document. We can set the default behaviour for the document so that all chunks have this setting by including the following line at the start of your R Markdown document:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.pos =</span> <span class="st">&quot;!H&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.pos =</span> <span class="st">&quot;!H&quot;</span>)</a></code></pre></div>
 <p>Please note, that we would strongly advise that readers consider the behaviour of float in their document. This solution was included within the book by popular demand<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> but there are some serious sides effects overriding the default settings.</p>
 </div>
 <div id="force-floats-forwards" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Force floats forwards</h3>
 <!--- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text --->
 <p>An alternative to forcing all floats to be held is to force floats forwards in the text. This can remove a common issue, where a figure is shown at the top of the page on which it is created. This can break the flow of a report. We can force it so that the figure always appears after the text by using the <strong>flafter</strong> LaTeX package as follows:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb51-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb51-3" data-line-number="3">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></a></code></pre></div>
 </div>
 <div id="adjust-latex-placement-rules" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> Adjust LaTeX placement rules</h3>
@@ -382,21 +383,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>To encourage LaTeX not to move your figure, we can alter these default settings. We could include the following in our LaTeX preamble file, reducing the minimum amount of text required on a page and allow more room for floats:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="fu">\renewcommand</span>{<span class="ex">\topfraction</span>}{.85}</a>
-<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="fu">\renewcommand</span>{<span class="ex">\bottomfraction</span>}{.7}</a>
-<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="fu">\renewcommand</span>{<span class="ex">\textfraction</span>}{.15}</a>
-<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="fu">\renewcommand</span>{<span class="ex">\floatpagefraction</span>}{.66}</a>
-<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="fu">\renewcommand</span>{<span class="ex">\dbltopfraction</span>}{.66}</a>
-<a class="sourceLine" id="cb52-6" data-line-number="6"><span class="fu">\renewcommand</span>{<span class="ex">\dblfloatpagefraction</span>}{.66}</a>
-<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="fu">\setcounter</span>{topnumber}{9}</a>
-<a class="sourceLine" id="cb52-8" data-line-number="8"><span class="fu">\setcounter</span>{bottomnumber}{9}</a>
-<a class="sourceLine" id="cb52-9" data-line-number="9"><span class="fu">\setcounter</span>{totalnumber}{20}</a>
-<a class="sourceLine" id="cb52-10" data-line-number="10"><span class="fu">\setcounter</span>{dbltopnumber}{9}</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="fu">\renewcommand</span>{<span class="ex">\topfraction</span>}{.85}</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="fu">\renewcommand</span>{<span class="ex">\bottomfraction</span>}{.7}</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="fu">\renewcommand</span>{<span class="ex">\textfraction</span>}{.15}</a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="fu">\renewcommand</span>{<span class="ex">\floatpagefraction</span>}{.66}</a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="fu">\renewcommand</span>{<span class="ex">\dbltopfraction</span>}{.66}</a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="fu">\renewcommand</span>{<span class="ex">\dblfloatpagefraction</span>}{.66}</a>
+<a class="sourceLine" id="cb54-7" data-line-number="7"><span class="fu">\setcounter</span>{topnumber}{9}</a>
+<a class="sourceLine" id="cb54-8" data-line-number="8"><span class="fu">\setcounter</span>{bottomnumber}{9}</a>
+<a class="sourceLine" id="cb54-9" data-line-number="9"><span class="fu">\setcounter</span>{totalnumber}{20}</a>
+<a class="sourceLine" id="cb54-10" data-line-number="10"><span class="fu">\setcounter</span>{dbltopnumber}{9}</a></code></pre></div>
 <p>If we added these changes to our <code>premable.tex</code> file, we could reference to them within our YAML of our document:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">      <span class="fu">in_header:</span><span class="at"> premable.tex</span></a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4">      <span class="fu">in_header:</span><span class="at"> premable.tex</span></a></code></pre></div>
 </div>
 </div>
 <div class="footnotes">

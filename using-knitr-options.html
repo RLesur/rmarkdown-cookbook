@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -298,24 +299,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.1</span> Using knitr options</h2>
 <p>There are more than 40 different chunk options which can be used to fine-tune the behaviour of <strong>knitr</strong> when processing R chunks. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">Section 2.8</a> of <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-xie2018">2018</a>)</span> provides a subset of these, while the full list is available at <a href="https://yihui.name/knitr/options/" class="uri">https://yihui.name/knitr/options/</a>.</p>
 <p>This section aims to highlight some useful <strong>knitr</strong> chunk options that may not be widely known. In the following recipes, we only show examples of applying chunk options to individual code chunks. However, please be aware of the fact that any chunk options can also be applied globally to a whole document, so you do not have to repeat the options in every single code chunk. To set chunk options globally, call <code>knitr::opts_chunk$set()</code> in a code chunk (usually the first one in the document), e.g.,</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="bn">knitr::opts_chunk$set(comment = &quot;&quot;, echo = FALSE)</span></a>
-<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="bn">knitr::opts_chunk$set(comment = &quot;&quot;, echo = FALSE)</span></a>
+<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 <div id="hide-code-and-all-outputs" class="section level3">
 <h3><span class="header-section-number">14.1.1</span> Hide code and all outputs</h3>
 <p>We often wish to setup our R Markdown documents by loading a series of packages. Instead of using separate commands to R source code (<code>echo=FALSE</code>), hide text output (<code>results='hide'</code>), hide warnings (<code>warnings=FALSE</code>), hide messages (<code>messages=FALSE</code>), and so on, we can suppress the output of the entire code chunk using the single option <code>include=FALSE</code> as shown below:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="bn"># any R code here</span></a>
-<a class="sourceLine" id="cb124-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2"><span class="bn"># any R code here</span></a>
+<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 <p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed.</p>
 </div>
 <div id="remove-leading-hashes-in-text-output" class="section level3">
 <h3><span class="header-section-number">14.1.2</span> Remove leading hashes in text output</h3>
 <!--- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr --->
 <p>By default, R code output will have two hashes <code>#</code> inserted in front of the text output. We can alter this behaviour by using the <code>comment</code> chunk option, which defaults to a character string of two hashes <code>&quot;##&quot;</code>. We can use an empty string if we want to remove the hashes. For example:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="bn">1:100</span></a>
-<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="bn">1:100</span></a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 </div>
 </div>
 <h3>References</h3>

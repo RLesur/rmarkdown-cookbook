@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -298,23 +299,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.6</span> Combine words into a comma-separated phrase</h2>
 <p>When you want to output a character vector for humans to read (e.g., <code>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;)</code>), you probably do not want something like <code>[1] &quot;apple&quot; &quot;banana&quot; &quot;cherry&quot;</code>, which is the normal way to print a vector in R. Instead, you may want a character string “<code>apple, banana, and cherry</code>”. There is a base R function <code>paste()</code> that you can use to concatenate a character vector into a single string, e.g., <code>paste(x, collapse = ', ')</code>, and the output will be <code>&quot;apple, banana, cherry&quot;</code>. The problems are (1) the conjunction “and” is missing, and (2) when the vector only contains two elements, we should not use commas (e.g., the output should be <code>&quot;apple and banana&quot;</code> instead of <code>&quot;apple, banana&quot;</code>).</p>
 <p>The function <code>knitr::combine_words()</code> can be used to concatenate words into a phrase regardless of the length of the character vector. Basically, for a single word, it will just return this word; for two words A and B, it return <code>&quot;A and B&quot;</code>; for three or more words, it returns <code>&quot;A, B, C, ..., Y, and Z&quot;</code>. The function also has a few arguments that can customize the output. For example, if you want to output the words in pairs of backticks, you may use <code>knitr::combine_words(x, before = '`')</code>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">v =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">combine_words</span>(v)</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">## [1] &quot;apple, banana, and cherry&quot;</span></a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">before =</span> <span class="st">&#39;`&#39;</span>, <span class="dt">after =</span> <span class="st">&quot;&#39;&quot;</span>)</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="co">## [1] &quot;`apple&#39;, `banana&#39;, and `cherry&#39;&quot;</span></a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">and =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="co">## [1] &quot;apple, banana, cherry&quot;</span></a>
-<a class="sourceLine" id="cb23-8" data-line-number="8">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">sep =</span> <span class="st">&quot; / &quot;</span>, <span class="dt">and =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="co">## [1] &quot;apple / banana / cherry&quot;</span></a>
-<a class="sourceLine" id="cb23-10" data-line-number="10">knitr<span class="op">::</span><span class="kw">combine_words</span>(v[<span class="dv">1</span>])  <span class="co"># a single word</span></a>
-<a class="sourceLine" id="cb23-11" data-line-number="11"><span class="co">## [1] &quot;apple&quot;</span></a>
-<a class="sourceLine" id="cb23-12" data-line-number="12">knitr<span class="op">::</span><span class="kw">combine_words</span>(v[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])  <span class="co"># two words</span></a>
-<a class="sourceLine" id="cb23-13" data-line-number="13"><span class="co">## [1] &quot;apple and banana&quot;</span></a>
-<a class="sourceLine" id="cb23-14" data-line-number="14">knitr<span class="op">::</span><span class="kw">combine_words</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb23-15" data-line-number="15"><span class="co">## [1] &quot;A, B, C, D, and E&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">v =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">combine_words</span>(v)</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="co">## [1] &quot;apple, banana, and cherry&quot;</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">before =</span> <span class="st">&#39;`&#39;</span>, <span class="dt">after =</span> <span class="st">&quot;&#39;&quot;</span>)</a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">## [1] &quot;`apple&#39;, `banana&#39;, and `cherry&#39;&quot;</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">and =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="co">## [1] &quot;apple, banana, cherry&quot;</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">knitr<span class="op">::</span><span class="kw">combine_words</span>(v, <span class="dt">sep =</span> <span class="st">&quot; / &quot;</span>, <span class="dt">and =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="co">## [1] &quot;apple / banana / cherry&quot;</span></a>
+<a class="sourceLine" id="cb25-10" data-line-number="10">knitr<span class="op">::</span><span class="kw">combine_words</span>(v[<span class="dv">1</span>])  <span class="co"># a single word</span></a>
+<a class="sourceLine" id="cb25-11" data-line-number="11"><span class="co">## [1] &quot;apple&quot;</span></a>
+<a class="sourceLine" id="cb25-12" data-line-number="12">knitr<span class="op">::</span><span class="kw">combine_words</span>(v[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])  <span class="co"># two words</span></a>
+<a class="sourceLine" id="cb25-13" data-line-number="13"><span class="co">## [1] &quot;apple and banana&quot;</span></a>
+<a class="sourceLine" id="cb25-14" data-line-number="14">knitr<span class="op">::</span><span class="kw">combine_words</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb25-15" data-line-number="15"><span class="co">## [1] &quot;A, B, C, D, and E&quot;</span></a></code></pre></div>
 <p>This function can be particularly handy when it is used in an inline R expression, e.g.,</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb24-1" data-line-number="1">This morning we had <span class="bn">`r knitr::combine_words(v)`</span> for breakfast.</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb26-1" data-line-number="1">This morning we had <span class="bn">`r knitr::combine_words(v)`</span> for breakfast.</a></code></pre></div>
 </div>
             </section>
 

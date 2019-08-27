@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -306,26 +307,26 @@ FIGURE 6.3: A Scrollable Code chunk using custom CSS
 <div id="overwriting-the-default-css" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Overwriting the Default CSS</h3>
 <p>The simplist way of adding a scroll bar is to overwrite the global CSS options for the document. This will change the behaviour of all code chunks within the document. This requires us to specify the following CSS, where the user can set the height of the box using the <code>max-height</code> option:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb66-1" data-line-number="1">pre {</a>
-<a class="sourceLine" id="cb66-2" data-line-number="2">  <span class="kw">max-height</span>: <span class="dv">300px</span>;</a>
-<a class="sourceLine" id="cb66-3" data-line-number="3">  <span class="kw">float</span>: <span class="dv">left</span>;</a>
-<a class="sourceLine" id="cb66-4" data-line-number="4">  <span class="kw">width</span>: <span class="dv">910px</span>;</a>
-<a class="sourceLine" id="cb66-5" data-line-number="5">  <span class="kw">overflow-y</span>: <span class="dv">auto</span>;</a>
-<a class="sourceLine" id="cb66-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb66-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb66-8" data-line-number="8">pre<span class="fu">.r</span> {</a>
-<a class="sourceLine" id="cb66-9" data-line-number="9">  <span class="kw">max-height</span>: <span class="dv">none</span>;</a>
-<a class="sourceLine" id="cb66-10" data-line-number="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb68-1" data-line-number="1">pre {</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">  <span class="kw">max-height</span>: <span class="dv">300px</span>;</a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">  <span class="kw">float</span>: <span class="dv">left</span>;</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4">  <span class="kw">width</span>: <span class="dv">910px</span>;</a>
+<a class="sourceLine" id="cb68-5" data-line-number="5">  <span class="kw">overflow-y</span>: <span class="dv">auto</span>;</a>
+<a class="sourceLine" id="cb68-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb68-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb68-8" data-line-number="8">pre<span class="fu">.r</span> {</a>
+<a class="sourceLine" id="cb68-9" data-line-number="9">  <span class="kw">max-height</span>: <span class="dv">none</span>;</a>
+<a class="sourceLine" id="cb68-10" data-line-number="10">}</a></code></pre></div>
 </div>
 <div id="specifing-additional-css" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Specifing Additional CSS</h3>
 <p>If you would desire more control over when the scroll bar is used, you may prefer to specify another style class which we can used when required. Below, we have created an additional class called ‘scroll’ which we can include within our R Markdown document:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="fu">.scroll</span> {</a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">  <span class="kw">max-height</span>: <span class="dv">300px</span>;</a>
-<a class="sourceLine" id="cb67-3" data-line-number="3">  <span class="kw">float</span>: <span class="dv">left</span>;</a>
-<a class="sourceLine" id="cb67-4" data-line-number="4">  <span class="kw">width</span>: <span class="dv">910px</span>;</a>
-<a class="sourceLine" id="cb67-5" data-line-number="5">  <span class="kw">overflow-y</span>: <span class="dv">auto</span>;</a>
-<a class="sourceLine" id="cb67-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="fu">.scroll</span> {</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">  <span class="kw">max-height</span>: <span class="dv">300px</span>;</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3">  <span class="kw">float</span>: <span class="dv">left</span>;</a>
+<a class="sourceLine" id="cb69-4" data-line-number="4">  <span class="kw">width</span>: <span class="dv">910px</span>;</a>
+<a class="sourceLine" id="cb69-5" data-line-number="5">  <span class="kw">overflow-y</span>: <span class="dv">auto</span>;</a>
+<a class="sourceLine" id="cb69-6" data-line-number="6">}</a></code></pre></div>
 <p>To use this class, we can specify the ‘class.output’ option within the code chunk header:</p>
 <pre><code>```{r, class.output = &quot;scroll&quot;}
 print(cars)

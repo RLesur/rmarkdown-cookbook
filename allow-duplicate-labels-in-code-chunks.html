@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -305,19 +306,19 @@ Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
   FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one master document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb129-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb129-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
-<a class="sourceLine" id="cb129-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb129-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb129-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb129-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb129-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb129-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="co"># settings</span></a>
+<a class="sourceLine" id="cb131-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb131-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb131-4" data-line-number="4"><span class="co"># run once</span></a>
+<a class="sourceLine" id="cb131-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
+<a class="sourceLine" id="cb131-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb131-7" data-line-number="7"><span class="co"># new settings</span></a>
+<a class="sourceLine" id="cb131-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb131-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb131-10" data-line-number="10"><span class="co"># run again</span></a>
+<a class="sourceLine" id="cb131-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
 <p>In this scenario, we can allow duplicate labels by setting this global option in R before the child document is knitted:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
 <p>You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross-references. For example, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without an error or warning message), because the filenames of plots are determined by the chunk labels.</p>
 
 

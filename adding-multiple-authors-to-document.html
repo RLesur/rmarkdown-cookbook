@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
+<li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliographies-and-citations.html"><a href="bibliographies-and-citations.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -298,34 +299,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.4</span> Adding multiple authors to document</h2>
 <!--- https://stackoverflow.com/questions/26043807/multiple-authors-and-subtitles-in-rmarkdown-yaml --->
 <p>We can add multiple authors to a R Markdown document within the YAML in a number of ways. If we simply want to list them on the same line, we can provide a text string to the document:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Untitled&quot;</span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="fu">author:</span><span class="at"> </span><span class="st">&quot;John Doe, John Smith&quot;</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="ot">---</span></a></code></pre></div>
-<p>Alternatively, if we wish for each entry to be on its own line we can provide a list of entries to the YAML field. This can be useful if you wish to include further information about each author such as an email address or instituion:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="fu">author:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="kw">-</span> John Doe, Institution One</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="kw">-</span> John Smith, Institution Two</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
-<p>We can make use of the markdown syntax <code>^[]</code> to add additional information as a footnote to the document. This may be more useful if you have extended information you wish to include for each author, such as providing a contact email, address etc. The exact behaviour will depend on the output format (HTML/PDF/Word):</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="fu">author:</span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw">-</span> John Doe^<span class="kw">[</span>Institution One<span class="kw">,</span> email@domain.com<span class="kw">]</span></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">-</span> John Doe 2^<span class="kw">[</span>Institution Two<span class="kw">,</span> email2@domain.com<span class="kw">]</span></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
-<p>Certain R Markdown templates will allow you to specify additional parameters directly within the YAML. For example, the <a href="https://rstudio.github.io/distill/">Distill</a> output format allows <code>url</code>, <code>affiliation</code>, and <code>affiliation_url</code> to be specified. We must first install the <strong>distill</strong> package:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;distill&#39;</span>)</a></code></pre></div>
-<p>We can use the new format by changing the <code>output</code> option as specified below:</p>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Untitled&quot;</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="fu">author:</span><span class="at"> </span><span class="st">&quot;John Doe, John Smith&quot;</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="ot">---</span></a></code></pre></div>
+<p>Alternatively, if we wish for each entry to be on its own line we can provide a list of entries to the YAML field. This can be useful if you wish to include further information about each author such as an email address or instituion:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="fu">author:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="kw">-</span> John Doe, Institution One</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="kw">-</span> John Smith, Institution Two</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<p>We can make use of the markdown syntax <code>^[]</code> to add additional information as a footnote to the document. This may be more useful if you have extended information you wish to include for each author, such as providing a contact email, address etc. The exact behaviour will depend on the output format (HTML/PDF/Word):</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Distill for R Markdown&quot;</span></a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="fu">author:</span></a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">  <span class="kw">-</span> <span class="fu">name:</span><span class="at"> </span><span class="st">&quot;JJ Allaire&quot;</span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5">    <span class="fu">url:</span><span class="at"> https://github.com/jjallaire</span></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">    <span class="fu">affiliation:</span><span class="at"> RStudio</span></a>
-<a class="sourceLine" id="cb20-7" data-line-number="7">    <span class="fu">affiliation_url:</span><span class="at"> https://www.rstudio.com</span></a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="fu">output:</span><span class="at"> distill::distill_article</span></a>
-<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="fu">author:</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw">-</span> John Doe^<span class="kw">[</span>Institution One<span class="kw">,</span> email@domain.com<span class="kw">]</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="kw">-</span> John Doe 2^<span class="kw">[</span>Institution Two<span class="kw">,</span> email2@domain.com<span class="kw">]</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<p>Certain R Markdown templates will allow you to specify additional parameters directly within the YAML. For example, the <a href="https://rstudio.github.io/distill/">Distill</a> output format allows <code>url</code>, <code>affiliation</code>, and <code>affiliation_url</code> to be specified. We must first install the <strong>distill</strong> package:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;distill&#39;</span>)</a></code></pre></div>
+<p>We can use the new format by changing the <code>output</code> option as specified below:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Distill for R Markdown&quot;</span></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="fu">author:</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">  <span class="kw">-</span> <span class="fu">name:</span><span class="at"> </span><span class="st">&quot;JJ Allaire&quot;</span></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">    <span class="fu">url:</span><span class="at"> https://github.com/jjallaire</span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6">    <span class="fu">affiliation:</span><span class="at"> RStudio</span></a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">    <span class="fu">affiliation_url:</span><span class="at"> https://www.rstudio.com</span></a>
+<a class="sourceLine" id="cb22-8" data-line-number="8"><span class="fu">output:</span><span class="at"> distill::distill_article</span></a>
+<a class="sourceLine" id="cb22-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
 </div>
             </section>
 
