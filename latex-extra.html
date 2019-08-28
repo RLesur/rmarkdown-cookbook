@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Add logo to title page | R Markdown Cookbook</title>
+  <title>5.2 Include additional LaTeX packages | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Add logo to title page | R Markdown Cookbook" />
+  <meta property="og:title" content="5.2 Include additional LaTeX packages | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Add logo to title page | R Markdown Cookbook" />
+  <meta name="twitter:title" content="5.2 Include additional LaTeX packages | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-27" />
+<meta name="date" content="2019-08-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="latex.html"/>
-<link rel="next" href="include-additional-latex-packages.html"/>
+<link rel="prev" href="latex-logo.html"/>
+<link rel="next" href="figure-placement.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>3.4</b> Adding multiple authors to document</a></li>
 <li class="chapter" data-level="3.5" data-path="adding-numbered-figure-captions.html"><a href="adding-numbered-figure-captions.html"><i class="fa fa-check"></i><b>3.5</b> Adding numbered figure captions</a></li>
 <li class="chapter" data-level="3.6" data-path="combine-words-into-a-comma-separated-phrase.html"><a href="combine-words-into-a-comma-separated-phrase.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
-<li class="chapter" data-level="3.7" data-path="preserve-a-large-number-of-linebreaks.html"><a href="preserve-a-large-number-of-linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
+<li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
@@ -174,16 +174,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
-<li class="chapter" data-level="5.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
-<li class="chapter" data-level="5.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>5.2</b> Include additional LaTeX packages</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.2.1</b> Loading LaTeX Packages</a></li>
-<li class="chapter" data-level="5.2.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>5.2.2</b> Example Packages</a></li>
+<li class="chapter" data-level="5.1" data-path="latex-logo.html"><a href="latex-logo.html"><i class="fa fa-check"></i><b>5.1</b> Add logo to title page</a></li>
+<li class="chapter" data-level="5.2" data-path="latex-extra.html"><a href="latex-extra.html"><i class="fa fa-check"></i><b>5.2</b> Include additional LaTeX packages</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.2.1</b> Loading LaTeX packages</a></li>
+<li class="chapter" data-level="5.2.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.2.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>5.3</b> Controlling the Placement of Figures</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#floats"><i class="fa fa-check"></i><b>5.3.1</b> Floats</a></li>
-<li class="chapter" data-level="5.3.2" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#preventing-figures-floating"><i class="fa fa-check"></i><b>5.3.2</b> Preventing figures floating</a></li>
-<li class="chapter" data-level="5.3.3" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.3.3</b> Force floats forwards</a></li>
-<li class="chapter" data-level="5.3.4" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.3.4</b> Adjust LaTeX placement rules</a></li>
+<li class="chapter" data-level="5.3" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.3</b> Controlling the Placement of Figures</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="figure-placement.html"><a href="figure-placement.html#floats"><i class="fa fa-check"></i><b>5.3.1</b> Floats</a></li>
+<li class="chapter" data-level="5.3.2" data-path="figure-placement.html"><a href="figure-placement.html#preventing-figures-floating"><i class="fa fa-check"></i><b>5.3.2</b> Preventing figures floating</a></li>
+<li class="chapter" data-level="5.3.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.3.3</b> Force floats forwards</a></li>
+<li class="chapter" data-level="5.3.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.3.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>5.4</b> Add Custom Headers and Footers</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>5.4.1</b> Force Header and footer for every page</a></li>
@@ -295,19 +295,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="add-logo-to-title-page" class="section level2">
-<h2><span class="header-section-number">5.1</span> Add logo to title page</h2>
-<!--- https://stackoverflow.com/questions/29389149/add-image-in-title-page-of-rmarkdown-pdf --->
-<p>We can use the <strong>titling</strong> LaTeX package to alter our title block to include an image. We can include the following lines of text in our YAML, where we change the <code>my-image</code> with your local image file:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">-</span> \usepackage<span class="kw">{</span>titling<span class="kw">}</span></a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="kw">-</span> \pretitle<span class="kw">{</span>\begin{center<span class="kw">}</span>\LARGE\includegraphics<span class="kw">[</span>width=6cm<span class="kw">]{</span>my-image<span class="kw">}</span>\\<span class="kw">[</span>\bigskipamount<span class="kw">]</span>}</a>
-<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="kw">-</span> \posttitle<span class="kw">{</span>\end{center<span class="kw">}</span>}</a></code></pre></div>
-<p>An example output is shown in Figure <a href="add-logo-to-title-page.html#fig:latexLogo">5.1</a>.</p>
-<div class="figure"><span id="fig:latexLogo"></span>
-<img src="images/latexLogo.png" alt="Example LaTeX title with logo"  />
-<p class="caption">
-FIGURE 5.1: Example LaTeX title with logo
-</p>
+<div id="latex-extra" class="section level2">
+<h2><span class="header-section-number">5.2</span> Include additional LaTeX packages</h2>
+<!--- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 --->
+<p>The use of additional LaTeX packages can allow for extensive customization of document styling. In addition, several packages such as <strong>kableExtra</strong> <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-kableExtra"><strong>???</strong></span>)</span> may have LaTeX dependencies for the R package to function. Much like R, we need to load packages within the R Markdown document before we are able to use their functions.</p>
+<div id="loading-latex-packages" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Loading LaTeX packages</h3>
+<p>We can load additional LaTeX packages using the <code>extra_dependencies</code> option within the <code>pdf_document</code> YAML settings. This allows us to provide a list of LaTeX packages to be loaded in the intermediate LaTeX output document, e.g.,</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Using more LaTeX packages&quot;</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb49-4" data-line-number="4">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span> <span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6"><span class="ot">---</span></a></code></pre></div>
+<p>If you need to specify options when loading the package, you can add a second-level to the list and provide the options as a list, e.g.,</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="fu">extra_dependencies:</span></a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">      <span class="fu">caption:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;labelfont={bf}&quot;</span><span class="kw">]</span></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5">      <span class="fu">hyperref:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;unicode=true&quot;</span><span class="kw">,</span> <span class="st">&quot;breaklinks=true&quot;</span><span class="kw">]</span></a>
+<a class="sourceLine" id="cb50-6" data-line-number="6">      <span class="fu">lmodern:</span><span class="at"> </span><span class="dt">null</span></a></code></pre></div>
+<p>For those familiar with LaTeX, this is equivalent to the following LaTeX code:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="bu">\usepackage</span>[labelfont={bf}]{<span class="ex">caption</span>} </a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="bu">\usepackage</span>[unicode=true, breaklinks=true]{<span class="ex">hyperref</span>}</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="fu">\userpackage</span>{lmodern}</a></code></pre></div>
+</div>
+<div id="example-packages" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Example packages</h3>
+<p>There is an extensive community for LaTeX, and there are over 4,000 packages available through the <a href="https://ctan.org">Comprohensive TeX Archive Network</a> (CTAN). As some examples of LaTeX packages you could consider using within your report:</p>
+<ul>
+<li><a href="https://ctan.org/pkg/pdfpages">pdfpages</a>: include full PDF pages from an external PDF document within your document.</li>
+<li><a href="https://ctan.org/pkg/caption">caption</a>: change the appearance of caption subtitles. For example, you can make the figure title italic or bold.</li>
+<li><a href="https://ctan.org/pkg/fancyhdr">fancyhdr</a>: change the style of running headers of all pages.</li>
+</ul>
+<!-- TODO: ADD MORE PACKAGES -->
 </div>
 </div>
             </section>
@@ -315,8 +336,8 @@ FIGURE 5.1: Example LaTeX title with logo
           </div>
         </div>
       </div>
-<a href="latex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="include-additional-latex-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="latex-logo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="figure-placement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
