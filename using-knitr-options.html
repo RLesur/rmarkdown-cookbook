@@ -180,16 +180,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.3.1</b> Loading LaTeX packages</a></li>
 <li class="chapter" data-level="5.3.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.3.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Controlling the Placement of Figures</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floats"><i class="fa fa-check"></i><b>5.4.1</b> Floats</a></li>
-<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#preventing-figures-floating"><i class="fa fa-check"></i><b>5.4.2</b> Preventing figures floating</a></li>
+<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Control the placement of figures</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.4.1</b> Floating environments</a></li>
+<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.4.2</b> Prevent figures from floating</a></li>
 <li class="chapter" data-level="5.4.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.4.3</b> Force floats forwards</a></li>
 <li class="chapter" data-level="5.4.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.4.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>5.5</b> Add Custom Headers and Footers</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>5.5.1</b> Force Header and footer for every page</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="5.5" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.5</b> Add custom headers and footers</a></li>
+<li class="chapter" data-level="5.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX sub-figures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Change Chunk Styling</a><ul>
@@ -300,24 +298,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.1</span> Using knitr options</h2>
 <p>There are more than 40 different chunk options which can be used to fine-tune the behaviour of <strong>knitr</strong> when processing R chunks. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">Section 2.8</a> of <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-xie2018">2018</a>)</span> provides a subset of these, while the full list is available at <a href="https://yihui.name/knitr/options/" class="uri">https://yihui.name/knitr/options/</a>.</p>
 <p>This section aims to highlight some useful <strong>knitr</strong> chunk options that may not be widely known. In the following recipes, we only show examples of applying chunk options to individual code chunks. However, please be aware of the fact that any chunk options can also be applied globally to a whole document, so you do not have to repeat the options in every single code chunk. To set chunk options globally, call <code>knitr::opts_chunk$set()</code> in a code chunk (usually the first one in the document), e.g.,</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="bn">knitr::opts_chunk$set(comment = &quot;&quot;, echo = FALSE)</span></a>
-<a class="sourceLine" id="cb129-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="bn">knitr::opts_chunk$set(comment = &quot;&quot;, echo = FALSE)</span></a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 <div id="hide-code-and-all-outputs" class="section level3">
 <h3><span class="header-section-number">14.1.1</span> Hide code and all outputs</h3>
 <p>We often wish to setup our R Markdown documents by loading a series of packages. Instead of using separate commands to R source code (<code>echo=FALSE</code>), hide text output (<code>results='hide'</code>), hide warnings (<code>warnings=FALSE</code>), hide messages (<code>messages=FALSE</code>), and so on, we can suppress the output of the entire code chunk using the single option <code>include=FALSE</code> as shown below:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="bn"># any R code here</span></a>
-<a class="sourceLine" id="cb130-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb128-2" data-line-number="2"><span class="bn"># any R code here</span></a>
+<a class="sourceLine" id="cb128-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 <p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed.</p>
 </div>
 <div id="remove-leading-hashes-in-text-output" class="section level3">
 <h3><span class="header-section-number">14.1.2</span> Remove leading hashes in text output</h3>
 <!-- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr -->
 <p>By default, R code output will have two hashes <code>#</code> inserted in front of the text output. We can alter this behaviour by using the <code>comment</code> chunk option, which defaults to a character string of two hashes <code>&quot;##&quot;</code>. We can use an empty string if we want to remove the hashes. For example:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
-<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="bn">1:100</span></a>
-<a class="sourceLine" id="cb131-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="bn">1:100</span></a>
+<a class="sourceLine" id="cb129-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 </div>
 </div>
 <h3>References</h3>

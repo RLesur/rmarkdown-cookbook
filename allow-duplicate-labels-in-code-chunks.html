@@ -180,16 +180,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.3.1</b> Loading LaTeX packages</a></li>
 <li class="chapter" data-level="5.3.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.3.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Controlling the Placement of Figures</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floats"><i class="fa fa-check"></i><b>5.4.1</b> Floats</a></li>
-<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#preventing-figures-floating"><i class="fa fa-check"></i><b>5.4.2</b> Preventing figures floating</a></li>
+<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Control the placement of figures</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.4.1</b> Floating environments</a></li>
+<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.4.2</b> Prevent figures from floating</a></li>
 <li class="chapter" data-level="5.4.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.4.3</b> Force floats forwards</a></li>
 <li class="chapter" data-level="5.4.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.4.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>5.5</b> Add Custom Headers and Footers</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>5.5.1</b> Force Header and footer for every page</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="5.5" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.5</b> Add custom headers and footers</a></li>
+<li class="chapter" data-level="5.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX sub-figures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Change Chunk Styling</a><ul>
@@ -307,19 +305,19 @@ Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
   FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one master document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb135-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb135-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb135-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb135-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
-<a class="sourceLine" id="cb135-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb135-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb135-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb135-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb135-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb135-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="co"># settings</span></a>
+<a class="sourceLine" id="cb133-2" data-line-number="2">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb133-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb133-4" data-line-number="4"><span class="co"># run once</span></a>
+<a class="sourceLine" id="cb133-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a>
+<a class="sourceLine" id="cb133-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb133-7" data-line-number="7"><span class="co"># new settings</span></a>
+<a class="sourceLine" id="cb133-8" data-line-number="8">settings =<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb133-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb133-10" data-line-number="10"><span class="co"># run again</span></a>
+<a class="sourceLine" id="cb133-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</a></code></pre></div>
 <p>In this scenario, we can allow duplicate labels by setting this global option in R before the child document is knitted:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</a></code></pre></div>
 <p>You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross-references. For example, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without an error or warning message), because the filenames of plots are determined by the chunk labels.</p>
 
 

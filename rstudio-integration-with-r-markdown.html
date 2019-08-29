@@ -180,16 +180,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.3.1</b> Loading LaTeX packages</a></li>
 <li class="chapter" data-level="5.3.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.3.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Controlling the Placement of Figures</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floats"><i class="fa fa-check"></i><b>5.4.1</b> Floats</a></li>
-<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#preventing-figures-floating"><i class="fa fa-check"></i><b>5.4.2</b> Preventing figures floating</a></li>
+<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Control the placement of figures</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.4.1</b> Floating environments</a></li>
+<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.4.2</b> Prevent figures from floating</a></li>
 <li class="chapter" data-level="5.4.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.4.3</b> Force floats forwards</a></li>
 <li class="chapter" data-level="5.4.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.4.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>5.5</b> Add Custom Headers and Footers</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>5.5.1</b> Force Header and footer for every page</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="5.5" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.5</b> Add custom headers and footers</a></li>
+<li class="chapter" data-level="5.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX sub-figures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Change Chunk Styling</a><ul>
@@ -302,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="r-markdown-specific-rstudio-keyboard-shorcuts" class="section level3">
 <h3><span class="header-section-number">12.3.1</span> R Markdown specific Rstudio keyboard shorcuts</h3>
 <!-- https://stackoverflow.com/questions/30938280/keyboard-shortcut-to-produce-code-chunk-brackets-in-markdown-in-r-for-rstudio -->
-<p>Like any great IDE, RStudio has keyboard shorcuts<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">12.1</a>.</p>
+<p>Like any great IDE, RStudio has keyboard shorcuts<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">12.1</a>.</p>
 <table>
 <caption><span id="tab:keyboardShortcuts">TABLE 12.1: </span>Rmarkdown related Rstudio keyboard shorcuts</caption>
 <thead>
@@ -396,40 +394,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Create a custom function and save it in a package</li>
 </ol>
 <p>The easiest way of creating a function is to store the code directly within the YAML. We must wrap the entire function in brackets, and any linebreaks in the YAML must start with 4 spaces. For example, if we want the output filename to include the date it was rendered, we could use the following YAML code:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span></a>
-<a class="sourceLine" id="cb110-3" data-line-number="3">    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span></a>
-<a class="sourceLine" id="cb110-4" data-line-number="4">    encoding = encoding,</a>
-<a class="sourceLine" id="cb110-5" data-line-number="5">    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span></a>
-<a class="sourceLine" id="cb110-6" data-line-number="6">                                         <span class="st">&#39;-&#39;</span>,</a>
-<a class="sourceLine" id="cb110-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
-<a class="sourceLine" id="cb110-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
-<a class="sourceLine" id="cb110-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span></a>
+<a class="sourceLine" id="cb108-3" data-line-number="3">    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span></a>
+<a class="sourceLine" id="cb108-4" data-line-number="4">    encoding = encoding,</a>
+<a class="sourceLine" id="cb108-5" data-line-number="5">    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span></a>
+<a class="sourceLine" id="cb108-6" data-line-number="6">                                         <span class="st">&#39;-&#39;</span>,</a>
+<a class="sourceLine" id="cb108-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
+<a class="sourceLine" id="cb108-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
+<a class="sourceLine" id="cb108-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
 <p>For example, we if knitted <code>example.Rmd</code> on 2019/08/29, the output file name would be example-20190829.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
-<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb111-3" data-line-number="3"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb111-4" data-line-number="4">knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {</a>
-<a class="sourceLine" id="cb111-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb111-6" data-line-number="6">  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,</a>
-<a class="sourceLine" id="cb111-7" data-line-number="7">                    <span class="dt">encoding =</span> encoding,</a>
-<a class="sourceLine" id="cb111-8" data-line-number="8">                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),</a>
-<a class="sourceLine" id="cb111-9" data-line-number="9">                                         <span class="st">&#39;-&#39;</span>,</a>
-<a class="sourceLine" id="cb111-10" data-line-number="10">                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),</a>
-<a class="sourceLine" id="cb111-11" data-line-number="11">                                         <span class="st">&#39;.html&#39;</span>))</a>
-<a class="sourceLine" id="cb111-12" data-line-number="12">  }</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb109-4" data-line-number="4">knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {</a>
+<a class="sourceLine" id="cb109-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb109-6" data-line-number="6">  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,</a>
+<a class="sourceLine" id="cb109-7" data-line-number="7">                    <span class="dt">encoding =</span> encoding,</a>
+<a class="sourceLine" id="cb109-8" data-line-number="8">                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),</a>
+<a class="sourceLine" id="cb109-9" data-line-number="9">                                         <span class="st">&#39;-&#39;</span>,</a>
+<a class="sourceLine" id="cb109-10" data-line-number="10">                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),</a>
+<a class="sourceLine" id="cb109-11" data-line-number="11">                                         <span class="st">&#39;.html&#39;</span>))</a>
+<a class="sourceLine" id="cb109-12" data-line-number="12">  }</a></code></pre></div>
 <p>If we were to add this to the package <code>myPackage</code>, you will then be able to refer to your custom Knit function using the following YAML argument:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span></a>
-<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span></a>
+<a class="sourceLine" id="cb110-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
 <p>Readers may wish to refer to Section <a href="customRender.html#customRender">12.1</a> to find out more ideas on how they could customise the control of their render function.</p>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>A full list can be found on the <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">web</a> or directly in the IDE under tools menu <code>Tools -&gt; Keyboard Shortcuts Help.</code><a href="rstudio-integration-with-r-markdown.html#fnref3" class="footnote-back">↩</a></p></li>
+<ol start="2">
+<li id="fn2"><p>A full list can be found on the <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">web</a> or directly in the IDE under tools menu <code>Tools -&gt; Keyboard Shortcuts Help.</code><a href="rstudio-integration-with-r-markdown.html#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
