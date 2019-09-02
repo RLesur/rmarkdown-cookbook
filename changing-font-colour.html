@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-08-29" />
+<meta name="date" content="2019-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -315,7 +315,7 @@ Roses are \textcolor{red}{red}, violets are \textcolor{blue}{blue}.</code></pre>
 <p>We should attempt to design our R Markdown documents to allow for multiple outputs. If we embed raw HTML or LaTeX code into our documents, this formatting will be ignored in the other output format. We can write a custom function which will insert the correct syntax depending on the output format using the <code>is_latex_output()</code> and <code>is_html_output()</code> functions as follows:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">colorize =<span class="st"> </span><span class="cf">function</span>(x, color){</a>
 <a class="sourceLine" id="cb34-2" data-line-number="2">  <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_latex_output</span>()) {</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3">    <span class="kw">sprintf</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{%s}(%s)&quot;</span>, color, x)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">    <span class="kw">sprintf</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{%s}{%s}&quot;</span>, color, x)</a>
 <a class="sourceLine" id="cb34-4" data-line-number="4">  } <span class="cf">else</span> <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_html_output</span>()) {</a>
 <a class="sourceLine" id="cb34-5" data-line-number="5">    <span class="kw">sprintf</span>(<span class="st">&quot;&lt;font color=&#39;%s&#39;&gt;%s&lt;/font&gt;&quot;</span>, color, x)</a>
 <a class="sourceLine" id="cb34-6" data-line-number="6">  } <span class="cf">else</span> x</a>
