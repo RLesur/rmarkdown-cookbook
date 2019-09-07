@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-02" />
+<meta name="date" content="2019-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -403,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb108-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
 <a class="sourceLine" id="cb108-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
 <a class="sourceLine" id="cb108-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/09/02, the output file name would be example-20190902.html.</p>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/09/07, the output file name would be example-20190907.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
 <a class="sourceLine" id="cb109-2" data-line-number="2"><span class="co">#&#39;</span></a>
