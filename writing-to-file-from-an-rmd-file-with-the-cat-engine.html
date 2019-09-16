@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>12.2.3</b> Which method should you use?</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>12.3</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
 <li class="chapter" data-level="12.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>12.3.2</b> Customising the knit button</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
@@ -334,13 +334,13 @@ content is written to file.</p>
 <a class="sourceLine" id="cb169-3" data-line-number="3"><span class="kw">rm</span>(my_function)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>Writing to an R script is not really a real use case example and the <code>cat</code>
-engine can handled any format.</p>
+engine can handle any format.</p>
 <p>Here, we use it to write some yaml to a file. The default behavior for <code>cat</code>
 engine is to show nothing in the output document. However, here we will also
 show the content in the output R Markdown file. The <code>cat</code> engine understand the
 field <code>lang</code> in <code>engine.opts</code> option or directly <code>class.source</code> chunk option for
 html outputs (see Section <a href="chunk-styling.html#chunk-styling">6.1</a>). You can provide any language
-supported by the syntax highlighting. This two chunks are equivalent:</p>
+supported by the syntax highlighting. These two chunks are equivalent:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="bn">```{cat, engine.opts = list(file = fs::path_temp(&#39;demo.yml&#39;), lang = &quot;yaml&quot;)}</span></a>
 <a class="sourceLine" id="cb171-2" data-line-number="2"><span class="bn">a:</span></a>
 <a class="sourceLine" id="cb171-3" data-line-number="3"><span class="bn">  aa: something</span></a>
@@ -364,7 +364,7 @@ supported by the syntax highlighting. This two chunks are equivalent:</p>
 <a class="sourceLine" id="cb173-4" data-line-number="4"><span class="fu">b:</span></a>
 <a class="sourceLine" id="cb173-5" data-line-number="5">  <span class="fu">aa:</span><span class="at"> somethingelse</span></a>
 <a class="sourceLine" id="cb173-6" data-line-number="6">  <span class="fu">bb:</span><span class="at"> 2</span></a></code></pre></div>
-<p>As previously, the file can be access later on and read into R</p>
+<p>As previously, the file can be accessed later on and read into R</p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">yaml<span class="op">::</span><span class="kw">read_yaml</span>(fs<span class="op">::</span><span class="kw">path_temp</span>(<span class="st">&quot;demo.yml&quot;</span>))</a></code></pre></div>
 <pre><code>## $a
 ## $a$aa

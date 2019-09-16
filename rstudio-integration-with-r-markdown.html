@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>12.2.3</b> Which method should you use?</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>12.3</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
 <li class="chapter" data-level="12.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>12.3.2</b> Customising the knit button</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
@@ -303,12 +303,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rstudio-integration-with-r-markdown" class="section level2">
 <h2><span class="header-section-number">12.3</span> RStudio integration with R Markdown</h2>
 <p>R Markdown format and features can be used with R and <strong>rmarkdown</strong> package, with any editor that got your preference. However, RStudio has a deep integration with R Markdown and offers additional feature that will help your project workflow without a doubt.</p>
-<div id="r-markdown-specific-rstudio-keyboard-shorcuts" class="section level3">
-<h3><span class="header-section-number">12.3.1</span> R Markdown specific Rstudio keyboard shorcuts</h3>
+<div id="r-markdown-specific-rstudio-keyboard-shortcuts" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> R Markdown specific Rstudio keyboard shortcuts</h3>
 <!-- https://stackoverflow.com/questions/30938280/keyboard-shortcut-to-produce-code-chunk-brackets-in-markdown-in-r-for-rstudio -->
-<p>Like any great IDE, RStudio has keyboard shorcuts<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">12.1</a>.</p>
+<p>Like any great IDE, RStudio has keyboard shortcuts<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">12.1</a>.</p>
 <table>
-<caption><span id="tab:keyboardShortcuts">TABLE 12.1: </span>Rmarkdown related Rstudio keyboard shorcuts</caption>
+<caption><span id="tab:keyboardShortcuts">TABLE 12.1: </span>Rmarkdown related Rstudio keyboard shortcuts</caption>
 <thead>
 <tr class="header">
 <th align="left">Description</th>
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb161-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
 <a class="sourceLine" id="cb161-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
 <a class="sourceLine" id="cb161-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/09/10, the output file name would be example-20190910.html.</p>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/09/16, the output file name would be example-20190916.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
 <a class="sourceLine" id="cb162-2" data-line-number="2"><span class="co">#&#39;</span></a>

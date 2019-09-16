@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>12.2.3</b> Which method should you use?</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>12.3</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
 <li class="chapter" data-level="12.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>12.3.2</b> Customising the knit button</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
@@ -303,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="automatically-generate-package-citations" class="section level2">
 <h2><span class="header-section-number">11.5</span> Automatically Generate Package Citations</h2>
 <!-- TODO: May add a full example into the repository examples -->
-<p>It is important to that an acknowledgements is provided within your work to authors of any literature or software referenced. Within a typical workflow, this can be a frustrating experience if you are required to manually identify the correctly formatted citations, load them into a referencing software and then refer to them within the text. However, R Markdown makes it easy to streamline this process. We can generate a BibTex file for packages used within your analysis using the <code>write_bib</code> function within R Markdown.</p>
+<p>It is important to that an acknowledgement is provided within your work to authors of any literature or software referenced. Within a typical workflow, this can be a frustrating experience if you are required to manually identify the correctly formatted citations, load them into a referencing software and then refer to them within the text. However, R Markdown makes it easy to streamline this process. We can generate a BibTex file for packages used within your analysis using the <code>write_bib</code> function within R Markdown.</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="co"># automatically create a bib database for R packages</span></a>
 <a class="sourceLine" id="cb153-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(<span class="kw">.packages</span>(), <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, </a>
 <a class="sourceLine" id="cb153-3" data-line-number="3">  <span class="st">&quot;DiagrammeR&quot;</span>), <span class="st">&quot;packages.bib&quot;</span>)</a></code></pre></div>

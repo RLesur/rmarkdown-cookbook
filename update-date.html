@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>12.2.3</b> Which method should you use?</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>12.3</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
 <li class="chapter" data-level="12.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>12.3.2</b> Customising the knit button</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
@@ -307,11 +307,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></a></code></pre></div>
 <p>You may want to specify the desired date or date-time format to make it more human-readable, e.g.,</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span></a></code></pre></div>
-<p>This will generate the date dynamically each time you knit your document, e.g., 10 September, 2019. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:</p>
+<p>This will generate the date dynamically each time you knit your document, e.g., 16 September, 2019. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:</p>
 <ul>
 <li><code>%B %Y</code>: September 2019</li>
-<li><code>%d/%m/%y</code>: 10/09/19</li>
-<li><code>%a/%d/%b</code>: Tue 10 Sep</li>
+<li><code>%d/%m/%y</code>: 16/09/19</li>
+<li><code>%a/%d/%b</code>: Mon 16 Sep</li>
 </ul>
 <p>A full table of POSIXct formats is shown in Table <a href="update-date.html#tab:date-format">3.1</a>.</p>
 <table>

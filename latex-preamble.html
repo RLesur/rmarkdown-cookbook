@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>12.2.3</b> Which method should you use?</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>12.3</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
 <li class="chapter" data-level="12.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>12.3.2</b> Customising the knit button</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
@@ -309,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb48-4" data-line-number="4"><span class="co">% body</span></a>
 <a class="sourceLine" id="cb48-5" data-line-number="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
 <p>That is, you declare the document class in <code>\documentclass{}</code>, load certain LaTeX packages and set certain options if necessary in the preamble, and start writing the body of your document after <code>\begin{document}</code>. A Markdown document is mostly the body of the document. If you want to add anything to the preamble, you have to use the <code>includes</code> option of <code>pdf_document</code>. This option has three sub-options: <code>in_header</code>, <code>before_body</code>, and <code>after_body</code>. Each of them takes one or multiple file paths. The file(s) specified in <code>in_header</code> will be added to the preamble. The files specified in <code>before_body</code> and <code>after_body</code> are added before and after the document body, respectively.</p>
-<p>For example, below is a trick that turns the URLs in hyperlinks into footnotes. This trick is useful because (by default) readers do not know the actual URL when they see the text in PDF generated from <code>\href{URL}{text}</code>. This trick displays both the text ad URL.</p>
+<p>For example, below is a trick that turns the URLs in hyperlinks into footnotes. This trick is useful because (by default) readers do not know the actual URL when they see the text in PDF generated from <code>\href{URL}{text}</code>. This trick displays both the text and URL.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co">% you may want to save a copy of \href before redefining it</span></a>
 <a class="sourceLine" id="cb49-2" data-line-number="2"><span class="co">% \let\oldhref\href</span></a>
 <a class="sourceLine" id="cb49-3" data-line-number="3"><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</a></code></pre></div>
