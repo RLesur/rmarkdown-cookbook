@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="linebreaks.html"/>
-<link rel="next" href="formatting.html"/>
+<link rel="next" href="equatiomatic.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,51 +306,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.8</span> Put together all code in the appendix</h2>
 <p>Unless the target readers are highly interested in the computational details while they read a report, you may not want to show the source code blocks in the report, but set the chunk option <code>echo = FALSE</code> to hide the source code instead, so readers will not be distracted by the program code for computing. However, the source code is still important for the sake of reproducible research. Sometimes readers may want to verify the computational correctness after they have finished reading the report. In this case, it can be a good idea to hold all code blocks in the body of the report, and display them at the end of a document (e.g., in an appendix).</p>
 <p>There is a simple method of extracting all code chunks in a document and put them together in a single code chunk using the chunk option <code>ref.label</code> (label references) and the function <code>knitr::all_labels()</code>, e.g.,</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="fu"># Appendix: All code for this report</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="bn">```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}</span></a>
-<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="fu"># Appendix: All code for this report</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="bn">```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="bn">```</span></a></code></pre></div>
 <p>The chunk option <code>ref.label</code> takes a vector of chunk labels to retrieve the content of these chunks. For example, the code chunk with the label <code>chunk-a</code> is the combination of <code>chunk-c</code> and <code>chunk-b</code> below:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="bn">```{r chunk-a, ref.label=c(&#39;chunk-c&#39;, &#39;chunk-b&#39;)}</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="bn">```{r chunk-b}</span></a>
-<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="bn"># this is the chunk b</span></a>
-<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="bn">1 + 1</span></a>
-<a class="sourceLine" id="cb31-7" data-line-number="7"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb31-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb31-9" data-line-number="9"><span class="bn">```{r chunk-c}</span></a>
-<a class="sourceLine" id="cb31-10" data-line-number="10"><span class="bn"># this is the chunk c</span></a>
-<a class="sourceLine" id="cb31-11" data-line-number="11"><span class="bn">2 + 2</span></a>
-<a class="sourceLine" id="cb31-12" data-line-number="12"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="bn">```{r chunk-a, ref.label=c(&#39;chunk-c&#39;, &#39;chunk-b&#39;)}</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="bn">```{r chunk-b}</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="bn"># this is the chunk b</span></a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="bn">```{r chunk-c}</span></a>
+<a class="sourceLine" id="cb35-10" data-line-number="10"><span class="bn"># this is the chunk c</span></a>
+<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="bn">2 + 2</span></a>
+<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="bn">```</span></a></code></pre></div>
 <p>In other words, <code>chunk-a</code> is essentially this:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="bn">```{r chunk-a}</span></a>
-<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="bn"># this is the chunk c</span></a>
-<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="bn">2 + 2</span></a>
-<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="bn"># this is the chunk b</span></a>
-<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="bn">1 + 1</span></a>
-<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="bn">```{r chunk-a}</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="bn"># this is the chunk c</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="bn">2 + 2</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="bn"># this is the chunk b</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
 <p>The chunk option <code>ref.label</code> has provided a very flexible way of reorganizing code chunks in a document without resorting to cut-and-paste. It does not matter if the code chunks referenced are before or after the code chunk that uses <code>ref.label</code>. An early code chunk can reference a later chunk.</p>
 <p>The function <code>knitr::all_labels()</code> returns a vector of all chunk labels in the document, so <code>ref.label = knitr::all_labels()</code> means retrieving all source code chunks to this code chunk. With the chunk options <code>echo = TRUE</code> (display the code) and <code>eval = FALSE</code> (do not evaluate this particular code chunk because all code has been executed before), you can show a copy of all your source code in one code chunk.</p>
 <p>Since <code>ref.label</code> can be a character vector of arbitrary chunk labels, you can certainly filter the labels to decide a subset of code chunks to display in the code appendix. Below is an example (credits to <a href="https://yihui.name/en/2018/09/code-appendix/">Ariel Muldoon</a>) of excluding the labels <code>setup</code> and <code>get-labels</code>:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="bn">```{r get-labels, echo = FALSE}</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="bn">labs = knitr::all_labels()</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="bn">labs = setdiff(labs, c(&quot;setup&quot;, &quot;get-labels&quot;))</span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb33-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb33-6" data-line-number="6"><span class="bn">```{r all-code, ref.label=labs, eval=FALSE}</span></a>
-<a class="sourceLine" id="cb33-7" data-line-number="7"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="bn">```{r get-labels, echo = FALSE}</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="bn">labs = knitr::all_labels()</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="bn">labs = setdiff(labs, c(&quot;setup&quot;, &quot;get-labels&quot;))</span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="bn">```{r all-code, ref.label=labs, eval=FALSE}</span></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="bn">```</span></a></code></pre></div>
 <p>You can also filter code chunks using the arguments of <code>knitr::all_labels()</code>. For example, you may use <code>knitr::all_labels(engine == &quot;Rcpp&quot;, echo == FALSE)</code> to obtain all your code chunks that use the <code>Rcpp</code> engine (<code>engine == &quot;Rcpp&quot;</code>) and are not displayed in the document (<code>echo = FALSE</code>). If you want precise control over which code chunks to display in the appendix, you may use a special chunk option <code>appendix = TRUE</code> on certain code chunks, and <code>ref.label = knitr::all_labels(appendix == TRUE)</code> to obtain the labels of these code chunks.</p>
-
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="linebreaks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="formatting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="equatiomatic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

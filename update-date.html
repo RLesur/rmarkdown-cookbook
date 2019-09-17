@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,14 +306,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.3</span> Update the date automatically</h2>
 <!-- https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown -->
 <p>If you want the date on which the Rmd document is compiled to be reflected in the output report, you can add an inline R expression to the <code>date</code> field in YAML, and use the <code>Sys.Date()</code> or <code>Sys.time()</code> function to obtain the current date, e.g.,</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></a></code></pre></div>
 <p>You may want to specify the desired date or date-time format to make it more human-readable, e.g.,</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span></a></code></pre></div>
-<p>This will generate the date dynamically each time you knit your document, e.g., 16 September, 2019. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span></a></code></pre></div>
+<p>This will generate the date dynamically each time you knit your document, e.g., 17 September, 2019. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:</p>
 <ul>
 <li><code>%B %Y</code>: September 2019</li>
-<li><code>%d/%m/%y</code>: 16/09/19</li>
-<li><code>%a/%d/%b</code>: Mon 16 Sep</li>
+<li><code>%d/%m/%y</code>: 17/09/19</li>
+<li><code>%a/%d/%b</code>: Tue 17 Sep</li>
 </ul>
 <p>A full table of POSIXct formats is shown in Table <a href="update-date.html#tab:date-format">3.1</a>.</p>
 <table>
@@ -400,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>As a final note, you may also want to include some explanatory text along with the date. You can add any text such as “Last compiled on” before the R code as follows:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;Last compiled on `r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;Last compiled on `r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span></a></code></pre></div>
 </div>
             </section>
 

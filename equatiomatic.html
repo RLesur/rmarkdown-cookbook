@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.2 Multi-file documents | R Markdown Cookbook</title>
+  <title>3.9 Convert models to equations | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.2 Multi-file documents | R Markdown Cookbook" />
+  <meta property="og:title" content="3.9 Convert models to equations | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.2 Multi-file documents | R Markdown Cookbook" />
+  <meta name="twitter:title" content="3.9 Convert models to equations | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="customRender.html"/>
-<link rel="next" href="rstudio-integration-with-r-markdown.html"/>
+<link rel="prev" href="code-appendix.html"/>
+<link rel="next" href="formatting.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -302,86 +302,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multi-file-documents" class="section level2">
-<h2><span class="header-section-number">12.2</span> Multi-file documents</h2>
-<!-- https://stackoverflow.com/questions/25824795/how-to-combine-two-rmarkdown-rmd-files-into-a-single-output -->
-<p>With larger R Markdown projects, it can be useful to split the document into smaller files which are easier to handle than a single, massive <code>.Rmd</code> document. Also, we may also have generic components which we wish to use across all of our analyses, and rather than copying and pasting the same code across for each report.</p>
-<p>In this section, we highlight two approaches which can be used when splitting an R Markdown document into separate <code>.Rmd</code> files, using child documents and the <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span> package. Most importantly, we will highlight when it is preferred for each to be used within your analysis.</p>
-<div id="child-documents" class="section level3">
-<h3><span class="header-section-number">12.2.1</span> Child documents</h3>
-<p>We can include other R Markdown documents within a file by using child documents. The contents of the child document is loaded into the parent document, and any R code will be run as normally within <strong>knitr</strong>.</p>
-<p>To include a child document, we can add a code chunk with the option <code>child</code>, providing the file path to the <code>.Rmd</code> file to be included. The chunk should contain no code but we can specify additional chunk options if we wish to suppress the code output i.e. <code>echo=FALSE</code>. For example:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="bn">```{r, child = &quot;about.Rmd&quot;}</span></a>
-<a class="sourceLine" id="cb161-2" data-line-number="2"><span class="bn">```</span></a></code></pre></div>
-<p>Whereby the content of <code>about.Rmd</code> provides a short description of the packages used for the analysis:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="fu"># About</span></a>
-<a class="sourceLine" id="cb162-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb162-3" data-line-number="3">This analysis was written in the R programming language [@R-base]. The report was generated using **rmarkdown** [@R-markdown] and **knitr** [@R-knitr].</a></code></pre></div>
-<p>Child documents are useful where we have a standard piece of text that we wish to include across multiple documents. Rather than copying and pasting the text to each file, we can refer to a single source file. If any changes are made to our generic description at a later date, we can update a single source file and all the reports will be up to date.</p>
-<p>Further examples where child documents could be useful include:</p>
-<ul>
-<li><strong>Project Description</strong>: it is often useful to include generic description of the project</li>
-<li><strong>Funding Statements</strong>: research will often have the same funding statement used across all outputs</li>
-<li><strong>R Session Information</strong>: you may wish to include document metadata</li>
-</ul>
+<div id="equatiomatic" class="section level2">
+<h2><span class="header-section-number">3.9</span> Convert models to equations</h2>
+<p>The <strong>equatiomatic</strong> package (<a href="https://github.com/datalorax/equatiomatic" class="uri">https://github.com/datalorax/equatiomatic</a>) developed by Daniel Anderson et al. provides a convenient and automatic way to show the equations corresponding to models fitted in R. At the time of writing, this package is still very new on GitHub and its API may change significantly before its possible future CRAN release, so we only show a few brief examples below:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>cyl <span class="op">+</span><span class="st"> </span>disp, mtcars)</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co"># show the theoretical model</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">equatiomatic<span class="op">::</span><span class="kw">extract_eq</span>(fit)</a></code></pre></div>
+<p><span class="math display">\[
+\text{mpg} = \alpha + \beta_{1}(\text{cyl}) + \beta_{2}(\text{disp}) + \epsilon
+\]</span></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co"># display the actual coefficients</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">equatiomatic<span class="op">::</span><span class="kw">extract_eq</span>(fit, <span class="dt">use_coefs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><span class="math display">\[
+\text{mpg} = 34.66 - 1.59(\text{cyl}) - 0.02(\text{disp}) + \epsilon
+\]</span></p>
+<p>To display the actual math equations, you need the chunk option <code>results = &quot;asis&quot;</code>, otherwise the equations will be displayed as normal text output.</p>
+<p>Please read the documentation and follow the development of this package on GitHub if you are interested in knowing more about it.</p>
+
 </div>
-<div id="using-bookdown" class="section level3">
-<h3><span class="header-section-number">12.2.2</span> Using bookdown</h3>
-<p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb163-1" data-line-number="1">directory</a>
-<a class="sourceLine" id="cb163-2" data-line-number="2">  |- index.Rmd</a>
-<a class="sourceLine" id="cb163-3" data-line-number="3">  |- 01-intro.Rmd</a>
-<a class="sourceLine" id="cb163-4" data-line-number="4">  |- 02-analysis.Rmd</a></code></pre></div>
-<ul>
-<li><strong>index.Rmd</strong>:</li>
-</ul>
-<p>The main detail is that the main file has to be called <code>index.Rmd</code> , and must include the additional YAML line site: <code>bookdown::bookdown_site</code>. We must also use a <strong>bookdown</strong> output format such as <code>html_document2</code>, <code>pdf_document2</code>, <code>word_document2</code>:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb164-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb164-2" data-line-number="2">title: &quot;A Minimal bookdown document&quot;</a>
-<a class="sourceLine" id="cb164-3" data-line-number="3">site: bookdown::bookdown_site</a>
-<a class="sourceLine" id="cb164-4" data-line-number="4">output: bookdown::pdf_document2</a>
-<a class="sourceLine" id="cb164-5" data-line-number="5">---</a>
-<a class="sourceLine" id="cb164-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb164-7" data-line-number="7">Some content</a></code></pre></div>
-<ul>
-<li><strong>01-intro.Rmd:</strong></li>
-</ul>
-<div class="sourceCode" id="cb165"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="fu"># Chapter 1</span></a>
-<a class="sourceLine" id="cb165-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb165-3" data-line-number="3">This is chapter 1.</a></code></pre></div>
-<ul>
-<li><strong>02-analysis.Rmd</strong>:</li>
-</ul>
-<div class="sourceCode" id="cb166"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="fu"># Chapter 2</span></a>
-<a class="sourceLine" id="cb166-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb166-3" data-line-number="3">This is chapter 2.</a></code></pre></div>
-<p>When the file is built, <strong>bookdown</strong> merges the results of the separate files into a single output document. This will automatically be done in alphabetical order, so it makes sense to precede your file name with a numeric index as above.</p>
-<p>For a comprehensive overview of the package, readers may refer to the <a href=""><em>Bookdown Book</em></a> <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span> or <a href="https://bookdown.org/yihui/rmarkdown/">Chapter 18</a> of the <em>R Markdown Definitive Guide</em> <span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-xie2018">2018</a>)</span>.</p>
-</div>
-<div id="which-method-should-you-use" class="section level3">
-<h3><span class="header-section-number">12.2.3</span> Which method should you use?</h3>
-<p>There is a legacy of using child documents when creating longer documents, as <strong>bookdown</strong> was only released in 2016. As such, there is some confusion over which should be used when. In general, if you are wishing to reuse a component across multiple documents, it is recommended to use child documents. However, if you are wanting to write a book and split it into multiple files (preferably one per chapter), <strong>bookdown</strong> provides a lot of extra functionality and is generally preferred.</p>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2019b. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
-<div id="ref-xie2018">
-<p>Xie, Yihui, J.J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman &amp; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="customRender.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="rstudio-integration-with-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="code-appendix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="formatting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -411,7 +357,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/12-workflow.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/03-content.Rmd",
 "text": "Edit"
 },
 "history": {

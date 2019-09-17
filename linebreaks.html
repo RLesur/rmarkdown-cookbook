@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,26 +306,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.7</span> Preserve a large number of linebreaks</h2>
 <p>Markdown users may be surprised to realize that whitespaces (including linebreaks) are usually meaningless unless they are used in a verbatim environment (code blocks). Two or more spaces are the same as one space, and a linebreak is the same as a space. If you have used LaTeX or HTML before, you may not be surprised because the rule is the same in these languages.</p>
 <p>In Markdown, we often use a blank line to separate elements such as paragraphs. To break a line without introducing a new paragraph, you have to use two trailing spaces. Sometimes you may want to break the lines for many times, especially when you write or quote poems or lyrics. Adding two spaces after each line manually is a tedious task. The function <code>blogdown:::quote_poem()</code> can do this task automatically, e.g.,</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">blogdown<span class="op">:::</span><span class="kw">quote_poem</span>(<span class="kw">c</span>(<span class="st">&quot;This line&quot;</span>, <span class="st">&quot;should be&quot;</span>, <span class="st">&quot;broken.&quot;</span>))</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">## [1] &quot;&gt; This line  \nshould be  \nbroken.&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">blogdown<span class="op">:::</span><span class="kw">quote_poem</span>(<span class="kw">c</span>(<span class="st">&quot;This line&quot;</span>, <span class="st">&quot;should be&quot;</span>, <span class="st">&quot;broken.&quot;</span>))</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co">## [1] &quot;&gt; This line  \nshould be  \nbroken.&quot;</span></a></code></pre></div>
 <p>If you use the RStudio IDE, you can select the text in which you want to preserve the linebreaks, and apply the addin “Quote Poem”. For example, the text below (in a fenced code block) does not contain trailing spaces:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb29-1" data-line-number="1">Like Barley Bending</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">　by Sara Teasdale</a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">Like barley bending</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">　In low fields by the sea,</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">Singing in hard wind</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">　Ceaselessly;</a>
-<a class="sourceLine" id="cb29-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb29-9" data-line-number="9">Like barley bending</a>
-<a class="sourceLine" id="cb29-10" data-line-number="10">　And rising again,</a>
-<a class="sourceLine" id="cb29-11" data-line-number="11">So would I, unbroken,</a>
-<a class="sourceLine" id="cb29-12" data-line-number="12">　Rise from pain;</a>
-<a class="sourceLine" id="cb29-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb29-14" data-line-number="14">So would I softly,</a>
-<a class="sourceLine" id="cb29-15" data-line-number="15">　Day long, night long,</a>
-<a class="sourceLine" id="cb29-16" data-line-number="16">Change my sorrow</a>
-<a class="sourceLine" id="cb29-17" data-line-number="17">　Into song.</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb33-1" data-line-number="1">Like Barley Bending</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">　by Sara Teasdale</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">Like barley bending</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">　In low fields by the sea,</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">Singing in hard wind</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">　Ceaselessly;</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb33-9" data-line-number="9">Like barley bending</a>
+<a class="sourceLine" id="cb33-10" data-line-number="10">　And rising again,</a>
+<a class="sourceLine" id="cb33-11" data-line-number="11">So would I, unbroken,</a>
+<a class="sourceLine" id="cb33-12" data-line-number="12">　Rise from pain;</a>
+<a class="sourceLine" id="cb33-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb33-14" data-line-number="14">So would I softly,</a>
+<a class="sourceLine" id="cb33-15" data-line-number="15">　Day long, night long,</a>
+<a class="sourceLine" id="cb33-16" data-line-number="16">Change my sorrow</a>
+<a class="sourceLine" id="cb33-17" data-line-number="17">　Into song.</a></code></pre></div>
 <p>After we select the above poem and click the RStudio addin “Quote Poem”, the output will be:</p>
 <blockquote>
 <p>Like Barley Bending<br />

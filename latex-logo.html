@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,29 +306,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.2</span> Add logo to title page</h2>
 <!-- https://stackoverflow.com/questions/29389149/add-image-in-title-page-of-rmarkdown-pdf -->
 <p>We can use the <strong>titling</strong> LaTeX package to alter our title block to include an image. Below is a full example that shows how to add the R logo (<code>logo.jpg</code>) to the title page. The image can be of any format that LaTeX supports (e.g., <code>jpg</code>, <code>png</code>, or <code>pdf</code>).</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb51-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2">title: Adding a Logo to LaTeX Title</a>
-<a class="sourceLine" id="cb51-3" data-line-number="3">author: Michael Harper</a>
-<a class="sourceLine" id="cb51-4" data-line-number="4">date: December 7th, 2018</a>
-<a class="sourceLine" id="cb51-5" data-line-number="5">output: pdf_document</a>
-<a class="sourceLine" id="cb51-6" data-line-number="6">header-includes:</a>
-<a class="sourceLine" id="cb51-7" data-line-number="7">  - \usepackage{titling}</a>
-<a class="sourceLine" id="cb51-8" data-line-number="8">  - \pretitle{\begin{center}</a>
-<a class="sourceLine" id="cb51-9" data-line-number="9"><span class="bn">    \includegraphics[width=2in,height=2in]{logo.jpg}\LARGE\\}</span></a>
-<a class="sourceLine" id="cb51-10" data-line-number="10">  - \posttitle{\end{center}}</a>
-<a class="sourceLine" id="cb51-11" data-line-number="11">---</a>
-<a class="sourceLine" id="cb51-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb51-13" data-line-number="13">&lt;!--<span class="co"> Optionally include a page break. This will force the start</span></a>
-<a class="sourceLine" id="cb51-14" data-line-number="14"><span class="co">of the document to the second page --&gt;</span></a>
-<a class="sourceLine" id="cb51-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb51-16" data-line-number="16">\newpage</a>
-<a class="sourceLine" id="cb51-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb51-18" data-line-number="18">This is your report.</a>
-<a class="sourceLine" id="cb51-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb51-20" data-line-number="20"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb51-21" data-line-number="21"><span class="bn"># copy the R logo to the current directory</span></a>
-<a class="sourceLine" id="cb51-22" data-line-number="22"><span class="bn">file.copy(file.path(R.home(&quot;doc&quot;), &quot;html&quot;, &quot;logo.jpg&quot;), &#39;.&#39;)</span></a>
-<a class="sourceLine" id="cb51-23" data-line-number="23"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb57-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">title: Adding a Logo to LaTeX Title</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">author: Michael Harper</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">date: December 7th, 2018</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">output: pdf_document</a>
+<a class="sourceLine" id="cb57-6" data-line-number="6">header-includes:</a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">  - \usepackage{titling}</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">  - \pretitle{\begin{center}</a>
+<a class="sourceLine" id="cb57-9" data-line-number="9"><span class="bn">    \includegraphics[width=2in,height=2in]{logo.jpg}\LARGE\\}</span></a>
+<a class="sourceLine" id="cb57-10" data-line-number="10">  - \posttitle{\end{center}}</a>
+<a class="sourceLine" id="cb57-11" data-line-number="11">---</a>
+<a class="sourceLine" id="cb57-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb57-13" data-line-number="13">&lt;!--<span class="co"> Optionally include a page break. This will force the start</span></a>
+<a class="sourceLine" id="cb57-14" data-line-number="14"><span class="co">of the document to the second page --&gt;</span></a>
+<a class="sourceLine" id="cb57-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb57-16" data-line-number="16">\newpage</a>
+<a class="sourceLine" id="cb57-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb57-18" data-line-number="18">This is your report.</a>
+<a class="sourceLine" id="cb57-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb57-20" data-line-number="20"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb57-21" data-line-number="21"><span class="bn"># copy the R logo to the current directory</span></a>
+<a class="sourceLine" id="cb57-22" data-line-number="22"><span class="bn">file.copy(file.path(R.home(&quot;doc&quot;), &quot;html&quot;, &quot;logo.jpg&quot;), &#39;.&#39;)</span></a>
+<a class="sourceLine" id="cb57-23" data-line-number="23"><span class="bn">```</span></a></code></pre></div>
 <p>An example output is shown in Figure <a href="latex-logo.html#fig:latex-logo">5.1</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:latex-logo"></span>
 <img src="images/latex-logo.png" alt="A logo on a LaTeX title page."  />
@@ -335,9 +337,9 @@ FIGURE 5.1: A logo on a LaTeX title page.
 </p>
 </div>
 <p>An alternative method that does not require a special LaTeX package (<strong>titling</strong>) is to just insert the image to the <code>title</code> field using the Markdown syntax. For example:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="fu">title:</span><span class="at"> |</span></a>
-<a class="sourceLine" id="cb52-2" data-line-number="2">  !<span class="kw">[]</span>(logo.jpg)<span class="kw">{</span>width=1in<span class="kw">}</span>  </a>
-<a class="sourceLine" id="cb52-3" data-line-number="3">  Adding a Logo to LaTeX Title</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="fu">title:</span><span class="at"> |</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">  !<span class="kw">[]</span>(logo.jpg)<span class="kw">{</span>width=1in<span class="kw">}</span>  </a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">  Adding a Logo to LaTeX Title</a></code></pre></div>
 <p>In this case, you will not need the <code>header-includes</code> field in the YAML frontmatter in the first example. Please note that although you cannot see them, there are two trailing spaces after <code>![](logo.jpg){width=1in}</code>, which means a linebreak in Markdown (see Section <a href="linebreaks.html#linebreaks">3.7</a>). Without the linebreak, the image and the title would be on the same line, which may not be what you desire.</p>
 </div>
             </section>

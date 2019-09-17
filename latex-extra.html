@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -307,23 +309,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="loading-latex-packages" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Loading LaTeX packages</h3>
 <p>We can load additional LaTeX packages using the <code>extra_dependencies</code> option within the <code>pdf_document</code> YAML settings. This allows us to provide a list of LaTeX packages to be loaded in the intermediate LaTeX output document, e.g.,</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Using more LaTeX packages&quot;</span></a>
-<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="fu">output:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb53-5" data-line-number="5">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span> <span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span></a>
-<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Using more LaTeX packages&quot;</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb59-5" data-line-number="5">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span> <span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span></a>
+<a class="sourceLine" id="cb59-6" data-line-number="6"><span class="ot">---</span></a></code></pre></div>
 <p>If you need to specify options when loading the package, you can add a second-level to the list and provide the options as a list, e.g.,</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb54-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb54-3" data-line-number="3">    <span class="fu">extra_dependencies:</span></a>
-<a class="sourceLine" id="cb54-4" data-line-number="4">      <span class="fu">caption:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;labelfont={bf}&quot;</span><span class="kw">]</span></a>
-<a class="sourceLine" id="cb54-5" data-line-number="5">      <span class="fu">hyperref:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;unicode=true&quot;</span><span class="kw">,</span> <span class="st">&quot;breaklinks=true&quot;</span><span class="kw">]</span></a>
-<a class="sourceLine" id="cb54-6" data-line-number="6">      <span class="fu">lmodern:</span><span class="at"> </span><span class="dt">null</span></a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="fu">output:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">    <span class="fu">extra_dependencies:</span></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4">      <span class="fu">caption:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;labelfont={bf}&quot;</span><span class="kw">]</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5">      <span class="fu">hyperref:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;unicode=true&quot;</span><span class="kw">,</span> <span class="st">&quot;breaklinks=true&quot;</span><span class="kw">]</span></a>
+<a class="sourceLine" id="cb60-6" data-line-number="6">      <span class="fu">lmodern:</span><span class="at"> </span><span class="dt">null</span></a></code></pre></div>
 <p>For those familiar with LaTeX, this is equivalent to the following LaTeX code:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="bu">\usepackage</span>[labelfont={bf}]{<span class="ex">caption</span>} </a>
-<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="bu">\usepackage</span>[unicode=true, breaklinks=true]{<span class="ex">hyperref</span>}</a>
-<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="fu">\userpackage</span>{lmodern}</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="bu">\usepackage</span>[labelfont={bf}]{<span class="ex">caption</span>} </a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="bu">\usepackage</span>[unicode=true, breaklinks=true]{<span class="ex">hyperref</span>}</a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="fu">\userpackage</span>{lmodern}</a></code></pre></div>
 </div>
 <div id="example-packages" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Example packages</h3>

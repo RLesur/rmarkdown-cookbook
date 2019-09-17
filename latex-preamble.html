@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -303,21 +305,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="latex-preamble" class="section level2">
 <h2><span class="header-section-number">5.1</span> Add LaTeX code to the preamble</h2>
 <p>The general structure of a LaTeX document is like this:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="co">% preamble</span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
-<a class="sourceLine" id="cb48-4" data-line-number="4"><span class="co">% body</span></a>
-<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="co">% preamble</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="co">% body</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
 <p>That is, you declare the document class in <code>\documentclass{}</code>, load certain LaTeX packages and set certain options if necessary in the preamble, and start writing the body of your document after <code>\begin{document}</code>. A Markdown document is mostly the body of the document. If you want to add anything to the preamble, you have to use the <code>includes</code> option of <code>pdf_document</code>. This option has three sub-options: <code>in_header</code>, <code>before_body</code>, and <code>after_body</code>. Each of them takes one or multiple file paths. The file(s) specified in <code>in_header</code> will be added to the preamble. The files specified in <code>before_body</code> and <code>after_body</code> are added before and after the document body, respectively.</p>
 <p>For example, below is a trick that turns the URLs in hyperlinks into footnotes. This trick is useful because (by default) readers do not know the actual URL when they see the text in PDF generated from <code>\href{URL}{text}</code>. This trick displays both the text and URL.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co">% you may want to save a copy of \href before redefining it</span></a>
-<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="co">% \let\oldhref\href</span></a>
-<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="co">% you may want to save a copy of \href before redefining it</span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="co">% \let\oldhref\href</span></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</a></code></pre></div>
 <p>You can save the above code in a file with an arbitrary filename, e.g., <code>preamble.tex</code>. Then include it in the preamble through:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb50-4" data-line-number="4">      <span class="fu">in_header:</span><span class="at"> </span><span class="st">&quot;preamble.tex&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">      <span class="fu">in_header:</span><span class="at"> </span><span class="st">&quot;preamble.tex&quot;</span></a></code></pre></div>
 <p>Another way to add code to the preamble is to use the <code>header-includes</code> field in the YAML frontmatter. We will show an example in Section <a href="latex-logo.html#latex-logo">5.2</a>. The advantage of using <code>header-includes</code> is that you can keep everything in one R Markdown document. However, if your report is to be generated into multiple output formats, we still recommend that you use the <code>includes</code> method, because the <code>header-includes</code> field is unconditional, and will be included in non-LaTeX output documents, too. By comparison, the <code>includes</code> option is only applied to the <code>pdf_document</code> format.</p>
 </div>
             </section>

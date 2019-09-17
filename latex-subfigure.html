@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,27 +306,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.6</span> LaTeX sub-figures</h2>
 <p>Sometimes you may want to include multiple images in a single figure environment. Sub-figures allow us to achieve this by arranging multiple images within a single environment and providing each with their own sub-caption.</p>
 <p>Sub-figures require the LaTeX package <strong>subfig</strong>. We can load it via the <code>extra_dependencies</code> YAML option within the <code>pdf_document</code> output. For example:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb64-3" data-line-number="3">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb64-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb70-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
 <p>To arrange all plots from a code chunk in sub-figures, you have to use the chunk options <code>fig.cap</code> (the caption for the whole figure environment) and <code>fig.subcap</code> (a character vector of the captions for sub-figures). For best output, you can also use the following options:</p>
 <ul>
 <li><p><code>fig.ncol</code>: The number of columns of sub-figures. By default, all plots are arranged in a single row. You can break them into multiple rows.</p></li>
 <li><p><code>out.width</code>: The output width of individual plots. You will normally set this to <code>100%</code> divided by the number of columns. For example, if you have two plots, the <code>out.width</code> option should be equal to or less than <code>50%</code>, otherwise the plots may exceed the page margin.</p></li>
 </ul>
 <p>Below is an illustrative example:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb65-3" data-line-number="3">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb65-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></a>
-<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="bn">```{r fig-sub, fig.cap=&#39;All&#39;, fig.subcap=c(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)}</span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="bn">plot(1:10)</span></a>
-<a class="sourceLine" id="cb66-3" data-line-number="3"><span class="bn">plot(cars, pch = 19)</span></a>
-<a class="sourceLine" id="cb66-4" data-line-number="4"><span class="bn">boxplot(Sepal.Width ~ Species, data = iris)</span></a>
-<a class="sourceLine" id="cb66-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb71-4" data-line-number="4">    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></a>
+<a class="sourceLine" id="cb71-5" data-line-number="5"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="bn">```{r fig-sub, fig.cap=&#39;All&#39;, fig.subcap=c(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)}</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="bn">plot(1:10)</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="bn">plot(cars, pch = 19)</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="bn">boxplot(Sepal.Width ~ Species, data = iris)</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
 <p>The output is shown in Figure <a href="latex-subfigure.html#fig:latex-subfig">5.2</a>. For the sake of simplicity, we omitted a few chunk options in the chunk header of the above example, including <code>fig.ncol = 2</code>, <code>out.width = &quot;50%&quot;</code>, <code>fig.align = &quot;center&quot;</code>, and the actual long captions.</p>
 <div class="figure"><span id="fig:latex-subfig"></span>
 <img src="images/latex-subfig.png" alt="An example of one figure environment containing multiple sub-figures."  />

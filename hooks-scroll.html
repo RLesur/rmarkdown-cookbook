@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 <li class="chapter" data-level="2.2" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>2.2</b> Render an R script to a report</a></li>
+<li class="chapter" data-level="2.3" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>2.3</b> Convert R Markdown to R script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>3</b> Document Elements</a><ul>
 <li class="chapter" data-level="3.1" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3.1</b> Bibliographies and citations</a><ul>
@@ -161,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>3.6</b> Combine words into a comma-separated phrase</a></li>
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
+<li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -304,16 +306,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> Scrollable code chunks</h2>
 <p>It was shown in Section <a href="html-scroll.html#html-scroll">6.2</a> how we can use custom CSS to add a scroll bar to the output code chunks. To highlight the use of code chunks, we extend the example here to allow for user-specified maximum heights to be provided to chunks.</p>
 <p>Firstly, we define the custom hook. In this chunk, we need to insert the formatting required to style the scroll bar. The variable <code>max_height</code> is used to control the maximum height of the code chunk:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>max_height)) {</a>
-<a class="sourceLine" id="cb89-3" data-line-number="3">    <span class="kw">paste</span>(<span class="st">&quot;&lt;pre style = </span><span class="ch">\&quot;</span><span class="st">max-height:&quot;</span>, options<span class="op">$</span>max_height, </a>
-<a class="sourceLine" id="cb89-4" data-line-number="4">      <span class="st">&quot;;float: left; width: 910px; overflow-y: auto;</span><span class="ch">\&quot;</span><span class="st">&gt;&quot;</span>, </a>
-<a class="sourceLine" id="cb89-5" data-line-number="5">      x, <span class="st">&quot;&lt;/pre&gt;&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb89-6" data-line-number="6">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb89-7" data-line-number="7">    x</a>
-<a class="sourceLine" id="cb89-8" data-line-number="8">  }</a>
-<a class="sourceLine" id="cb89-9" data-line-number="9">  </a>
-<a class="sourceLine" id="cb89-10" data-line-number="10">})</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>max_height)) {</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">    <span class="kw">paste</span>(<span class="st">&quot;&lt;pre style = </span><span class="ch">\&quot;</span><span class="st">max-height:&quot;</span>, options<span class="op">$</span>max_height, <span class="st">&quot;;float: left; width: 910px; overflow-y: auto;</span><span class="ch">\&quot;</span><span class="st">&gt;&quot;</span>, </a>
+<a class="sourceLine" id="cb95-4" data-line-number="4">      x, <span class="st">&quot;&lt;/pre&gt;&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb95-5" data-line-number="5">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb95-6" data-line-number="6">    x</a>
+<a class="sourceLine" id="cb95-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb95-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb95-9" data-line-number="9">})</a></code></pre></div>
 <p>To use this option, we can specify the option within the code chunk header.</p>
 <pre><code>```{r max_height = &quot;200px&quot;}
 print(cars)
