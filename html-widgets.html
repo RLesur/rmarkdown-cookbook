@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Installation | R Markdown Cookbook</title>
+  <title>7.2 Display HTML widgets | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Installation | R Markdown Cookbook" />
+  <meta property="og:title" content="7.2 Display HTML widgets | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Installation | R Markdown Cookbook" />
+  <meta name="twitter:title" content="7.2 Display HTML widgets | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="author.html"/>
-<link rel="next" href="install-latex.html"/>
+<link rel="prev" href="latex-html.html"/>
+<link rel="next" href="figures-side.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -305,33 +305,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Installation</h1>
-<p>To use R Markdown, you have to install R <span class="citation">(R Core Team <a href="#ref-R-base">2017</a>)</span> and the R package <strong>rmarkdown</strong> <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2019</a>)</span>. We also recommend that you install the RStudio IDE (<a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a>). RStudio is not required, but it will make it easier for an average user to work with R Markdown because of the editor support. If choose not to use the RStudio IDE, you will need a separate installation of Pandoc (<a href="https://pandoc.org" class="uri">https://pandoc.org</a>).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># install the rmarkdown package from CRAN in R</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># or install from GitHub if you want to test the</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># development version</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;remotes&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/rmarkdown&quot;</span>)</a></code></pre></div> 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2019. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-R-base">
-<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
-</div>
+<div id="html-widgets" class="section level2">
+<h2><span class="header-section-number">7.2</span> Display HTML widgets</h2>
+<p>HTML widgets (<a href="https://htmlwidgets.org" class="uri">https://htmlwidgets.org</a>) are typically interactive JavaScript applications, which only work in HTML output. If you knit an Rmd document containing HTML widgets to a non-HTML format such as PDF or Word, you may get an error message like this:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb93-1" data-line-number="1">Error: Functions that produce HTML output found in document</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">targeting X output. Please change the output type of this</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">document to HTML. Alternatively, you can allow HTML output in</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4">non-HTML formats by adding this option to the YAML front-matter</a>
+<a class="sourceLine" id="cb93-5" data-line-number="5">of your rmarkdown file:</a>
+<a class="sourceLine" id="cb93-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb93-7" data-line-number="7">  always_allow_html: yes</a>
+<a class="sourceLine" id="cb93-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb93-9" data-line-number="9">Note however that the HTML output will not be visible in</a>
+<a class="sourceLine" id="cb93-10" data-line-number="10">non-HTML formats.</a></code></pre></div>
+<p>There is actually a better solution than the one mentioned in the above error message, but it involves extra packages. You can install the <strong>webshot</strong> package in R and also install PhantomJS:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2">webshot<span class="op">::</span><span class="kw">install_phantomjs</span>()</a></code></pre></div>
+<p>Then if you knit an Rmd document with HTML widgets to a non-HTML format, the HTML widgets will be displayed as static screenshots. The screenshots are automatically taken in <strong>knitr</strong>. <a href="https://bookdown.org/yihui/bookdown/html-widgets.html">Section 2.10</a> of the <strong>bookdown</strong> book contains more information on finer control over the screenshots.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="author.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="install-latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="latex-html.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="figures-side.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -361,7 +359,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/01-installation.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/07-multiformat.Rmd",
 "text": "Edit"
 },
 "history": {

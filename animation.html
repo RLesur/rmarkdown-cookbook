@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Installation | R Markdown Cookbook</title>
+  <title>3.10 Create an animation from multiple R plots | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Installation | R Markdown Cookbook" />
+  <meta property="og:title" content="3.10 Create an animation from multiple R plots | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Installation | R Markdown Cookbook" />
+  <meta name="twitter:title" content="3.10 Create an animation from multiple R plots | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="author.html"/>
-<link rel="next" href="install-latex.html"/>
+<link rel="prev" href="equatiomatic.html"/>
+<link rel="next" href="formatting.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -305,33 +305,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Installation</h1>
-<p>To use R Markdown, you have to install R <span class="citation">(R Core Team <a href="#ref-R-base">2017</a>)</span> and the R package <strong>rmarkdown</strong> <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2019</a>)</span>. We also recommend that you install the RStudio IDE (<a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a>). RStudio is not required, but it will make it easier for an average user to work with R Markdown because of the editor support. If choose not to use the RStudio IDE, you will need a separate installation of Pandoc (<a href="https://pandoc.org" class="uri">https://pandoc.org</a>).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># install the rmarkdown package from CRAN in R</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># or install from GitHub if you want to test the</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># development version</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;remotes&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/rmarkdown&quot;</span>)</a></code></pre></div> 
+<div id="animation" class="section level2">
+<h2><span class="header-section-number">3.10</span> Create an animation from multiple R plots</h2>
+<p>When you generate a series of plots in a code chunk, you can combine them into an animation. It is easy to do so if the output format is HTML—you only need to install the <strong>gifski</strong> package and set the chunk option <code>animation.hook = &quot;gifski&quot;</code>. Figure <a href="animation.html#fig:pacman">3.2</a> shows a simple “Pac-man” animation created from the code chunk below:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="bn">```{r, animation.hook=&quot;gifski&quot;}</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="bn">for (i in 1:2) {</span></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="bn">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
+<div class="figure"><span id="fig:pacman"></span>
+<img src="rmarkdown-cookbook_files/figure-html/pacman-.gif" alt="A Pac-man animation." width="672" />
+<p class="caption">
+FIGURE 3.2: A Pac-man animation.
+</p>
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2019. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+<p>The image format of the animation is GIF, which works well for HTML output, but it is not straightforward to support GIF in LaTeX. That is why you only see two static image frames if you are reading the PDF or printed version of this book in Figure <a href="animation.html#fig:pacman">3.2</a>. If you read the online version of this book, you will see the actual animation.</p>
+<p>Animations can work in PDF, but there are two prerequisites. First, you have to load the LaTeX package <a href="https://ctan.org/pkg/animate"><strong>animate</strong></a> (see Section <a href="latex-extra.html#latex-extra">5.3</a> for how). Second, you can only use Acrobat Reader to view the animation. Then the chunk option <code>fig.show = &quot;animate&quot;</code> will use the <strong>animate</strong> package to create the animation. Below is an example:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb41-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">title: Animations in PDF</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">output:</a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">  pdf_document:</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="bn">    extra_dependencies: animate</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6">---</a>
+<a class="sourceLine" id="cb41-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb41-8" data-line-number="8">The animation below can only be viewed in Acrobat Reader.</a>
+<a class="sourceLine" id="cb41-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb41-10" data-line-number="10"><span class="bn">```{r, fig.show=&#39;animate&#39;}</span></a>
+<a class="sourceLine" id="cb41-11" data-line-number="11"><span class="bn">for (i in 1:2) {</span></a>
+<a class="sourceLine" id="cb41-12" data-line-number="12"><span class="bn">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></a>
+<a class="sourceLine" id="cb41-13" data-line-number="13"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb41-14" data-line-number="14"><span class="bn">```</span></a></code></pre></div>
+<p>The time interval between image frames in the animation can be set by the chunk option <code>interval</code>. By default, <code>interval = 1</code> (i.e., one second).</p>
+<p>The R package <strong>animation</strong> (<a href="https://github.com/yihui/animation" class="uri">https://github.com/yihui/animation</a>) contains several animation examples to illustrate methods and ideas in statistical computing. The <strong>gganimate</strong> package (<a href="https://github.com/thomasp85/gganimate" class="uri">https://github.com/thomasp85/gganimate</a>) allows us to create smooth animations based on <strong>ggplot2</strong>. Both packages work with R Markdown.</p>
+
 </div>
-<div id="ref-R-base">
-<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="author.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="install-latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="equatiomatic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="formatting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -361,7 +376,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/01-installation.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/03-content.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-17" />
+<meta name="date" content="2019-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/customBlock.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -163,6 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
+<li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -182,14 +183,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.3.1</b> Loading LaTeX packages</a></li>
 <li class="chapter" data-level="5.3.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.3.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Control the placement of figures</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.4.1</b> Floating environments</a></li>
-<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.4.2</b> Prevent figures from floating</a></li>
-<li class="chapter" data-level="5.4.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.4.3</b> Force floats forwards</a></li>
-<li class="chapter" data-level="5.4.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.4.4</b> Adjust LaTeX placement rules</a></li>
+<li class="chapter" data-level="5.4" data-path="latex-template.html"><a href="latex-template.html"><i class="fa fa-check"></i><b>5.4</b> Use a custom Pandoc LaTeX template</a></li>
+<li class="chapter" data-level="5.5" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.5</b> Control the placement of figures</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.5.1</b> Floating environments</a></li>
+<li class="chapter" data-level="5.5.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.5.2</b> Prevent figures from floating</a></li>
+<li class="chapter" data-level="5.5.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.5.3</b> Force floats forwards</a></li>
+<li class="chapter" data-level="5.5.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.5.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.5</b> Add custom headers and footers</a></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX sub-figures</a></li>
+<li class="chapter" data-level="5.6" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.6</b> Add custom headers and footers</a></li>
+<li class="chapter" data-level="5.7" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.7</b> LaTeX sub-figures</a></li>
+<li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Change Chunk Styling</a><ul>
@@ -205,15 +208,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
 <li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
-<li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
-<li class="chapter" data-level="7.2" data-path="designing-output.html"><a href="designing-output.html"><i class="fa fa-check"></i><b>7.2</b> Designing output</a></li>
-<li class="chapter" data-level="7.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html"><i class="fa fa-check"></i><b>7.3</b> Using Custom Blocks</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#basic-structure"><i class="fa fa-check"></i><b>7.3.1</b> Basic Structure</a></li>
-<li class="chapter" data-level="7.3.2" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#adding-a-shaded-box"><i class="fa fa-check"></i><b>7.3.2</b> Adding a Shaded Box</a></li>
-<li class="chapter" data-level="7.3.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#including-images"><i class="fa fa-check"></i><b>7.3.3</b> Including Images</a></li>
+<li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
+<li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
+<li class="chapter" data-level="7.2" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>7.2</b> Display HTML widgets</a></li>
+<li class="chapter" data-level="7.3" data-path="figures-side.html"><a href="figures-side.html"><i class="fa fa-check"></i><b>7.3</b> Multiple figures side-by-side</a></li>
+<li class="chapter" data-level="7.4" data-path="custom-blocks.html"><a href="custom-blocks.html"><i class="fa fa-check"></i><b>7.4</b> Custom blocks</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="custom-blocks.html"><a href="custom-blocks.html#block-syntax"><i class="fa fa-check"></i><b>7.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="7.4.2" data-path="custom-blocks.html"><a href="custom-blocks.html#block-shaded"><i class="fa fa-check"></i><b>7.4.2</b> Adding a shaded box</a></li>
+<li class="chapter" data-level="7.4.3" data-path="custom-blocks.html"><a href="custom-blocks.html#block-image"><i class="fa fa-check"></i><b>7.4.3</b> Including icons</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="plotting-multiple-figures-side-by-side.html"><a href="plotting-multiple-figures-side-by-side.html"><i class="fa fa-check"></i><b>7.4</b> Plotting multiple figures side-by-side</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word.html"><a href="word.html"><i class="fa fa-check"></i><b>8</b> Word</a></li>
 <li class="chapter" data-level="9" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>9</b> Knitr Hooks</a><ul>
@@ -306,84 +309,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.5</span> Multi-column layout</h2>
 <p>Pandoc’s Markdown supports the multi-column layout for slides but not other types of documents. In this recipe, we show how to use the multi-column layout in normal HTML documents and LaTeX documents. This recipe was inspired by Atsushi Yasumoto’s solutions to the <strong>knitr</strong> issue <a href="https://github.com/yihui/knitr/issues/1743" class="uri">https://github.com/yihui/knitr/issues/1743</a>.</p>
 <p>The recipe will be much simpler if you only need to consider HTML output, because arranging HTML elements side by side is relatively simple via CSS. It will be even simpler if you only need to arrange the text output of a code chunk side by side. Below is the first example:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb49-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">output: html_document</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">---</a>
-<a class="sourceLine" id="cb49-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="bn">```{r attr.source=&quot;style=&#39;display:inline-block;&#39;&quot;, collapse=TRUE}</span></a>
-<a class="sourceLine" id="cb49-6" data-line-number="6"><span class="bn">1:10  # a sequence from 1 to 10</span></a>
-<a class="sourceLine" id="cb49-7" data-line-number="7"><span class="bn">10:1  # in the reverse order</span></a>
-<a class="sourceLine" id="cb49-8" data-line-number="8"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb51-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">output: html_document</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">---</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="bn">```{r attr.source=&quot;style=&#39;display:inline-block;&#39;&quot;, collapse=TRUE}</span></a>
+<a class="sourceLine" id="cb51-6" data-line-number="6"><span class="bn">1:10  # a sequence from 1 to 10</span></a>
+<a class="sourceLine" id="cb51-7" data-line-number="7"><span class="bn">10:1  # in the reverse order</span></a>
+<a class="sourceLine" id="cb51-8" data-line-number="8"><span class="bn">```</span></a></code></pre></div>
 <p>The CSS attribute <code>display: inline-block;</code> means the output code blocks (i.e., the <code>&lt;pre&gt;</code> tags in HTML) should be displayed as inline elements. By default, these blocks are displayed as block-level elements (i.e., <code>display: block;</code>) and will occupy whole rows. The chunk option <code>collapse = TRUE</code> means the text output will be merged into the R source code block, so both the source and its text output will be placed in the same <code>&lt;pre&gt;</code> block.</p>
 <p>If you want to arrange arbitrary content side by side in HTML output, you can use Pandoc’s <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced Div</a>. The name “Div” comes from the HTML tag <code>&lt;div&gt;</code>, but you can interpret it as an arbitrary block or container. A Div starts and ends with three or more colons (e.g., <code>:::</code>). A Div with more colons can contain Divs with fewer colons. An important and useful feature of the fenced Div is that you can attach attributes to it. For example, you can apply the CSS attribute <code>display: flex;</code> to an outside container, so that the inside containers will be placed side by side:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb50-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">output: html_document</a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">---</a>
-<a class="sourceLine" id="cb50-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb50-5" data-line-number="5">:::: {style=&quot;display: flex;&quot;}</a>
-<a class="sourceLine" id="cb50-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb50-7" data-line-number="7">::: {}</a>
-<a class="sourceLine" id="cb50-8" data-line-number="8">Here is the **first** Div.</a>
-<a class="sourceLine" id="cb50-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb50-10" data-line-number="10"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb50-11" data-line-number="11"><span class="bn">str(iris)</span></a>
-<a class="sourceLine" id="cb50-12" data-line-number="12"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb50-13" data-line-number="13">:::</a>
-<a class="sourceLine" id="cb50-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb50-15" data-line-number="15">::: {}</a>
-<a class="sourceLine" id="cb50-16" data-line-number="16">And this block will be put on the right:</a>
-<a class="sourceLine" id="cb50-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb50-18" data-line-number="18"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb50-19" data-line-number="19"><span class="bn">plot(iris[, -5])</span></a>
-<a class="sourceLine" id="cb50-20" data-line-number="20"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb50-21" data-line-number="21">:::</a>
-<a class="sourceLine" id="cb50-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb50-23" data-line-number="23">::::</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb52-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">output: html_document</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">---</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb52-5" data-line-number="5">:::: {style=&quot;display: flex;&quot;}</a>
+<a class="sourceLine" id="cb52-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb52-7" data-line-number="7">::: {}</a>
+<a class="sourceLine" id="cb52-8" data-line-number="8">Here is the **first** Div.</a>
+<a class="sourceLine" id="cb52-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb52-10" data-line-number="10"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb52-11" data-line-number="11"><span class="bn">str(iris)</span></a>
+<a class="sourceLine" id="cb52-12" data-line-number="12"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb52-13" data-line-number="13">:::</a>
+<a class="sourceLine" id="cb52-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb52-15" data-line-number="15">::: {}</a>
+<a class="sourceLine" id="cb52-16" data-line-number="16">And this block will be put on the right:</a>
+<a class="sourceLine" id="cb52-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb52-18" data-line-number="18"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb52-19" data-line-number="19"><span class="bn">plot(iris[, -5])</span></a>
+<a class="sourceLine" id="cb52-20" data-line-number="20"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb52-21" data-line-number="21">:::</a>
+<a class="sourceLine" id="cb52-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb52-23" data-line-number="23">::::</a></code></pre></div>
 <p>In the above example, the outside Div (<code>::::</code>) contains two Divs (<code>:::</code>). You can certainly add more Divs inside. To learn more about the very powerful CSS attribute <code>display: flex;</code> (CSS Flexbox), you may read the guide at <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="uri">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>. The CSS Grid (<code>display: grid;</code>) is also very powerful and can be used in the above example, too. If you want to try it, you may change <code>display: flex;</code> to <code>display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;</code>. See the guide at <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" class="uri">https://css-tricks.com/snippets/css/complete-guide-grid/</a> if you want to learn more about the grid layout.</p>
 <p>It is tricker if you want the layout to work for both HTML and LaTeX output. We show a full example below that works for HTML document, LaTeX document, and Beamer presentation output:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb51-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2">output:</a>
-<a class="sourceLine" id="cb51-3" data-line-number="3">  html_document: </a>
-<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="bn">    css: columns.css</span></a>
-<a class="sourceLine" id="cb51-5" data-line-number="5">  beamer_presentation: default</a>
-<a class="sourceLine" id="cb51-6" data-line-number="6">  pdf_document: </a>
-<a class="sourceLine" id="cb51-7" data-line-number="7"><span class="bn">    keep_tex: true</span></a>
-<a class="sourceLine" id="cb51-8" data-line-number="8"><span class="bn">    includes:</span></a>
-<a class="sourceLine" id="cb51-9" data-line-number="9"><span class="bn">      in_header: columns.tex</span></a>
-<a class="sourceLine" id="cb51-10" data-line-number="10">---</a>
-<a class="sourceLine" id="cb51-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb51-12" data-line-number="12"><span class="fu"># Two columns</span></a>
-<a class="sourceLine" id="cb51-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb51-14" data-line-number="14">Below is a Div containing three child Divs side by side. The Div</a>
-<a class="sourceLine" id="cb51-15" data-line-number="15">in the middle is empty, just to add more space between the left</a>
-<a class="sourceLine" id="cb51-16" data-line-number="16">and right Divs.</a>
-<a class="sourceLine" id="cb51-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb51-18" data-line-number="18">:::::: {.columns}</a>
-<a class="sourceLine" id="cb51-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb51-20" data-line-number="20">::: {.column width=&quot;55%&quot;}</a>
-<a class="sourceLine" id="cb51-21" data-line-number="21"><span class="bn">```{r, echo=FALSE, fig.width=5, fig.height=4}</span></a>
-<a class="sourceLine" id="cb51-22" data-line-number="22"><span class="bn">par(mar = c(4, 4, .2, .1))</span></a>
-<a class="sourceLine" id="cb51-23" data-line-number="23"><span class="bn">plot(cars, pch = 19)</span></a>
-<a class="sourceLine" id="cb51-24" data-line-number="24"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb51-25" data-line-number="25">:::</a>
-<a class="sourceLine" id="cb51-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb51-27" data-line-number="27">::: {.column width=&quot;5%&quot;}</a>
-<a class="sourceLine" id="cb51-28" data-line-number="28">\ </a>
-<a class="sourceLine" id="cb51-29" data-line-number="29">&lt;!--<span class="co"> an empty Div (with a whitespace), serving as</span></a>
-<a class="sourceLine" id="cb51-30" data-line-number="30"><span class="co">a column separator --&gt;</span></a>
-<a class="sourceLine" id="cb51-31" data-line-number="31">:::</a>
-<a class="sourceLine" id="cb51-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb51-33" data-line-number="33">::: {.column width=&quot;40%&quot;}</a>
-<a class="sourceLine" id="cb51-34" data-line-number="34">The figure on the left-hand side shows the <span class="bn">`cars`</span> data.</a>
-<a class="sourceLine" id="cb51-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb51-36" data-line-number="36">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</a>
-<a class="sourceLine" id="cb51-37" data-line-number="37">eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</a>
-<a class="sourceLine" id="cb51-38" data-line-number="38">enim ad minim veniam, quis nostrud exercitation ullamco laboris</a>
-<a class="sourceLine" id="cb51-39" data-line-number="39">nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</a>
-<a class="sourceLine" id="cb51-40" data-line-number="40">in reprehenderit in voluptate velit esse cillum dolore eu fugiat</a>
-<a class="sourceLine" id="cb51-41" data-line-number="41">nulla pariatur.</a>
-<a class="sourceLine" id="cb51-42" data-line-number="42">:::</a>
-<a class="sourceLine" id="cb51-43" data-line-number="43">::::::</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb53-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">output:</a>
+<a class="sourceLine" id="cb53-3" data-line-number="3">  html_document: </a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="bn">    css: columns.css</span></a>
+<a class="sourceLine" id="cb53-5" data-line-number="5">  beamer_presentation: default</a>
+<a class="sourceLine" id="cb53-6" data-line-number="6">  pdf_document: </a>
+<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="bn">    keep_tex: true</span></a>
+<a class="sourceLine" id="cb53-8" data-line-number="8"><span class="bn">    includes:</span></a>
+<a class="sourceLine" id="cb53-9" data-line-number="9"><span class="bn">      in_header: columns.tex</span></a>
+<a class="sourceLine" id="cb53-10" data-line-number="10">---</a>
+<a class="sourceLine" id="cb53-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb53-12" data-line-number="12"><span class="fu"># Two columns</span></a>
+<a class="sourceLine" id="cb53-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb53-14" data-line-number="14">Below is a Div containing three child Divs side by side. The Div</a>
+<a class="sourceLine" id="cb53-15" data-line-number="15">in the middle is empty, just to add more space between the left</a>
+<a class="sourceLine" id="cb53-16" data-line-number="16">and right Divs.</a>
+<a class="sourceLine" id="cb53-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb53-18" data-line-number="18">:::::: {.columns}</a>
+<a class="sourceLine" id="cb53-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb53-20" data-line-number="20">::: {.column width=&quot;55%&quot;}</a>
+<a class="sourceLine" id="cb53-21" data-line-number="21"><span class="bn">```{r, echo=FALSE, fig.width=5, fig.height=4}</span></a>
+<a class="sourceLine" id="cb53-22" data-line-number="22"><span class="bn">par(mar = c(4, 4, .2, .1))</span></a>
+<a class="sourceLine" id="cb53-23" data-line-number="23"><span class="bn">plot(cars, pch = 19)</span></a>
+<a class="sourceLine" id="cb53-24" data-line-number="24"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb53-25" data-line-number="25">:::</a>
+<a class="sourceLine" id="cb53-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb53-27" data-line-number="27">::: {.column width=&quot;5%&quot;}</a>
+<a class="sourceLine" id="cb53-28" data-line-number="28">\ </a>
+<a class="sourceLine" id="cb53-29" data-line-number="29">&lt;!--<span class="co"> an empty Div (with a whitespace), serving as</span></a>
+<a class="sourceLine" id="cb53-30" data-line-number="30"><span class="co">a column separator --&gt;</span></a>
+<a class="sourceLine" id="cb53-31" data-line-number="31">:::</a>
+<a class="sourceLine" id="cb53-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb53-33" data-line-number="33">::: {.column width=&quot;40%&quot;}</a>
+<a class="sourceLine" id="cb53-34" data-line-number="34">The figure on the left-hand side shows the <span class="bn">`cars`</span> data.</a>
+<a class="sourceLine" id="cb53-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb53-36" data-line-number="36">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</a>
+<a class="sourceLine" id="cb53-37" data-line-number="37">eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</a>
+<a class="sourceLine" id="cb53-38" data-line-number="38">enim ad minim veniam, quis nostrud exercitation ullamco laboris</a>
+<a class="sourceLine" id="cb53-39" data-line-number="39">nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</a>
+<a class="sourceLine" id="cb53-40" data-line-number="40">in reprehenderit in voluptate velit esse cillum dolore eu fugiat</a>
+<a class="sourceLine" id="cb53-41" data-line-number="41">nulla pariatur.</a>
+<a class="sourceLine" id="cb53-42" data-line-number="42">:::</a>
+<a class="sourceLine" id="cb53-43" data-line-number="43">::::::</a></code></pre></div>
 <div class="figure"><span id="fig:multicol"></span>
 <img src="images/multicol.png" alt="A two-column layout that works for HTML, LaTeX, and Beamer output." width="100%" />
 <p class="caption">
@@ -391,26 +394,26 @@ FIGURE 4.1: A two-column layout that works for HTML, LaTeX, and Beamer output.
 </p>
 </div>
 <p>Figure <a href="multi-column-layout.html#fig:multicol">4.1</a> shows the output. In this example, we used an outside Div with the class <code>.columns</code> and three inside Divs with the class <code>.column</code>. For HTML output, we introduced an external CSS file <code>columns.css</code>, in which we applied the Flexbox layout to the outside Div so the inside Divs can be placed side by side:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="fu">.columns</span> {<span class="kw">display</span>: flex; }</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="fu">.columns</span> {<span class="kw">display</span>: flex; }</a></code></pre></div>
 <p>For Beamer output, there is nothing we need to do, because the LaTeX class <code>beamer.cls</code> has defined environments <code>columns</code> and <code>column</code>. They will just work.</p>
 <p>For LaTeX output (<code>pdf_document</code>), we have to introduce some dirty hacks stored in <code>columns.tex</code> to the LaTeX preamble to define the LaTeX environments <code>columns</code> and <code>column</code>:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="fu">\newenvironment</span>{columns}[1][]{}{}</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="fu">\newenvironment</span>{column}[1]{<span class="kw">\begin</span>{<span class="ex">minipage</span>}{#1}<span class="fu">\ignorespaces</span>}{<span class="co">%</span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="kw">\end</span>{<span class="ex">minipage</span>}</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5"><span class="fu">\ifhmode\unskip\fi</span></a>
-<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="fu">\aftergroup\useignorespacesandallpars</span>}</a>
-<a class="sourceLine" id="cb53-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb53-8" data-line-number="8"><span class="fu">\def</span>\useignorespacesandallpars#1\ignorespaces\fi{<span class="co">%</span></a>
-<a class="sourceLine" id="cb53-9" data-line-number="9">#1\fi\ignorespacesandallpars}</a>
-<a class="sourceLine" id="cb53-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb53-11" data-line-number="11"><span class="fu">\makeatletter</span></a>
-<a class="sourceLine" id="cb53-12" data-line-number="12"><span class="fu">\def</span>\ignorespacesandallpars{<span class="co">%</span></a>
-<a class="sourceLine" id="cb53-13" data-line-number="13">  \@ifnextchar\par</a>
-<a class="sourceLine" id="cb53-14" data-line-number="14">    {\expandafter\ignorespacesandallpars\@gobble}<span class="co">%</span></a>
-<a class="sourceLine" id="cb53-15" data-line-number="15">    {}<span class="co">%</span></a>
-<a class="sourceLine" id="cb53-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb53-17" data-line-number="17"><span class="fu">\makeatother</span></a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="fu">\newenvironment</span>{columns}[1][]{}{}</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="fu">\newenvironment</span>{column}[1]{<span class="kw">\begin</span>{<span class="ex">minipage</span>}{#1}<span class="fu">\ignorespaces</span>}{<span class="co">%</span></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="kw">\end</span>{<span class="ex">minipage</span>}</a>
+<a class="sourceLine" id="cb55-5" data-line-number="5"><span class="fu">\ifhmode\unskip\fi</span></a>
+<a class="sourceLine" id="cb55-6" data-line-number="6"><span class="fu">\aftergroup\useignorespacesandallpars</span>}</a>
+<a class="sourceLine" id="cb55-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb55-8" data-line-number="8"><span class="fu">\def</span>\useignorespacesandallpars#1\ignorespaces\fi{<span class="co">%</span></a>
+<a class="sourceLine" id="cb55-9" data-line-number="9">#1\fi\ignorespacesandallpars}</a>
+<a class="sourceLine" id="cb55-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb55-11" data-line-number="11"><span class="fu">\makeatletter</span></a>
+<a class="sourceLine" id="cb55-12" data-line-number="12"><span class="fu">\def</span>\ignorespacesandallpars{<span class="co">%</span></a>
+<a class="sourceLine" id="cb55-13" data-line-number="13">  \@ifnextchar\par</a>
+<a class="sourceLine" id="cb55-14" data-line-number="14">    {\expandafter\ignorespacesandallpars\@gobble}<span class="co">%</span></a>
+<a class="sourceLine" id="cb55-15" data-line-number="15">    {}<span class="co">%</span></a>
+<a class="sourceLine" id="cb55-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb55-17" data-line-number="17"><span class="fu">\makeatother</span></a></code></pre></div>
 <p>The <code>column</code> environment is particularly complicated mainly because Pandoc starts a new paragraph for each Div in LaTeX output, and we have to remove these new paragraphs, otherwise the Divs cannot be placed side by side. The hacks were borrowed from <a href="https://tex.stackexchange.com/q/179016/9128" class="uri">https://tex.stackexchange.com/q/179016/9128</a>.</p>
 
 </div>

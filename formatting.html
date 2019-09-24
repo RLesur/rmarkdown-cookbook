@@ -24,14 +24,14 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-17" />
+<meta name="date" content="2019-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="equatiomatic.html"/>
+<link rel="prev" href="animation.html"/>
 <link rel="next" href="changing-font-colour.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -117,7 +117,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/customBlock.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -163,6 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
+<li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -182,14 +183,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.3.1</b> Loading LaTeX packages</a></li>
 <li class="chapter" data-level="5.3.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.3.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Control the placement of figures</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.4.1</b> Floating environments</a></li>
-<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.4.2</b> Prevent figures from floating</a></li>
-<li class="chapter" data-level="5.4.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.4.3</b> Force floats forwards</a></li>
-<li class="chapter" data-level="5.4.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.4.4</b> Adjust LaTeX placement rules</a></li>
+<li class="chapter" data-level="5.4" data-path="latex-template.html"><a href="latex-template.html"><i class="fa fa-check"></i><b>5.4</b> Use a custom Pandoc LaTeX template</a></li>
+<li class="chapter" data-level="5.5" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.5</b> Control the placement of figures</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.5.1</b> Floating environments</a></li>
+<li class="chapter" data-level="5.5.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.5.2</b> Prevent figures from floating</a></li>
+<li class="chapter" data-level="5.5.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.5.3</b> Force floats forwards</a></li>
+<li class="chapter" data-level="5.5.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.5.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.5</b> Add custom headers and footers</a></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX sub-figures</a></li>
+<li class="chapter" data-level="5.6" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.6</b> Add custom headers and footers</a></li>
+<li class="chapter" data-level="5.7" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.7</b> LaTeX sub-figures</a></li>
+<li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Change Chunk Styling</a><ul>
@@ -205,15 +208,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
 <li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
-<li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
-<li class="chapter" data-level="7.2" data-path="designing-output.html"><a href="designing-output.html"><i class="fa fa-check"></i><b>7.2</b> Designing output</a></li>
-<li class="chapter" data-level="7.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html"><i class="fa fa-check"></i><b>7.3</b> Using Custom Blocks</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#basic-structure"><i class="fa fa-check"></i><b>7.3.1</b> Basic Structure</a></li>
-<li class="chapter" data-level="7.3.2" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#adding-a-shaded-box"><i class="fa fa-check"></i><b>7.3.2</b> Adding a Shaded Box</a></li>
-<li class="chapter" data-level="7.3.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#including-images"><i class="fa fa-check"></i><b>7.3.3</b> Including Images</a></li>
+<li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
+<li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
+<li class="chapter" data-level="7.2" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>7.2</b> Display HTML widgets</a></li>
+<li class="chapter" data-level="7.3" data-path="figures-side.html"><a href="figures-side.html"><i class="fa fa-check"></i><b>7.3</b> Multiple figures side-by-side</a></li>
+<li class="chapter" data-level="7.4" data-path="custom-blocks.html"><a href="custom-blocks.html"><i class="fa fa-check"></i><b>7.4</b> Custom blocks</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="custom-blocks.html"><a href="custom-blocks.html#block-syntax"><i class="fa fa-check"></i><b>7.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="7.4.2" data-path="custom-blocks.html"><a href="custom-blocks.html#block-shaded"><i class="fa fa-check"></i><b>7.4.2</b> Adding a shaded box</a></li>
+<li class="chapter" data-level="7.4.3" data-path="custom-blocks.html"><a href="custom-blocks.html#block-image"><i class="fa fa-check"></i><b>7.4.3</b> Including icons</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="plotting-multiple-figures-side-by-side.html"><a href="plotting-multiple-figures-side-by-side.html"><i class="fa fa-check"></i><b>7.4</b> Plotting multiple figures side-by-side</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word.html"><a href="word.html"><i class="fa fa-check"></i><b>8</b> Word</a></li>
 <li class="chapter" data-level="9" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>9</b> Knitr Hooks</a><ul>
@@ -316,18 +319,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Editing font alignment</p></li>
 </ul>
 <p>It can be helpful for such features to be included within documents. This chapter provides an extended guide to the basics of the R Markdown language, and highlights how we can customise the appearance and styling within an R Markdown document.</p>
-
-<div class="rmdnote">
-If you need a reminder in the basics of the markdown language, the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheatsheet</a> provides a good overview of the basic syntax.
-</div>
- 
+<p>If you need a reminder in the basics of the Markdown language, the R Markdown cheatsheet at <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a> provides a good overview of the basic syntax.</p> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="equatiomatic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="animation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="changing-font-colour.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

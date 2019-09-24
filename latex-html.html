@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 Using Custom Blocks | R Markdown Cookbook</title>
+  <title>7.1 LaTeX or HTML output | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 Using Custom Blocks | R Markdown Cookbook" />
+  <meta property="og:title" content="7.1 LaTeX or HTML output | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 Using Custom Blocks | R Markdown Cookbook" />
+  <meta name="twitter:title" content="7.1 LaTeX or HTML output | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-17" />
+<meta name="date" content="2019-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="designing-output.html"/>
-<link rel="next" href="plotting-multiple-figures-side-by-side.html"/>
+<link rel="prev" href="multi-formats.html"/>
+<link rel="next" href="html-widgets.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -117,7 +117,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/customBlock.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -163,6 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>3.7</b> Preserve a large number of linebreaks</a></li>
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
+<li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
 <li class="chapter" data-level="4.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>4.1</b> Changing Font Colour</a><ul>
@@ -182,14 +183,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.3.1</b> Loading LaTeX packages</a></li>
 <li class="chapter" data-level="5.3.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>5.3.2</b> Example packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.4</b> Control the placement of figures</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.4.1</b> Floating environments</a></li>
-<li class="chapter" data-level="5.4.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.4.2</b> Prevent figures from floating</a></li>
-<li class="chapter" data-level="5.4.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.4.3</b> Force floats forwards</a></li>
-<li class="chapter" data-level="5.4.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.4.4</b> Adjust LaTeX placement rules</a></li>
+<li class="chapter" data-level="5.4" data-path="latex-template.html"><a href="latex-template.html"><i class="fa fa-check"></i><b>5.4</b> Use a custom Pandoc LaTeX template</a></li>
+<li class="chapter" data-level="5.5" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>5.5</b> Control the placement of figures</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environments"><i class="fa fa-check"></i><b>5.5.1</b> Floating environments</a></li>
+<li class="chapter" data-level="5.5.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>5.5.2</b> Prevent figures from floating</a></li>
+<li class="chapter" data-level="5.5.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forwards"><i class="fa fa-check"></i><b>5.5.3</b> Force floats forwards</a></li>
+<li class="chapter" data-level="5.5.4" data-path="figure-placement.html"><a href="figure-placement.html#adjust-latex-placement-rules"><i class="fa fa-check"></i><b>5.5.4</b> Adjust LaTeX placement rules</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.5</b> Add custom headers and footers</a></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX sub-figures</a></li>
+<li class="chapter" data-level="5.6" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>5.6</b> Add custom headers and footers</a></li>
+<li class="chapter" data-level="5.7" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>5.7</b> LaTeX sub-figures</a></li>
+<li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Change Chunk Styling</a><ul>
@@ -205,15 +208,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
 <li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>7</b> Multi-format projects</a><ul>
-<li class="chapter" data-level="7.1" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.1</b> Output-specific functions</a></li>
-<li class="chapter" data-level="7.2" data-path="designing-output.html"><a href="designing-output.html"><i class="fa fa-check"></i><b>7.2</b> Designing output</a></li>
-<li class="chapter" data-level="7.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html"><i class="fa fa-check"></i><b>7.3</b> Using Custom Blocks</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#basic-structure"><i class="fa fa-check"></i><b>7.3.1</b> Basic Structure</a></li>
-<li class="chapter" data-level="7.3.2" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#adding-a-shaded-box"><i class="fa fa-check"></i><b>7.3.2</b> Adding a Shaded Box</a></li>
-<li class="chapter" data-level="7.3.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#including-images"><i class="fa fa-check"></i><b>7.3.3</b> Including Images</a></li>
+<li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
+<li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
+<li class="chapter" data-level="7.2" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>7.2</b> Display HTML widgets</a></li>
+<li class="chapter" data-level="7.3" data-path="figures-side.html"><a href="figures-side.html"><i class="fa fa-check"></i><b>7.3</b> Multiple figures side-by-side</a></li>
+<li class="chapter" data-level="7.4" data-path="custom-blocks.html"><a href="custom-blocks.html"><i class="fa fa-check"></i><b>7.4</b> Custom blocks</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="custom-blocks.html"><a href="custom-blocks.html#block-syntax"><i class="fa fa-check"></i><b>7.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="7.4.2" data-path="custom-blocks.html"><a href="custom-blocks.html#block-shaded"><i class="fa fa-check"></i><b>7.4.2</b> Adding a shaded box</a></li>
+<li class="chapter" data-level="7.4.3" data-path="custom-blocks.html"><a href="custom-blocks.html#block-image"><i class="fa fa-check"></i><b>7.4.3</b> Including icons</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="plotting-multiple-figures-side-by-side.html"><a href="plotting-multiple-figures-side-by-side.html"><i class="fa fa-check"></i><b>7.4</b> Plotting multiple figures side-by-side</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word.html"><a href="word.html"><i class="fa fa-check"></i><b>8</b> Word</a></li>
 <li class="chapter" data-level="9" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>9</b> Knitr Hooks</a><ul>
@@ -302,151 +305,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-custom-blocks" class="section level2">
-<h2><span class="header-section-number">7.3</span> Using Custom Blocks</h2>
-<!-- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown -->
-<p>Section <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html">2.7</a> of <span class="citation">Xie (<a href="#ref-xie2016bookdown">2016</a>)</span> highlighted how we can use custom blocks in R Markdown to customise the appearance of sections of text. They can be a useful way to make some text stand out from your reports or books, and are a great way to make sure that your readers take away the key points from your work. As some examples of how these could be used:</p>
-<ul>
-<li>Add a warning to let users know to make sure users are using up-to-date packages before running your analysis:</li>
-<li>Add a link at the start of your document to your GitHub repository containing code:</li>
-<li>To highlight key results and findings from your analysis:</li>
-</ul>
-<p>In this section, we will explain how to create your own custom blocks for both PDF and HTML outputs. They can both use the same formatting within the R Markdown document, but require slight different configurations in your project for this to work. You may wish to explore the <a href="https://github.com/dr-harper/customBlocks">customBlocks</a> repository on GitHub which provides a minimal example of the code highlighted in this section.</p>
-<div id="basic-structure" class="section level3">
-<h3><span class="header-section-number">7.3.1</span> Basic Structure</h3>
-<p>We can generate a custom block using either the <code>block2</code> engine in <strong>knitr</strong>. We must also specify the chunk option <code>type</code>, which specifies the class of the <code>&lt;div&gt;</code> and the name of the LaTeX environment. For example:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="bn">```{block, type=&#39;FOO&#39;}</span></a>
-<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="bn">Some text for this block.</span></a>
-<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
-<p>It is up to the user to define their own <code>&lt;div&gt;</code> in CSS for the HTML output, or <code>\newenvironment</code> in LaTeX for PDF outputs. These customisations will normally be contained in their own files such as <code>style.css</code> or <code>preamble.tex</code>, and then included within the YAML options:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb87-3" data-line-number="3">  <span class="fu">bookdown:</span><span class="at">:html_book:</span></a>
-<a class="sourceLine" id="cb87-4" data-line-number="4">    <span class="fu">css:</span><span class="at"> style.css</span></a>
-<a class="sourceLine" id="cb87-5" data-line-number="5">  <span class="fu">bookdown:</span><span class="at">:pdf_book:</span></a>
-<a class="sourceLine" id="cb87-6" data-line-number="6">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb87-7" data-line-number="7">      <span class="fu">in_header:</span><span class="at"> preamble.tex</span></a>
-<a class="sourceLine" id="cb87-8" data-line-number="8"><span class="ot">---</span></a></code></pre></div>
-<p>With this basic setup, we will demonstrate several custom blocks that we can be used to create custom blocks for your work.</p>
-</div>
-<div id="adding-a-shaded-box" class="section level3">
-<h3><span class="header-section-number">7.3.2</span> Adding a Shaded Box</h3>
-<p>First we will highlight how we can add a shaded box for our content. Both HTML and PDF outputs allow for quite a lot of customisation of our custom blocks, and it should allow you to sufficient choice in customising the styles to match if you would like consistency across your outputs.</p>
-<p>For the HTML output, we will specify our custom class in the <code>style.css</code> file. If you are unfamiliar with CSS, you may want to search for options <a href="https://www.w3schools.com/cssref/default.asp">using this link</a> to see what we can easily control. For example, we create a greyed out box with a red border, adding curved corners to the box:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode css css"><code class="sourceCode css"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="fu">.customBlock</span> {</a>
-<a class="sourceLine" id="cb88-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span>;</a>
-<a class="sourceLine" id="cb88-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb88-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#F8F9F9</span>;</a>
-<a class="sourceLine" id="cb88-5" data-line-number="5">  <span class="kw">border-color</span>: <span class="dv">#A93226</span>;</a>
-<a class="sourceLine" id="cb88-6" data-line-number="6">  <span class="kw">border-style</span>: <span class="dv">solid</span>;</a>
-<a class="sourceLine" id="cb88-7" data-line-number="7">  <span class="kw">border-radius</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb88-8" data-line-number="8">  <span class="kw">border-width</span>: <span class="dv">thin</span>;</a>
-<a class="sourceLine" id="cb88-9" data-line-number="9">}</a></code></pre></div>
-<p>For the LaTeX output, we will add our custom block to the <code>preamble.tex</code> file. We will use use the <strong>tcolorbox</strong> LaTeX package, which offers quite a flexible set of options for creating shaded boxes, as detailed within the <a href="hhttp://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf">package documentation</a>. Below, we create a new environment called <code>customBlock</code>, with a similar design of that outlined above:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">tcolorbox</span>}</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">tikz</span>}</a>
-<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="fu">\usetikzlibrary</span>{calc}</a>
-<a class="sourceLine" id="cb89-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb89-5" data-line-number="5"><span class="co">% Define the colours to match the CSS above</span></a>
-<a class="sourceLine" id="cb89-6" data-line-number="6"><span class="fu">\definecolor</span>{background}{HTML}{F8F9F9}</a>
-<a class="sourceLine" id="cb89-7" data-line-number="7"><span class="fu">\definecolor</span>{border}{HTML}{A93226}</a>
-<a class="sourceLine" id="cb89-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb89-9" data-line-number="9"><span class="co">% Create our custom box</span></a>
-<a class="sourceLine" id="cb89-10" data-line-number="10"><span class="fu">\newtcolorbox</span>{customBlock}{</a>
-<a class="sourceLine" id="cb89-11" data-line-number="11">  colback = background,</a>
-<a class="sourceLine" id="cb89-12" data-line-number="12">  colframe = border,</a>
-<a class="sourceLine" id="cb89-13" data-line-number="13">  boxsep=5pt,</a>
-<a class="sourceLine" id="cb89-14" data-line-number="14">  arc=4pt}</a></code></pre></div>
-<p>By using the chunk header <code>{block2, type = &quot;customBlock&quot;}</code>, we can now use our custom block design in both PDF and HTML output formats. This is shown as follows:</p>
-
-<div class="customBlock">
-Look at our custom block!
-</div>
-
-</div>
-<div id="including-images" class="section level3">
-<h3><span class="header-section-number">7.3.3</span> Including Images</h3>
-<p>We can make custom blocks even more visually appealing by including images in them, and it can be an effective way to convey the content of the block. For the following examples, we will assume we are working within a directory below which is a simplified version what is used to build the book:</p>
-<pre><code>directory/
-├── yourReport.Rmd
-├── style.css
-├── preamble.tex
-└── images/ 
-      └── icons/
-            └── ├── important.png
-                ├── note.png
-                └── caution.png</code></pre>
-<p>For the HTML output, we can add an image to the box by adding <code>background-image</code>. The image is inserted into the background, and the padding is offset on the right-hand side to avoid the text overlapping this image. If you are using local images, the file path to the images is provided relative to the CSS file. For example:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="fu">.rmdcaution</span>{</a>
-<a class="sourceLine" id="cb91-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
-<a class="sourceLine" id="cb91-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb91-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
-<a class="sourceLine" id="cb91-5" data-line-number="5">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
-<a class="sourceLine" id="cb91-6" data-line-number="6">}</a></code></pre></div>
-<p>If you want to have a consistent styled box but have different icons, we can globally assign the CSS style to several custom blocks and then add the image for each block seperately. This approach is used within the <a href="https://github.com/dr-harper/rmarkdown-cookbook/blob/master/style.css#L1-L20">source code of this book</a>, as we can define multiple styles without repeating the same basic formatting, as follows:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="fu">.rmdcaution</span>, <span class="fu">.rmdimportant</span>, <span class="fu">.rmdnote</span>, <span class="fu">.rmdtip</span>, <span class="fu">.rmdwarning</span> {</a>
-<a class="sourceLine" id="cb92-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
-<a class="sourceLine" id="cb92-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
-<a class="sourceLine" id="cb92-4" data-line-number="4">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
-<a class="sourceLine" id="cb92-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb92-6" data-line-number="6"><span class="fu">.rmdcaution</span> {</a>
-<a class="sourceLine" id="cb92-7" data-line-number="7">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/caution.png&quot;</span>);</a>
-<a class="sourceLine" id="cb92-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="fu">.rmdimportant</span> {</a>
-<a class="sourceLine" id="cb92-10" data-line-number="10">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/icons/important.png&quot;</span>);</a>
-<a class="sourceLine" id="cb92-11" data-line-number="11">}</a></code></pre></div>
-<p>For the PDF output, we can adapt the <strong>tcolorbox</strong> code shown above to add the image to the left side of the box, whereby some slight adjustments are made to offset the text from the left and to insert the image into the box. As for the HTML, if we want to create multiple custom blocks of a similar style, it is generally more useful to make a more general function which can be used to create each block. Below, we demonstrate the use of this, where a new environment <code>customBlockImage</code> is created which is then used to build our final environments that we wish to use in our report (<code>rmdnote</code>, <code>rmdimportant</code>):</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co">% Create our general design</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="fu">\newtcolorbox</span>{customBlockImage}[2][]{</a>
-<a class="sourceLine" id="cb93-3" data-line-number="3">  enhanced,</a>
-<a class="sourceLine" id="cb93-4" data-line-number="4">  top=10pt,</a>
-<a class="sourceLine" id="cb93-5" data-line-number="5">  bottom=10pt,</a>
-<a class="sourceLine" id="cb93-6" data-line-number="6">  colframe = white,</a>
-<a class="sourceLine" id="cb93-7" data-line-number="7">  width=<span class="fu">\textwidth</span>,</a>
-<a class="sourceLine" id="cb93-8" data-line-number="8">  boxsep=5pt,</a>
-<a class="sourceLine" id="cb93-9" data-line-number="9">  arc=4pt,</a>
-<a class="sourceLine" id="cb93-10" data-line-number="10">  outer arc=4pt,</a>
-<a class="sourceLine" id="cb93-11" data-line-number="11">  leftupper=1.5cm,</a>
-<a class="sourceLine" id="cb93-12" data-line-number="12">overlay={</a>
-<a class="sourceLine" id="cb93-13" data-line-number="13">    <span class="fu">\node</span>[anchor=west] </a>
-<a class="sourceLine" id="cb93-14" data-line-number="14">      at ([xshift=10pt] <span class="ss">$ (interior.north west)!0.5!(interior.south west) $</span> )</a>
-<a class="sourceLine" id="cb93-15" data-line-number="15">       {{<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}<span class="bu">\includegraphics</span>{<span class="ex">#2</span>}}};},</a>
-<a class="sourceLine" id="cb93-16" data-line-number="16">#1}</a>
-<a class="sourceLine" id="cb93-17" data-line-number="17">    </a>
-<a class="sourceLine" id="cb93-18" data-line-number="18"> <span class="co">% Create the new environments for R Markdown</span></a>
-<a class="sourceLine" id="cb93-19" data-line-number="19"><span class="fu">\newenvironment</span>{rmdnote}</a>
-<a class="sourceLine" id="cb93-20" data-line-number="20">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/note}}</a>
-<a class="sourceLine" id="cb93-21" data-line-number="21">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
-<a class="sourceLine" id="cb93-22" data-line-number="22">  </a>
-<a class="sourceLine" id="cb93-23" data-line-number="23"><span class="fu">\newenvironment</span>{rmdimportant}</a>
-<a class="sourceLine" id="cb93-24" data-line-number="24">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/important}}</a>
-<a class="sourceLine" id="cb93-25" data-line-number="25">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a>
-<a class="sourceLine" id="cb93-26" data-line-number="26">         </a>
-<a class="sourceLine" id="cb93-27" data-line-number="27"><span class="co">% We can also change the colour of the box</span></a>
-<a class="sourceLine" id="cb93-28" data-line-number="28"><span class="fu">\newenvironment</span>{rmdwarning}</a>
-<a class="sourceLine" id="cb93-29" data-line-number="29">  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}[colback=red]{images/important}}</a>
-<a class="sourceLine" id="cb93-30" data-line-number="30">  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</a></code></pre></div>
-<p>Again, we have designed an output which should be consistent across HTML and PDF outputs. Below we show the output of the <code>rmdnote</code> custom block:</p>
-
-<div class="rmdnote">
-This is the rmdnote custom block
-</div>
-
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
-</div>
+<div id="latex-html" class="section level2">
+<h2><span class="header-section-number">7.1</span> LaTeX or HTML output</h2>
+<p>LaTeX and HTML are two commonly used output formats. The function <code>knitr::is_latex_output()</code> tells you if the output format is LaTeX (including Pandoc output formats <code>latex</code> and <code>beamer</code>). Similarly, the function <code>knitr::is_html_output</code> tells you if the output format is HTML. By default, these Pandoc output formats are considered HTML formats: <code>markdown</code>, <code>epub</code>, <code>html</code>, <code>html4</code>, <code>html5</code>, <code>revealjs</code>, <code>s5</code>, <code>slideous</code>, and <code>slidy</code>. If you do not think a certain Pandoc format is HTML, you may use the <code>excludes</code> argument to exclude it, e.g.,</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># do not treat markdown as an HTML format</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">is_html_output</span>(<span class="dt">excludes =</span> <span class="st">&quot;markdown&quot;</span>)</a>
+<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="co">## [1] TRUE</span></a></code></pre></div>
+<p>If a certain output element can only be generated in LaTeX or HTML, you can use these functions to conditionally generate it. For example, when a table is too big on a PDF page, you may include the table in an environment of a smaller font size, but such a LaTeX environment certainly will not work for HTML output, so it should not be included in HTML output (if you want to tweak the font size for HTML output, you may use CSS). Below is a full example:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb90-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">title: Render a table in a tiny environment</a>
+<a class="sourceLine" id="cb90-3" data-line-number="3">output:</a>
+<a class="sourceLine" id="cb90-4" data-line-number="4">  pdf_document: default</a>
+<a class="sourceLine" id="cb90-5" data-line-number="5">  html_document: default</a>
+<a class="sourceLine" id="cb90-6" data-line-number="6">---</a>
+<a class="sourceLine" id="cb90-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb90-8" data-line-number="8"><span class="bn">```{r, setup, include=FALSE}</span></a>
+<a class="sourceLine" id="cb90-9" data-line-number="9"><span class="bn">knitr::opts_chunk$set(echo = FALSE)</span></a>
+<a class="sourceLine" id="cb90-10" data-line-number="10"><span class="bn">options(knitr.table.format = function() {</span></a>
+<a class="sourceLine" id="cb90-11" data-line-number="11"><span class="bn">  if (knitr::is_latex_output()) &#39;latex&#39; else &#39;pandoc&#39;</span></a>
+<a class="sourceLine" id="cb90-12" data-line-number="12"><span class="bn">})</span></a>
+<a class="sourceLine" id="cb90-13" data-line-number="13"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb90-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb90-15" data-line-number="15">The LaTeX environment <span class="bn">`tiny`</span> is only generated for LaTeX output.</a>
+<a class="sourceLine" id="cb90-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb90-17" data-line-number="17"><span class="bn">```{r, include=knitr::is_latex_output()}</span></a>
+<a class="sourceLine" id="cb90-18" data-line-number="18"><span class="bn">knitr::asis_output(&#39;\n\n\\begin{tiny}&#39;)</span></a>
+<a class="sourceLine" id="cb90-19" data-line-number="19"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb90-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb90-21" data-line-number="21"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb90-22" data-line-number="22"><span class="bn">knitr::kable(mtcars)</span></a>
+<a class="sourceLine" id="cb90-23" data-line-number="23"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb90-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb90-25" data-line-number="25"><span class="bn">```{r, include=knitr::is_latex_output()}</span></a>
+<a class="sourceLine" id="cb90-26" data-line-number="26"><span class="bn">knitr::asis_output(&#39;\\end{tiny}\n\n&#39;)</span></a>
+<a class="sourceLine" id="cb90-27" data-line-number="27"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb90-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb90-29" data-line-number="29">By comparison, below is the table with the normal font size.</a>
+<a class="sourceLine" id="cb90-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb90-31" data-line-number="31"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb90-32" data-line-number="32"><span class="bn">knitr::kable(mtcars)</span></a>
+<a class="sourceLine" id="cb90-33" data-line-number="33"><span class="bn">```</span></a></code></pre></div>
+<p>The key in the above example is the chunk option <code>include = knitr::is_latex_output()</code>. That is, the environment <code>\begin{tiny} \end{tiny}</code> is only included when the output format is LaTeX. The two tables in the example will look identical when the output format is not LaTeX.</p>
+<p>In Section <a href="animation.html#animation">3.10</a>, we showed an animation example, which actually used this trick. The code chunk that generated the animation for HTML output and static images for LaTeX output is like this:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="bn">```{r animation.hook=if (knitr::is_html_output()) &#39;gifski&#39;}</span></a>
+<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="bn">for (i in 1:2) {</span></a>
+<a class="sourceLine" id="cb91-3" data-line-number="3"><span class="bn">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></a>
+<a class="sourceLine" id="cb91-4" data-line-number="4"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb91-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
+<p>These conditional functions can be used anywhere. You can use them in other chunk options (e.g., <code>eval</code> for conditional evaluation of the chunk), or in your R code, e.g.,</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="bn">```{r, eval=knitr::is_html_output(), echo=FALSE}</span></a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="bn">cat(&#39;You will only see me in HTML output.&#39;)</span></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb92-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb92-6" data-line-number="6"><span class="bn">if (knitr::is_latex_output()) {</span></a>
+<a class="sourceLine" id="cb92-7" data-line-number="7"><span class="bn">  knitr::asis_output(&#39;\n\n\\begin{tiny}&#39;)</span></a>
+<a class="sourceLine" id="cb92-8" data-line-number="8"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="bn">```</span></a></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="designing-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="plotting-multiple-figures-side-by-side.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multi-formats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="html-widgets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

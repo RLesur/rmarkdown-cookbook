@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Installation | R Markdown Cookbook</title>
+  <title>7.4 Custom blocks | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Installation | R Markdown Cookbook" />
+  <meta property="og:title" content="7.4 Custom blocks | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Installation | R Markdown Cookbook" />
+  <meta name="twitter:title" content="7.4 Custom blocks | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="author.html"/>
-<link rel="next" href="install-latex.html"/>
+<link rel="prev" href="figures-side.html"/>
+<link rel="next" href="word.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -305,33 +305,213 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Installation</h1>
-<p>To use R Markdown, you have to install R <span class="citation">(R Core Team <a href="#ref-R-base">2017</a>)</span> and the R package <strong>rmarkdown</strong> <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2019</a>)</span>. We also recommend that you install the RStudio IDE (<a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a>). RStudio is not required, but it will make it easier for an average user to work with R Markdown because of the editor support. If choose not to use the RStudio IDE, you will need a separate installation of Pandoc (<a href="https://pandoc.org" class="uri">https://pandoc.org</a>).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># install the rmarkdown package from CRAN in R</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># or install from GitHub if you want to test the</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># development version</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;remotes&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/rmarkdown&quot;</span>)</a></code></pre></div> 
+<div id="custom-blocks" class="section level2">
+<h2><span class="header-section-number">7.4</span> Custom blocks</h2>
+<!-- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown -->
+<p><a href="https://bookdown.org/yihui/bookdown/custom-blocks.html">Section 2.7</a> of the <strong>bookdown</strong> book mentioned how we can use custom blocks in R Markdown to customize the appearance of blocks of content. This can be a useful way to make some content stand out from your report or book, to make sure that your readers take away the key points from your work. Examples of how these blocks could be used include:</p>
+<ul>
+<li><p>Display a warning message to make sure users are using up-to-date packages before running your analysis;</p></li>
+<li><p>Add a link at the beginning of your document to your GitHub repository containing the source;</p></li>
+<li><p>Highlight key results and findings from your analysis.</p></li>
+</ul>
+<p>In this section, we will explain how to create your own custom blocks for both PDF and HTML output. They can both use the same formatting syntax in the R Markdown document, but require different configurations.</p>
+<div id="block-syntax" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Syntax</h3>
+<p>The syntax for custom blocks is based on Pandoc’s <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced <code>Div</code> blocks.</a> <code>Div</code> blocks are very powerful, but there is a problem at the moment: they mainly work for HTML output and do not work for LaTeX output.</p>
+<p>Since the version 1.16 of the <strong>rmarkdown</strong> package, it has been possible to convert <code>Div</code> blocks to both HTML and LaTeX. For HTML output, all attributes of the block will become attributes of the <code>&lt;div&gt;</code> tag. For example, a <code>Div</code> can have an ID (after <code>#</code>), one or multiple classes (class names are written after <code>.</code>), and other attributes. The following <code>Div</code> block</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb96-1" data-line-number="1">::: {#hello .greeting .message width=&quot;40%&quot;}</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2">Hello **world**!</a>
+<a class="sourceLine" id="cb96-3" data-line-number="3">:::</a></code></pre></div>
+<p>will be converted to the HTML code below:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;hello&quot;</span><span class="ot"> class=</span><span class="st">&quot;greeting message&quot;</span><span class="ot"> width=</span><span class="st">&quot;40%&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">  Hello <span class="kw">&lt;strong&gt;</span>world<span class="kw">&lt;/strong&gt;</span>!</a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">&lt;/div&gt;</span></a></code></pre></div>
+<p>For LaTeX output, the first class name will be used as the LaTeX environment name, and you must provide an attribute named <code>data-latex</code> in the <code>Div</code> block, which will be the arguments of the environment. This attribute can be an empty string if the environment does not need arguments. We show two simple examples below. The first example uses the <code>verbatim</code> environment in LaTeX, which does not have any arguments:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb98-1" data-line-number="1">::: {.verbatim data-latex=&quot;&quot;}</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">We show some _verbatim_ text here.</a>
+<a class="sourceLine" id="cb98-3" data-line-number="3">:::</a></code></pre></div>
+<p>Its LaTeX output will be:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">verbatim</span>}</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="vs">We show some \emph{verbatim} text here.</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="kw">\end</span>{<span class="ex">verbatim</span>}</a></code></pre></div>
+<p>When the block is converted to HTML, the HTML code will be:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;verbatim&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2">  We show some <span class="kw">&lt;em&gt;</span>verbatim<span class="kw">&lt;/em&gt;</span> text here.</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="kw">&lt;/div&gt;</span></a></code></pre></div>
+<p>The second example uses the <code>center</code> and <code>minipage</code> environments to display some text in a centered box of half-width of the page width.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb101-1" data-line-number="1">:::: {.center data-latex=&quot;&quot;}</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">::: {.minipage data-latex=&quot;{width=.5\linewidth}&quot;}</a>
+<a class="sourceLine" id="cb101-4" data-line-number="4">This paragraph will be centered on the page, and</a>
+<a class="sourceLine" id="cb101-5" data-line-number="5">its width is 50% of the width of its parent element.</a>
+<a class="sourceLine" id="cb101-6" data-line-number="6">:::</a>
+<a class="sourceLine" id="cb101-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb101-8" data-line-number="8">::::</a></code></pre></div>
+<p>Note that we nest the <code>minipage</code> block in the <code>center</code> block. You need more colons for a parent block to include a child block. In the above example, we used four colons (you can use five or more) for the <code>center</code> block. The two blocks will be converted to LaTeX code below:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">center</span>}</a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="kw">\begin</span>{<span class="ex">minipage</span>}{width=.5<span class="fu">\linewidth</span>}</a>
+<a class="sourceLine" id="cb102-3" data-line-number="3">This paragraph will be centered on the page, and</a>
+<a class="sourceLine" id="cb102-4" data-line-number="4">its width is 50<span class="fu">\%</span> of the width of its parent element.</a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="kw">\end</span>{<span class="ex">minipage</span>}</a>
+<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="kw">\end</span>{<span class="ex">center</span>}</a></code></pre></div>
+<p>It is up to the user to define the appearance of their <code>&lt;div&gt;</code> blocks via CSS for the HTML output. Similarly, for LaTeX output, you may use the command <code>\newenvironment</code> to define the environment if it has not been defined, or <code>\renewenvironment</code> to redefine an existing environment in LaTeX. In the LaTeX definitions, you can decide the appearance of these blocks in PDF. These customizations will normally be contained in their own files such as <code>style.css</code> or <code>preamble.tex</code>, and then included within the YAML options:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb103-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb103-4" data-line-number="4">    <span class="fu">css:</span><span class="at"> style.css</span></a>
+<a class="sourceLine" id="cb103-5" data-line-number="5">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb103-6" data-line-number="6">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb103-7" data-line-number="7">      <span class="fu">in_header:</span><span class="at"> preamble.tex</span></a>
+<a class="sourceLine" id="cb103-8" data-line-number="8"><span class="ot">---</span></a></code></pre></div>
+<p>Next we will demonstrate a few more advanced custom blocks that use custom CSS rules and LaTeX environments.</p>
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2019. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+<div id="block-shaded" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> Adding a shaded box</h3>
+<p>First, we show how to include content in a shaded box. The box has a black background with an orange frame with rounded corners. The text in the box is in white.</p>
+<p>For HTML output, we define these rules in a CSS file. If you are unfamiliar with CSS, there are plenty of free online tutorials, e.g., <a href="https://www.w3schools.com/css/" class="uri">https://www.w3schools.com/css/</a>.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode css css"><code class="sourceCode css"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="fu">.blackbox</span> {</a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span>;</a>
+<a class="sourceLine" id="cb104-3" data-line-number="3">  <span class="kw">background</span>: <span class="dv">black</span>;</a>
+<a class="sourceLine" id="cb104-4" data-line-number="4">  <span class="kw">color</span>: <span class="dv">white</span>;</a>
+<a class="sourceLine" id="cb104-5" data-line-number="5">  <span class="kw">border</span>: <span class="dv">2px</span> <span class="dv">solid</span> orange;</a>
+<a class="sourceLine" id="cb104-6" data-line-number="6">  <span class="kw">border-radius</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb104-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="fu">.center</span> {</a>
+<a class="sourceLine" id="cb104-9" data-line-number="9">  <span class="kw">text-align</span>: <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb104-10" data-line-number="10">}</a></code></pre></div>
+<p>For LaTeX output, we create a new environment named <code>blackbox</code> and based on the LaTeX package <strong>framed</strong>, with a black background and white text:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode latex latex"><code class="sourceCode latex"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">color</span>}</a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="bu">\usepackage</span>{<span class="ex">framed</span>}</a>
+<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="fu">\setlength</span>{<span class="fu">\fboxsep</span>}{.8em}</a>
+<a class="sourceLine" id="cb105-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb105-5" data-line-number="5"><span class="fu">\newenvironment</span>{blackbox}{</a>
+<a class="sourceLine" id="cb105-6" data-line-number="6">  <span class="fu">\definecolor</span>{shadecolor}{rgb}{0, 0, 0}  <span class="co">% black</span></a>
+<a class="sourceLine" id="cb105-7" data-line-number="7">  <span class="fu">\color</span>{white}</a>
+<a class="sourceLine" id="cb105-8" data-line-number="8">  <span class="kw">\begin</span>{<span class="ex">shaded</span>}}</a>
+<a class="sourceLine" id="cb105-9" data-line-number="9"> {<span class="kw">\end</span>{<span class="ex">shaded</span>}}</a></code></pre></div>
+<p>We used the <strong>framed</strong> package in this book because it is fairly lightweight, but it is not possible to draw a colored frame with rounded corners with this package. To achieve the latter, you will need more sophisticated LaTeX packages such as <strong>tcolorbox</strong> (<a href="https://ctan.org/pkg/tcolorbox" class="uri">https://ctan.org/pkg/tcolorbox</a>), which offers a set of very flexible options for creating shaded boxes. You can find many examples in its documentation. The LaTeX environment below will create a shaded box of the similar appearance as the above CSS example:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="bu">\usepackage</span>[many]{<span class="ex">tcolorbox</span>}</a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb106-3" data-line-number="3"><span class="fu">\newtcolorbox</span>{blackbox}{</a>
+<a class="sourceLine" id="cb106-4" data-line-number="4">  colback=black,</a>
+<a class="sourceLine" id="cb106-5" data-line-number="5">  colframe=orange,</a>
+<a class="sourceLine" id="cb106-6" data-line-number="6">  coltext=white,</a>
+<a class="sourceLine" id="cb106-7" data-line-number="7">  boxsep=5pt,</a>
+<a class="sourceLine" id="cb106-8" data-line-number="8">  arc=4pt}</a></code></pre></div>
+<p>Now we can use our custom box in both PDF and HTML output formats. The source code of the box is:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb107-1" data-line-number="1">:::: {.blackbox data-latex=&quot;&quot;}</a>
+<a class="sourceLine" id="cb107-2" data-line-number="2">::: {.center data-latex=&quot;&quot;}</a>
+<a class="sourceLine" id="cb107-3" data-line-number="3">**NOTICE!**</a>
+<a class="sourceLine" id="cb107-4" data-line-number="4">:::</a>
+<a class="sourceLine" id="cb107-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb107-6" data-line-number="6">Thank you for noticing this **new notice**! Your noticing it has</a>
+<a class="sourceLine" id="cb107-7" data-line-number="7">been noted, and _will be reported to the authorities_!</a>
+<a class="sourceLine" id="cb107-8" data-line-number="8">::::</a></code></pre></div>
+<p>The output is:</p>
+<div class="blackbox" data-latex="">
+<div class="center" data-latex="">
+<p><strong>NOTICE!</strong></p>
 </div>
-<div id="ref-R-base">
-<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+<p>Thank you for noticing this <strong>new notice</strong>! Your noticing it has
+been noted, and <em>will be reported to the authorities</em>!</p>
 </div>
 </div>
+<div id="block-image" class="section level3">
+<h3><span class="header-section-number">7.4.3</span> Including icons</h3>
+<p>We can make custom blocks even more visually appealing by including images in them, and it can be an effective way to convey the content of the block. For the following example, we assume that we are working within a directory structure below, which is a simplified version of what is used to build this book:</p>
+<pre class="text"><code>directory/
+├── your-report.Rmd
+├── style.css
+├── preamble.tex
+└── images/ 
+      └── ├── important.png
+          ├── note.png
+          └── caution.png</code></pre>
+<p>We show the source code and output of the example before we explain how everything works:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb109-1" data-line-number="1">::: {.infobox .caution data-latex=&quot;{caution}&quot;}</a>
+<a class="sourceLine" id="cb109-2" data-line-number="2">**NOTICE!**</a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb109-4" data-line-number="4">Thank you for noticing this **new notice**! Your noticing it has</a>
+<a class="sourceLine" id="cb109-5" data-line-number="5">been noted, and _will be reported to the authorities_!</a>
+<a class="sourceLine" id="cb109-6" data-line-number="6">:::</a></code></pre></div>
+<p>The output is:</p>
+<div class="infobox caution" data-latex="{caution}">
+<p><strong>NOTICE!</strong></p>
+<p>Thank you for noticing this <strong>new notice</strong>! Your noticing it has
+been noted, and <em>will be reported to the authorities</em>!</p>
+</div>
+<p>For the HTML output, we can add an image to the box through the <code>background-image</code> property in CSS. We insert the image into the background, and add enough padding on the left-hand side to avoid the text overlapping with this image. If you are using local images, the file path to the images is provided relative to the CSS file. For example:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="fu">.infobox</span> {</a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">  <span class="kw">padding</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">4em</span>;</a>
+<a class="sourceLine" id="cb110-3" data-line-number="3">  <span class="kw">margin-bottom</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb110-4" data-line-number="4">  <span class="kw">border</span>: <span class="dv">2px</span> <span class="dv">solid</span> orange;</a>
+<a class="sourceLine" id="cb110-5" data-line-number="5">  <span class="kw">border-radius</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb110-6" data-line-number="6">  <span class="kw">background</span>: <span class="dv">#f5f5f5</span> <span class="dv">5px</span> <span class="dv">center</span>/<span class="dv">3em</span> <span class="dv">no-repeat</span>;</a>
+<a class="sourceLine" id="cb110-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb110-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb110-9" data-line-number="9"><span class="fu">.caution</span> {</a>
+<a class="sourceLine" id="cb110-10" data-line-number="10">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/caution.png&quot;</span>);</a>
+<a class="sourceLine" id="cb110-11" data-line-number="11">}</a></code></pre></div>
+<p>Note that we used two class names, <code>.infobox</code> and <code>.caution</code>, on the outer block. The <code>infobox</code> class will be used to define the shaded box with a colored border, and the <code>caution</code> class will be used to include the image. The advantage of using two classes is that we can define more blocks with different icons without repeating the setup of the shaded box. For example, if we need a <code>warning</code> box, we only need to define the CSS rule without repeating rules in <code>.infobox</code>:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="fu">.warning</span> {</a>
+<a class="sourceLine" id="cb111-2" data-line-number="2">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;images/warning.png&quot;</span>);</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3">}</a></code></pre></div>
+<p>Then you can create a <code>warning</code> box with the Markdown source code below:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb112-1" data-line-number="1">:::: {.infobox .warning data-latex=&quot;warning&quot;}</a>
+<a class="sourceLine" id="cb112-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb112-3" data-line-number="3">Include the actual content here.</a>
+<a class="sourceLine" id="cb112-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb112-5" data-line-number="5">::::</a></code></pre></div>
+<p>For the PDF output, we can create an <code>infobox</code> environment based on the <code>blackbox</code> environment defined in the previous example, and add the icon to the left side of the box. There are multiple ways of including images in a LaTeX environment, and here is only one of them (it does not precisely reproduce the box style defined in CSS above):</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode tex tex"><code class="sourceCode latex"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="fu">\newenvironment</span>{infobox}[1]</a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">  {</a>
+<a class="sourceLine" id="cb113-3" data-line-number="3">  <span class="kw">\begin</span>{<span class="ex">itemize</span>}</a>
+<a class="sourceLine" id="cb113-4" data-line-number="4">  <span class="fu">\renewcommand</span>{<span class="ex">\labelitemi</span>}{</a>
+<a class="sourceLine" id="cb113-5" data-line-number="5">    <span class="fu">\raisebox</span>{-.7<span class="fu">\height</span>}[0pt][0pt]{</a>
+<a class="sourceLine" id="cb113-6" data-line-number="6">      {<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}</a>
+<a class="sourceLine" id="cb113-7" data-line-number="7">        <span class="bu">\includegraphics</span>{<span class="ex">images/#1</span>}}</a>
+<a class="sourceLine" id="cb113-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb113-9" data-line-number="9">  }</a>
+<a class="sourceLine" id="cb113-10" data-line-number="10">  <span class="fu">\setlength</span>{<span class="fu">\fboxsep</span>}{1em}</a>
+<a class="sourceLine" id="cb113-11" data-line-number="11">  <span class="kw">\begin</span>{<span class="ex">blackbox</span>}</a>
+<a class="sourceLine" id="cb113-12" data-line-number="12">  <span class="fu">\item</span></a>
+<a class="sourceLine" id="cb113-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb113-14" data-line-number="14">  {</a>
+<a class="sourceLine" id="cb113-15" data-line-number="15">  <span class="kw">\end</span>{<span class="ex">blackbox</span>}</a>
+<a class="sourceLine" id="cb113-16" data-line-number="16">  <span class="kw">\end</span>{<span class="ex">itemize</span>}</a>
+<a class="sourceLine" id="cb113-17" data-line-number="17">  }</a></code></pre></div>
+<p>Below we show more example blocks with different icons:</p>
+<div class="infobox warning" data-latex="{warning}">
+<p><strong>NOTICE!</strong></p>
+<p>Thank you for noticing this <strong>new notice</strong>! Your noticing it has
+been noted, and <em>will be reported to the authorities</em>!</p>
+</div>
+<div class="infobox note" data-latex="{note}">
+<p><strong>NOTICE!</strong></p>
+<p>Thank you for noticing this <strong>new notice</strong>! Your noticing it has
+been noted, and <em>will be reported to the authorities</em>!</p>
+</div>
+<div class="infobox important" data-latex="{important}">
+<p><strong>NOTICE!</strong></p>
+<p>Thank you for noticing this <strong>new notice</strong>! Your noticing it has
+been noted, and <em>will be reported to the authorities</em>!</p>
+</div>
+<div class="infobox tip" data-latex="{tip}">
+<p><strong>NOTICE!</strong></p>
+<p>Thank you for noticing this <strong>new notice</strong>! Your noticing it has
+been noted, and <em>will be reported to the authorities</em>!</p>
+</div>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="author.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="install-latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="figures-side.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="word.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -361,7 +541,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/01-installation.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/07-multiformat.Rmd",
 "text": "Edit"
 },
 "history": {
