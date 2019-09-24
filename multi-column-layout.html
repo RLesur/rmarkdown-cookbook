@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.5 Multi-column layout | R Markdown Cookbook</title>
+  <title>4.4 Multi-column layout | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.5 Multi-column layout | R Markdown Cookbook" />
+  <meta property="og:title" content="4.4 Multi-column layout | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.5 Multi-column layout | R Markdown Cookbook" />
+  <meta name="twitter:title" content="4.4 Multi-column layout | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -164,17 +164,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 <li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
+<li class="chapter" data-level="3.11" data-path="comments.html"><a href="comments.html"><i class="fa fa-check"></i><b>3.11</b> Comment out text</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
-<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="font-color.html"><a href="font-color.html#multi-output-text-colour"><i class="fa fa-check"></i><b>4.1.1</b> Multi-output text colour</a></li>
+<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a></li>
+<li class="chapter" data-level="4.2" data-path="indent-text.html"><a href="indent-text.html"><i class="fa fa-check"></i><b>4.2</b> Indent text</a></li>
+<li class="chapter" data-level="4.3" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.3</b> Verbatim code chunks</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.3.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="comment-out-content.html"><a href="comment-out-content.html"><i class="fa fa-check"></i><b>4.2</b> Comment out content</a></li>
-<li class="chapter" data-level="4.3" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>4.3</b> Indenting text</a></li>
-<li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
+<li class="chapter" data-level="4.4" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.4</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex-output.html"><a href="latex-output.html"><i class="fa fa-check"></i><b>5</b> LaTeX Output</a><ul>
 <li class="chapter" data-level="5.1" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>5.1</b> Add LaTeX code to the preamble</a></li>
@@ -307,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="multi-column-layout" class="section level2">
-<h2><span class="header-section-number">4.5</span> Multi-column layout</h2>
+<h2><span class="header-section-number">4.4</span> Multi-column layout</h2>
 <p>Pandoc’s Markdown supports the multi-column layout for slides but not other types of documents. In this recipe, we show how to use the multi-column layout in normal HTML documents and LaTeX documents. This recipe was inspired by Atsushi Yasumoto’s solutions to the <strong>knitr</strong> issue <a href="https://github.com/yihui/knitr/issues/1743" class="uri">https://github.com/yihui/knitr/issues/1743</a>.</p>
 <p>The recipe will be much simpler if you only need to consider HTML output, because arranging HTML elements side by side is relatively simple via CSS. It will be even simpler if you only need to arrange the text output of a code chunk side by side. Below is the first example:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb51-1" data-line-number="1">---</a>
@@ -319,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb51-7" data-line-number="7"><span class="bn">10:1  # in the reverse order</span></a>
 <a class="sourceLine" id="cb51-8" data-line-number="8"><span class="bn">```</span></a></code></pre></div>
 <p>The CSS attribute <code>display: inline-block;</code> means the output code blocks (i.e., the <code>&lt;pre&gt;</code> tags in HTML) should be displayed as inline elements. By default, these blocks are displayed as block-level elements (i.e., <code>display: block;</code>) and will occupy whole rows. The chunk option <code>collapse = TRUE</code> means the text output will be merged into the R source code block, so both the source and its text output will be placed in the same <code>&lt;pre&gt;</code> block.</p>
-<p>If you want to arrange arbitrary content side by side in HTML output, you can use Pandoc’s <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced Div</a>. The name “Div” comes from the HTML tag <code>&lt;div&gt;</code>, but you can interpret it as an arbitrary block or container. A Div starts and ends with three or more colons (e.g., <code>:::</code>). A Div with more colons can contain Divs with fewer colons. An important and useful feature of the fenced Div is that you can attach attributes to it. For example, you can apply the CSS attribute <code>display: flex;</code> to an outside container, so that the inside containers will be placed side by side:</p>
+<p>If you want to arrange arbitrary content side by side in HTML output, you can use Pandoc’s <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced <code>Div</code></a>. The name “Div” comes from the HTML tag <code>&lt;div&gt;</code>, but you can interpret it as an arbitrary block or container. A <code>Div</code> starts and ends with three or more colons (e.g., <code>:::</code>). A <code>Div</code> with more colons can contain <code>Div</code>s with fewer colons. An important and useful feature of the fenced <code>Div</code> is that you can attach attributes to it. For example, you can apply the CSS attribute <code>display: flex;</code> to an outside container, so that the inside containers will be placed side by side:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb52-1" data-line-number="1">---</a>
 <a class="sourceLine" id="cb52-2" data-line-number="2">output: html_document</a>
 <a class="sourceLine" id="cb52-3" data-line-number="3">---</a>
@@ -343,8 +341,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb52-21" data-line-number="21">:::</a>
 <a class="sourceLine" id="cb52-22" data-line-number="22"></a>
 <a class="sourceLine" id="cb52-23" data-line-number="23">::::</a></code></pre></div>
-<p>In the above example, the outside Div (<code>::::</code>) contains two Divs (<code>:::</code>). You can certainly add more Divs inside. To learn more about the very powerful CSS attribute <code>display: flex;</code> (CSS Flexbox), you may read the guide at <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="uri">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>. The CSS Grid (<code>display: grid;</code>) is also very powerful and can be used in the above example, too. If you want to try it, you may change <code>display: flex;</code> to <code>display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;</code>. See the guide at <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" class="uri">https://css-tricks.com/snippets/css/complete-guide-grid/</a> if you want to learn more about the grid layout.</p>
-<p>It is tricker if you want the layout to work for both HTML and LaTeX output. We show a full example below that works for HTML document, LaTeX document, and Beamer presentation output:</p>
+<p>In the above example, the outside <code>Div</code> (<code>::::</code>) contains two <code>Div</code>s (<code>:::</code>). You can certainly add more <code>Div</code>s inside. To learn more about the very powerful CSS attribute <code>display: flex;</code> (CSS Flexbox), you may read the guide at <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="uri">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>. The CSS Grid (<code>display: grid;</code>) is also very powerful and can be used in the above example, too. If you want to try it, you may change <code>display: flex;</code> to <code>display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;</code>. See the guide at <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" class="uri">https://css-tricks.com/snippets/css/complete-guide-grid/</a> if you want to learn more about the grid layout.</p>
+<p>It is trickier if you want the layout to work for both HTML and LaTeX output. We show a full example below that works for HTML document, LaTeX document, and Beamer presentation output:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb53-1" data-line-number="1">---</a>
 <a class="sourceLine" id="cb53-2" data-line-number="2">output:</a>
 <a class="sourceLine" id="cb53-3" data-line-number="3">  html_document: </a>
@@ -394,7 +392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 FIGURE 4.1: A two-column layout that works for HTML, LaTeX, and Beamer output.
 </p>
 </div>
-<p>Figure <a href="multi-column-layout.html#fig:multicol">4.1</a> shows the output. In this example, we used an outside Div with the class <code>.columns</code> and three inside Divs with the class <code>.column</code>. For HTML output, we introduced an external CSS file <code>columns.css</code>, in which we applied the Flexbox layout to the outside Div so the inside Divs can be placed side by side:</p>
+<p>Figure <a href="multi-column-layout.html#fig:multicol">4.1</a> shows the output. In this example, we used an outside <code>Div</code> with the class <code>.columns</code> and three inside <code>Div</code>s with the class <code>.column</code>. For HTML output, we introduced an external CSS file <code>columns.css</code>, in which we applied the Flexbox layout to the outside <code>Div</code> so the inside <code>Div</code>s can be placed side by side:</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="fu">.columns</span> {<span class="kw">display</span>: flex; }</a></code></pre></div>
 <p>For Beamer output, there is nothing we need to do, because the LaTeX class <code>beamer.cls</code> has defined environments <code>columns</code> and <code>column</code>. They will just work.</p>
 <p>For LaTeX output (<code>pdf_document</code>), we have to introduce some dirty hacks stored in <code>columns.tex</code> to the LaTeX preamble to define the LaTeX environments <code>columns</code> and <code>column</code>:</p>
@@ -415,7 +413,7 @@ FIGURE 4.1: A two-column layout that works for HTML, LaTeX, and Beamer output.
 <a class="sourceLine" id="cb55-15" data-line-number="15">    {}<span class="co">%</span></a>
 <a class="sourceLine" id="cb55-16" data-line-number="16">}</a>
 <a class="sourceLine" id="cb55-17" data-line-number="17"><span class="fu">\makeatother</span></a></code></pre></div>
-<p>The <code>column</code> environment is particularly complicated mainly because Pandoc starts a new paragraph for each Div in LaTeX output, and we have to remove these new paragraphs, otherwise the Divs cannot be placed side by side. The hacks were borrowed from <a href="https://tex.stackexchange.com/q/179016/9128" class="uri">https://tex.stackexchange.com/q/179016/9128</a>.</p>
+<p>The <code>column</code> environment is particularly complicated mainly because Pandoc starts a new paragraph for each <code>Div</code> in LaTeX output, and we have to remove these new paragraphs, otherwise the <code>Div</code>s cannot be placed side by side. The hacks were borrowed from <a href="https://tex.stackexchange.com/q/179016/9128" class="uri">https://tex.stackexchange.com/q/179016/9128</a>.</p>
 
 </div>
 <!-- </div> -->

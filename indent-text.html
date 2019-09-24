@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.2 Comment out content | R Markdown Cookbook</title>
+  <title>4.2 Indent text | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.2 Comment out content | R Markdown Cookbook" />
+  <meta property="og:title" content="4.2 Indent text | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.2 Comment out content | R Markdown Cookbook" />
+  <meta name="twitter:title" content="4.2 Indent text | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="font-color.html"/>
-<link rel="next" href="indenting-text.html"/>
+<link rel="next" href="verbatim-code-chunks.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -164,17 +164,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 <li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
+<li class="chapter" data-level="3.11" data-path="comments.html"><a href="comments.html"><i class="fa fa-check"></i><b>3.11</b> Comment out text</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
-<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="font-color.html"><a href="font-color.html#multi-output-text-colour"><i class="fa fa-check"></i><b>4.1.1</b> Multi-output text colour</a></li>
+<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a></li>
+<li class="chapter" data-level="4.2" data-path="indent-text.html"><a href="indent-text.html"><i class="fa fa-check"></i><b>4.2</b> Indent text</a></li>
+<li class="chapter" data-level="4.3" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.3</b> Verbatim code chunks</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.3.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="comment-out-content.html"><a href="comment-out-content.html"><i class="fa fa-check"></i><b>4.2</b> Comment out content</a></li>
-<li class="chapter" data-level="4.3" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>4.3</b> Indenting text</a></li>
-<li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
+<li class="chapter" data-level="4.4" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.4</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex-output.html"><a href="latex-output.html"><i class="fa fa-check"></i><b>5</b> LaTeX Output</a><ul>
 <li class="chapter" data-level="5.1" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>5.1</b> Add LaTeX code to the preamble</a></li>
@@ -306,12 +304,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="comment-out-content" class="section level2">
-<h2><span class="header-section-number">4.2</span> Comment out content</h2>
-<!-- https://stackoverflow.com/questions/17046518/comment-out-text-in-r-markdown -->
-<p>It is useful to include commented text within the source document which is not displayed within the final outputted document. We can use the HTML syntax <code>&lt;!-- your comment --&gt;</code>. This will not be displayed in any output format.</p>
-<p>Comments can span either single or multiple lines. This may be useful if you have draft comment.
-<!-- , and it also allows us to comment out code chunks (and prevent them from being run in knitr). --></p>
+<div id="indent-text" class="section level2">
+<h2><span class="header-section-number">4.2</span> Indent text</h2>
+<!-- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 -->
+<!-- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks -->
+<p>As mentioned in Section <a href="linebreaks.html#linebreaks">3.7</a>, whitespaces are often meaningless in Markdown. Markdown will also ignore spaces used for indentation by default. However, we may want to keep the indentation in certain cases, e.g., in verses and addresses. In these situations, we can use line blocks by starting the line with a vertical bar (<code>|</code>). The linebreaks and any leading spaces will be preserved in the output. For example:<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb44-1" data-line-number="1">| When dollars appear it&#39;s a sign</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">|   that your code does not quite align  </a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">| Ensure that your math  </a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">|   in xaringan hath  </a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">|   been placed on a single long line</a></code></pre></div>
+<p>The output is:</p>
+<blockquote>
+<div class="line-block">When dollars appear it’s a sign<br />
+  that your code does not quite align<br />
+Ensure that your math<br />
+  in xaringan hath<br />
+  been placed on a single long line</div>
+</blockquote>
+<p>The lines can be hard-wrapped in the Markdown source. If the continuation line begins with a space, the previous linebreak and the leading spaces on this line will be ignored as usual. For example:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb45-1" data-line-number="1">| Hiring Manager</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">| School of Ninja,</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">  Hacker&#39;s University</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">| 404 Not Found Road,</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">  Undefined 0x1234, NA</a></code></pre></div>
+<p>The output is:</p>
+<blockquote>
+<div class="line-block">Hiring Manager<br />
+School of Ninja, Hacker’s University<br />
+404 Not Found Road, Undefined 0x1234, NA</div>
+</blockquote>
+<p>You can see that the linebreak after “School of Ninja” was ignored.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This is a limerick written by Claus Ekstrøm: <a href="https://yihui.name/en/2018/06/xaringan-math-limerick/" class="uri">https://yihui.name/en/2018/06/xaringan-math-limerick/</a>.<a href="indent-text.html#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -319,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="font-color.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="indenting-text.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="verbatim-code-chunks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

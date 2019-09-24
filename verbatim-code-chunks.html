@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.4 Verbatim code chunks | R Markdown Cookbook</title>
+  <title>4.3 Verbatim code chunks | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.4 Verbatim code chunks | R Markdown Cookbook" />
+  <meta property="og:title" content="4.3 Verbatim code chunks | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.4 Verbatim code chunks | R Markdown Cookbook" />
+  <meta name="twitter:title" content="4.3 Verbatim code chunks | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="indenting-text.html"/>
+<link rel="prev" href="indent-text.html"/>
 <link rel="next" href="multi-column-layout.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -164,17 +164,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 <li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
+<li class="chapter" data-level="3.11" data-path="comments.html"><a href="comments.html"><i class="fa fa-check"></i><b>3.11</b> Comment out text</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
-<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="font-color.html"><a href="font-color.html#multi-output-text-colour"><i class="fa fa-check"></i><b>4.1.1</b> Multi-output text colour</a></li>
+<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a></li>
+<li class="chapter" data-level="4.2" data-path="indent-text.html"><a href="indent-text.html"><i class="fa fa-check"></i><b>4.2</b> Indent text</a></li>
+<li class="chapter" data-level="4.3" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.3</b> Verbatim code chunks</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.3.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="comment-out-content.html"><a href="comment-out-content.html"><i class="fa fa-check"></i><b>4.2</b> Comment out content</a></li>
-<li class="chapter" data-level="4.3" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>4.3</b> Indenting text</a></li>
-<li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
+<li class="chapter" data-level="4.4" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.4</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex-output.html"><a href="latex-output.html"><i class="fa fa-check"></i><b>5</b> LaTeX Output</a><ul>
 <li class="chapter" data-level="5.1" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>5.1</b> Add LaTeX code to the preamble</a></li>
@@ -307,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="verbatim-code-chunks" class="section level2">
-<h2><span class="header-section-number">4.4</span> Verbatim code chunks</h2>
+<h2><span class="header-section-number">4.3</span> Verbatim code chunks</h2>
 <p>Typically we write code chunks and inline expressions that we want to be parsed and evaluated by <strong>knitr</strong>. However, if you are trying to write a tutorial on using <strong>knitr</strong>, you may need to generate verbatim code chunk or inline expression that is <em>not</em> parsed by <strong>knitr</strong>, and we want to display the content of the chunk header.</p>
 <p>Unfortunately, we can’t wrap the code chunk in another layer of backticks, but instead we must make the code chunk invalid within the source code by inserting “<code></code> to the chunk header. This will be evaluated as an inline expression to <em>an empty string</em> by <strong>knitr</strong>. For this example, the following”code chunk&quot; in the source document:</p>
 <pre><code>`r &#39;&#39;````{r, eval=TRUE}
@@ -325,13 +323,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ````</code></pre>
 <p>Why four backticks? That is because you have to use at least N+1 backticks to wrap up N backticks.</p>
 <div id="show-a-verbatim-inline-expression" class="section level3">
-<h3><span class="header-section-number">4.4.1</span> Show a verbatim inline expression</h3>
+<h3><span class="header-section-number">4.3.1</span> Show a verbatim inline expression</h3>
 <p>There are multiple ways to show a verbatim inline expression. I mentioned this trick for R Markdown documents in the FAQ:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb49-1" data-line-number="1">This will show a verbatim inline R expression `<span class="bn">` `</span>r</a>
 <a class="sourceLine" id="cb49-2" data-line-number="2">1+1<span class="bn">` `</span>` in the output.</a></code></pre></div>
 <p>The trick works due to two reasons (1) a single line break is often the same as a space to Markdown parsers (by comparison, two consecutive line breaks means starting a new paragraph); (2) <strong>knitr</strong> requires a space after <code>`r</code> to parse it; if the space is missing, it will not be treated as an inline expression. In the output document, you should see:</p>
 <pre><code>This will show a verbatim inline R expression 2 in the output.</code></pre>
-<p>You can read more about this behaviour <a href="https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/">here</a>.</p>
+<p>You can read more about this behavior <a href="https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/">here</a>.</p>
 </div>
 </div>
             </section>
@@ -339,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="indenting-text.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="indent-text.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="multi-column-layout.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

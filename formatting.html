@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="animation.html"/>
+<link rel="prev" href="comments.html"/>
 <link rel="next" href="font-color.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -164,17 +164,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 <li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
+<li class="chapter" data-level="3.11" data-path="comments.html"><a href="comments.html"><i class="fa fa-check"></i><b>3.11</b> Comment out text</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
-<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="font-color.html"><a href="font-color.html#multi-output-text-colour"><i class="fa fa-check"></i><b>4.1.1</b> Multi-output text colour</a></li>
+<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a></li>
+<li class="chapter" data-level="4.2" data-path="indent-text.html"><a href="indent-text.html"><i class="fa fa-check"></i><b>4.2</b> Indent text</a></li>
+<li class="chapter" data-level="4.3" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.3</b> Verbatim code chunks</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.3.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="comment-out-content.html"><a href="comment-out-content.html"><i class="fa fa-check"></i><b>4.2</b> Comment out content</a></li>
-<li class="chapter" data-level="4.3" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>4.3</b> Indenting text</a></li>
-<li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
+<li class="chapter" data-level="4.4" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.4</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex-output.html"><a href="latex-output.html"><i class="fa fa-check"></i><b>5</b> LaTeX Output</a><ul>
 <li class="chapter" data-level="5.1" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>5.1</b> Add LaTeX code to the preamble</a></li>
@@ -308,18 +306,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="formatting" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Formatting</h1>
-<p>One of the strengths of the markdown language is that it’s simplicity makes it very easy to read even to newcomers to understand. This is one of its key design principles, and as outlined creator of the markdown language:</p>
+<p>The greatest strength of the Markdown language is that its simplicity makes it very easy to read and write even to newcomers. This is one of its key design principles, and as outlined creator of the original Markdown language:</p>
 <blockquote>
 <p>A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.</p>
 <p>— <a href="http://daringfireball.net/projects/markdown/syntax#philosophy">John Gruber</a></p>
 </blockquote>
-<p>However, this comes at a cost of customisation, and many of the features which users of typical word processors are used to are not directly accessible. This includes:</p>
+<p>However, this comes at a cost of customization. Many features of typical word processors are not directly available in Markdown. These include:</p>
 <ul>
-<li><p>Changing font size</p></li>
-<li><p>Changing font colour</p></li>
-<li><p>Editing font alignment</p></li>
+<li><p>Changing the font size of a piece of text;</p></li>
+<li><p>Changing the font color of certain words;</p></li>
+<li><p>Specifying text alignment.</p></li>
 </ul>
-<p>It can be helpful for such features to be included within documents. This chapter provides an extended guide to the basics of the R Markdown language, and highlights how we can customise the appearance and styling within an R Markdown document.</p>
+<p>We leave it to you to decide whether such features are worth your effort. To some degree, Markdown reflects the philosophy of Stoicism: the “natural world” consists of plain text, and you should not be controlled by the desire for (visual) pleasure. Anyway, this chapter offers some tips on how you can customize the appearance and styling of elements in an R Markdown document.</p>
 <p>If you need a reminder in the basics of the Markdown language, the R Markdown cheatsheet at <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a> provides a good overview of the basic syntax.</p> 
 </div>
             </section>
@@ -327,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="animation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="font-color.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 Indenting text | R Markdown Cookbook</title>
+  <title>3.11 Comment out text | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 Indenting text | R Markdown Cookbook" />
+  <meta property="og:title" content="3.11 Comment out text | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 Indenting text | R Markdown Cookbook" />
+  <meta name="twitter:title" content="3.11 Comment out text | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="comment-out-content.html"/>
-<link rel="next" href="verbatim-code-chunks.html"/>
+<link rel="prev" href="animation.html"/>
+<link rel="next" href="formatting.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -164,17 +164,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>3.8</b> Put together all code in the appendix</a></li>
 <li class="chapter" data-level="3.9" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>3.9</b> Convert models to equations</a></li>
 <li class="chapter" data-level="3.10" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>3.10</b> Create an animation from multiple R plots</a></li>
+<li class="chapter" data-level="3.11" data-path="comments.html"><a href="comments.html"><i class="fa fa-check"></i><b>3.11</b> Comment out text</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>4</b> Formatting</a><ul>
-<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="font-color.html"><a href="font-color.html#multi-output-text-colour"><i class="fa fa-check"></i><b>4.1.1</b> Multi-output text colour</a></li>
+<li class="chapter" data-level="4.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>4.1</b> Font color</a></li>
+<li class="chapter" data-level="4.2" data-path="indent-text.html"><a href="indent-text.html"><i class="fa fa-check"></i><b>4.2</b> Indent text</a></li>
+<li class="chapter" data-level="4.3" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.3</b> Verbatim code chunks</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.3.1</b> Show a verbatim inline expression</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="comment-out-content.html"><a href="comment-out-content.html"><i class="fa fa-check"></i><b>4.2</b> Comment out content</a></li>
-<li class="chapter" data-level="4.3" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>4.3</b> Indenting text</a></li>
-<li class="chapter" data-level="4.4" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>4.4</b> Verbatim code chunks</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>4.4.1</b> Show a verbatim inline expression</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.5</b> Multi-column layout</a></li>
+<li class="chapter" data-level="4.4" data-path="multi-column-layout.html"><a href="multi-column-layout.html"><i class="fa fa-check"></i><b>4.4</b> Multi-column layout</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex-output.html"><a href="latex-output.html"><i class="fa fa-check"></i><b>5</b> LaTeX Output</a><ul>
 <li class="chapter" data-level="5.1" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>5.1</b> Add LaTeX code to the preamble</a></li>
@@ -306,29 +304,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="indenting-text" class="section level2">
-<h2><span class="header-section-number">4.3</span> Indenting text</h2>
-<!-- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 -->
-<!-- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks -->
-<p>Markdown will ignore indentations by default. However, we may want to keep indentation within the text, for example within verses and addresses. In these situations, we can use line blocks by starting the line with a vertical bar (<code>|</code>). The division into lines will be preserved in the output, as will any leading spaces; otherwise, the lines will be formatted as Markdown. As an example:</p>
-<pre><code>| The limerick packs laughs anatomical
-| In space that is quite economical.
-|    But the good ones I&#39;ve seen
-|    So seldom are clean
-| And the clean ones so seldom are comical</code></pre>
-<p>The lines can be hard-wrapped if needed, but the continuation line must begin with a space. For example:</p>
-<pre><code>| The Right Honorable Most Venerable and Righteous Samuel L.
-  Constable, Jr.
-| 200 Main St.
-| Berkeley, CA 94718</code></pre>
+<div id="comments" class="section level2">
+<h2><span class="header-section-number">3.11</span> Comment out text</h2>
+<!-- https://stackoverflow.com/questions/17046518/comment-out-text-in-r-markdown -->
+<p>It is useful to comment out text in the source document, which will not be displayed in the final output document. We can use the HTML syntax <code>&lt;!-- your comment --&gt;</code>. The comments will not be displayed in any output format.</p>
+<p>Comments can span either a single line or multiple lines. This may be useful for you to write draft content.
+<!-- , and it also allows us to comment out code chunks (and prevent them from being run in knitr). --></p>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="comment-out-content.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="verbatim-code-chunks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="animation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="formatting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -358,7 +349,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/04-formatting.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/03-content.Rmd",
 "text": "Edit"
 },
 "history": {
