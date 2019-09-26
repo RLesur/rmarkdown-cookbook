@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -307,19 +301,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="html-widgets" class="section level2">
 <h2><span class="header-section-number">7.2</span> Display HTML widgets</h2>
 <p>HTML widgets (<a href="https://htmlwidgets.org" class="uri">https://htmlwidgets.org</a>) are typically interactive JavaScript applications, which only work in HTML output. If you knit an Rmd document containing HTML widgets to a non-HTML format such as PDF or Word, you may get an error message like this:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb94-1" data-line-number="1">Error: Functions that produce HTML output found in document</a>
-<a class="sourceLine" id="cb94-2" data-line-number="2">targeting X output. Please change the output type of this</a>
-<a class="sourceLine" id="cb94-3" data-line-number="3">document to HTML. Alternatively, you can allow HTML output in</a>
-<a class="sourceLine" id="cb94-4" data-line-number="4">non-HTML formats by adding this option to the YAML front-matter</a>
-<a class="sourceLine" id="cb94-5" data-line-number="5">of your rmarkdown file:</a>
-<a class="sourceLine" id="cb94-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb94-7" data-line-number="7">  always_allow_html: yes</a>
-<a class="sourceLine" id="cb94-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb94-9" data-line-number="9">Note however that the HTML output will not be visible in</a>
-<a class="sourceLine" id="cb94-10" data-line-number="10">non-HTML formats.</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb97-1" data-line-number="1">Error: Functions that produce HTML output found in document</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">targeting X output. Please change the output type of this</a>
+<a class="sourceLine" id="cb97-3" data-line-number="3">document to HTML. Alternatively, you can allow HTML output in</a>
+<a class="sourceLine" id="cb97-4" data-line-number="4">non-HTML formats by adding this option to the YAML front-matter</a>
+<a class="sourceLine" id="cb97-5" data-line-number="5">of your rmarkdown file:</a>
+<a class="sourceLine" id="cb97-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb97-7" data-line-number="7">  always_allow_html: yes</a>
+<a class="sourceLine" id="cb97-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb97-9" data-line-number="9">Note however that the HTML output will not be visible in</a>
+<a class="sourceLine" id="cb97-10" data-line-number="10">non-HTML formats.</a></code></pre></div>
 <p>There is actually a better solution than the one mentioned in the above error message, but it involves extra packages. You can install the <strong>webshot</strong> package in R and also install PhantomJS:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">webshot<span class="op">::</span><span class="kw">install_phantomjs</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">webshot<span class="op">::</span><span class="kw">install_phantomjs</span>()</a></code></pre></div>
 <p>Then if you knit an Rmd document with HTML widgets to a non-HTML format, the HTML widgets will be displayed as static screenshots. The screenshots are automatically taken in <strong>knitr</strong>. <a href="https://bookdown.org/yihui/bookdown/html-widgets.html">Section 2.10</a> of the <strong>bookdown</strong> book contains more information on finer control over the screenshots.</p>
 </div>
             </section>

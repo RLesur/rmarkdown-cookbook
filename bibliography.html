@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -307,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bibliography" class="section level2">
 <h2><span class="header-section-number">3.1</span> Bibliographies and citations</h2>
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
-<p>For an overview of including bibliographies in your output document, you may see <a href="https://bookdown.org/yihui/bookdown/citations.html">Section 2.8</a> of <span class="citation">Xie (<a href="#ref-xie2016bookdown">2016</a>)</span>. The basic usage requires us to specify a bibliography file using the <code>bibliography</code> metadata field in YAML. For example:</p>
+<p>For an overview of including bibliographies in your output document, you may see <a href="https://bookdown.org/yihui/bookdown/citations.html">Section 2.8</a> of <span class="citation">Xie (<a href="#ref-xie2016">2016</a>)</span>. The basic usage requires us to specify a bibliography file using the <code>bibliography</code> metadata field in YAML. For example:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="ot">---</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="fu">output:</span><span class="at"> html_document</span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="fu">bibliography:</span><span class="at"> references.bib  </span></a>
@@ -375,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
+<div id="ref-xie2016">
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
 </div>
 </div>
             </section>

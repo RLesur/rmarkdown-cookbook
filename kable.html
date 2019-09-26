@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -307,97 +301,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="kable" class="section level2">
 <h2><span class="header-section-number">10.1</span> The function <code>knitr::kable()</code></h2>
 <p>The <code>kable()</code> function in <strong>knitr</strong> is a very simple table generator, and is simple by design. It only generates tables for strictly rectangular data such as matrices and data frames. You cannot heavily format the table cells or merge cells. However, this function does have a large number of arguments for you to customize the appearance of tables:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">kable</span>(x, format, <span class="dt">digits =</span> <span class="kw">getOption</span>(<span class="st">&quot;digits&quot;</span>), <span class="dt">row.names =</span> <span class="ot">NA</span>, </a>
-<a class="sourceLine" id="cb121-2" data-line-number="2">  <span class="dt">col.names =</span> <span class="ot">NA</span>, align, <span class="dt">caption =</span> <span class="ot">NULL</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </a>
-<a class="sourceLine" id="cb121-3" data-line-number="3">  <span class="dt">format.args =</span> <span class="kw">list</span>(), <span class="dt">escape =</span> <span class="ot">TRUE</span>, ...)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">kable</span>(x, format, <span class="dt">digits =</span> <span class="kw">getOption</span>(<span class="st">&quot;digits&quot;</span>), <span class="dt">row.names =</span> <span class="ot">NA</span>, </a>
+<a class="sourceLine" id="cb124-2" data-line-number="2">  <span class="dt">col.names =</span> <span class="ot">NA</span>, align, <span class="dt">caption =</span> <span class="ot">NULL</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb124-3" data-line-number="3">  <span class="dt">format.args =</span> <span class="kw">list</span>(), <span class="dt">escape =</span> <span class="ot">TRUE</span>, ...)</a></code></pre></div>
 <div id="kable-formats" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Possible table formats</h3>
 <p>In most cases, <code>knitr::kable(x)</code> may be enough if you only need a simple table for the data object <code>x</code>. The <code>format</code> argument is automatically set according to the <strong>knitr</strong> source document format. Its possible values are <code>latex</code>, <code>html</code>, <code>markdown</code>, <code>pandoc</code>, and <code>rst</code>. For R Markdown documents, <code>kable()</code> uses the <code>pandoc</code> format for tables by default, which looks like this:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;pandoc&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb123"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="bn">                      mpg   cyl   disp    hp</span></a>
-<a class="sourceLine" id="cb123-2" data-line-number="2">------------------  -----  ----  -----  ----</a>
-<a class="sourceLine" id="cb123-3" data-line-number="3">Mazda RX4            21.0     6    160   110</a>
-<a class="sourceLine" id="cb123-4" data-line-number="4">Mazda RX4 Wag        21.0     6    160   110</a>
-<a class="sourceLine" id="cb123-5" data-line-number="5">Datsun 710           22.8     4    108    93</a>
-<a class="sourceLine" id="cb123-6" data-line-number="6">Hornet 4 Drive       21.4     6    258   110</a>
-<a class="sourceLine" id="cb123-7" data-line-number="7">Hornet Sportabout    18.7     8    360   175</a>
-<a class="sourceLine" id="cb123-8" data-line-number="8">Valiant              18.1     6    225   105</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;pandoc&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="bn">                      mpg   cyl   disp    hp</span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">------------------  -----  ----  -----  ----</a>
+<a class="sourceLine" id="cb126-3" data-line-number="3">Mazda RX4            21.0     6    160   110</a>
+<a class="sourceLine" id="cb126-4" data-line-number="4">Mazda RX4 Wag        21.0     6    160   110</a>
+<a class="sourceLine" id="cb126-5" data-line-number="5">Datsun 710           22.8     4    108    93</a>
+<a class="sourceLine" id="cb126-6" data-line-number="6">Hornet 4 Drive       21.4     6    258   110</a>
+<a class="sourceLine" id="cb126-7" data-line-number="7">Hornet Sportabout    18.7     8    360   175</a>
+<a class="sourceLine" id="cb126-8" data-line-number="8">Valiant              18.1     6    225   105</a></code></pre></div>
 <p>You can also generate tables in Markdown, HTML, LaTeX, reStructuredText:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;markdown&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb125"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb125-1" data-line-number="1">|                  |  mpg| cyl| disp|  hp|</a>
-<a class="sourceLine" id="cb125-2" data-line-number="2">|:-----------------|----:|---:|----:|---:|</a>
-<a class="sourceLine" id="cb125-3" data-line-number="3">|Mazda RX4         | 21.0|   6|  160| 110|</a>
-<a class="sourceLine" id="cb125-4" data-line-number="4">|Mazda RX4 Wag     | 21.0|   6|  160| 110|</a>
-<a class="sourceLine" id="cb125-5" data-line-number="5">|Datsun 710        | 22.8|   4|  108|  93|</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6">|Hornet 4 Drive    | 21.4|   6|  258| 110|</a>
-<a class="sourceLine" id="cb125-7" data-line-number="7">|Hornet Sportabout | 18.7|   8|  360| 175|</a>
-<a class="sourceLine" id="cb125-8" data-line-number="8">|Valiant           | 18.1|   6|  225| 105|</a></code></pre></div>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb127"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">&lt;table&gt;</span></a>
-<a class="sourceLine" id="cb127-2" data-line-number="2"> <span class="kw">&lt;thead&gt;</span></a>
-<a class="sourceLine" id="cb127-3" data-line-number="3">  <span class="kw">&lt;tr&gt;</span></a>
-<a class="sourceLine" id="cb127-4" data-line-number="4">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span>   <span class="kw">&lt;/th&gt;</span></a>
-<a class="sourceLine" id="cb127-5" data-line-number="5">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> mpg <span class="kw">&lt;/th&gt;</span></a>
-<a class="sourceLine" id="cb127-6" data-line-number="6">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> cyl <span class="kw">&lt;/th&gt;</span></a>
-<a class="sourceLine" id="cb127-7" data-line-number="7">  <span class="kw">&lt;/tr&gt;</span></a>
-<a class="sourceLine" id="cb127-8" data-line-number="8"> <span class="kw">&lt;/thead&gt;</span></a>
-<a class="sourceLine" id="cb127-9" data-line-number="9"><span class="kw">&lt;tbody&gt;</span></a>
-<a class="sourceLine" id="cb127-10" data-line-number="10">  <span class="kw">&lt;tr&gt;</span></a>
-<a class="sourceLine" id="cb127-11" data-line-number="11">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb127-12" data-line-number="12">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb127-13" data-line-number="13">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb127-14" data-line-number="14">  <span class="kw">&lt;/tr&gt;</span></a>
-<a class="sourceLine" id="cb127-15" data-line-number="15">  <span class="kw">&lt;tr&gt;</span></a>
-<a class="sourceLine" id="cb127-16" data-line-number="16">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 Wag <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb127-17" data-line-number="17">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb127-18" data-line-number="18">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb127-19" data-line-number="19">  <span class="kw">&lt;/tr&gt;</span></a>
-<a class="sourceLine" id="cb127-20" data-line-number="20"><span class="kw">&lt;/tbody&gt;</span></a>
-<a class="sourceLine" id="cb127-21" data-line-number="21"><span class="kw">&lt;/table&gt;</span></a></code></pre></div>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb129"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{l|r|r|r|r}</a>
-<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-3" data-line-number="3">  <span class="op">&amp;</span> mpg <span class="op">&amp;</span> cyl <span class="op">&amp;</span> disp <span class="op">&amp;</span> hp<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-5" data-line-number="5">Mazda RX4 <span class="op">&amp;</span> 21.0 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 160 <span class="op">&amp;</span> 110<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-6" data-line-number="6"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-7" data-line-number="7">Mazda RX4 Wag <span class="op">&amp;</span> 21.0 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 160 <span class="op">&amp;</span> 110<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-8" data-line-number="8"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-9" data-line-number="9">Datsun 710 <span class="op">&amp;</span> 22.8 <span class="op">&amp;</span> 4 <span class="op">&amp;</span> 108 <span class="op">&amp;</span> 93<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-10" data-line-number="10"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-11" data-line-number="11">Hornet 4 Drive <span class="op">&amp;</span> 21.4 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 258 <span class="op">&amp;</span> 110<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-12" data-line-number="12"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-13" data-line-number="13">Hornet Sportabout <span class="op">&amp;</span> 18.7 <span class="op">&amp;</span> 8 <span class="op">&amp;</span> 360 <span class="op">&amp;</span> 175<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-14" data-line-number="14"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-15" data-line-number="15">Valiant <span class="op">&amp;</span> 18.1 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 225 <span class="op">&amp;</span> 105<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb129-16" data-line-number="16"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb129-17" data-line-number="17"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;rst&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb131"><pre class="sourceCode rst"><code class="sourceCode rest"><a class="sourceLine" id="cb131-1" data-line-number="1">=================  ====  ===  ====  ===</a>
-<a class="sourceLine" id="cb131-2" data-line-number="2">\                   mpg  cyl  disp   hp</a>
-<a class="sourceLine" id="cb131-3" data-line-number="3">=================  ====  ===  ====  ===</a>
-<a class="sourceLine" id="cb131-4" data-line-number="4">Mazda RX4          21.0    6   160  110</a>
-<a class="sourceLine" id="cb131-5" data-line-number="5">Mazda RX4 Wag      21.0    6   160  110</a>
-<a class="sourceLine" id="cb131-6" data-line-number="6">Datsun 710         22.8    4   108   93</a>
-<a class="sourceLine" id="cb131-7" data-line-number="7">Hornet 4 Drive     21.4    6   258  110</a>
-<a class="sourceLine" id="cb131-8" data-line-number="8">Hornet Sportabout  18.7    8   360  175</a>
-<a class="sourceLine" id="cb131-9" data-line-number="9">Valiant            18.1    6   225  105</a>
-<a class="sourceLine" id="cb131-10" data-line-number="10">=================  ====  ===  ====  ===</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;markdown&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb128-1" data-line-number="1">|                  |  mpg| cyl| disp|  hp|</a>
+<a class="sourceLine" id="cb128-2" data-line-number="2">|:-----------------|----:|---:|----:|---:|</a>
+<a class="sourceLine" id="cb128-3" data-line-number="3">|Mazda RX4         | 21.0|   6|  160| 110|</a>
+<a class="sourceLine" id="cb128-4" data-line-number="4">|Mazda RX4 Wag     | 21.0|   6|  160| 110|</a>
+<a class="sourceLine" id="cb128-5" data-line-number="5">|Datsun 710        | 22.8|   4|  108|  93|</a>
+<a class="sourceLine" id="cb128-6" data-line-number="6">|Hornet 4 Drive    | 21.4|   6|  258| 110|</a>
+<a class="sourceLine" id="cb128-7" data-line-number="7">|Hornet Sportabout | 18.7|   8|  360| 175|</a>
+<a class="sourceLine" id="cb128-8" data-line-number="8">|Valiant           | 18.1|   6|  225| 105|</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">&lt;table&gt;</span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"> <span class="kw">&lt;thead&gt;</span></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3">  <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb130-4" data-line-number="4">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span>   <span class="kw">&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb130-5" data-line-number="5">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> mpg <span class="kw">&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb130-6" data-line-number="6">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> cyl <span class="kw">&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb130-7" data-line-number="7">  <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb130-8" data-line-number="8"> <span class="kw">&lt;/thead&gt;</span></a>
+<a class="sourceLine" id="cb130-9" data-line-number="9"><span class="kw">&lt;tbody&gt;</span></a>
+<a class="sourceLine" id="cb130-10" data-line-number="10">  <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb130-11" data-line-number="11">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb130-12" data-line-number="12">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb130-13" data-line-number="13">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb130-14" data-line-number="14">  <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb130-15" data-line-number="15">  <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb130-16" data-line-number="16">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 Wag <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb130-17" data-line-number="17">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb130-18" data-line-number="18">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb130-19" data-line-number="19">  <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb130-20" data-line-number="20"><span class="kw">&lt;/tbody&gt;</span></a>
+<a class="sourceLine" id="cb130-21" data-line-number="21"><span class="kw">&lt;/table&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{l|r|r|r|r}</a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-3" data-line-number="3">  <span class="op">&amp;</span> mpg <span class="op">&amp;</span> cyl <span class="op">&amp;</span> disp <span class="op">&amp;</span> hp<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-4" data-line-number="4"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-5" data-line-number="5">Mazda RX4 <span class="op">&amp;</span> 21.0 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 160 <span class="op">&amp;</span> 110<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-6" data-line-number="6"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-7" data-line-number="7">Mazda RX4 Wag <span class="op">&amp;</span> 21.0 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 160 <span class="op">&amp;</span> 110<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-8" data-line-number="8"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-9" data-line-number="9">Datsun 710 <span class="op">&amp;</span> 22.8 <span class="op">&amp;</span> 4 <span class="op">&amp;</span> 108 <span class="op">&amp;</span> 93<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-10" data-line-number="10"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-11" data-line-number="11">Hornet 4 Drive <span class="op">&amp;</span> 21.4 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 258 <span class="op">&amp;</span> 110<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-12" data-line-number="12"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-13" data-line-number="13">Hornet Sportabout <span class="op">&amp;</span> 18.7 <span class="op">&amp;</span> 8 <span class="op">&amp;</span> 360 <span class="op">&amp;</span> 175<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-14" data-line-number="14"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-15" data-line-number="15">Valiant <span class="op">&amp;</span> 18.1 <span class="op">&amp;</span> 6 <span class="op">&amp;</span> 225 <span class="op">&amp;</span> 105<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb132-16" data-line-number="16"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb132-17" data-line-number="17"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]), <span class="st">&quot;rst&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode rst"><code class="sourceCode rest"><a class="sourceLine" id="cb134-1" data-line-number="1">=================  ====  ===  ====  ===</a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">\                   mpg  cyl  disp   hp</a>
+<a class="sourceLine" id="cb134-3" data-line-number="3">=================  ====  ===  ====  ===</a>
+<a class="sourceLine" id="cb134-4" data-line-number="4">Mazda RX4          21.0    6   160  110</a>
+<a class="sourceLine" id="cb134-5" data-line-number="5">Mazda RX4 Wag      21.0    6   160  110</a>
+<a class="sourceLine" id="cb134-6" data-line-number="6">Datsun 710         22.8    4   108   93</a>
+<a class="sourceLine" id="cb134-7" data-line-number="7">Hornet 4 Drive     21.4    6   258  110</a>
+<a class="sourceLine" id="cb134-8" data-line-number="8">Hornet Sportabout  18.7    8   360  175</a>
+<a class="sourceLine" id="cb134-9" data-line-number="9">Valiant            18.1    6   225  105</a>
+<a class="sourceLine" id="cb134-10" data-line-number="10">=================  ====  ===  ====  ===</a></code></pre></div>
 <p>Please note that only the formats <code>pandoc</code> and <code>markdown</code> are portable, i.e., they work for any output document formats. Other table formats only work for specific output formats, e.g., <code>format = 'latex'</code> only works for LaTeX output documents. Using a specific table format will give you more control, at the price of sacrificing portability.</p>
 <p>If you only need one table format that is not the default format for a document, you can set the global R option <code>knitr.table.format</code>, e.g.,</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="st">&quot;latex&quot;</span>)</a></code></pre></div>
 <p>This option can also be a function that returns the format string or <code>NULL</code>. In the case of <code>NULL</code>, <strong>knitr</strong> will try to automatically decide the appropriate format. For example, we can use the <code>latex</code> format only when the output format is LaTeX:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb133-2" data-line-number="2">  <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_latex_output</span>()) </a>
-<a class="sourceLine" id="cb133-3" data-line-number="3">    <span class="st">&quot;latex&quot;</span> <span class="cf">else</span> <span class="st">&quot;pandoc&quot;</span></a>
-<a class="sourceLine" id="cb133-4" data-line-number="4">})</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb136-2" data-line-number="2">  <span class="cf">if</span> (knitr<span class="op">::</span><span class="kw">is_latex_output</span>()) </a>
+<a class="sourceLine" id="cb136-3" data-line-number="3">    <span class="st">&quot;latex&quot;</span> <span class="cf">else</span> <span class="st">&quot;pandoc&quot;</span></a>
+<a class="sourceLine" id="cb136-4" data-line-number="4">})</a></code></pre></div>
 </div>
 <div id="change-column-names" class="section level3">
 <h3><span class="header-section-number">10.1.2</span> Change column names</h3>
 <!-- https://stackoverflow.com/questions/51432502/replace-column-names-in-kable-r-markdown/51444998#51444998 -->
 <p>The names of columns in a data frame may not be the same as what we want to display to readers. In R, the column names of data often do not use spaces to separate words but dots or underscores instead, which may not feel natural when we read them in a table. We can use the the <code>col.names</code> argument to replace the column names with a vector of new names. For example, we substitute the dots with spaces in the column names of the <code>iris</code> data:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">iris2 &lt;-<span class="st"> </span><span class="kw">head</span>(iris)</a>
-<a class="sourceLine" id="cb134-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">col.names =</span> <span class="kw">gsub</span>(<span class="st">&quot;[.]&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="kw">names</span>(iris)))</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1">iris2 &lt;-<span class="st"> </span><span class="kw">head</span>(iris)</a>
+<a class="sourceLine" id="cb137-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">col.names =</span> <span class="kw">gsub</span>(<span class="st">&quot;[.]&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="kw">names</span>(iris)))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -457,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="specify-column-alignment" class="section level3">
 <h3><span class="header-section-number">10.1.3</span> Specify column alignment</h3>
 <p>To change the alignment of the table columns, you can use either a vector of values consisting of characters <code>l</code> (left), <code>c</code> (center), and <code>r</code> (right) or a single multi-character string for alignment, so <code>kable(..., align = c('c', 'l'))</code> can be shortened to <code>kable(..., align = 'cl')</code>. By default, numeric columns are right-aligned, and other columns are left-aligned. Here is an example:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">align =</span> <span class="st">&quot;lccrr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">align =</span> <span class="st">&quot;lccrr&quot;</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -517,7 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="kable-caption" class="section level3">
 <h3><span class="header-section-number">10.1.4</span> Add a table caption</h3>
 <p>You can add a caption to the table via the <code>caption</code> argument, e.g. (see Table <a href="kable.html#tab:kable-cap">10.1</a> for the output),</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">caption =</span> <span class="st">&quot;An example table caption.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">caption =</span> <span class="st">&quot;An example table caption.&quot;</span>)</a></code></pre></div>
 <table>
 <caption><span id="tab:kable-cap">TABLE 10.1: </span>An example table caption.</caption>
 <thead>
@@ -579,21 +573,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="format-numeric-columns" class="section level3">
 <h3><span class="header-section-number">10.1.5</span> Format numeric columns</h3>
 <p>You can set the maximum number of decimal places via the <code>digits</code> argument (which will be passed to the <code>round()</code> function), and other formatting arguments via <code>format.args</code> (to be passed to the <code>format()</code> function in base R). First we show a few simple examples of <code>round()</code> and <code>format()</code> so you will understand how the arguments work later in <code>kable()</code>:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">round</span>(<span class="fl">1.234567</span>, <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="co">## [1] 1</span></a>
-<a class="sourceLine" id="cb137-3" data-line-number="3"><span class="kw">round</span>(<span class="fl">1.234567</span>, <span class="dt">digits =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb137-4" data-line-number="4"><span class="co">## [1] 1.2</span></a>
-<a class="sourceLine" id="cb137-5" data-line-number="5"><span class="kw">round</span>(<span class="fl">1.234567</span>, <span class="dt">digits =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb137-6" data-line-number="6"><span class="co">## [1] 1.235</span></a>
-<a class="sourceLine" id="cb137-7" data-line-number="7"><span class="kw">format</span>(<span class="dv">1000</span>, <span class="dt">scientific =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb137-8" data-line-number="8"><span class="co">## [1] &quot;1e+03&quot;</span></a>
-<a class="sourceLine" id="cb137-9" data-line-number="9"><span class="kw">format</span>(<span class="fl">10000.123</span>, <span class="dt">big.mark =</span> <span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb137-10" data-line-number="10"><span class="co">## [1] &quot;10,000&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">round</span>(<span class="fl">1.234567</span>, <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="co">## [1] 1</span></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="kw">round</span>(<span class="fl">1.234567</span>, <span class="dt">digits =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb140-4" data-line-number="4"><span class="co">## [1] 1.2</span></a>
+<a class="sourceLine" id="cb140-5" data-line-number="5"><span class="kw">round</span>(<span class="fl">1.234567</span>, <span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb140-6" data-line-number="6"><span class="co">## [1] 1.235</span></a>
+<a class="sourceLine" id="cb140-7" data-line-number="7"><span class="kw">format</span>(<span class="dv">1000</span>, <span class="dt">scientific =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb140-8" data-line-number="8"><span class="co">## [1] &quot;1e+03&quot;</span></a>
+<a class="sourceLine" id="cb140-9" data-line-number="9"><span class="kw">format</span>(<span class="fl">10000.123</span>, <span class="dt">big.mark =</span> <span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb140-10" data-line-number="10"><span class="co">## [1] &quot;10,000&quot;</span></a></code></pre></div>
 <p>Then we round and format numbers in a table:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">d &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">X1 =</span> <span class="kw">runif</span>(<span class="dv">3</span>), <span class="dt">X2 =</span> <span class="dv">10</span><span class="op">^</span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>), <span class="dt">X3 =</span> <span class="kw">rnorm</span>(<span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb138-2" data-line-number="2">  <span class="dv">0</span>, <span class="dv">1000</span>))</a>
-<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="co"># at most 4 decimal places</span></a>
-<a class="sourceLine" id="cb138-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">d &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">X1 =</span> <span class="kw">runif</span>(<span class="dv">3</span>), <span class="dt">X2 =</span> <span class="dv">10</span><span class="op">^</span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>), <span class="dt">X3 =</span> <span class="kw">rnorm</span>(<span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb141-2" data-line-number="2">  <span class="dv">0</span>, <span class="dv">1000</span>))</a>
+<a class="sourceLine" id="cb141-3" data-line-number="3"><span class="co"># at most 4 decimal places</span></a>
+<a class="sourceLine" id="cb141-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="dv">4</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -620,8 +614,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="co"># round columns separately</span></a>
-<a class="sourceLine" id="cb139-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="co"># round columns separately</span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">2</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -648,8 +642,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="co"># do not use the scientific notation</span></a>
-<a class="sourceLine" id="cb140-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="dv">3</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">scientific =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="co"># do not use the scientific notation</span></a>
+<a class="sourceLine" id="cb143-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="dv">3</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">scientific =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -676,9 +670,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="co"># add commas to big numbers</span></a>
-<a class="sourceLine" id="cb141-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="dv">3</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">big.mark =</span> <span class="st">&quot;,&quot;</span>, </a>
-<a class="sourceLine" id="cb141-3" data-line-number="3">  <span class="dt">scientific =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="co"># add commas to big numbers</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">digits =</span> <span class="dv">3</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">big.mark =</span> <span class="st">&quot;,&quot;</span>, </a>
+<a class="sourceLine" id="cb144-3" data-line-number="3">  <span class="dt">scientific =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -709,8 +703,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="display-missing-values" class="section level3">
 <h3><span class="header-section-number">10.1.6</span> Display missing values</h3>
 <p>By default, missing values (i.e., <code>NA</code>) are displayed as the character string <code>NA</code> in the table. You can replace it with other values or choose not to display anything (i.e., leave the <code>NA</code> cells empty) with the global R option <code>knitr.kable.NA</code>, e.g., we make <code>NA</code> cells empty in the second table and display <code>**</code> in the third table below:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">d[<span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb142-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d)  <span class="co"># NA is displayed by default</span></a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">d[<span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb145-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d)  <span class="co"># NA is displayed by default</span></a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -737,9 +731,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="co"># replace NA with empty strings</span></a>
-<a class="sourceLine" id="cb143-2" data-line-number="2">opts &lt;-<span class="st"> </span><span class="kw">options</span>(<span class="dt">knitr.kable.NA =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb143-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="co"># replace NA with empty strings</span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2">opts &lt;-<span class="st"> </span><span class="kw">options</span>(<span class="dt">knitr.kable.NA =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb146-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(d)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -766,8 +760,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.kable.NA =</span> <span class="st">&quot;**&quot;</span>)</a>
-<a class="sourceLine" id="cb144-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.kable.NA =</span> <span class="st">&quot;**&quot;</span>)</a>
+<a class="sourceLine" id="cb147-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(d)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -794,14 +788,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">options</span>(opts)  <span class="co"># restore global R options</span></a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">options</span>(opts)  <span class="co"># restore global R options</span></a></code></pre></div>
 </div>
 <div id="escape-special-characters" class="section level3">
 <h3><span class="header-section-number">10.1.7</span> Escape special characters</h3>
 <p>If you are familiar with HTML or LaTeX, you know that there are a few special characters in these languages. To generate safe output, <code>kable()</code> will escape these special characters by default via the argument <code>escape = TRUE</code>, which means all characters will be generated verbatim, and special characters lose their special meanings. For example, <code>&gt;</code> will be substituted with <code>&amp;gt;</code> for HTML tables, and <code>_</code> will be escaped as <code>\_</code> for LaTeX tables. If you are an expert and know how to use special characters properly, you may disable this argument via <code>escape = FALSE</code>. In the second table below, we include a few LaTeX math expressions that contain special characters <code>$</code>, <code>\</code>, and <code>_</code>:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw">lm</span>(dist <span class="op">~</span><span class="st"> </span>speed, <span class="dt">data =</span> cars)</a>
-<a class="sourceLine" id="cb146-2" data-line-number="2">d &lt;-<span class="st"> </span><span class="kw">coef</span>(<span class="kw">summary</span>(m))</a>
-<a class="sourceLine" id="cb146-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw">lm</span>(dist <span class="op">~</span><span class="st"> </span>speed, <span class="dt">data =</span> cars)</a>
+<a class="sourceLine" id="cb149-2" data-line-number="2">d &lt;-<span class="st"> </span><span class="kw">coef</span>(<span class="kw">summary</span>(m))</a>
+<a class="sourceLine" id="cb149-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(d)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -829,10 +823,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="co"># add a few math expressions to row and column names</span></a>
-<a class="sourceLine" id="cb147-2" data-line-number="2"><span class="kw">rownames</span>(d) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">beta_0$&quot;</span>, <span class="st">&quot;$</span><span class="ch">\\</span><span class="st">beta_1$&quot;</span>)</a>
-<a class="sourceLine" id="cb147-3" data-line-number="3"><span class="kw">colnames</span>(d)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;$P(T &gt; t)$&quot;</span></a>
-<a class="sourceLine" id="cb147-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">escape =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co"># add a few math expressions to row and column names</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="kw">rownames</span>(d) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">beta_0$&quot;</span>, <span class="st">&quot;$</span><span class="ch">\\</span><span class="st">beta_1$&quot;</span>)</a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"><span class="kw">colnames</span>(d)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;$P(T &gt; t)$&quot;</span></a>
+<a class="sourceLine" id="cb150-4" data-line-number="4">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">escape =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -861,22 +855,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Without <code>escape = FALSE</code>, special characters will be either escaped or substituted. For example, <code>$</code> is escaped as <code>\$</code>, <code>_</code> is escaped as <code>\_</code>, and <code>\</code> is substituted with <code>\textbackslash{}</code>:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">escape =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb149"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{l|r|r|r|r}</a>
-<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb149-3" data-line-number="3">  <span class="op">&amp;</span> Estimate <span class="op">&amp;</span> Std. Error <span class="op">&amp;</span> t value <span class="op">&amp;</span> <span class="fu">\$</span>P(T &gt; t)<span class="fu">\$\\</span></a>
-<a class="sourceLine" id="cb149-4" data-line-number="4"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb149-5" data-line-number="5"><span class="fu">\$\textbackslash</span>{}beta<span class="fu">\_</span>0<span class="fu">\$</span> <span class="op">&amp;</span> -17.579 <span class="op">&amp;</span> 6.7584 <span class="op">&amp;</span> -2.601 <span class="op">&amp;</span> 0.0123<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb149-6" data-line-number="6"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb149-7" data-line-number="7"><span class="fu">\$\textbackslash</span>{}beta<span class="fu">\_</span>1<span class="fu">\$</span> <span class="op">&amp;</span> 3.932 <span class="op">&amp;</span> 0.4155 <span class="op">&amp;</span> 9.464 <span class="op">&amp;</span> 0.0000<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb149-8" data-line-number="8"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb149-9" data-line-number="9"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(d, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">escape =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{l|r|r|r|r}</a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3">  <span class="op">&amp;</span> Estimate <span class="op">&amp;</span> Std. Error <span class="op">&amp;</span> t value <span class="op">&amp;</span> <span class="fu">\$</span>P(T &gt; t)<span class="fu">\$\\</span></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="fu">\$\textbackslash</span>{}beta<span class="fu">\_</span>0<span class="fu">\$</span> <span class="op">&amp;</span> -17.579 <span class="op">&amp;</span> 6.7584 <span class="op">&amp;</span> -2.601 <span class="op">&amp;</span> 0.0123<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb152-6" data-line-number="6"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb152-7" data-line-number="7"><span class="fu">\$\textbackslash</span>{}beta<span class="fu">\_</span>1<span class="fu">\$</span> <span class="op">&amp;</span> 3.932 <span class="op">&amp;</span> 0.4155 <span class="op">&amp;</span> 9.464 <span class="op">&amp;</span> 0.0000<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb152-8" data-line-number="8"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb152-9" data-line-number="9"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
 <p>Other common special LaTeX characters include <code>#</code>, <code>%</code>, <code>&amp;</code>, <code>{</code>, and <code>}</code>. Common special HTML characters include <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, and <code>&quot;</code>. You need to be cautious when generating tables with <code>escape = FALSE</code>, and make sure you are using the special characters in the right way. It is a very common mistake to use <code>escape = FALSE</code> and include <code>%</code> or <code>_</code> in column names or the caption of a LaTeX table without realizing that they are special.</p>
 <p>If you are not sure how to properly escape special characters, there are two internal helper functions in <strong>knitr</strong>. Below are some examples:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">knitr<span class="op">:::</span><span class="kw">escape_latex</span>(<span class="kw">c</span>(<span class="st">&quot;100%&quot;</span>, <span class="st">&quot;# a comment&quot;</span>, <span class="st">&quot;column_name&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">knitr<span class="op">:::</span><span class="kw">escape_latex</span>(<span class="kw">c</span>(<span class="st">&quot;100%&quot;</span>, <span class="st">&quot;# a comment&quot;</span>, <span class="st">&quot;column_name&quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;100\\%&quot;        &quot;\\# a comment&quot; &quot;column\\_name&quot;</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">knitr<span class="op">:::</span><span class="kw">escape_html</span>(<span class="kw">c</span>(<span class="st">&quot;&lt;attention&gt;&quot;</span>, <span class="st">&quot;x = </span><span class="ch">\&quot;</span><span class="st">character</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, </a>
-<a class="sourceLine" id="cb152-2" data-line-number="2">  <span class="st">&quot;a &amp; b&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">knitr<span class="op">:::</span><span class="kw">escape_html</span>(<span class="kw">c</span>(<span class="st">&quot;&lt;attention&gt;&quot;</span>, <span class="st">&quot;x = </span><span class="ch">\&quot;</span><span class="st">character</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, </a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">  <span class="st">&quot;a &amp; b&quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;&amp;lt;attention&amp;gt;&quot;        
 ## [2] &quot;x = &amp;quot;character&amp;quot;&quot;
 ## [3] &quot;a &amp;amp; b&quot;</code></pre>
@@ -884,14 +878,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="multiple-tables-side-by-side" class="section level3">
 <h3><span class="header-section-number">10.1.8</span> Multiple tables side by side</h3>
 <p>You can pass a list of data frames or matrices to <code>kable()</code> to generate multiple tables side by side. For example, Table <a href="kable.html#tab:two-tables">10.2</a> contains two tables generated from the code below:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb154-2" data-line-number="2">  <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb154-3" data-line-number="3">    <span class="kw">head</span>(cars, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb154-4" data-line-number="4">    <span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb154-5" data-line-number="5">  ),</a>
-<a class="sourceLine" id="cb154-6" data-line-number="6">  <span class="dt">caption =</span> <span class="st">&#39;Two tables placed side by side.&#39;</span>,</a>
-<a class="sourceLine" id="cb154-7" data-line-number="7">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">valign =</span> <span class="st">&#39;t&#39;</span></a>
-<a class="sourceLine" id="cb154-8" data-line-number="8">)</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb157-2" data-line-number="2">  <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb157-3" data-line-number="3">    <span class="kw">head</span>(cars, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb157-4" data-line-number="4">    <span class="kw">head</span>(mtcars[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb157-5" data-line-number="5">  ),</a>
+<a class="sourceLine" id="cb157-6" data-line-number="6">  <span class="dt">caption =</span> <span class="st">&#39;Two tables placed side by side.&#39;</span>,</a>
+<a class="sourceLine" id="cb157-7" data-line-number="7">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">valign =</span> <span class="st">&#39;t&#39;</span></a>
+<a class="sourceLine" id="cb157-8" data-line-number="8">)</a></code></pre></div>
 <table class="kable_wrapper">
 <caption>
 <span id="tab:two-tables">TABLE 10.2: </span>Two tables placed side by side.
@@ -975,106 +969,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">10.1.9</span> Generate multiple tables from a <code>for</code>-loop</h3>
 <p>One common confusion about <code>kable()</code> is that it does not work inside <code>for</code>-loops. This problem is not specific to <code>kable()</code> but exists in many other packages, too. The reason is a little complicated. In case you are interested in the technicality, it has been explained in the blog post <a href="https://yihui.name/en/2017/06/top-level-r-expressions/">“The Ghost Printer Behind Top-level R Expressions”.</a></p>
 <p>You may expect the following code chunk to generate three tables, but it will not:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb155-2" data-line-number="2"><span class="bn">for (i in 1:3) {</span></a>
-<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="bn">  knitr::kable(head(iris))</span></a>
-<a class="sourceLine" id="cb155-4" data-line-number="4"><span class="bn">}</span></a>
-<a class="sourceLine" id="cb155-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb158-2" data-line-number="2"><span class="bn">for (i in 1:3) {</span></a>
+<a class="sourceLine" id="cb158-3" data-line-number="3"><span class="bn">  knitr::kable(head(iris))</span></a>
+<a class="sourceLine" id="cb158-4" data-line-number="4"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb158-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
 <p>You have to explicitly print the <code>kable()</code> results, and apply the chunk option <code>results = 'asis'</code>, e.g.,</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="bn">```{r, results=&#39;asis&#39;}</span></a>
-<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="bn">for (i in 1:3) {</span></a>
-<a class="sourceLine" id="cb156-3" data-line-number="3"><span class="bn">  print(knitr::kable(head(iris)))</span></a>
-<a class="sourceLine" id="cb156-4" data-line-number="4"><span class="bn">}</span></a>
-<a class="sourceLine" id="cb156-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="bn">```{r, results=&#39;asis&#39;}</span></a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="bn">for (i in 1:3) {</span></a>
+<a class="sourceLine" id="cb159-3" data-line-number="3"><span class="bn">  print(knitr::kable(head(iris)))</span></a>
+<a class="sourceLine" id="cb159-4" data-line-number="4"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb159-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
 <p>In general, when you generate output from a <code>for</code>-loop, we recommend that you add a few linebreaks (<code>\n</code>) or an HTML comment (<code>&lt;!-- --&gt;</code>) after each output element to clearly separate all output elements, e.g.,</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="bn">```{r, results=&#39;asis&#39;}</span></a>
-<a class="sourceLine" id="cb157-2" data-line-number="2"><span class="bn">for (i in 1:3) {</span></a>
-<a class="sourceLine" id="cb157-3" data-line-number="3"><span class="bn">  print(knitr::kable(head(iris), caption = &#39;A caption.&#39;))</span></a>
-<a class="sourceLine" id="cb157-4" data-line-number="4"><span class="bn">  cat(&#39;\n\n&lt;!-- --&gt;\n\n&#39;)</span></a>
-<a class="sourceLine" id="cb157-5" data-line-number="5"><span class="bn">}</span></a>
-<a class="sourceLine" id="cb157-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="bn">```{r, results=&#39;asis&#39;}</span></a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="bn">for (i in 1:3) {</span></a>
+<a class="sourceLine" id="cb160-3" data-line-number="3"><span class="bn">  print(knitr::kable(head(iris), caption = &#39;A caption.&#39;))</span></a>
+<a class="sourceLine" id="cb160-4" data-line-number="4"><span class="bn">  cat(&#39;\n\n&lt;!-- --&gt;\n\n&#39;)</span></a>
+<a class="sourceLine" id="cb160-5" data-line-number="5"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb160-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
 <p>Without the separators, Pandoc may be fail to detect the individual elements. For example, when a plot is followed immediately by a table, the table will not be recognized:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb158-1" data-line-number="1">![](logo.png)</a>
-<a class="sourceLine" id="cb158-2" data-line-number="2"><span class="bn">                      mpg   cyl   disp    hp</span></a>
-<a class="sourceLine" id="cb158-3" data-line-number="3">------------------  -----  ----  -----  ----</a>
-<a class="sourceLine" id="cb158-4" data-line-number="4">Mazda RX4            21.0     6    160   110</a>
-<a class="sourceLine" id="cb158-5" data-line-number="5">Mazda RX4 Wag        21.0     6    160   110</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb161-1" data-line-number="1">![](logo.png)</a>
+<a class="sourceLine" id="cb161-2" data-line-number="2"><span class="bn">                      mpg   cyl   disp    hp</span></a>
+<a class="sourceLine" id="cb161-3" data-line-number="3">------------------  -----  ----  -----  ----</a>
+<a class="sourceLine" id="cb161-4" data-line-number="4">Mazda RX4            21.0     6    160   110</a>
+<a class="sourceLine" id="cb161-5" data-line-number="5">Mazda RX4 Wag        21.0     6    160   110</a></code></pre></div>
 <p>But it will be if there is a clear separation like (note that we added an empty line below the image):</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb159-1" data-line-number="1">![](logo.png)</a>
-<a class="sourceLine" id="cb159-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb159-3" data-line-number="3"><span class="bn">                      mpg   cyl   disp    hp</span></a>
-<a class="sourceLine" id="cb159-4" data-line-number="4">------------------  -----  ----  -----  ----</a>
-<a class="sourceLine" id="cb159-5" data-line-number="5">Mazda RX4            21.0     6    160   110</a>
-<a class="sourceLine" id="cb159-6" data-line-number="6">Mazda RX4 Wag        21.0     6    160   110</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb162-1" data-line-number="1">![](logo.png)</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb162-3" data-line-number="3"><span class="bn">                      mpg   cyl   disp    hp</span></a>
+<a class="sourceLine" id="cb162-4" data-line-number="4">------------------  -----  ----  -----  ----</a>
+<a class="sourceLine" id="cb162-5" data-line-number="5">Mazda RX4            21.0     6    160   110</a>
+<a class="sourceLine" id="cb162-6" data-line-number="6">Mazda RX4 Wag        21.0     6    160   110</a></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb160-1" data-line-number="1">![](logo.png)</a>
-<a class="sourceLine" id="cb160-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb160-3" data-line-number="3">&lt;!--<span class="co"> --&gt;</span></a>
-<a class="sourceLine" id="cb160-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb160-5" data-line-number="5"><span class="bn">                      mpg   cyl   disp    hp</span></a>
-<a class="sourceLine" id="cb160-6" data-line-number="6">------------------  -----  ----  -----  ----</a>
-<a class="sourceLine" id="cb160-7" data-line-number="7">Mazda RX4            21.0     6    160   110</a>
-<a class="sourceLine" id="cb160-8" data-line-number="8">Mazda RX4 Wag        21.0     6    160   110</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb163-1" data-line-number="1">![](logo.png)</a>
+<a class="sourceLine" id="cb163-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb163-3" data-line-number="3">&lt;!--<span class="co"> --&gt;</span></a>
+<a class="sourceLine" id="cb163-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb163-5" data-line-number="5"><span class="bn">                      mpg   cyl   disp    hp</span></a>
+<a class="sourceLine" id="cb163-6" data-line-number="6">------------------  -----  ----  -----  ----</a>
+<a class="sourceLine" id="cb163-7" data-line-number="7">Mazda RX4            21.0     6    160   110</a>
+<a class="sourceLine" id="cb163-8" data-line-number="8">Mazda RX4 Wag        21.0     6    160   110</a></code></pre></div>
 </div>
 <div id="customize-latex-tables" class="section level3">
 <h3><span class="header-section-number">10.1.10</span> Customize LaTeX tables</h3>
 <p>If the only output format you need is LaTeX, there are a few extra options you can use in <code>kable()</code>. Note that these options will be ignored in other types of output such as HTML. Unless you have set the table format option globally (see Section <a href="kable.html#kable-formats">10.1.1</a>), you will have to use the <code>format</code> argument of <code>kable()</code> explicitly in the examples of this section, e.g.,</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>When you assign a caption to a table (see Section <a href="kable.html#kable-caption">10.1.4</a>), <code>kable()</code> will use the <code>table</code> environment to include the table, i.e.,</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">table</span>}</a>
-<a class="sourceLine" id="cb162-2" data-line-number="2"><span class="co">% the table body (usually the tabular environment)</span></a>
-<a class="sourceLine" id="cb162-3" data-line-number="3"><span class="kw">\end</span>{<span class="ex">table</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">table</span>}</a>
+<a class="sourceLine" id="cb165-2" data-line-number="2"><span class="co">% the table body (usually the tabular environment)</span></a>
+<a class="sourceLine" id="cb165-3" data-line-number="3"><span class="kw">\end</span>{<span class="ex">table</span>}</a></code></pre></div>
 <p>You can change this environment via the <code>table.envir</code> argument, e.g.,</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ], <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">table.envir =</span> <span class="st">&quot;figure&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb164"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">figure</span>}</a>
-<a class="sourceLine" id="cb164-2" data-line-number="2"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{r|r}</a>
-<a class="sourceLine" id="cb164-3" data-line-number="3"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb164-4" data-line-number="4">speed <span class="op">&amp;</span> dist<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb164-5" data-line-number="5"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb164-6" data-line-number="6">4 <span class="op">&amp;</span> 2<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb164-7" data-line-number="7"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb164-8" data-line-number="8">4 <span class="op">&amp;</span> 10<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb164-9" data-line-number="9"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb164-10" data-line-number="10"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a>
-<a class="sourceLine" id="cb164-11" data-line-number="11"><span class="kw">\end</span>{<span class="ex">figure</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ], <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">table.envir =</span> <span class="st">&quot;figure&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">figure</span>}</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{r|r}</a>
+<a class="sourceLine" id="cb167-3" data-line-number="3"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb167-4" data-line-number="4">speed <span class="op">&amp;</span> dist<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb167-5" data-line-number="5"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb167-6" data-line-number="6">4 <span class="op">&amp;</span> 2<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb167-7" data-line-number="7"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb167-8" data-line-number="8">4 <span class="op">&amp;</span> 10<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb167-9" data-line-number="9"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb167-10" data-line-number="10"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a>
+<a class="sourceLine" id="cb167-11" data-line-number="11"><span class="kw">\end</span>{<span class="ex">figure</span>}</a></code></pre></div>
 <p>The floating position of the table is controlled by the argument <code>position</code>. For example, we can try to force a table to float to the bottom of a page via <code>position = &quot;!b&quot;</code>:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ], <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">table.envir =</span> <span class="st">&quot;table&quot;</span>, </a>
-<a class="sourceLine" id="cb165-2" data-line-number="2">  <span class="dt">position =</span> <span class="st">&quot;!b&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb166"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">table</span>}[!b]</a>
-<a class="sourceLine" id="cb166-2" data-line-number="2"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{r|r}</a>
-<a class="sourceLine" id="cb166-3" data-line-number="3"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb166-4" data-line-number="4">speed <span class="op">&amp;</span> dist<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb166-5" data-line-number="5"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb166-6" data-line-number="6">4 <span class="op">&amp;</span> 2<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb166-7" data-line-number="7"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb166-8" data-line-number="8">4 <span class="op">&amp;</span> 10<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb166-9" data-line-number="9"><span class="fu">\hline</span></a>
-<a class="sourceLine" id="cb166-10" data-line-number="10"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a>
-<a class="sourceLine" id="cb166-11" data-line-number="11"><span class="kw">\end</span>{<span class="ex">table</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ], <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">table.envir =</span> <span class="st">&quot;table&quot;</span>, </a>
+<a class="sourceLine" id="cb168-2" data-line-number="2">  <span class="dt">position =</span> <span class="st">&quot;!b&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">table</span>}[!b]</a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{r|r}</a>
+<a class="sourceLine" id="cb169-3" data-line-number="3"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb169-4" data-line-number="4">speed <span class="op">&amp;</span> dist<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb169-5" data-line-number="5"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb169-6" data-line-number="6">4 <span class="op">&amp;</span> 2<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb169-7" data-line-number="7"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb169-8" data-line-number="8">4 <span class="op">&amp;</span> 10<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb169-9" data-line-number="9"><span class="fu">\hline</span></a>
+<a class="sourceLine" id="cb169-10" data-line-number="10"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a>
+<a class="sourceLine" id="cb169-11" data-line-number="11"><span class="kw">\end</span>{<span class="ex">table</span>}</a></code></pre></div>
 <p>When a table has a caption, you can also assign a short caption to it via the <code>caption.short</code> argument, e.g.,</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">caption =</span> <span class="st">&quot;A long long long caption!&quot;</span>, </a>
-<a class="sourceLine" id="cb167-2" data-line-number="2">  <span class="dt">caption.short =</span> <span class="st">&quot;A short one.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris2, <span class="dt">caption =</span> <span class="st">&quot;A long long long caption!&quot;</span>, </a>
+<a class="sourceLine" id="cb170-2" data-line-number="2">  <span class="dt">caption.short =</span> <span class="st">&quot;A short one.&quot;</span>)</a></code></pre></div>
 <p>The short caption goes into the square brackets of the <code>\caption[]{}</code> command in LaTeX, and is often used in the List of Tables of the PDF output document (if the short caption is not provided, the full caption is displayed there).</p>
 <p>If you are familiar with the LaTeX package <a href="https://ctan.org/pkg/booktabs"><strong>booktabs</strong></a> for publication quality tables, you can set <code>booktabs = TRUE</code>, e.g.,</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">iris3 &lt;-<span class="st"> </span><span class="kw">head</span>(iris, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb168-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(iris3, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb169"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{rrrrl}</a>
-<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="fu">\toprule</span></a>
-<a class="sourceLine" id="cb169-3" data-line-number="3">Sepal.Length <span class="op">&amp;</span> Sepal.Width <span class="op">&amp;</span> Petal.Length <span class="op">&amp;</span> Petal.Width <span class="op">&amp;</span> Species<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-4" data-line-number="4"><span class="fu">\midrule</span></a>
-<a class="sourceLine" id="cb169-5" data-line-number="5">5.1 <span class="op">&amp;</span> 3.5 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-6" data-line-number="6">4.9 <span class="op">&amp;</span> 3.0 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-7" data-line-number="7">4.7 <span class="op">&amp;</span> 3.2 <span class="op">&amp;</span> 1.3 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-8" data-line-number="8">4.6 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-9" data-line-number="9">5.0 <span class="op">&amp;</span> 3.6 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-10" data-line-number="10"><span class="fu">\addlinespace</span></a>
-<a class="sourceLine" id="cb169-11" data-line-number="11">5.4 <span class="op">&amp;</span> 3.9 <span class="op">&amp;</span> 1.7 <span class="op">&amp;</span> 0.4 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-12" data-line-number="12">4.6 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.3 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-13" data-line-number="13">5.0 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-14" data-line-number="14">4.4 <span class="op">&amp;</span> 2.9 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-15" data-line-number="15">4.9 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.1 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb169-16" data-line-number="16"><span class="fu">\bottomrule</span></a>
-<a class="sourceLine" id="cb169-17" data-line-number="17"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">iris3 &lt;-<span class="st"> </span><span class="kw">head</span>(iris, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb171-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>(iris3, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{rrrrl}</a>
+<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="fu">\toprule</span></a>
+<a class="sourceLine" id="cb172-3" data-line-number="3">Sepal.Length <span class="op">&amp;</span> Sepal.Width <span class="op">&amp;</span> Petal.Length <span class="op">&amp;</span> Petal.Width <span class="op">&amp;</span> Species<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-4" data-line-number="4"><span class="fu">\midrule</span></a>
+<a class="sourceLine" id="cb172-5" data-line-number="5">5.1 <span class="op">&amp;</span> 3.5 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-6" data-line-number="6">4.9 <span class="op">&amp;</span> 3.0 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-7" data-line-number="7">4.7 <span class="op">&amp;</span> 3.2 <span class="op">&amp;</span> 1.3 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-8" data-line-number="8">4.6 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-9" data-line-number="9">5.0 <span class="op">&amp;</span> 3.6 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-10" data-line-number="10"><span class="fu">\addlinespace</span></a>
+<a class="sourceLine" id="cb172-11" data-line-number="11">5.4 <span class="op">&amp;</span> 3.9 <span class="op">&amp;</span> 1.7 <span class="op">&amp;</span> 0.4 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-12" data-line-number="12">4.6 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.3 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-13" data-line-number="13">5.0 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-14" data-line-number="14">4.4 <span class="op">&amp;</span> 2.9 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-15" data-line-number="15">4.9 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.1 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb172-16" data-line-number="16"><span class="fu">\bottomrule</span></a>
+<a class="sourceLine" id="cb172-17" data-line-number="17"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
 <p>Please note that when you need additional LaTeX packages such as <strong>booktabs</strong> for an R Markdown document, you have to declare these packages in YAML (see Section <a href="latex-extra.html#latex-extra">5.3</a> for how).</p>
 <p>Depending on whether the argument <code>booktabs</code> is <code>TRUE</code> or <code>FALSE</code> (default), the table appearance is different. For <code>booktabs = FALSE</code>:</p>
 <ul>
@@ -1086,27 +1080,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>There are no vertical lines in the table, but you can add these lines via the <code>vline</code> argument.</p></li>
 <li><p>The table only has horizontal lines for the table header and the bottom row. The default argument values are <code>toprule = &quot;\\toprule&quot;</code>, <code>midrule = &quot;\\midrule&quot;</code>, and <code>bottomrule = &quot;\\bottomrule&quot;</code>. A line space is added to every five rows by default. This is controlled by the argument <code>linesep</code>, which defaults to <code>c(&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;\\addlinespace&quot;)</code>. If you want to add a space to every three rows, you can do this:</p></li>
 </ul>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris3, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">linesep =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, </a>
-<a class="sourceLine" id="cb170-2" data-line-number="2">  <span class="st">&quot;</span><span class="ch">\\</span><span class="st">addlinespace&quot;</span>), <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{rrrrl}</a>
-<a class="sourceLine" id="cb171-2" data-line-number="2"><span class="fu">\toprule</span></a>
-<a class="sourceLine" id="cb171-3" data-line-number="3">Sepal.Length <span class="op">&amp;</span> Sepal.Width <span class="op">&amp;</span> Petal.Length <span class="op">&amp;</span> Petal.Width <span class="op">&amp;</span> Species<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-4" data-line-number="4"><span class="fu">\midrule</span></a>
-<a class="sourceLine" id="cb171-5" data-line-number="5">5.1 <span class="op">&amp;</span> 3.5 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-6" data-line-number="6">4.9 <span class="op">&amp;</span> 3.0 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-7" data-line-number="7">4.7 <span class="op">&amp;</span> 3.2 <span class="op">&amp;</span> 1.3 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-8" data-line-number="8"><span class="fu">\addlinespace</span></a>
-<a class="sourceLine" id="cb171-9" data-line-number="9">4.6 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-10" data-line-number="10">5.0 <span class="op">&amp;</span> 3.6 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-11" data-line-number="11">5.4 <span class="op">&amp;</span> 3.9 <span class="op">&amp;</span> 1.7 <span class="op">&amp;</span> 0.4 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-12" data-line-number="12"><span class="fu">\addlinespace</span></a>
-<a class="sourceLine" id="cb171-13" data-line-number="13">4.6 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.3 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-14" data-line-number="14">5.0 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-15" data-line-number="15">4.4 <span class="op">&amp;</span> 2.9 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-16" data-line-number="16"><span class="fu">\addlinespace</span></a>
-<a class="sourceLine" id="cb171-17" data-line-number="17">4.9 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.1 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb171-18" data-line-number="18"><span class="fu">\bottomrule</span></a>
-<a class="sourceLine" id="cb171-19" data-line-number="19"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(iris3, <span class="dt">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="dt">linesep =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, </a>
+<a class="sourceLine" id="cb173-2" data-line-number="2">  <span class="st">&quot;</span><span class="ch">\\</span><span class="st">addlinespace&quot;</span>), <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">tabular</span>}{rrrrl}</a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="fu">\toprule</span></a>
+<a class="sourceLine" id="cb174-3" data-line-number="3">Sepal.Length <span class="op">&amp;</span> Sepal.Width <span class="op">&amp;</span> Petal.Length <span class="op">&amp;</span> Petal.Width <span class="op">&amp;</span> Species<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-4" data-line-number="4"><span class="fu">\midrule</span></a>
+<a class="sourceLine" id="cb174-5" data-line-number="5">5.1 <span class="op">&amp;</span> 3.5 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-6" data-line-number="6">4.9 <span class="op">&amp;</span> 3.0 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-7" data-line-number="7">4.7 <span class="op">&amp;</span> 3.2 <span class="op">&amp;</span> 1.3 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-8" data-line-number="8"><span class="fu">\addlinespace</span></a>
+<a class="sourceLine" id="cb174-9" data-line-number="9">4.6 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-10" data-line-number="10">5.0 <span class="op">&amp;</span> 3.6 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-11" data-line-number="11">5.4 <span class="op">&amp;</span> 3.9 <span class="op">&amp;</span> 1.7 <span class="op">&amp;</span> 0.4 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-12" data-line-number="12"><span class="fu">\addlinespace</span></a>
+<a class="sourceLine" id="cb174-13" data-line-number="13">4.6 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.3 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-14" data-line-number="14">5.0 <span class="op">&amp;</span> 3.4 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-15" data-line-number="15">4.4 <span class="op">&amp;</span> 2.9 <span class="op">&amp;</span> 1.4 <span class="op">&amp;</span> 0.2 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-16" data-line-number="16"><span class="fu">\addlinespace</span></a>
+<a class="sourceLine" id="cb174-17" data-line-number="17">4.9 <span class="op">&amp;</span> 3.1 <span class="op">&amp;</span> 1.5 <span class="op">&amp;</span> 0.1 <span class="op">&amp;</span> setosa<span class="fu">\\</span></a>
+<a class="sourceLine" id="cb174-18" data-line-number="18"><span class="fu">\bottomrule</span></a>
+<a class="sourceLine" id="cb174-19" data-line-number="19"><span class="kw">\end</span>{<span class="ex">tabular</span>}</a></code></pre></div>
 <p>Sometimes your table may be longer than a page. In this case, you can use the argument <code>longtable = TRUE</code>, which uses the LaTeX package <a href="https://ctan.org/pkg/longtable"><strong>longtable</strong></a> to span your table to multiple pages.</p>
 <p>Tables are center-aligned by default when they are included in a table environment (i.e., when the table has a caption). If you do not want to center a table, use the argument <code>centering = FALSE</code>.</p>
 </div>
@@ -1114,43 +1108,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">10.1.11</span> Customize HTML tables</h3>
 <!-- https://stackoverflow.com/questions/24254552/knitr-style-table-with-css -->
 <p>If you want to customize tables generated via <code>knitr::kable(format = &quot;html&quot;)</code>, there is only one extra argument <code>table.attr</code> besides the common arguments mentioned in previous sections. The argument <code>table.attr</code> allows you to add arbitrary attributes to the <code>&lt;table&gt;</code> tag. For example:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dt">table.attr =</span> <span class="st">&quot;class=</span><span class="ch">\&quot;</span><span class="st">striped</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, </a>
-<a class="sourceLine" id="cb172-2" data-line-number="2">  <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb173"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">&lt;table</span><span class="ot"> class=</span><span class="st">&quot;striped&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb173-2" data-line-number="2"> <span class="kw">&lt;thead&gt;</span></a>
-<a class="sourceLine" id="cb173-3" data-line-number="3">  <span class="kw">&lt;tr&gt;</span></a>
-<a class="sourceLine" id="cb173-4" data-line-number="4">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span>   <span class="kw">&lt;/th&gt;</span></a>
-<a class="sourceLine" id="cb173-5" data-line-number="5">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> mpg <span class="kw">&lt;/th&gt;</span></a>
-<a class="sourceLine" id="cb173-6" data-line-number="6">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> cyl <span class="kw">&lt;/th&gt;</span></a>
-<a class="sourceLine" id="cb173-7" data-line-number="7">  <span class="kw">&lt;/tr&gt;</span></a>
-<a class="sourceLine" id="cb173-8" data-line-number="8"> <span class="kw">&lt;/thead&gt;</span></a>
-<a class="sourceLine" id="cb173-9" data-line-number="9"><span class="kw">&lt;tbody&gt;</span></a>
-<a class="sourceLine" id="cb173-10" data-line-number="10">  <span class="kw">&lt;tr&gt;</span></a>
-<a class="sourceLine" id="cb173-11" data-line-number="11">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb173-12" data-line-number="12">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb173-13" data-line-number="13">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb173-14" data-line-number="14">  <span class="kw">&lt;/tr&gt;</span></a>
-<a class="sourceLine" id="cb173-15" data-line-number="15">  <span class="kw">&lt;tr&gt;</span></a>
-<a class="sourceLine" id="cb173-16" data-line-number="16">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 Wag <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb173-17" data-line-number="17">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb173-18" data-line-number="18">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb173-19" data-line-number="19">  <span class="kw">&lt;/tr&gt;</span></a>
-<a class="sourceLine" id="cb173-20" data-line-number="20"><span class="kw">&lt;/tbody&gt;</span></a>
-<a class="sourceLine" id="cb173-21" data-line-number="21"><span class="kw">&lt;/table&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dt">table.attr =</span> <span class="st">&quot;class=</span><span class="ch">\&quot;</span><span class="st">striped</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, </a>
+<a class="sourceLine" id="cb175-2" data-line-number="2">  <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">&lt;table</span><span class="ot"> class=</span><span class="st">&quot;striped&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"> <span class="kw">&lt;thead&gt;</span></a>
+<a class="sourceLine" id="cb176-3" data-line-number="3">  <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb176-4" data-line-number="4">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span>   <span class="kw">&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb176-5" data-line-number="5">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> mpg <span class="kw">&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb176-6" data-line-number="6">   <span class="kw">&lt;th</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> cyl <span class="kw">&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb176-7" data-line-number="7">  <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb176-8" data-line-number="8"> <span class="kw">&lt;/thead&gt;</span></a>
+<a class="sourceLine" id="cb176-9" data-line-number="9"><span class="kw">&lt;tbody&gt;</span></a>
+<a class="sourceLine" id="cb176-10" data-line-number="10">  <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb176-11" data-line-number="11">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb176-12" data-line-number="12">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb176-13" data-line-number="13">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb176-14" data-line-number="14">  <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb176-15" data-line-number="15">  <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb176-16" data-line-number="16">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:left;&quot;</span><span class="kw">&gt;</span> Mazda RX4 Wag <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb176-17" data-line-number="17">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 21 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb176-18" data-line-number="18">   <span class="kw">&lt;td</span><span class="ot"> style=</span><span class="st">&quot;text-align:right;&quot;</span><span class="kw">&gt;</span> 6 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb176-19" data-line-number="19">  <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb176-20" data-line-number="20"><span class="kw">&lt;/tbody&gt;</span></a>
+<a class="sourceLine" id="cb176-21" data-line-number="21"><span class="kw">&lt;/table&gt;</span></a></code></pre></div>
 <p>We added a class <code>striped</code> to the table. However, a class name is not enough to change the appearance of a table. You have to define CSS rules for the class. For example, to make a striped table that has different colors for odd and even rows, you can add a lightgray background to even or odd rows:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="fu">.striped</span> tr<span class="in">:nth-child</span>(even) { <span class="kw">background</span>: <span class="dv">#eee</span>; }</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="fu">.striped</span> tr<span class="in">:nth-child</span>(even) { <span class="kw">background</span>: <span class="dv">#eee</span>; }</a></code></pre></div>
 <p>The above CSS rule means all rows (i.e., the <code>&lt;tr&gt;</code> tags) with even row numbers (<code>:nth-child(even)</code>) that are children of an element with the <code>striped</code> class will have a background color <code>#eee</code>.</p>
 <p>A little bit CSS can make a plain HTML table look decent. Figure <a href="kable.html#fig:striped-table">10.1</a> is a screenshot of an HTML table to which the following CSS rules are applied:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb175-1" data-line-number="1">table {</a>
-<a class="sourceLine" id="cb175-2" data-line-number="2">  <span class="kw">margin</span>: <span class="dv">auto</span>;</a>
-<a class="sourceLine" id="cb175-3" data-line-number="3">  <span class="kw">border-top</span>: <span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">#666</span>;</a>
-<a class="sourceLine" id="cb175-4" data-line-number="4">  <span class="kw">border-bottom</span>: <span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">#666</span>;</a>
-<a class="sourceLine" id="cb175-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb175-6" data-line-number="6">table thead th { <span class="kw">border-bottom</span>: <span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">#ddd</span>; }</a>
-<a class="sourceLine" id="cb175-7" data-line-number="7">th, td { <span class="kw">padding</span>: <span class="dv">5px</span>; }</a>
-<a class="sourceLine" id="cb175-8" data-line-number="8">thead, tfoot, tr<span class="in">:nth-child</span>(even) { <span class="kw">background</span>: <span class="dv">#eee</span>; }</a></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb178-1" data-line-number="1">table {</a>
+<a class="sourceLine" id="cb178-2" data-line-number="2">  <span class="kw">margin</span>: <span class="dv">auto</span>;</a>
+<a class="sourceLine" id="cb178-3" data-line-number="3">  <span class="kw">border-top</span>: <span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">#666</span>;</a>
+<a class="sourceLine" id="cb178-4" data-line-number="4">  <span class="kw">border-bottom</span>: <span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">#666</span>;</a>
+<a class="sourceLine" id="cb178-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb178-6" data-line-number="6">table thead th { <span class="kw">border-bottom</span>: <span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">#ddd</span>; }</a>
+<a class="sourceLine" id="cb178-7" data-line-number="7">th, td { <span class="kw">padding</span>: <span class="dv">5px</span>; }</a>
+<a class="sourceLine" id="cb178-8" data-line-number="8">thead, tfoot, tr<span class="in">:nth-child</span>(even) { <span class="kw">background</span>: <span class="dv">#eee</span>; }</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:striped-table"></span>
-<img src="images/striped-table.png" alt="A striped table created with HTML and CSS." width="70%" />
+<img src="images/striped-table.png" alt="A striped table created with HTML and CSS."  />
 <p class="caption">
 FIGURE 10.1: A striped table created with HTML and CSS.
 </p>

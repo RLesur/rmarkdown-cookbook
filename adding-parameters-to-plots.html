@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -307,27 +301,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-parameters-to-plots" class="section level2">
 <h2><span class="header-section-number">13.2</span> Adding parameters to plots</h2>
 <p>Graphviz substitution allows for mixing in R expressions into a Graphviz graph specification without sacrificing readability. If you specify a subsitution with <code>@@</code>, you must ensure there is a valid expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object (i.e., not a data frame, list, or matrix). Because there is the possibility to have multiple substitutions, numbering is required. Thus, the @@ notation is immediately followed by a number and that number should correspond to the number of the footnoted R expression. For example, suppose we have a dataset which is being analysed, and we would like to identify how many values are removed at each stage of a process.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="st">digraph graph2 {</span></a>
-<a class="sourceLine" id="cb205-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb205-4" data-line-number="4"><span class="st">graph [layout = dot, rankdir = LR]</span></a>
-<a class="sourceLine" id="cb205-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb205-6" data-line-number="6"><span class="st"># node definitions with substituted label text</span></a>
-<a class="sourceLine" id="cb205-7" data-line-number="7"><span class="st">node [shape = rectangle]</span></a>
-<a class="sourceLine" id="cb205-8" data-line-number="8"><span class="st">a [label = &#39;@@1&#39;]</span></a>
-<a class="sourceLine" id="cb205-9" data-line-number="9"><span class="st">b [label = &#39;@@2&#39;]</span></a>
-<a class="sourceLine" id="cb205-10" data-line-number="10"><span class="st">c [label = &#39;@@3&#39;]</span></a>
-<a class="sourceLine" id="cb205-11" data-line-number="11"><span class="st">d [label = &#39;@@4&#39;]</span></a>
-<a class="sourceLine" id="cb205-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb205-13" data-line-number="13"><span class="st">a -&gt; b -&gt; c -&gt; d</span></a>
-<a class="sourceLine" id="cb205-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb205-15" data-line-number="15"><span class="st">}</span></a>
-<a class="sourceLine" id="cb205-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb205-17" data-line-number="17"><span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span></a>
-<a class="sourceLine" id="cb205-18" data-line-number="18"><span class="st">[2]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb205-19" data-line-number="19"><span class="st">[3]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb205-20" data-line-number="20"><span class="st">[4]: paste(&#39;Step &#39;, 1)</span></a>
-<a class="sourceLine" id="cb205-21" data-line-number="21"><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb208-2" data-line-number="2"><span class="st">digraph graph2 {</span></a>
+<a class="sourceLine" id="cb208-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb208-4" data-line-number="4"><span class="st">graph [layout = dot, rankdir = LR]</span></a>
+<a class="sourceLine" id="cb208-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb208-6" data-line-number="6"><span class="st"># node definitions with substituted label text</span></a>
+<a class="sourceLine" id="cb208-7" data-line-number="7"><span class="st">node [shape = rectangle]</span></a>
+<a class="sourceLine" id="cb208-8" data-line-number="8"><span class="st">a [label = &#39;@@1&#39;]</span></a>
+<a class="sourceLine" id="cb208-9" data-line-number="9"><span class="st">b [label = &#39;@@2&#39;]</span></a>
+<a class="sourceLine" id="cb208-10" data-line-number="10"><span class="st">c [label = &#39;@@3&#39;]</span></a>
+<a class="sourceLine" id="cb208-11" data-line-number="11"><span class="st">d [label = &#39;@@4&#39;]</span></a>
+<a class="sourceLine" id="cb208-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb208-13" data-line-number="13"><span class="st">a -&gt; b -&gt; c -&gt; d</span></a>
+<a class="sourceLine" id="cb208-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb208-15" data-line-number="15"><span class="st">}</span></a>
+<a class="sourceLine" id="cb208-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb208-17" data-line-number="17"><span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span></a>
+<a class="sourceLine" id="cb208-18" data-line-number="18"><span class="st">[2]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb208-19" data-line-number="19"><span class="st">[3]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb208-20" data-line-number="20"><span class="st">[4]: paste(&#39;Step &#39;, 1)</span></a>
+<a class="sourceLine" id="cb208-21" data-line-number="21"><span class="st">&quot;</span>)</a></code></pre></div>
 <div id="htmlwidget-1cd91748e09524640dda" style="width:672px;height:480px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-1cd91748e09524640dda">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 

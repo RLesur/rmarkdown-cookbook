@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.4 Citation style | R Markdown Cookbook</title>
+  <title>6.1 Apply custom CSS | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.4 Citation style | R Markdown Cookbook" />
+  <meta property="og:title" content="6.1 Apply custom CSS | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.4 Citation style | R Markdown Cookbook" />
+  <meta name="twitter:title" content="6.1 Apply custom CSS | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="notifications.html"/>
-<link rel="next" href="generate-package-citations.html"/>
+<link rel="prev" href="html-output.html"/>
+<link rel="next" href="chunk-styling.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -298,19 +298,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="citation-style" class="section level2">
-<h2><span class="header-section-number">11.4</span> Citation style</h2>
-<ul>
-<li>Using short author citations: <a href="https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa" class="uri">https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa</a></li>
-</ul>
+<div id="html-css" class="section level2">
+<h2><span class="header-section-number">6.1</span> Apply custom CSS</h2>
+<p>We strongly recommend that you learn some CSS and JavaScript if you wish to customize the appearance of HTML documents. The <a href="https://bookdown.org/yihui/blogdown/website-basics.html">Appendix B</a> of the <strong>blogdown</strong> book <span class="citation">(Xie, Hill, and Thomas <a href="#ref-xie2017">2017</a>)</span> contains short tutorials on HTML, CSS, and JavaScript.</p>
+<p>For beginners, it is extremely important to understand selectors and precedence of rules in CSS, otherwise you may be confused why your custom CSS rules do not work as expected (they may not have enough precedence).</p>
+<p>To include one or multiple custom stylesheets in an Rmd document, you can use the <code>css</code> option, e.g.,</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb78-3" data-line-number="3">    <span class="fu">css:</span><span class="at"> </span><span class="st">&quot;style.css&quot;</span></a>
+<a class="sourceLine" id="cb78-4" data-line-number="4">    <span class="co"># or multiple sheets in an array</span></a>
+<a class="sourceLine" id="cb78-5" data-line-number="5">    <span class="co"># css: [&quot;style-1.css&quot;, &quot;style-2.css&quot;]</span></a></code></pre></div>
+<p>Alternatively, you can use a <code>css</code> code chunk to embed the CSS rules directly in your Rmd document, e.g.,</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb79-1" data-line-number="1">We embed a <span class="bn">`css`</span> code chunk here.</a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="bn">```{css, echo=FALSE}</span></a>
+<a class="sourceLine" id="cb79-4" data-line-number="4"><span class="bn">p {</span></a>
+<a class="sourceLine" id="cb79-5" data-line-number="5"><span class="bn">  font-size: 32px;</span></a>
+<a class="sourceLine" id="cb79-6" data-line-number="6"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb79-7" data-line-number="7"><span class="bn">```</span></a></code></pre></div>
+<p>The chunk option <code>echo = FALSE</code> means the CSS code will not be displayed verbatim in the output, but a <code>&lt;style&gt;</code> tag containing the CSS code will be generated to the HTML output file.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2017">
+<p>Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/blogdown/">https://bookdown.org/yihui/blogdown/</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="notifications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="generate-package-citations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="html-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chunk-styling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -340,7 +360,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/11-projects.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/06-html.Rmd",
 "text": "Edit"
 },
 "history": {

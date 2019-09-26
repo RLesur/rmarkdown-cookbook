@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -307,23 +301,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-figures-in-html5-format" class="section level2">
 <h2><span class="header-section-number">9.2</span> Output figures in HTML5 format</h2>
 <p>By default, images in R Markdown are translated to <code>&lt;img src='...' alt='...'&gt;</code> in the HTML output. This demo shows how to use the HTML5 <code>&lt;figure&gt;</code> tag to display images in R Markdown. Firstly we must define the custom hook as follows:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="co"># Reconfigure the plot hook</span></a>
-<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb117-3" data-line-number="3">knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">plot =</span> <span class="cf">function</span>(x, options) {</a>
-<a class="sourceLine" id="cb117-4" data-line-number="4">  <span class="kw">paste</span>(<span class="st">&quot;&lt;figure&gt;&lt;img src=</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&quot;base.url&quot;</span>), </a>
-<a class="sourceLine" id="cb117-5" data-line-number="5">    <span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&quot;.&quot;</span>), <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&gt;&lt;figcaption&gt;&quot;</span>, options<span class="op">$</span>fig.cap, </a>
-<a class="sourceLine" id="cb117-6" data-line-number="6">    <span class="st">&quot;&lt;/figcaption&gt;&lt;/figure&gt;&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb117-7" data-line-number="7">})</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="co"># Reconfigure the plot hook</span></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb120-3" data-line-number="3">knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">plot =</span> <span class="cf">function</span>(x, options) {</a>
+<a class="sourceLine" id="cb120-4" data-line-number="4">  <span class="kw">paste</span>(<span class="st">&quot;&lt;figure&gt;&lt;img src=</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&quot;base.url&quot;</span>), </a>
+<a class="sourceLine" id="cb120-5" data-line-number="5">    <span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&quot;.&quot;</span>), <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&gt;&lt;figcaption&gt;&quot;</span>, options<span class="op">$</span>fig.cap, </a>
+<a class="sourceLine" id="cb120-6" data-line-number="6">    <span class="st">&quot;&lt;/figcaption&gt;&lt;/figure&gt;&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb120-7" data-line-number="7">})</a></code></pre></div>
 <p>One motivation for this is that we could use CSS to customise the output using the HTML5 specification, and readers may want to check out this <a href="https://www.w3.org/Style/Examples/007/figures.en.html">website</a> for some ideas. For example, we could add a border to the plot and then change the background colour of the figure caption text:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb118-1" data-line-number="1">figure {</a>
-<a class="sourceLine" id="cb118-2" data-line-number="2">  <span class="kw">border</span>: <span class="dv">thin</span> <span class="dv">silver</span> <span class="dv">solid</span>;</a>
-<a class="sourceLine" id="cb118-3" data-line-number="3">  <span class="kw">padding-top</span>: <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb118-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb118-5" data-line-number="5">figcaption {</a>
-<a class="sourceLine" id="cb118-6" data-line-number="6">  <span class="kw">padding</span>: <span class="dv">0.5em</span>;</a>
-<a class="sourceLine" id="cb118-7" data-line-number="7">  <span class="kw">border</span>: <span class="dv">thin</span> <span class="dv">silver</span> <span class="dv">solid</span>;</a>
-<a class="sourceLine" id="cb118-8" data-line-number="8">  <span class="kw">background</span>: <span class="dv">#D2F0F7</span>;</a>
-<a class="sourceLine" id="cb118-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb121-1" data-line-number="1">figure {</a>
+<a class="sourceLine" id="cb121-2" data-line-number="2">  <span class="kw">border</span>: <span class="dv">thin</span> <span class="dv">silver</span> <span class="dv">solid</span>;</a>
+<a class="sourceLine" id="cb121-3" data-line-number="3">  <span class="kw">padding-top</span>: <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb121-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb121-5" data-line-number="5">figcaption {</a>
+<a class="sourceLine" id="cb121-6" data-line-number="6">  <span class="kw">padding</span>: <span class="dv">0.5em</span>;</a>
+<a class="sourceLine" id="cb121-7" data-line-number="7">  <span class="kw">border</span>: <span class="dv">thin</span> <span class="dv">silver</span> <span class="dv">solid</span>;</a>
+<a class="sourceLine" id="cb121-8" data-line-number="8">  <span class="kw">background</span>: <span class="dv">#D2F0F7</span>;</a>
+<a class="sourceLine" id="cb121-9" data-line-number="9">}</a></code></pre></div>
 <style type="text/css">
 figure {
   border: thin silver solid;
@@ -336,36 +330,36 @@ figcaption {
 }
 </style>
 <p>Having specified the custom hook and CSS, the output of an example figure is shown in Figure <a href="output-figures-in-html5-format.html#fig:hookHTML5">9.1</a>. A full reproducible example is provided in the examples <a href="https://github.com/dr-harper/rmarkdown-cookbook/blob/master/examples/hook-html5-figures.Rmd">online</a>.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/hookHtml5Images.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/hookHtml5Images.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:hookHTML5"></span>
 <img src="images/hookHtml5Images.png" alt="Customised Figure Output styled by HTML5 CSS"  />
 <p class="caption">
 FIGURE 9.1: Customised Figure Output styled by HTML5 CSS
 </p>
 </div>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb120-2" data-line-number="2">hook_output &lt;-<span class="st"> </span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&quot;output&quot;</span>)</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3">knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {</a>
-<a class="sourceLine" id="cb120-4" data-line-number="4">  lines &lt;-<span class="st"> </span>options<span class="op">$</span>output.lines</a>
-<a class="sourceLine" id="cb120-5" data-line-number="5">  <span class="cf">if</span> (<span class="kw">is.null</span>(lines)) {</a>
-<a class="sourceLine" id="cb120-6" data-line-number="6">    <span class="kw">return</span>(<span class="kw">hook_output</span>(x, options))  <span class="co"># pass to default hook</span></a>
-<a class="sourceLine" id="cb120-7" data-line-number="7">  }</a>
-<a class="sourceLine" id="cb120-8" data-line-number="8">  x &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a>
-<a class="sourceLine" id="cb120-9" data-line-number="9">  more &lt;-<span class="st"> &quot;...&quot;</span></a>
-<a class="sourceLine" id="cb120-10" data-line-number="10">  <span class="cf">if</span> (<span class="kw">length</span>(lines) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb120-11" data-line-number="11">    <span class="co"># first n lines</span></a>
-<a class="sourceLine" id="cb120-12" data-line-number="12">    <span class="cf">if</span> (<span class="kw">length</span>(x) <span class="op">&gt;</span><span class="st"> </span>lines) {</a>
-<a class="sourceLine" id="cb120-13" data-line-number="13">      <span class="co"># truncate the output, but add ....</span></a>
-<a class="sourceLine" id="cb120-14" data-line-number="14">      x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">head</span>(x, lines), more)</a>
-<a class="sourceLine" id="cb120-15" data-line-number="15">    }</a>
-<a class="sourceLine" id="cb120-16" data-line-number="16">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb120-17" data-line-number="17">    x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="cf">if</span> (<span class="kw">abs</span>(lines[<span class="dv">1</span>]) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) more <span class="cf">else</span> <span class="ot">NULL</span>, x[lines], </a>
-<a class="sourceLine" id="cb120-18" data-line-number="18">      <span class="cf">if</span> (<span class="kw">length</span>(x) <span class="op">&gt;</span><span class="st"> </span>lines[<span class="kw">abs</span>(<span class="kw">length</span>(lines))]) more <span class="cf">else</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb120-19" data-line-number="19">  }</a>
-<a class="sourceLine" id="cb120-20" data-line-number="20">  <span class="co"># paste these lines together</span></a>
-<a class="sourceLine" id="cb120-21" data-line-number="21">  x &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">c</span>(x, <span class="st">&quot;&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb120-22" data-line-number="22">  <span class="kw">hook_output</span>(x, options)</a>
-<a class="sourceLine" id="cb120-23" data-line-number="23">})</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2">hook_output &lt;-<span class="st"> </span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&quot;output&quot;</span>)</a>
+<a class="sourceLine" id="cb123-3" data-line-number="3">knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {</a>
+<a class="sourceLine" id="cb123-4" data-line-number="4">  lines &lt;-<span class="st"> </span>options<span class="op">$</span>output.lines</a>
+<a class="sourceLine" id="cb123-5" data-line-number="5">  <span class="cf">if</span> (<span class="kw">is.null</span>(lines)) {</a>
+<a class="sourceLine" id="cb123-6" data-line-number="6">    <span class="kw">return</span>(<span class="kw">hook_output</span>(x, options))  <span class="co"># pass to default hook</span></a>
+<a class="sourceLine" id="cb123-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb123-8" data-line-number="8">  x &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a>
+<a class="sourceLine" id="cb123-9" data-line-number="9">  more &lt;-<span class="st"> &quot;...&quot;</span></a>
+<a class="sourceLine" id="cb123-10" data-line-number="10">  <span class="cf">if</span> (<span class="kw">length</span>(lines) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb123-11" data-line-number="11">    <span class="co"># first n lines</span></a>
+<a class="sourceLine" id="cb123-12" data-line-number="12">    <span class="cf">if</span> (<span class="kw">length</span>(x) <span class="op">&gt;</span><span class="st"> </span>lines) {</a>
+<a class="sourceLine" id="cb123-13" data-line-number="13">      <span class="co"># truncate the output, but add ....</span></a>
+<a class="sourceLine" id="cb123-14" data-line-number="14">      x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">head</span>(x, lines), more)</a>
+<a class="sourceLine" id="cb123-15" data-line-number="15">    }</a>
+<a class="sourceLine" id="cb123-16" data-line-number="16">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb123-17" data-line-number="17">    x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="cf">if</span> (<span class="kw">abs</span>(lines[<span class="dv">1</span>]) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) more <span class="cf">else</span> <span class="ot">NULL</span>, x[lines], </a>
+<a class="sourceLine" id="cb123-18" data-line-number="18">      <span class="cf">if</span> (<span class="kw">length</span>(x) <span class="op">&gt;</span><span class="st"> </span>lines[<span class="kw">abs</span>(<span class="kw">length</span>(lines))]) more <span class="cf">else</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb123-19" data-line-number="19">  }</a>
+<a class="sourceLine" id="cb123-20" data-line-number="20">  <span class="co"># paste these lines together</span></a>
+<a class="sourceLine" id="cb123-21" data-line-number="21">  x &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">c</span>(x, <span class="st">&quot;&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb123-22" data-line-number="22">  <span class="kw">hook_output</span>(x, options)</a>
+<a class="sourceLine" id="cb123-23" data-line-number="23">})</a></code></pre></div>
 
 </div>
 <!-- </div> -->

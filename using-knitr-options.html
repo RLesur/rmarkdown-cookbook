@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -308,24 +302,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.1</span> Using knitr options</h2>
 <p>There are more than 40 different chunk options which can be used to fine-tune the behaviour of <strong>knitr</strong> when processing R chunks. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">Section 2.8</a> of <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-xie2018">2018</a>)</span> provides a subset of these, while the full list is available at <a href="https://yihui.name/knitr/options/" class="uri">https://yihui.name/knitr/options/</a>.</p>
 <p>This section aims to highlight some useful <strong>knitr</strong> chunk options that may not be widely known. In the following recipes, we only show examples of applying chunk options to individual code chunks. However, please be aware of the fact that any chunk options can also be applied globally to a whole document, so you do not have to repeat the options in every single code chunk. To set chunk options globally, call <code>knitr::opts_chunk$set()</code> in a code chunk (usually the first one in the document), e.g.,</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb206-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb206-2" data-line-number="2"><span class="bn">knitr::opts_chunk$set(comment = &quot;&quot;, echo = FALSE)</span></a>
-<a class="sourceLine" id="cb206-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="bn">knitr::opts_chunk$set(comment = &quot;&quot;, echo = FALSE)</span></a>
+<a class="sourceLine" id="cb209-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 <div id="hide-code-and-all-outputs" class="section level3">
 <h3><span class="header-section-number">14.1.1</span> Hide code and all outputs</h3>
 <p>We often wish to setup our R Markdown documents by loading a series of packages. Instead of using separate commands to R source code (<code>echo=FALSE</code>), hide text output (<code>results='hide'</code>), hide warnings (<code>warnings=FALSE</code>), hide messages (<code>messages=FALSE</code>), and so on, we can suppress the output of the entire code chunk using the single option <code>include=FALSE</code> as shown below:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
-<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="bn"># any R code here</span></a>
-<a class="sourceLine" id="cb207-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="bn"># any R code here</span></a>
+<a class="sourceLine" id="cb210-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 <p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed.</p>
 </div>
 <div id="remove-leading-hashes-in-text-output" class="section level3">
 <h3><span class="header-section-number">14.1.2</span> Remove leading hashes in text output</h3>
 <!-- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr -->
 <p>By default, R code output will have two hashes <code>#</code> inserted in front of the text output. We can alter this behaviour by using the <code>comment</code> chunk option, which defaults to a character string of two hashes <code>&quot;##&quot;</code>. We can use an empty string if we want to remove the hashes. For example:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
-<a class="sourceLine" id="cb208-2" data-line-number="2"><span class="bn">1:100</span></a>
-<a class="sourceLine" id="cb208-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="bn">1:100</span></a>
+<a class="sourceLine" id="cb211-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 </div>
 </div>
 <h3>References</h3>

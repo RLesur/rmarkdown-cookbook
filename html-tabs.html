@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.3 Tabbed headings | R Markdown Cookbook</title>
+  <title>6.4 Put content in tabs | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.3 Tabbed headings | R Markdown Cookbook" />
+  <meta property="og:title" content="6.4 Put content in tabs | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.3 Tabbed headings | R Markdown Cookbook" />
+  <meta name="twitter:title" content="6.4 Put content in tabs | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -304,9 +298,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tabbed-headings" class="section level2">
-<h2><span class="header-section-number">6.3</span> Tabbed headings</h2>
+<div id="html-tabs" class="section level2">
+<h2><span class="header-section-number">6.4</span> Put content in tabs</h2>
 <!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
+<p>One natural way of organizing parallel sections in an HTML report is to use tabsets. This allows readers to view the content of different sections by clicking the tab titles instead of scrolling back and forth on the page.</p>
+<p>To turn sections into tabs, you can add a class attribute <code>.tabset</code> to the upper-level section header. Below is a full example:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb85-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb85-2" data-line-number="2">title: Use tabs to organize content</a>
+<a class="sourceLine" id="cb85-3" data-line-number="3">output: html_document</a>
+<a class="sourceLine" id="cb85-4" data-line-number="4">---</a>
+<a class="sourceLine" id="cb85-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb85-6" data-line-number="6">You can turn parallel sections to tabs in <span class="bn">`html_document`</span> output.</a>
+<a class="sourceLine" id="cb85-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb85-8" data-line-number="8"><span class="fu">## Results {.tabset}</span></a>
+<a class="sourceLine" id="cb85-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb85-10" data-line-number="10"><span class="fu">### Plots</span></a>
+<a class="sourceLine" id="cb85-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb85-12" data-line-number="12">We show a scatter plot in this section.</a>
+<a class="sourceLine" id="cb85-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb85-14" data-line-number="14"><span class="bn">```{r, fig.dim=c(5, 3)}</span></a>
+<a class="sourceLine" id="cb85-15" data-line-number="15"><span class="bn">par(mar = c(4, 4, .5, .1))</span></a>
+<a class="sourceLine" id="cb85-16" data-line-number="16"><span class="bn">plot(mpg ~ hp, data = mtcars, pch = 19)</span></a>
+<a class="sourceLine" id="cb85-17" data-line-number="17"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb85-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb85-19" data-line-number="19"><span class="fu">### Tables</span></a>
+<a class="sourceLine" id="cb85-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb85-21" data-line-number="21">We show the data in this tab.</a>
+<a class="sourceLine" id="cb85-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb85-23" data-line-number="23"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb85-24" data-line-number="24"><span class="bn">head(mtcars)</span></a>
+<a class="sourceLine" id="cb85-25" data-line-number="25"><span class="bn">```</span></a></code></pre></div>
+<p>The output is shown in Figure <a href="html-tabs.html#fig:html-tabs">6.4</a>. Note that you can only see one tab at a time in reality. In this figure, we actually concatenated two screenshots for you to see both tabs.</p>
+<div class="figure"><span id="fig:html-tabs"></span>
+<img src="images/html-tabs.png" alt="Turn sections into tabs."  />
+<p class="caption">
+FIGURE 6.4: Turn sections into tabs.
+</p>
+</div>
+<p>You can add another attribute <code>.tabset-pills</code> to the upper-level section header to add a “pill” effect to the tab, and the tab will have a dark blue background.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="fu">## Results {.tabset .tabset-pills}</span></a></code></pre></div>
+<p>To end the tabset, you need to start a new section header of the upper level. The new section header can be empty, e.g.,</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="fu">## Results {.tabset}</span></a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb87-3" data-line-number="3"><span class="fu">### Tab One</span></a>
+<a class="sourceLine" id="cb87-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb87-5" data-line-number="5"><span class="fu">### Tab Two</span></a>
+<a class="sourceLine" id="cb87-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb87-7" data-line-number="7"><span class="fu">## {-}</span></a>
+<a class="sourceLine" id="cb87-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb87-9" data-line-number="9">With the above unnumbered (<span class="bn">`{-}`</span>) and empty section header,</a>
+<a class="sourceLine" id="cb87-10" data-line-number="10">we can end the tabset and continue to write more paragraphs.</a></code></pre></div>
 </div>
             </section>
 

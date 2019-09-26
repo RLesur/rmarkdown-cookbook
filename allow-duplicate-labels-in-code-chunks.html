@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -315,19 +309,19 @@ Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
   FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one master document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb212-2" data-line-number="2">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb212-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb212-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb212-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a>
-<a class="sourceLine" id="cb212-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb212-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb212-8" data-line-number="8">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb212-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb212-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb212-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="co"># settings</span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb215-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb215-4" data-line-number="4"><span class="co"># run once</span></a>
+<a class="sourceLine" id="cb215-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a>
+<a class="sourceLine" id="cb215-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb215-7" data-line-number="7"><span class="co"># new settings</span></a>
+<a class="sourceLine" id="cb215-8" data-line-number="8">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb215-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb215-10" data-line-number="10"><span class="co"># run again</span></a>
+<a class="sourceLine" id="cb215-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a></code></pre></div>
 <p>In this scenario, we can allow duplicate labels by setting this global option in R before the child document is knitted:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&quot;allow&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&quot;allow&quot;</span>)</a></code></pre></div>
 <p>You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross-references. For example, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without an error or warning message), because the filenames of plots are determined by the chunk labels.</p>
 
 

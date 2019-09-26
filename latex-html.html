@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -307,60 +301,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="latex-html" class="section level2">
 <h2><span class="header-section-number">7.1</span> LaTeX or HTML output</h2>
 <p>LaTeX and HTML are two commonly used output formats. The function <code>knitr::is_latex_output()</code> tells you if the output format is LaTeX (including Pandoc output formats <code>latex</code> and <code>beamer</code>). Similarly, the function <code>knitr::is_html_output</code> tells you if the output format is HTML. By default, these Pandoc output formats are considered HTML formats: <code>markdown</code>, <code>epub</code>, <code>html</code>, <code>html4</code>, <code>html5</code>, <code>revealjs</code>, <code>s5</code>, <code>slideous</code>, and <code>slidy</code>. If you do not think a certain Pandoc format is HTML, you may use the <code>excludes</code> argument to exclude it, e.g.,</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># do not treat markdown as an HTML format</span></a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">is_html_output</span>(<span class="dt">excludes =</span> <span class="st">&quot;markdown&quot;</span>)</a>
-<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="co">## [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co"># do not treat markdown as an HTML format</span></a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">is_html_output</span>(<span class="dt">excludes =</span> <span class="st">&quot;markdown&quot;</span>)</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3"><span class="co">## [1] TRUE</span></a></code></pre></div>
 <p>If a certain output element can only be generated in LaTeX or HTML, you can use these functions to conditionally generate it. For example, when a table is too big on a PDF page, you may include the table in an environment of a smaller font size, but such a LaTeX environment certainly will not work for HTML output, so it should not be included in HTML output (if you want to tweak the font size for HTML output, you may use CSS). Below is a full example:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb91-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb91-2" data-line-number="2">title: Render a table in a tiny environment</a>
-<a class="sourceLine" id="cb91-3" data-line-number="3">output:</a>
-<a class="sourceLine" id="cb91-4" data-line-number="4">  pdf_document: default</a>
-<a class="sourceLine" id="cb91-5" data-line-number="5">  html_document: default</a>
-<a class="sourceLine" id="cb91-6" data-line-number="6">---</a>
-<a class="sourceLine" id="cb91-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb91-8" data-line-number="8"><span class="bn">```{r, setup, include=FALSE}</span></a>
-<a class="sourceLine" id="cb91-9" data-line-number="9"><span class="bn">knitr::opts_chunk$set(echo = FALSE)</span></a>
-<a class="sourceLine" id="cb91-10" data-line-number="10"><span class="bn">options(knitr.table.format = function() {</span></a>
-<a class="sourceLine" id="cb91-11" data-line-number="11"><span class="bn">  if (knitr::is_latex_output()) &#39;latex&#39; else &#39;pandoc&#39;</span></a>
-<a class="sourceLine" id="cb91-12" data-line-number="12"><span class="bn">})</span></a>
-<a class="sourceLine" id="cb91-13" data-line-number="13"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb91-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb91-15" data-line-number="15">The LaTeX environment <span class="bn">`tiny`</span> is only generated for LaTeX output.</a>
-<a class="sourceLine" id="cb91-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb91-17" data-line-number="17"><span class="bn">```{r, include=knitr::is_latex_output()}</span></a>
-<a class="sourceLine" id="cb91-18" data-line-number="18"><span class="bn">knitr::asis_output(&#39;\n\n\\begin{tiny}&#39;)</span></a>
-<a class="sourceLine" id="cb91-19" data-line-number="19"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb91-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb91-21" data-line-number="21"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb91-22" data-line-number="22"><span class="bn">knitr::kable(mtcars)</span></a>
-<a class="sourceLine" id="cb91-23" data-line-number="23"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb91-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb91-25" data-line-number="25"><span class="bn">```{r, include=knitr::is_latex_output()}</span></a>
-<a class="sourceLine" id="cb91-26" data-line-number="26"><span class="bn">knitr::asis_output(&#39;\\end{tiny}\n\n&#39;)</span></a>
-<a class="sourceLine" id="cb91-27" data-line-number="27"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb91-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb91-29" data-line-number="29">By comparison, below is the table with the normal font size.</a>
-<a class="sourceLine" id="cb91-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb91-31" data-line-number="31"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb91-32" data-line-number="32"><span class="bn">knitr::kable(mtcars)</span></a>
-<a class="sourceLine" id="cb91-33" data-line-number="33"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb94-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2">title: Render a table in a tiny environment</a>
+<a class="sourceLine" id="cb94-3" data-line-number="3">output:</a>
+<a class="sourceLine" id="cb94-4" data-line-number="4">  pdf_document: default</a>
+<a class="sourceLine" id="cb94-5" data-line-number="5">  html_document: default</a>
+<a class="sourceLine" id="cb94-6" data-line-number="6">---</a>
+<a class="sourceLine" id="cb94-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb94-8" data-line-number="8"><span class="bn">```{r, setup, include=FALSE}</span></a>
+<a class="sourceLine" id="cb94-9" data-line-number="9"><span class="bn">knitr::opts_chunk$set(echo = FALSE)</span></a>
+<a class="sourceLine" id="cb94-10" data-line-number="10"><span class="bn">options(knitr.table.format = function() {</span></a>
+<a class="sourceLine" id="cb94-11" data-line-number="11"><span class="bn">  if (knitr::is_latex_output()) &#39;latex&#39; else &#39;pandoc&#39;</span></a>
+<a class="sourceLine" id="cb94-12" data-line-number="12"><span class="bn">})</span></a>
+<a class="sourceLine" id="cb94-13" data-line-number="13"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb94-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb94-15" data-line-number="15">The LaTeX environment <span class="bn">`tiny`</span> is only generated for LaTeX output.</a>
+<a class="sourceLine" id="cb94-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb94-17" data-line-number="17"><span class="bn">```{r, include=knitr::is_latex_output()}</span></a>
+<a class="sourceLine" id="cb94-18" data-line-number="18"><span class="bn">knitr::asis_output(&#39;\n\n\\begin{tiny}&#39;)</span></a>
+<a class="sourceLine" id="cb94-19" data-line-number="19"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb94-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb94-21" data-line-number="21"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb94-22" data-line-number="22"><span class="bn">knitr::kable(mtcars)</span></a>
+<a class="sourceLine" id="cb94-23" data-line-number="23"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb94-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb94-25" data-line-number="25"><span class="bn">```{r, include=knitr::is_latex_output()}</span></a>
+<a class="sourceLine" id="cb94-26" data-line-number="26"><span class="bn">knitr::asis_output(&#39;\\end{tiny}\n\n&#39;)</span></a>
+<a class="sourceLine" id="cb94-27" data-line-number="27"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb94-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb94-29" data-line-number="29">By comparison, below is the table with the normal font size.</a>
+<a class="sourceLine" id="cb94-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb94-31" data-line-number="31"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb94-32" data-line-number="32"><span class="bn">knitr::kable(mtcars)</span></a>
+<a class="sourceLine" id="cb94-33" data-line-number="33"><span class="bn">```</span></a></code></pre></div>
 <p>The key in the above example is the chunk option <code>include = knitr::is_latex_output()</code>. That is, the environment <code>\begin{tiny} \end{tiny}</code> is only included when the output format is LaTeX. The two tables in the example will look identical when the output format is not LaTeX.</p>
 <p>In Section <a href="font-color.html#font-color">4.1</a>, we used these functions to change the text color for HTML and LaTeX output. In Section <a href="animation.html#animation">3.10</a>, we showed an animation example, which also used this trick. The code chunk that generated the animation for HTML output and static images for LaTeX output is like this:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="bn">```{r animation.hook=if (knitr::is_html_output()) &#39;gifski&#39;}</span></a>
-<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="bn">for (i in 1:2) {</span></a>
-<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="bn">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></a>
-<a class="sourceLine" id="cb92-4" data-line-number="4"><span class="bn">}</span></a>
-<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="bn">```{r animation.hook=if (knitr::is_html_output()) &#39;gifski&#39;}</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="bn">for (i in 1:2) {</span></a>
+<a class="sourceLine" id="cb95-3" data-line-number="3"><span class="bn">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></a>
+<a class="sourceLine" id="cb95-4" data-line-number="4"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb95-5" data-line-number="5"><span class="bn">```</span></a></code></pre></div>
 <p>These conditional functions can be used anywhere. You can use them in other chunk options (e.g., <code>eval</code> for conditional evaluation of the chunk), or in your R code, e.g.,</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="bn">```{r, eval=knitr::is_html_output(), echo=FALSE}</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="bn">cat(&#39;You will only see me in HTML output.&#39;)</span></a>
-<a class="sourceLine" id="cb93-3" data-line-number="3"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb93-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb93-5" data-line-number="5"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb93-6" data-line-number="6"><span class="bn">if (knitr::is_latex_output()) {</span></a>
-<a class="sourceLine" id="cb93-7" data-line-number="7"><span class="bn">  knitr::asis_output(&#39;\n\n\\begin{tiny}&#39;)</span></a>
-<a class="sourceLine" id="cb93-8" data-line-number="8"><span class="bn">}</span></a>
-<a class="sourceLine" id="cb93-9" data-line-number="9"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="bn">```{r, eval=knitr::is_html_output(), echo=FALSE}</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="bn">cat(&#39;You will only see me in HTML output.&#39;)</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="bn">```</span></a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="bn">if (knitr::is_latex_output()) {</span></a>
+<a class="sourceLine" id="cb96-7" data-line-number="7"><span class="bn">  knitr::asis_output(&#39;\n\n\\begin{tiny}&#39;)</span></a>
+<a class="sourceLine" id="cb96-8" data-line-number="8"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb96-9" data-line-number="9"><span class="bn">```</span></a></code></pre></div>
 </div>
             </section>
 

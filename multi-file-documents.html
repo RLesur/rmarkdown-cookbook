@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-24" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>5.8</b> For hardcore LaTeX users</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
-<li class="chapter" data-level="6.1" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.1</b> Chunk styling</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chunk-styling.html"><a href="chunk-styling.html#custom-css"><i class="fa fa-check"></i><b>6.1.1</b> Custom CSS</a></li>
-<li class="chapter" data-level="6.1.2" data-path="chunk-styling.html"><a href="chunk-styling.html#default-style-for-document"><i class="fa fa-check"></i><b>6.1.2</b> Default style for document</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.2</b> Scrollable code chunks</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="html-scroll.html"><a href="html-scroll.html#overwriting-the-default-css"><i class="fa fa-check"></i><b>6.2.1</b> Overwriting the default CSS</a></li>
-<li class="chapter" data-level="6.2.2" data-path="html-scroll.html"><a href="html-scroll.html#specifing-additional-css"><i class="fa fa-check"></i><b>6.2.2</b> Specifing additional CSS</a></li>
-<li class="chapter" data-level="6.2.3" data-path="html-scroll.html"><a href="html-scroll.html#user-specified-chunk-height"><i class="fa fa-check"></i><b>6.2.3</b> User-specified chunk height</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.3</b> Tabbed headings</a></li>
-<li class="chapter" data-level="6.4" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.4</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.5</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.6</b> Hardcore HTML users</a></li>
+<li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
+<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
 <li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
@@ -313,12 +307,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">12.2.1</span> Child documents</h3>
 <p>We can include other R Markdown documents within a file by using child documents. The contents of the child document is loaded into the parent document, and any R code will be run as normally within <strong>knitr</strong>.</p>
 <p>To include a child document, we can add a code chunk with the option <code>child</code>, providing the file path to the <code>.Rmd</code> file to be included. The chunk should contain no code but we can specify additional chunk options if we wish to suppress the code output i.e. <code>echo=FALSE</code>. For example:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="bn">```{r, child = &quot;about.Rmd&quot;}</span></a>
-<a class="sourceLine" id="cb181-2" data-line-number="2"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="bn">```{r, child = &quot;about.Rmd&quot;}</span></a>
+<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="bn">```</span></a></code></pre></div>
 <p>Whereby the content of <code>about.Rmd</code> provides a short description of the packages used for the analysis:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="fu"># About</span></a>
-<a class="sourceLine" id="cb182-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb182-3" data-line-number="3">This analysis was written in the R programming language [@R-base]. The report was generated using **rmarkdown** [@R-markdown] and **knitr** [@R-knitr].</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="fu"># About</span></a>
+<a class="sourceLine" id="cb185-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb185-3" data-line-number="3">This analysis was written in the R programming language [@R-base]. The report was generated using **rmarkdown** [@R-markdown] and **knitr** [@R-knitr].</a></code></pre></div>
 <p>Child documents are useful where we have a standard piece of text that we wish to include across multiple documents. Rather than copying and pasting the text to each file, we can refer to a single source file. If any changes are made to our generic description at a later date, we can update a single source file and all the reports will be up to date.</p>
 <p>Further examples where child documents could be useful include:</p>
 <ul>
@@ -330,35 +324,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-bookdown" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Using bookdown</h3>
 <p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">b</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb183-1" data-line-number="1">directory</a>
-<a class="sourceLine" id="cb183-2" data-line-number="2">  |- index.Rmd</a>
-<a class="sourceLine" id="cb183-3" data-line-number="3">  |- 01-intro.Rmd</a>
-<a class="sourceLine" id="cb183-4" data-line-number="4">  |- 02-analysis.Rmd</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb186-1" data-line-number="1">directory</a>
+<a class="sourceLine" id="cb186-2" data-line-number="2">  |- index.Rmd</a>
+<a class="sourceLine" id="cb186-3" data-line-number="3">  |- 01-intro.Rmd</a>
+<a class="sourceLine" id="cb186-4" data-line-number="4">  |- 02-analysis.Rmd</a></code></pre></div>
 <ul>
 <li><strong>index.Rmd</strong>:</li>
 </ul>
 <p>The main detail is that the main file has to be called <code>index.Rmd</code> , and must include the additional YAML line site: <code>bookdown::bookdown_site</code>. We must also use a <strong>bookdown</strong> output format such as <code>html_document2</code>, <code>pdf_document2</code>, <code>word_document2</code>:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb184-1" data-line-number="1">---</a>
-<a class="sourceLine" id="cb184-2" data-line-number="2">title: &quot;A Minimal bookdown document&quot;</a>
-<a class="sourceLine" id="cb184-3" data-line-number="3">site: bookdown::bookdown_site</a>
-<a class="sourceLine" id="cb184-4" data-line-number="4">output: bookdown::pdf_document2</a>
-<a class="sourceLine" id="cb184-5" data-line-number="5">---</a>
-<a class="sourceLine" id="cb184-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb184-7" data-line-number="7">Some content</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb187-1" data-line-number="1">---</a>
+<a class="sourceLine" id="cb187-2" data-line-number="2">title: &quot;A Minimal bookdown document&quot;</a>
+<a class="sourceLine" id="cb187-3" data-line-number="3">site: bookdown::bookdown_site</a>
+<a class="sourceLine" id="cb187-4" data-line-number="4">output: bookdown::pdf_document2</a>
+<a class="sourceLine" id="cb187-5" data-line-number="5">---</a>
+<a class="sourceLine" id="cb187-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb187-7" data-line-number="7">Some content</a></code></pre></div>
 <ul>
 <li><strong>01-intro.Rmd:</strong></li>
 </ul>
-<div class="sourceCode" id="cb185"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="fu"># Chapter 1</span></a>
-<a class="sourceLine" id="cb185-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb185-3" data-line-number="3">This is chapter 1.</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="fu"># Chapter 1</span></a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb188-3" data-line-number="3">This is chapter 1.</a></code></pre></div>
 <ul>
 <li><strong>02-analysis.Rmd</strong>:</li>
 </ul>
-<div class="sourceCode" id="cb186"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="fu"># Chapter 2</span></a>
-<a class="sourceLine" id="cb186-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb186-3" data-line-number="3">This is chapter 2.</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb189-1" data-line-number="1"><span class="fu"># Chapter 2</span></a>
+<a class="sourceLine" id="cb189-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb189-3" data-line-number="3">This is chapter 2.</a></code></pre></div>
 <p>When the file is built, <strong>bookdown</strong> merges the results of the separate files into a single output document. This will automatically be done in alphabetical order, so it makes sense to precede your file name with a numeric index as above.</p>
-<p>For a comprehensive overview of the package, readers may refer to the <a href=""><em>Bookdown Book</em></a> <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span> or <a href="https://bookdown.org/yihui/rmarkdown/">Chapter 18</a> of the <em>R Markdown Definitive Guide</em> <span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-xie2018">2018</a>)</span>.</p>
+<p>For a comprehensive overview of the package, readers may refer to the <a href=""><em>Bookdown Book</em></a> <span class="citation">(Xie <a href="#ref-xie2016">2016</a>)</span> or <a href="https://bookdown.org/yihui/rmarkdown/">Chapter 18</a> of the <em>R Markdown Definitive Guide</em> <span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-xie2018">2018</a>)</span>.</p>
 </div>
 <div id="which-method-should-you-use" class="section level3">
 <h3><span class="header-section-number">12.2.3</span> Which method should you use?</h3>
@@ -367,8 +361,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
+<div id="ref-xie2016">
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
 </div>
 <div id="ref-R-bookdown">
 <p>Xie, Yihui. 2019b. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
