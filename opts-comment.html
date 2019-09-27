@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 Multiple figures side-by-side | R Markdown Cookbook</title>
+  <title>14.4 Remove leading hashes in text output | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 Multiple figures side-by-side | R Markdown Cookbook" />
+  <meta property="og:title" content="14.4 Remove leading hashes in text output | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 Multiple figures side-by-side | R Markdown Cookbook" />
+  <meta name="twitter:title" content="14.4 Remove leading hashes in text output | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="html-widgets.html"/>
-<link rel="next" href="custom-blocks.html"/>
+<link rel="prev" href="hide-all.html"/>
+<link rel="next" href="knit-exit.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -298,27 +298,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="figures-side" class="section level2">
-<h2><span class="header-section-number">7.3</span> Multiple figures side-by-side</h2>
-<p>Ye can place multiple figures side-by-side using the <code>fig.hold='hold'</code> along with the <code>out.width</code> option. In the example below, we have set <code>out.width=&quot;50%&quot;</code>:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</a>
-<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="kw">plot</span>(cars)</a>
-<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="kw">plot</span>(mpg <span class="op">~</span><span class="st"> </span>hp, <span class="dt">data =</span> mtcars, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
-<div class="figure"><span id="fig:figures-side"></span>
-<img src="rmarkdown-cookbook_files/figure-html/figures-side-1.png" alt="Side-by-side figures." width="50%" /><img src="rmarkdown-cookbook_files/figure-html/figures-side-2.png" alt="Side-by-side figures." width="50%" />
-<p class="caption">
-FIGURE 7.1: Side-by-side figures.
-</p>
-</div>
-<p>This simple approach works for both PDF and HTML output.</p>
+<div id="opts-comment" class="section level2">
+<h2><span class="header-section-number">14.4</span> Remove leading hashes in text output</h2>
+<!-- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr -->
+<p>By default, R code output will have two hashes <code>##</code> inserted in front of the text output. We can alter this behavior through the <code>comment</code> chunk option, which defaults to a character string <code>&quot;##&quot;</code>. We can use an empty string if we want to remove the hashes. For example:</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;}</span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2"><span class="bn">1:100</span></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<p>Of course, you can use any other character values, e.g., <code>comment = &quot;#&gt;&quot;</code>. Why does the <code>comment</code> option default to hashes? That is because <code>#</code> indicates comments in R. When the text output is commented out, it will be easier for you to copy all the code from a code chunk in a report and run it by yourself, without worrying about the fact that text output is not R code. For example, in the code chunk below, you can copy all four lines of text and run them safely as R code:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="co">## [1] 2</span></a>
+<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb214-4" data-line-number="4"><span class="co">## [1] 4</span></a></code></pre></div>
+<p>If you remove the hashes via <code>comment = &quot;&quot;</code>, it will not be easy for you to run all the code, because if you copy the four lines, you will have to manually remove the second and fourth line:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb215-4" data-line-number="4">[<span class="dv">1</span>] <span class="dv">4</span></a></code></pre></div>
+<p>One argument in favor of <code>comment = &quot;&quot;</code> is that it makes the text output look familiar to R console users. In the R console, you do not see hashes in the beginning of lines of text output. If you want to truly mimic the behavior of the R console, you can actually use <code>comment = &quot;&quot;</code> in conjunction with <code>prompt = TRUE</code>, e.g.,</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="bn">```{r, comment=&quot;&quot;, prompt=TRUE}</span></a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb216-3" data-line-number="3"><span class="bn">if (TRUE) {</span></a>
+<a class="sourceLine" id="cb216-4" data-line-number="4"><span class="bn">  2 + 2</span></a>
+<a class="sourceLine" id="cb216-5" data-line-number="5"><span class="bn">}</span></a>
+<a class="sourceLine" id="cb216-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
+<p>The output should look fairly familiar to you if you have ever typed and run code in the R console, since the source code contains the prompt character <code>&gt;</code> and the continuation character <code>+</code>:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb217-2" data-line-number="2">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb217-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="cf">if</span> (<span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb217-4" data-line-number="4"><span class="op">+</span><span class="st">   </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb217-5" data-line-number="5"><span class="op">+</span><span class="st"> </span>}</a>
+<a class="sourceLine" id="cb217-6" data-line-number="6">[<span class="dv">1</span>] <span class="dv">4</span></a></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="html-widgets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="custom-blocks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hide-all.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="knit-exit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -348,7 +366,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/07-multiformat.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/14-knitr.Rmd",
 "text": "Edit"
 },
 "history": {

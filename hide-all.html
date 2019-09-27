@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14.4 Allow duplicate labels in code chunks | R Markdown Cookbook</title>
+  <title>14.3 Hide everything from a chunk | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14.4 Allow duplicate labels in code chunks | R Markdown Cookbook" />
+  <meta property="og:title" content="14.3 Hide everything from a chunk | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14.4 Allow duplicate labels in code chunks | R Markdown Cookbook" />
+  <meta name="twitter:title" content="14.3 Hide everything from a chunk | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-26" />
+<meta name="date" content="2019-09-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="generate-a-plot-and-display-it-elsewhere.html"/>
-<link rel="next" href="references.html"/>
+<link rel="prev" href="hide-one.html"/>
+<link rel="next" href="opts-comment.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -269,13 +269,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2" data-path="adding-parameters-to-plots.html"><a href="adding-parameters-to-plots.html"><i class="fa fa-check"></i><b>13.2</b> Adding parameters to plots</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="knitr.html"><a href="knitr.html"><i class="fa fa-check"></i><b>14</b> Knitr</a><ul>
-<li class="chapter" data-level="14.1" data-path="using-knitr-options.html"><a href="using-knitr-options.html"><i class="fa fa-check"></i><b>14.1</b> Using knitr options</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="using-knitr-options.html"><a href="using-knitr-options.html#hide-code-and-all-outputs"><i class="fa fa-check"></i><b>14.1.1</b> Hide code and all outputs</a></li>
-<li class="chapter" data-level="14.1.2" data-path="using-knitr-options.html"><a href="using-knitr-options.html#remove-leading-hashes-in-text-output"><i class="fa fa-check"></i><b>14.1.2</b> Remove leading hashes in text output</a></li>
-</ul></li>
-<li class="chapter" data-level="14.2" data-path="exit-knitting-early.html"><a href="exit-knitting-early.html"><i class="fa fa-check"></i><b>14.2</b> Exit knitting early</a></li>
-<li class="chapter" data-level="14.3" data-path="generate-a-plot-and-display-it-elsewhere.html"><a href="generate-a-plot-and-display-it-elsewhere.html"><i class="fa fa-check"></i><b>14.3</b> Generate a plot and display it elsewhere</a></li>
-<li class="chapter" data-level="14.4" data-path="allow-duplicate-labels-in-code-chunks.html"><a href="allow-duplicate-labels-in-code-chunks.html"><i class="fa fa-check"></i><b>14.4</b> Allow duplicate labels in code chunks</a></li>
+<li class="chapter" data-level="14.1" data-path="chunk-options.html"><a href="chunk-options.html"><i class="fa fa-check"></i><b>14.1</b> Chunk options</a></li>
+<li class="chapter" data-level="14.2" data-path="hide-one.html"><a href="hide-one.html"><i class="fa fa-check"></i><b>14.2</b> Hide code, text output, messages, or plots</a></li>
+<li class="chapter" data-level="14.3" data-path="hide-all.html"><a href="hide-all.html"><i class="fa fa-check"></i><b>14.3</b> Hide everything from a chunk</a></li>
+<li class="chapter" data-level="14.4" data-path="opts-comment.html"><a href="opts-comment.html"><i class="fa fa-check"></i><b>14.4</b> Remove leading hashes in text output</a></li>
+<li class="chapter" data-level="14.5" data-path="knit-exit.html"><a href="knit-exit.html"><i class="fa fa-check"></i><b>14.5</b> Exit knitting early</a></li>
+<li class="chapter" data-level="14.6" data-path="fig-chunk.html"><a href="fig-chunk.html"><i class="fa fa-check"></i><b>14.6</b> Generate a plot and display it elsewhere</a></li>
+<li class="chapter" data-level="14.7" data-path="duplicate-label.html"><a href="duplicate-label.html"><i class="fa fa-check"></i><b>14.7</b> Allow duplicate labels in code chunks</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -298,42 +298,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="allow-duplicate-labels-in-code-chunks" class="section level2">
-<h2><span class="header-section-number">14.4</span> Allow duplicate labels in code chunks</h2>
-<!-- https://stackoverflow.com/questions/36868287/purl-within-knit-duplicate-label-error/47065392#47065392 -->
-<p>By default, <strong>knitr</strong> does not allow duplicate code chunk labels in the document. Duplicate labels will result in an error when the document is knitted. This occurs most frequently when a code chunk is copied and pasted within a document. You may have seen an error message like this:</p>
-<pre class="text"><code>processing file: myfile.Rmd
-Error in parse_block(g[-1], g[1], params.src) :
-  duplicate label &#39;cars&#39;
-Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
-  FUN -&gt; parse_block
-Execution halted</code></pre>
-<p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one master document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="co"># settings</span></a>
-<a class="sourceLine" id="cb215-2" data-line-number="2">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb215-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb215-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a>
-<a class="sourceLine" id="cb215-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb215-7" data-line-number="7"><span class="co"># new settings</span></a>
-<a class="sourceLine" id="cb215-8" data-line-number="8">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
-<a class="sourceLine" id="cb215-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb215-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb215-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a></code></pre></div>
-<p>In this scenario, we can allow duplicate labels by setting this global option in R before the child document is knitted:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&quot;allow&quot;</span>)</a></code></pre></div>
-<p>You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross-references. For example, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without an error or warning message), because the filenames of plots are determined by the chunk labels.</p>
-
-
+<div id="hide-all" class="section level2">
+<h2><span class="header-section-number">14.3</span> Hide everything from a chunk</h2>
+<p>Sometimes we may want to execute a code chunk without showing any output at all. Instead of using separate options mentioned in Section <a href="hide-one.html#hide-one">14.2</a>, we can suppress the entire output of the code chunk using a single option <code>include = FALSE</code>, e.g.,</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="bn">```{r, include=FALSE}</span></a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="bn"># any R code here</span></a>
+<a class="sourceLine" id="cb212-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed—you will not see any code, text output, messages, or plots.</p>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="generate-a-plot-and-display-it-elsewhere.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hide-one.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="opts-comment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
