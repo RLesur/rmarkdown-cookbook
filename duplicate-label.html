@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-27" />
+<meta name="date" content="2019-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -308,18 +308,18 @@ Error in parse_block(g[-1], g[1], params.src) :
 Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
   FUN -&gt; parse_block
 Execution halted</code></pre>
-<p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one master document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
+<p>However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one parent document <code>parent.Rmd</code> in which we knit the child document multiple times, it will fail:</p>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="co"># settings</span></a>
 <a class="sourceLine" id="cb221-2" data-line-number="2">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
 <a class="sourceLine" id="cb221-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb221-4" data-line-number="4"><span class="co"># run once</span></a>
-<a class="sourceLine" id="cb221-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a>
+<a class="sourceLine" id="cb221-5" data-line-number="5"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.Rmd&quot;</span>)</a>
 <a class="sourceLine" id="cb221-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb221-7" data-line-number="7"><span class="co"># new settings</span></a>
 <a class="sourceLine" id="cb221-8" data-line-number="8">settings &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
 <a class="sourceLine" id="cb221-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb221-10" data-line-number="10"><span class="co"># run again</span></a>
-<a class="sourceLine" id="cb221-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.rmd&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb221-11" data-line-number="11"><span class="kw">knit_child</span>(<span class="st">&quot;useful_analysis.Rmd&quot;</span>)</a></code></pre></div>
 <p>In this scenario, we can allow duplicate labels by setting this global option in R before the child document is knitted:</p>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&quot;allow&quot;</span>)</a></code></pre></div>
 <p>You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross-references. For example, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without an error or warning message), because the filenames of plots are determined by the chunk labels.</p>

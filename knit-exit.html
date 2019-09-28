@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-27" />
+<meta name="date" content="2019-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -300,14 +300,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="knit-exit" class="section level2">
 <h2><span class="header-section-number">14.5</span> Exit knitting early</h2>
-<p>Sometimes we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom that is not yet complete. In these situations, we could consider using the <code>knit_exit()</code> function, which will end the knitting process at that location.</p>
+<p>Sometimes we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom that is not yet complete. In these situations, we could consider using the <code>knit_exit()</code> function in a code chunk, which will end the knitting process after that chunk.</p>
 <p>Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:</p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="bn">```{r}</span></a>
 <a class="sourceLine" id="cb218-2" data-line-number="2"><span class="bn">1 + 1</span></a>
 <a class="sourceLine" id="cb218-3" data-line-number="3"><span class="bn">knitr::knit_exit()</span></a>
 <a class="sourceLine" id="cb218-4" data-line-number="4"><span class="bn">```</span></a>
 <a class="sourceLine" id="cb218-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb218-6" data-line-number="6">Okay, you will not see me in the output.</a>
+<a class="sourceLine" id="cb218-6" data-line-number="6">You will only see the above content in the output.</a>
 <a class="sourceLine" id="cb218-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb218-8" data-line-number="8"><span class="bn">```{r}</span></a>
 <a class="sourceLine" id="cb218-9" data-line-number="9"><span class="bn">Sys.sleep(100)</span></a>

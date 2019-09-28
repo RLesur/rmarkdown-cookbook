@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-27" />
+<meta name="date" content="2019-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -305,11 +305,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb19"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></a></code></pre></div>
 <p>You may want to specify the desired date or date-time format to make it more human-readable, e.g.,</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span></a></code></pre></div>
-<p>This will generate the date dynamically each time you knit your document, e.g., 27 September, 2019. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:</p>
+<p>This will generate the date dynamically each time you knit your document, e.g., 28 September, 2019. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:</p>
 <ul>
 <li><code>%B %Y</code>: September 2019</li>
-<li><code>%d/%m/%y</code>: 27/09/19</li>
-<li><code>%a/%d/%b</code>: Fri 27 Sep</li>
+<li><code>%d/%m/%y</code>: 28/09/19</li>
+<li><code>%a/%d/%b</code>: Sat 28 Sep</li>
 </ul>
 <p>A full table of POSIXct formats is shown in Table <a href="update-date.html#tab:date-format">3.1</a>.</p>
 <table>
