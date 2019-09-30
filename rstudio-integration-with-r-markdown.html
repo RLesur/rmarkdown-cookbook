@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.3 RStudio integration with R Markdown | R Markdown Cookbook</title>
+  <title>13.3 RStudio integration with R Markdown | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.3 RStudio integration with R Markdown | R Markdown Cookbook" />
+  <meta property="og:title" content="13.3 RStudio integration with R Markdown | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.3 RStudio integration with R Markdown | R Markdown Cookbook" />
+  <meta name="twitter:title" content="13.3 RStudio integration with R Markdown | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie" />
 
 
-<meta name="date" content="2019-09-28" />
+<meta name="date" content="2019-09-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,88 +194,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>6.1</b> Apply custom CSS</a></li>
-<li class="chapter" data-level="6.2" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.2</b> Style code blocks and text output</a></li>
-<li class="chapter" data-level="6.3" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.3</b> Scrollable code blocks</a></li>
-<li class="chapter" data-level="6.4" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.4</b> Put content in tabs</a></li>
-<li class="chapter" data-level="6.5" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.5</b> Embed the Rmd source file in the HTML output file</a></li>
-<li class="chapter" data-level="6.6" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.6</b> Embed arbitrary files in the HTML output file</a></li>
-<li class="chapter" data-level="6.7" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.7</b> For hardcore HTML users</a></li>
+<li class="chapter" data-level="6.2" data-path="html-template.html"><a href="html-template.html"><i class="fa fa-check"></i><b>6.2</b> Use a custom HTML template</a></li>
+<li class="chapter" data-level="6.3" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>6.3</b> Style code blocks and text output</a></li>
+<li class="chapter" data-level="6.4" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>6.4</b> Scrollable code blocks</a></li>
+<li class="chapter" data-level="6.5" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>6.5</b> Put content in tabs</a></li>
+<li class="chapter" data-level="6.6" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>6.6</b> Embed the Rmd source file in the HTML output file</a></li>
+<li class="chapter" data-level="6.7" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>6.7</b> Embed arbitrary files in the HTML output file</a></li>
+<li class="chapter" data-level="6.8" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>6.8</b> For hardcore HTML users</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>7</b> Multiple output formats</a><ul>
-<li class="chapter" data-level="7.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>7.1</b> LaTeX or HTML output</a></li>
-<li class="chapter" data-level="7.2" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>7.2</b> Display HTML widgets</a></li>
-<li class="chapter" data-level="7.3" data-path="figures-side.html"><a href="figures-side.html"><i class="fa fa-check"></i><b>7.3</b> Multiple figures side-by-side</a></li>
-<li class="chapter" data-level="7.4" data-path="custom-blocks.html"><a href="custom-blocks.html"><i class="fa fa-check"></i><b>7.4</b> Custom blocks</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="custom-blocks.html"><a href="custom-blocks.html#block-syntax"><i class="fa fa-check"></i><b>7.4.1</b> Syntax</a></li>
-<li class="chapter" data-level="7.4.2" data-path="custom-blocks.html"><a href="custom-blocks.html#block-shaded"><i class="fa fa-check"></i><b>7.4.2</b> Adding a shaded box</a></li>
-<li class="chapter" data-level="7.4.3" data-path="custom-blocks.html"><a href="custom-blocks.html#block-image"><i class="fa fa-check"></i><b>7.4.3</b> Including icons</a></li>
+<li class="chapter" data-level="7" data-path="word.html"><a href="word.html"><i class="fa fa-check"></i><b>7</b> Word</a></li>
+<li class="chapter" data-level="8" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>8</b> Multiple output formats</a><ul>
+<li class="chapter" data-level="8.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>8.1</b> LaTeX or HTML output</a></li>
+<li class="chapter" data-level="8.2" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>8.2</b> Display HTML widgets</a></li>
+<li class="chapter" data-level="8.3" data-path="figures-side.html"><a href="figures-side.html"><i class="fa fa-check"></i><b>8.3</b> Multiple figures side-by-side</a></li>
+<li class="chapter" data-level="8.4" data-path="custom-blocks.html"><a href="custom-blocks.html"><i class="fa fa-check"></i><b>8.4</b> Custom blocks</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="custom-blocks.html"><a href="custom-blocks.html#block-syntax"><i class="fa fa-check"></i><b>8.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="8.4.2" data-path="custom-blocks.html"><a href="custom-blocks.html#block-shaded"><i class="fa fa-check"></i><b>8.4.2</b> Adding a shaded box</a></li>
+<li class="chapter" data-level="8.4.3" data-path="custom-blocks.html"><a href="custom-blocks.html#block-image"><i class="fa fa-check"></i><b>8.4.3</b> Including icons</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="word.html"><a href="word.html"><i class="fa fa-check"></i><b>8</b> Word</a></li>
 <li class="chapter" data-level="9" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>9</b> Knitr Hooks</a><ul>
 <li class="chapter" data-level="9.1" data-path="hooks-scroll.html"><a href="hooks-scroll.html"><i class="fa fa-check"></i><b>9.1</b> Scrollable code chunks</a></li>
 <li class="chapter" data-level="9.2" data-path="output-figures-in-html5-format.html"><a href="output-figures-in-html5-format.html"><i class="fa fa-check"></i><b>9.2</b> Output figures in HTML5 format</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>10</b> Tables</a><ul>
-<li class="chapter" data-level="10.1" data-path="kable.html"><a href="kable.html"><i class="fa fa-check"></i><b>10.1</b> The function <code>knitr::kable()</code></a><ul>
-<li class="chapter" data-level="10.1.1" data-path="kable.html"><a href="kable.html#kable-formats"><i class="fa fa-check"></i><b>10.1.1</b> Possible table formats</a></li>
-<li class="chapter" data-level="10.1.2" data-path="kable.html"><a href="kable.html#change-column-names"><i class="fa fa-check"></i><b>10.1.2</b> Change column names</a></li>
-<li class="chapter" data-level="10.1.3" data-path="kable.html"><a href="kable.html#specify-column-alignment"><i class="fa fa-check"></i><b>10.1.3</b> Specify column alignment</a></li>
-<li class="chapter" data-level="10.1.4" data-path="kable.html"><a href="kable.html#kable-caption"><i class="fa fa-check"></i><b>10.1.4</b> Add a table caption</a></li>
-<li class="chapter" data-level="10.1.5" data-path="kable.html"><a href="kable.html#format-numeric-columns"><i class="fa fa-check"></i><b>10.1.5</b> Format numeric columns</a></li>
-<li class="chapter" data-level="10.1.6" data-path="kable.html"><a href="kable.html#display-missing-values"><i class="fa fa-check"></i><b>10.1.6</b> Display missing values</a></li>
-<li class="chapter" data-level="10.1.7" data-path="kable.html"><a href="kable.html#escape-special-characters"><i class="fa fa-check"></i><b>10.1.7</b> Escape special characters</a></li>
-<li class="chapter" data-level="10.1.8" data-path="kable.html"><a href="kable.html#multiple-tables-side-by-side"><i class="fa fa-check"></i><b>10.1.8</b> Multiple tables side by side</a></li>
-<li class="chapter" data-level="10.1.9" data-path="kable.html"><a href="kable.html#generate-multiple-tables-from-a-for-loop"><i class="fa fa-check"></i><b>10.1.9</b> Generate multiple tables from a <code>for</code>-loop</a></li>
-<li class="chapter" data-level="10.1.10" data-path="kable.html"><a href="kable.html#customize-latex-tables"><i class="fa fa-check"></i><b>10.1.10</b> Customize LaTeX tables</a></li>
-<li class="chapter" data-level="10.1.11" data-path="kable.html"><a href="kable.html#customize-html-tables"><i class="fa fa-check"></i><b>10.1.11</b> Customize HTML tables</a></li>
+<li class="chapter" data-level="10" data-path="knitr.html"><a href="knitr.html"><i class="fa fa-check"></i><b>10</b> Knitr</a><ul>
+<li class="chapter" data-level="10.1" data-path="chunk-options.html"><a href="chunk-options.html"><i class="fa fa-check"></i><b>10.1</b> Chunk options</a></li>
+<li class="chapter" data-level="10.2" data-path="hide-one.html"><a href="hide-one.html"><i class="fa fa-check"></i><b>10.2</b> Hide code, text output, messages, or plots</a></li>
+<li class="chapter" data-level="10.3" data-path="hide-all.html"><a href="hide-all.html"><i class="fa fa-check"></i><b>10.3</b> Hide everything from a chunk</a></li>
+<li class="chapter" data-level="10.4" data-path="opts-comment.html"><a href="opts-comment.html"><i class="fa fa-check"></i><b>10.4</b> Remove leading hashes in text output</a></li>
+<li class="chapter" data-level="10.5" data-path="knit-exit.html"><a href="knit-exit.html"><i class="fa fa-check"></i><b>10.5</b> Exit knitting early</a></li>
+<li class="chapter" data-level="10.6" data-path="fig-chunk.html"><a href="fig-chunk.html"><i class="fa fa-check"></i><b>10.6</b> Generate a plot and display it elsewhere</a></li>
+<li class="chapter" data-level="10.7" data-path="duplicate-label.html"><a href="duplicate-label.html"><i class="fa fa-check"></i><b>10.7</b> Allow duplicate labels in code chunks</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="kableextra.html"><a href="kableextra.html"><i class="fa fa-check"></i><b>10.2</b> kableExtra</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="kableextra.html"><a href="kableextra.html#setup"><i class="fa fa-check"></i><b>10.2.1</b> Setup</a></li>
-<li class="chapter" data-level="10.2.2" data-path="kableextra.html"><a href="kableextra.html#customizing-html"><i class="fa fa-check"></i><b>10.2.2</b> Customizing HTML</a></li>
-<li class="chapter" data-level="10.2.3" data-path="kableextra.html"><a href="kableextra.html#customizing-pdf"><i class="fa fa-check"></i><b>10.2.3</b> Customizing PDF</a></li>
+<li class="chapter" data-level="11" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>11</b> Tables</a><ul>
+<li class="chapter" data-level="11.1" data-path="kable.html"><a href="kable.html"><i class="fa fa-check"></i><b>11.1</b> The function <code>knitr::kable()</code></a><ul>
+<li class="chapter" data-level="11.1.1" data-path="kable.html"><a href="kable.html#kable-formats"><i class="fa fa-check"></i><b>11.1.1</b> Possible table formats</a></li>
+<li class="chapter" data-level="11.1.2" data-path="kable.html"><a href="kable.html#change-column-names"><i class="fa fa-check"></i><b>11.1.2</b> Change column names</a></li>
+<li class="chapter" data-level="11.1.3" data-path="kable.html"><a href="kable.html#specify-column-alignment"><i class="fa fa-check"></i><b>11.1.3</b> Specify column alignment</a></li>
+<li class="chapter" data-level="11.1.4" data-path="kable.html"><a href="kable.html#kable-caption"><i class="fa fa-check"></i><b>11.1.4</b> Add a table caption</a></li>
+<li class="chapter" data-level="11.1.5" data-path="kable.html"><a href="kable.html#format-numeric-columns"><i class="fa fa-check"></i><b>11.1.5</b> Format numeric columns</a></li>
+<li class="chapter" data-level="11.1.6" data-path="kable.html"><a href="kable.html#display-missing-values"><i class="fa fa-check"></i><b>11.1.6</b> Display missing values</a></li>
+<li class="chapter" data-level="11.1.7" data-path="kable.html"><a href="kable.html#escape-special-characters"><i class="fa fa-check"></i><b>11.1.7</b> Escape special characters</a></li>
+<li class="chapter" data-level="11.1.8" data-path="kable.html"><a href="kable.html#multiple-tables-side-by-side"><i class="fa fa-check"></i><b>11.1.8</b> Multiple tables side by side</a></li>
+<li class="chapter" data-level="11.1.9" data-path="kable.html"><a href="kable.html#generate-multiple-tables-from-a-for-loop"><i class="fa fa-check"></i><b>11.1.9</b> Generate multiple tables from a <code>for</code>-loop</a></li>
+<li class="chapter" data-level="11.1.10" data-path="kable.html"><a href="kable.html#customize-latex-tables"><i class="fa fa-check"></i><b>11.1.10</b> Customize LaTeX tables</a></li>
+<li class="chapter" data-level="11.1.11" data-path="kable.html"><a href="kable.html#customize-html-tables"><i class="fa fa-check"></i><b>11.1.11</b> Customize HTML tables</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="table-ext.html"><a href="table-ext.html"><i class="fa fa-check"></i><b>10.3</b> Extension packages</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="table-ext.html"><a href="table-ext.html#stargazer"><i class="fa fa-check"></i><b>10.3.1</b> stargazer</a></li>
-<li class="chapter" data-level="10.3.2" data-path="table-ext.html"><a href="table-ext.html#gt"><i class="fa fa-check"></i><b>10.3.2</b> gt</a></li>
-<li class="chapter" data-level="10.3.3" data-path="table-ext.html"><a href="table-ext.html#flextable"><i class="fa fa-check"></i><b>10.3.3</b> flextable</a></li>
+<li class="chapter" data-level="11.2" data-path="kableextra.html"><a href="kableextra.html"><i class="fa fa-check"></i><b>11.2</b> kableExtra</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="kableextra.html"><a href="kableextra.html#setup"><i class="fa fa-check"></i><b>11.2.1</b> Setup</a></li>
+<li class="chapter" data-level="11.2.2" data-path="kableextra.html"><a href="kableextra.html#customizing-html"><i class="fa fa-check"></i><b>11.2.2</b> Customizing HTML</a></li>
+<li class="chapter" data-level="11.2.3" data-path="kableextra.html"><a href="kableextra.html#customizing-pdf"><i class="fa fa-check"></i><b>11.2.3</b> Customizing PDF</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>11</b> Managing Big Projects</a><ul>
-<li class="chapter" data-level="11.1" data-path="sourcing-files.html"><a href="sourcing-files.html"><i class="fa fa-check"></i><b>11.1</b> Sourcing files</a></li>
-<li class="chapter" data-level="11.2" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>11.2</b> Caching</a></li>
-<li class="chapter" data-level="11.3" data-path="notifications.html"><a href="notifications.html"><i class="fa fa-check"></i><b>11.3</b> Notifications</a></li>
-<li class="chapter" data-level="11.4" data-path="citation-style.html"><a href="citation-style.html"><i class="fa fa-check"></i><b>11.4</b> Citation style</a></li>
-<li class="chapter" data-level="11.5" data-path="generate-package-citations.html"><a href="generate-package-citations.html"><i class="fa fa-check"></i><b>11.5</b> Generate package citations</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>12</b> Workflow</a><ul>
-<li class="chapter" data-level="12.1" data-path="customRender.html"><a href="customRender.html"><i class="fa fa-check"></i><b>12.1</b> Creating custom render functions</a></li>
-<li class="chapter" data-level="12.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html"><i class="fa fa-check"></i><b>12.2</b> Multi-file documents</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="multi-file-documents.html"><a href="multi-file-documents.html#child-documents"><i class="fa fa-check"></i><b>12.2.1</b> Child documents</a></li>
-<li class="chapter" data-level="12.2.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html#using-bookdown"><i class="fa fa-check"></i><b>12.2.2</b> Using bookdown</a></li>
-<li class="chapter" data-level="12.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>12.2.3</b> Which method should you use?</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>12.3</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>12.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
-<li class="chapter" data-level="12.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>12.3.2</b> Customising the knit button</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>12.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>12.4.1</b> About the <code>cat</code> engine</a></li>
-<li class="chapter" data-level="12.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>12.4.2</b> Generate a template file from inside the rmarkdown</a></li>
+<li class="chapter" data-level="11.3" data-path="table-ext.html"><a href="table-ext.html"><i class="fa fa-check"></i><b>11.3</b> Extension packages</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="table-ext.html"><a href="table-ext.html#stargazer"><i class="fa fa-check"></i><b>11.3.1</b> stargazer</a></li>
+<li class="chapter" data-level="11.3.2" data-path="table-ext.html"><a href="table-ext.html#gt"><i class="fa fa-check"></i><b>11.3.2</b> gt</a></li>
+<li class="chapter" data-level="11.3.3" data-path="table-ext.html"><a href="table-ext.html#flextable"><i class="fa fa-check"></i><b>11.3.3</b> flextable</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>13</b> Diagrams</a><ul>
-<li class="chapter" data-level="13.1" data-path="basic-diagrams.html"><a href="basic-diagrams.html"><i class="fa fa-check"></i><b>13.1</b> Basic diagrams</a></li>
-<li class="chapter" data-level="13.2" data-path="adding-parameters-to-plots.html"><a href="adding-parameters-to-plots.html"><i class="fa fa-check"></i><b>13.2</b> Adding parameters to plots</a></li>
+<li class="chapter" data-level="12" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>12</b> Managing Big Projects</a><ul>
+<li class="chapter" data-level="12.1" data-path="sourcing-files.html"><a href="sourcing-files.html"><i class="fa fa-check"></i><b>12.1</b> Sourcing files</a></li>
+<li class="chapter" data-level="12.2" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>12.2</b> Caching</a></li>
+<li class="chapter" data-level="12.3" data-path="notifications.html"><a href="notifications.html"><i class="fa fa-check"></i><b>12.3</b> Notifications</a></li>
+<li class="chapter" data-level="12.4" data-path="citation-style.html"><a href="citation-style.html"><i class="fa fa-check"></i><b>12.4</b> Citation style</a></li>
+<li class="chapter" data-level="12.5" data-path="generate-package-citations.html"><a href="generate-package-citations.html"><i class="fa fa-check"></i><b>12.5</b> Generate package citations</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr.html"><a href="knitr.html"><i class="fa fa-check"></i><b>14</b> Knitr</a><ul>
-<li class="chapter" data-level="14.1" data-path="chunk-options.html"><a href="chunk-options.html"><i class="fa fa-check"></i><b>14.1</b> Chunk options</a></li>
-<li class="chapter" data-level="14.2" data-path="hide-one.html"><a href="hide-one.html"><i class="fa fa-check"></i><b>14.2</b> Hide code, text output, messages, or plots</a></li>
-<li class="chapter" data-level="14.3" data-path="hide-all.html"><a href="hide-all.html"><i class="fa fa-check"></i><b>14.3</b> Hide everything from a chunk</a></li>
-<li class="chapter" data-level="14.4" data-path="opts-comment.html"><a href="opts-comment.html"><i class="fa fa-check"></i><b>14.4</b> Remove leading hashes in text output</a></li>
-<li class="chapter" data-level="14.5" data-path="knit-exit.html"><a href="knit-exit.html"><i class="fa fa-check"></i><b>14.5</b> Exit knitting early</a></li>
-<li class="chapter" data-level="14.6" data-path="fig-chunk.html"><a href="fig-chunk.html"><i class="fa fa-check"></i><b>14.6</b> Generate a plot and display it elsewhere</a></li>
-<li class="chapter" data-level="14.7" data-path="duplicate-label.html"><a href="duplicate-label.html"><i class="fa fa-check"></i><b>14.7</b> Allow duplicate labels in code chunks</a></li>
+<li class="chapter" data-level="13" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>13</b> Workflow</a><ul>
+<li class="chapter" data-level="13.1" data-path="customRender.html"><a href="customRender.html"><i class="fa fa-check"></i><b>13.1</b> Creating custom render functions</a></li>
+<li class="chapter" data-level="13.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html"><i class="fa fa-check"></i><b>13.2</b> Multi-file documents</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="multi-file-documents.html"><a href="multi-file-documents.html#child-documents"><i class="fa fa-check"></i><b>13.2.1</b> Child documents</a></li>
+<li class="chapter" data-level="13.2.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html#using-bookdown"><i class="fa fa-check"></i><b>13.2.2</b> Using bookdown</a></li>
+<li class="chapter" data-level="13.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>13.2.3</b> Which method should you use?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>13.3</b> RStudio integration with R Markdown</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shortcuts"><i class="fa fa-check"></i><b>13.3.1</b> R Markdown specific Rstudio keyboard shortcuts</a></li>
+<li class="chapter" data-level="13.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>13.3.2</b> Customising the knit button</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><i class="fa fa-check"></i><b>13.4</b> Writing to file from an Rmd file with the <code>cat</code> engine</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#about-the-cat-engine"><i class="fa fa-check"></i><b>13.4.1</b> About the <code>cat</code> engine</a></li>
+<li class="chapter" data-level="13.4.2" data-path="writing-to-file-from-an-rmd-file-with-the-cat-engine.html"><a href="writing-to-file-from-an-rmd-file-with-the-cat-engine.html#generate-a-template-file-from-inside-the-rmarkdown"><i class="fa fa-check"></i><b>13.4.2</b> Generate a template file from inside the rmarkdown</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>14</b> Diagrams</a><ul>
+<li class="chapter" data-level="14.1" data-path="basic-diagrams.html"><a href="basic-diagrams.html"><i class="fa fa-check"></i><b>14.1</b> Basic diagrams</a></li>
+<li class="chapter" data-level="14.2" data-path="adding-parameters-to-plots.html"><a href="adding-parameters-to-plots.html"><i class="fa fa-check"></i><b>14.2</b> Adding parameters to plots</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -299,14 +300,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="rstudio-integration-with-r-markdown" class="section level2">
-<h2><span class="header-section-number">12.3</span> RStudio integration with R Markdown</h2>
+<h2><span class="header-section-number">13.3</span> RStudio integration with R Markdown</h2>
 <p>R Markdown format and features can be used with R and <strong>rmarkdown</strong> package, with any editor that got your preference. However, RStudio has a deep integration with R Markdown and offers additional feature that will help your project workflow without a doubt.</p>
 <div id="r-markdown-specific-rstudio-keyboard-shortcuts" class="section level3">
-<h3><span class="header-section-number">12.3.1</span> R Markdown specific Rstudio keyboard shortcuts</h3>
+<h3><span class="header-section-number">13.3.1</span> R Markdown specific Rstudio keyboard shortcuts</h3>
 <!-- https://stackoverflow.com/questions/30938280/keyboard-shortcut-to-produce-code-chunk-brackets-in-markdown-in-r-for-rstudio -->
-<p>Like any great IDE, RStudio has keyboard shortcuts<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">12.1</a>.</p>
+<p>Like any great IDE, RStudio has keyboard shortcuts<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">13.1</a>.</p>
 <table>
-<caption><span id="tab:keyboardShortcuts">TABLE 12.1: </span>Rmarkdown related Rstudio keyboard shortcuts</caption>
+<caption><span id="tab:keyboardShortcuts">TABLE 13.1: </span>Rmarkdown related Rstudio keyboard shortcuts</caption>
 <thead>
 <tr class="header">
 <th align="left">Description</th>
@@ -389,43 +390,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="customising-the-knit-button" class="section level3">
-<h3><span class="header-section-number">12.3.2</span> Customising the knit button</h3>
+<h3><span class="header-section-number">13.3.2</span> Customising the knit button</h3>
 <p>When you click the <code>Knit</code> button in RStudio, it will run the <code>rmarkdown::render</code> in a clean R session and output a file of the same name in the same directory. For example, running <code>example.Rmd</code> with the <code>output:html_document</code> will create an output file <code>example.html</code>.</p>
-<p>There may be situations where we want to customise how the document is rendered. For example, perhaps we would like the rendered document to contain the current date, or would like to output the compiled report into a different directory. Although we can customise the <code>render</code> function using external scripts (See section <a href="customRender.html#customRender">12.1</a>), it can be inconvenient to have to rely on external scripts to compile your report.</p>
+<p>There may be situations where we want to customise how the document is rendered. For example, perhaps we would like the rendered document to contain the current date, or would like to output the compiled report into a different directory. Although we can customise the <code>render</code> function using external scripts (See section <a href="customRender.html#customRender">13.1</a>), it can be inconvenient to have to rely on external scripts to compile your report.</p>
 <p>It is possible to control the behaviour of the knit button by using the <code>knit</code> argument within the YAML of your document. This requires a function to be specified with the arguments <code>inputFile</code>, and <code>encoding</code>. There are two techniques that we can use to customise the behaviour of the knit function:</p>
 <ol style="list-style-type: decimal">
 <li>Embed the custom function directly within the YAML</li>
 <li>Create a custom function and save it in a package</li>
 </ol>
 <p>The easiest way of creating a function is to store the code directly within the YAML. We must wrap the entire function in brackets, and any linebreaks in the YAML must start with 4 spaces. For example, if we want the output filename to include the date it was rendered, we could use the following YAML code:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span></a>
-<a class="sourceLine" id="cb190-3" data-line-number="3">    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span></a>
-<a class="sourceLine" id="cb190-4" data-line-number="4">    encoding = encoding,</a>
-<a class="sourceLine" id="cb190-5" data-line-number="5">    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span></a>
-<a class="sourceLine" id="cb190-6" data-line-number="6">                                         <span class="st">&#39;-&#39;</span>,</a>
-<a class="sourceLine" id="cb190-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
-<a class="sourceLine" id="cb190-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
-<a class="sourceLine" id="cb190-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/09/28, the output file name would be example-20190928.html.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb206-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb206-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span></a>
+<a class="sourceLine" id="cb206-3" data-line-number="3">    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span></a>
+<a class="sourceLine" id="cb206-4" data-line-number="4">    encoding = encoding,</a>
+<a class="sourceLine" id="cb206-5" data-line-number="5">    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span></a>
+<a class="sourceLine" id="cb206-6" data-line-number="6">                                         <span class="st">&#39;-&#39;</span>,</a>
+<a class="sourceLine" id="cb206-7" data-line-number="7">                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),</a>
+<a class="sourceLine" id="cb206-8" data-line-number="8">                                         <span class="st">&#39;.html&#39;</span>))})</a>
+<a class="sourceLine" id="cb206-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/09/30, the output file name would be example-20190930.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
-<a class="sourceLine" id="cb191-2" data-line-number="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb191-3" data-line-number="3"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb191-4" data-line-number="4">knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {</a>
-<a class="sourceLine" id="cb191-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb191-6" data-line-number="6">  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,</a>
-<a class="sourceLine" id="cb191-7" data-line-number="7">                    <span class="dt">encoding =</span> encoding,</a>
-<a class="sourceLine" id="cb191-8" data-line-number="8">                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),</a>
-<a class="sourceLine" id="cb191-9" data-line-number="9">                                         <span class="st">&#39;-&#39;</span>,</a>
-<a class="sourceLine" id="cb191-10" data-line-number="10">                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),</a>
-<a class="sourceLine" id="cb191-11" data-line-number="11">                                         <span class="st">&#39;.html&#39;</span>))</a>
-<a class="sourceLine" id="cb191-12" data-line-number="12">  }</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="co">#&#39; Custom Knit function for RStudio</span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb207-3" data-line-number="3"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb207-4" data-line-number="4">knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {</a>
+<a class="sourceLine" id="cb207-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb207-6" data-line-number="6">  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,</a>
+<a class="sourceLine" id="cb207-7" data-line-number="7">                    <span class="dt">encoding =</span> encoding,</a>
+<a class="sourceLine" id="cb207-8" data-line-number="8">                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),</a>
+<a class="sourceLine" id="cb207-9" data-line-number="9">                                         <span class="st">&#39;-&#39;</span>,</a>
+<a class="sourceLine" id="cb207-10" data-line-number="10">                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),</a>
+<a class="sourceLine" id="cb207-11" data-line-number="11">                                         <span class="st">&#39;.html&#39;</span>))</a>
+<a class="sourceLine" id="cb207-12" data-line-number="12">  }</a></code></pre></div>
 <p>If we were to add this to the package <code>myPackage</code>, you will then be able to refer to your custom Knit function using the following YAML argument:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb192-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span></a>
-<a class="sourceLine" id="cb192-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
-<p>Readers may wish to refer to Section <a href="customRender.html#customRender">12.1</a> to find out more ideas on how they could customise the control of their render function.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb208-2" data-line-number="2"><span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span></a>
+<a class="sourceLine" id="cb208-3" data-line-number="3"><span class="ot">---</span></a></code></pre></div>
+<p>Readers may wish to refer to Section <a href="customRender.html#customRender">13.1</a> to find out more ideas on how they could customise the control of their render function.</p>
 </div>
 </div>
 <div class="footnotes">

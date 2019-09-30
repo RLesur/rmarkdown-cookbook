@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Add LaTeX code to the preamble | R Markdown Cookbook</title>
+  <title>6.2 Use a custom HTML template | R Markdown Cookbook</title>
   <meta name="description" content="Examples, tips, and tricks of using R Markdown." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Add LaTeX code to the preamble | R Markdown Cookbook" />
+  <meta property="og:title" content="6.2 Use a custom HTML template | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dr-harper/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Add LaTeX code to the preamble | R Markdown Cookbook" />
+  <meta name="twitter:title" content="6.2 Use a custom HTML template | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Examples, tips, and tricks of using R Markdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="latex-output.html"/>
-<link rel="next" href="latex-logo.html"/>
+<link rel="prev" href="html-css.html"/>
+<link rel="next" href="chunk-styling.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -299,33 +299,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="latex-preamble" class="section level2">
-<h2><span class="header-section-number">5.1</span> Add LaTeX code to the preamble</h2>
-<p>The general structure of a LaTeX document is like this:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
-<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="co">% preamble</span></a>
-<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
-<a class="sourceLine" id="cb56-4" data-line-number="4"><span class="co">% body</span></a>
-<a class="sourceLine" id="cb56-5" data-line-number="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
-<p>That is, you declare the document class in <code>\documentclass{}</code>, load certain LaTeX packages and set certain options if necessary in the preamble, and start writing the body of your document after <code>\begin{document}</code>. A Markdown document is mostly the body of the document. If you want to add anything to the preamble, you have to use the <code>includes</code> option of <code>pdf_document</code>. This option has three sub-options: <code>in_header</code>, <code>before_body</code>, and <code>after_body</code>. Each of them takes one or multiple file paths. The file(s) specified in <code>in_header</code> will be added to the preamble. The files specified in <code>before_body</code> and <code>after_body</code> are added before and after the document body, respectively.</p>
-<p>For example, below is a trick that turns the URLs in hyperlinks into footnotes. This trick is useful because (by default) readers do not know the actual URL when they see the text in PDF generated from <code>\href{URL}{text}</code>. This trick displays both the text and URL.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co">% you may want to save a copy of \href before redefining it</span></a>
-<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="co">% \let\oldhref\href</span></a>
-<a class="sourceLine" id="cb57-3" data-line-number="3"><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</a></code></pre></div>
-<p>You can save the above code in a file with an arbitrary filename, e.g., <code>preamble.tex</code>. Then include it in the preamble through:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb58-2" data-line-number="2">  <span class="fu">pdf_document:</span></a>
-<a class="sourceLine" id="cb58-3" data-line-number="3">    <span class="fu">includes:</span></a>
-<a class="sourceLine" id="cb58-4" data-line-number="4">      <span class="fu">in_header:</span><span class="at"> </span><span class="st">&quot;preamble.tex&quot;</span></a></code></pre></div>
-<p>Another way to add code to the preamble is to use the <code>header-includes</code> field in the YAML frontmatter. We will show an example in Section <a href="latex-logo.html#latex-logo">5.2</a>. The advantage of using <code>header-includes</code> is that you can keep everything in one R Markdown document. However, if your report is to be generated into multiple output formats, we still recommend that you use the <code>includes</code> method, because the <code>header-includes</code> field is unconditional, and will be included in non-LaTeX output documents, too. By comparison, the <code>includes</code> option is only applied to the <code>pdf_document</code> format.</p>
+<div id="html-template" class="section level2">
+<h2><span class="header-section-number">6.2</span> Use a custom HTML template</h2>
+<p>We mentioned LaTeX templates in Section <a href="latex-template.html#latex-template">5.4</a>. You can also specify a custom HTML template for Pandoc to convert Markdown to HTML. Below is a brief example template:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2">  <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb80-3" data-line-number="3">    <span class="kw">&lt;title&gt;</span>$title$<span class="kw">&lt;/title&gt;</span></a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">    $for(css)$</a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb80-6" data-line-number="6">    $endfor$</a>
+<a class="sourceLine" id="cb80-7" data-line-number="7">  <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb80-8" data-line-number="8">  <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb80-9" data-line-number="9">  $body$</a>
+<a class="sourceLine" id="cb80-10" data-line-number="10">  <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb80-11" data-line-number="11"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<p>You can see that the template contains a few variables such as <code>$title$</code> and <code>$body$</code>. You can find the full list of Pandoc variables and their meanings at <a href="https://pandoc.org/MANUAL.html#templates" class="uri">https://pandoc.org/MANUAL.html#templates</a>.</p>
+<p>The template gives you the ultimate power to customize the HTML output. For example, you can include arbitrary CSS stylesheets or JavaScript code or libraries in the <code>&lt;head&gt;</code> area. To apply a template to an Rmd document, you can save the template to a file, and pass the file path to the <code>template</code> option of <code>html_document</code>, e.g.,</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2">  <span class="fu">html_output:</span></a>
+<a class="sourceLine" id="cb81-3" data-line-number="3">    <span class="fu">template:</span><span class="at"> my-template.html</span></a></code></pre></div>
+<p>The <strong>rmarkdown</strong> package uses a custom HTML template shipped with the package, which is different from Pandoc’s default template. To use the latter, you can specify <code>template: null</code>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="latex-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="latex-logo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="html-css.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chunk-styling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -355,7 +356,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/05-latex.Rmd",
+"link": "https://github.com/dr-harper/rmarkdown-cookbook/edit/master/06-html.Rmd",
 "text": "Edit"
 },
 "history": {
